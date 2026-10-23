@@ -1,0 +1,7 @@
+*.step -text
+*.stp -text
+*.3mf binary
+*.stl binary
+*.docx binary
+*.png binary
+*.kicad_sch -text

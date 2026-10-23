@@ -1,0 +1,31 @@
+Script started on 2026-10-21 19:59:59+09:00 [COMMAND="bash -c step2" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Cloning into '/home/leeyoum/so101'...
+Receiving objects: 100% (392/392), 2.17 MiB | 31.37 MiB/s, done.
+Resolving deltas: 100% (213/213), done.
+97f32b2 (HEAD -> master, origin/master) 새 Jetson 설치 진행 창(setup_gui.py, GTK3) 추가: 진행률·단계 표·현재 작업·출력 꼬리, 러너가 progress.json/setup_output.log 기록 후 자동 실행
+318c81f 동영상 녹화 추가: auto_record.sh (GNOME 스크린캐스트 D-Bus, 연결 유지 프
+2e9b6d7 새 Jetson 키트: README 복사 명령에 chmod 추가(FAT USB), 임시 홈 테스트
+결과(오프라인 venv 1분51초, CUDA True, 자체 점검 통과) 기록
+[sudo] password for leeyoum:
+99-so101.rules
+rplidar.rules
+앱 메뉴	  : /home/leeyoum/.local/share/applications/so101-panel.desktop
+바탕화면  : /home/leeyoum/Desktop/so101-panel.desktop
+검증	  : OK
+앱 메뉴	  : /home/leeyoum/.local/share/applications/so101-servo-tester.desktop
+바탕화면  : /home/leeyoum/Desktop/so101-servo-tester.desktop
+검증	  : OK
+앱 메뉴	  : /home/leeyoum/.local/share/applications/so101-lidar-view.desktop
+바탕화면  : /home/leeyoum/Desktop/so101-lidar-view.desktop
+검증	  : OK
+앱 메뉴	  : /home/leeyoum/.local/share/applications/so101-camera-view.desktop
+바탕화면  : /home/leeyoum/Desktop/so101-camera-view.desktop
+검증	  : OK
+앱 메뉴	  : /home/leeyoum/.local/share/applications/so101-base-teleop.desktop
+바탕화면  : /home/leeyoum/Desktop/so101-base-teleop.desktop
+검증	  : OK
+앱 메뉴	  : /home/leeyoum/.local/share/applications/so101-mode-panel.desktop
+바탕화면  : /home/leeyoum/Desktop/so101-mode-panel.desktop
+검증	  : OK
+
+Script done on 2026-10-21 20:00:06+09:00 [COMMAND_EXIT_CODE="0"]

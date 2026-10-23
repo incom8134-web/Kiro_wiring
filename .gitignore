@@ -1,0 +1,23 @@
+# Private chats - never commit
+KakaoTalk_*.txt
+**/KakaoTalk_*
+*.chat.txt
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+~$*
+*.tmp
+
+# Fusion / KiCad backups
+*.f3d.bak
+*-bak
+*.kicad_sch-bak
+_autosave-*

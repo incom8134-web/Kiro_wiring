@@ -1,0 +1,16 @@
+Script started on 2026-10-21 21:06:03+09:00 [COMMAND="bash -c step6" TERM="xterm-256color" TTY="/dev/pts/4" COLUMNS="-1" LINES="-1"]
+/home/leeyoum/.cache/huggingface/lerobot/calibration/robots/so_follower:
+total 8
+-rw-rw-r-- 1 leeyoum leeyoum 916 Oct 12 01:50 left_follower.json
+-rw-rw-r-- 1 leeyoum leeyoum 918 Sep 15 19:35 right_follower.json
+lrwxrwxrwx 1 leeyoum leeyoum  18 Oct 12 01:55 so101_left.json -> left_follower.json
+lrwxrwxrwx 1 leeyoum leeyoum  19 Oct 12 01:55 so101_right.json -> right_follower.json
+
+/home/leeyoum/.cache/huggingface/lerobot/calibration/teleoperators/so_leader:
+total 8
+-rw-rw-r-- 1 leeyoum leeyoum 915 Sep 15 19:35 left_leader.json
+-rw-rw-r-- 1 leeyoum leeyoum 915 Sep 15 19:35 right_leader.json
+lrwxrwxrwx 1 leeyoum leeyoum  16 Oct 12 01:55 so101_left.json -> left_leader.json
+lrwxrwxrwx 1 leeyoum leeyoum  17 Oct 12 01:55 so101_right.json -> right_leader.json
+
+Script done on 2026-10-21 21:06:03+09:00 [COMMAND_EXIT_CODE="0"]

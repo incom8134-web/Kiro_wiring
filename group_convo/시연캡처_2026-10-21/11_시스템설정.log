@@ -1,0 +1,15 @@
+Script started on 2026-10-21 19:59:50+09:00 [COMMAND="bash -c step1" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+[sudo] password for leeyoum:
+Setting up swapspace version 1, size = 16 GiB (17179865088 bytes)
+no label, UUID=08b5140e-caaa-4f70-b666-e7031daf7525
+/swapfile none swap sw 0 0
+[설치] 전원 모드 MAXN_SUPER 확인
+	       total	    used	free	  shared  buff/cache   available
+Mem:	       7.3Gi	   5.4Gi       215Mi	   346Mi       2.2Gi	   1.9Gi
+Swap:		15Gi	      0B	15Gi
+NAME	  TYPE SIZE USED PRIO
+/swapfile file	16G   0B   -2
+leeyoum adm cdrom sudo audio dip video plugdev users i2c gdm weston-launch gpio render
+[주의] dialout 그룹은 다시 로그인해야 적용됩니다 (하드웨어 연결 단계 전까지만 하면 됨)
+
+Script done on 2026-10-21 19:59:56+09:00 [COMMAND_EXIT_CODE="0"]
