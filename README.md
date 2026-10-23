@@ -15,6 +15,7 @@ The goal of this repository is to replace the pile of wall adapters and loose ca
 | Path | Contents |
 |---|---|
 | [`cart_power_plate/`](cart_power_plate) | Parametric base plate for the cart's lower tray (CadQuery source, STEP + 3MF exports, previews) |
+| [`wiring/`](wiring) | Electrical wiring diagram (PNG + SVG) and its generator script |
 | [`design_and_printing_guideline.md`](design_and_printing_guideline.md) | Rules for designing robot body parts that print on a Bambu Lab P1S (size limits, dovetail joints, tolerances, materials) |
 | [`KIRO_FINAL.kicad_sch`](KIRO_FINAL.kicad_sch) | KiCad schematic of the power system |
 | [`group_convo/`](group_convo) | Power system design package: design document (RevA), project context, power calculation, parts list, Markdown sources, and the 2026-10-21 software setup demo captures |
@@ -31,7 +32,8 @@ A single plate that sits in the cart's lower basket (330 × 235 mm, 55 mm deep, 
 |---|---|
 | SMPS 12 V 200 W | Two raised rails (10 mm) with M4 slots, screwed from below; airflow channel underneath |
 | Jetson Orin Nano Super Dev Kit | Four 10 mm standoffs (M2.5/M3 self-tap pilot), I/O edge facing the side wall |
-| 6-way blade fuse block with negative bus | Locating tabs + self-tapping screws |
+| 2 × Dorhea 4-way blade fuse box (FB1 12 V, FB2 5 V) | Locating tabs + self-tapping screws |
+| 0 V ground bus bar (GB1) – star point, next to the SMPS −V terminal | Solid pad for self-tapping screws |
 | DC-DC buck 12 V → 5 V 15 A | Locating tabs + self-tapping screws |
 | IEC C14 AC inlet with fuse and switch | Tower raised 4 in (101.6 mm) above the plate so the power cord clears the basket rim |
 
@@ -76,9 +78,34 @@ Values marked `VERIFY` in the script are estimates from product listings and mus
 
 - Jetson carrier mounting-hole pattern (currently 86 × 58 mm)
 - SMPS bottom mounting-hole row spacing (currently 50 mm)
-- Exact footprints of the SMPS, fuse block and buck converter
+- Exact footprints of the SMPS, the two fuse boxes, the ground bus bar and the buck converter
 
 > The plate is currently sized for the 12 V 200 W SMPS. The RevA design document specifies a Mean Well LRS-350-12; update the `COMPONENTS` table in the script if the SMPS changes.
+
+---
+
+## Electrical wiring
+
+<p align="center">
+  <img src="wiring/kiro_wiring_diagram.png" alt="Kiro electrical wiring diagram" width="100%">
+</p>
+
+Rev E, based on `KIRO_FINAL.kicad_sch` with two Dorhea 4-way fuse boxes:
+
+| Fuse | Box | Rail | Load | Wire |
+|---|---|---|---|---|
+| F0 5 A T | J1 inlet | 220 V AC | SMPS input | 0.75 mm² (18 AWG) |
+| F1 5 A | FB1 | 12 V | Jetson Orin Nano (barrel 5.5 × 2.5 mm) | 18 AWG |
+| F2 15 A | FB1 | 12 V | Wheel adapter + 4 × ST3215-C018 | 14 AWG |
+| F3 15 A | FB1 | 12 V | Buck 12 V → 5 V input | 14 AWG |
+| F4 2 A | FB2 | 5 V | Leader adapter + 6 × STS3215 | 20 AWG |
+| F5 15 A | FB2 | 5 V | Follower adapter + 6 × STS3215 (5 V test) | 14 AWG |
+
+- SMPS → FB1 and SMPS → GB1 use 12 AWG.
+- The Dorhea boxes have no negative bus, so every 0 V return goes to the **GB1 bus bar** (star ground).
+- FB2 is fed only from the buck's 5 V output – never from 12 V.
+
+Regenerate the diagram with `python wiring/make_wiring.py` (needs Chrome or Edge for the PNG).
 
 ---
 

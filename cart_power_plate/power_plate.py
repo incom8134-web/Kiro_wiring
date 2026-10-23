@@ -29,8 +29,11 @@ COMPONENTS = {
     "SMPS_12V_200W": (-25.0, 56.0, 200.0, 100.0, 42.0, "", (0.75, 0.75, 0.78)),
     # Jetson Orin Nano Super dev kit 103 x 90.5 x 35, I/O edge faces -X
     "JETSON_ORIN_NANO": (-84.75, -55.5, 90.5, 103.0, 35.0, "", (0.15, 0.55, 0.15)),
-    # 6-way blade fuse block with negative bus (Nilight). VERIFY size
-    "FUSE_BLOCK_6WAY": (23.0, -62.5, 110.0, 95.0, 40.0, "SW", (0.2, 0.2, 0.2)),
+    # 2x Dorhea 4-way blade fuse box (no negative bus), long axis along Y. VERIFY size
+    "FUSE_12V_4WAY": (-3.0, -57.0, 50.0, 105.0, 38.0, "WE", (0.2, 0.2, 0.2)),   # F1 Jetson, F2 wheels, F3 buck
+    "FUSE_5V_4WAY": (55.0, -57.0, 50.0, 105.0, 38.0, "WE", (0.2, 0.2, 0.2)),    # F4 leaders, F5 followers
+    # 0V star bus bar (fuse boxes have no negative bus), next to SMPS -V terminal. VERIFY size
+    "GND_BUS_BAR": (91.0, 75.0, 22.0, 70.0, 15.0, "", (0.1, 0.1, 0.1)),
     # TOBSUN EA75-5V 12V->5V 15A buck, ears along Y. VERIFY size
     "BUCK_5V_15A": (120.0, -32.5, 68.0, 85.0, 30.0, "SE", (0.6, 0.1, 0.1)),
 }
@@ -65,8 +68,8 @@ GUSSET_X, GUSSET_Z, GUSSET_T = 40.0, 120.0, 5.0
 # ---------------------------------------------------------------- zip-tie anchors
 # (x, y, wire_dir_deg)  -> two 2.4x5 slots straddling the wire bundle
 ZIP_ANCHORS = [
-    (100.0, 92.0, 90), (100.0, 28.0, 90),      # AC lines inlet -> SMPS
-    (82.0, -8.0, 0), (55.0, -8.0, 0),          # 12V SMPS -> fuse block
+    (110.0, 92.0, 90), (110.0, 28.0, 90),      # AC lines inlet -> SMPS
+    (82.0, -8.0, 0),                           # 12V SMPS -> fuse boxes
     (-36.0, -35.0, 90), (-36.0, -85.0, 90),    # fuse -> Jetson feed
     (-148.0, -25.0, 90), (-148.0, -75.0, 90),  # Jetson I/O cables
     (120.0, -85.0, 0),                         # 5V out
@@ -79,7 +82,7 @@ HEX_F = 10.0                      # hole size across flats
 HEX_WEB = 2.6                     # rib between holes
 HEX_EDGE = 6.0                    # solid border around plate edge
 HEX_KEEP = 2.0                    # solid margin around rails, bosses, tabs, tower, labels
-SCREW_BAND = 10.0                 # solid strip inside fuse/buck footprint edge for their screws
+SCREW_BAND = 10.0                 # solid strip inside fuse box / buck / bus bar footprint edge for screws
 
 # ---------------------------------------------------------------- labels (engraved)
 LABELS = [  # (text, x, y, rot_deg, size)
@@ -87,7 +90,7 @@ LABELS = [  # (text, x, y, rot_deg, size)
     ("12V", 82.0, 4.0, 0, 5.0),
     ("5V OUT", 120.0, -95.0, 0, 5.0),
     ("JETSON I/O", -153.0, -50.0, 90, 5.0),
-    ("FUSED 12V", 23.0, -5.0, 0, 5.0),
+    ("GND", 91.0, 33.0, 0, 4.5),
 ]
 ENGRAVE = 0.8
 
@@ -196,7 +199,7 @@ def _keepouts():
         rects.append((x - hl, y - hh, x + hl, y + hh))
     rects.append((SPLIT_X - DT_DEPTH - 6, -PL_W, SPLIT_X + 6, PL_W))  # split joint band
     bands = []                                                    # fuse / buck screw zones
-    for name in ("FUSE_BLOCK_6WAY", "BUCK_5V_15A"):
+    for name in ("FUSE_12V_4WAY", "FUSE_5V_4WAY", "BUCK_5V_15A", "GND_BUS_BAR"):
         cx, cy, sx, sy = COMPONENTS[name][:4]
         bands.append((cx, cy, sx / 2, sy / 2))
     return rects, circles, bands
