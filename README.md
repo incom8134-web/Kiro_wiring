@@ -37,7 +37,7 @@ A single plate that sits in the cart's lower basket (330 × 235 mm, 55 mm deep, 
 | 2 × Dorhea 4-way blade fuse box (FB1 12 V, FB2 5 V) | Locating tabs + self-tapping screws |
 | 0 V ground bus bar (GB1) – star point, next to the SMPS −V terminal | Solid pad for self-tapping screws |
 | DC-DC buck 12 V → 5 V 15 A | Locating tabs + self-tapping screws |
-| IEC C14 AC inlet with fuse and switch | Tower raised 4 in (101.6 mm) above the plate so the power cord clears the basket rim |
+| IEC C14 AC inlet with fuse and switch | 67 mm tall wall with side braces at the +X edge; inlet centre 39 mm above the plate bottom |
 
 ### Features
 
@@ -55,7 +55,7 @@ All exports are in [`cart_power_plate/out/`](cart_power_plate/out):
 | `plate_full.step` | Complete plate – open in Fusion 360 (**File → Open**) |
 | `plate_full.3mf` | One-piece print (needs a bed larger than 256 mm) |
 | `plate_left.step` / `.3mf` | Left half, 118 × 231 × 15 mm |
-| `plate_right.step` / `.3mf` | Right half with AC tower, 217 × 231 × 158 mm |
+| `plate_right.step` / `.3mf` | Right half with AC tower, 217 × 231 × 67 mm |
 
 ### Printing (Bambu Lab P1S)
 
