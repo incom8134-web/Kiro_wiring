@@ -64,14 +64,15 @@ SMPS_SLOT_W, SMPS_SLOT_LEN = 4.4, 60.0    # M4 clearance, 2 slots per rail
 SMPS_SLOT_X = 55.0                # slot centers at +/- this from SMPS center
 
 # ---------------------------------------------------------------- AC inlet tower
-# IEC C14 inlet + fuse + switch, mounted horizontally on a 67 mm tall wall.
+# IEC C14 inlet + fuse + switch, mounted horizontally; inlet lower edge 67 mm above the plate bottom.
 AC_Y = 47.0                       # center along +X edge
 AC_WALL_W, AC_WALL_T = 60.0, 5.0
-AC_WALL_TOP = 67.0                # absolute Z of tower top (67 mm total height)
+AC_INLET_BOTTOM = 67.0            # bottom edge of the inlet cutout, above plate bottom
+AC_WALL_TOP = 112.0               # absolute Z of tower top
 AC_CUT_W, AC_CUT_H = 47.8, 28.2   # panel cutout (long axis horizontal)
-AC_CZ = 39.0                      # cutout center Z (mount holes at 19 / 59 mm)
+AC_CZ = AC_INLET_BOTTOM + AC_CUT_H / 2   # cutout center Z (~81 mm; mount holes ~61 / ~101 mm)
 AC_HOLE_PITCH, AC_HOLE_D = 40.0, 3.4
-GUSSET_X, GUSSET_Z, GUSSET_T = 35.0, 52.0, 5.0
+GUSSET_X, GUSSET_Z, GUSSET_T = 40.0, 90.0, 5.0
 
 # ---------------------------------------------------------------- zip-tie anchors
 # (x, y, wire_dir_deg)  -> two 2.4x5 slots straddling the wire bundle
