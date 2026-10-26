@@ -1,5 +1,7 @@
 # Kiro Wiring
 
+**English** | [한국어](README.ko.md)
+
 Power system and electronics packaging for the **Kiro / SO-101 mobile dual-arm robot**: an XLeRobot-style mobile manipulator built around an NVIDIA Jetson Orin Nano, with two SO-101 leader arms, two SO-101 follower arms and a mecanum-wheel base.
 
 The goal of this repository is to replace the pile of wall adapters and loose cables on the robot cart with a **single SMPS, fused 12 V / 5 V distribution and a buck converter**, mounted on 3D-printed hardware so the robot looks and behaves like a consumer-grade product instead of an R&D prototype.
