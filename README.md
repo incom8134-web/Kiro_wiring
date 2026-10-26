@@ -35,7 +35,7 @@ kiro_wiring/
 └── docs/
     ├── design_and_printing_guideline.md   rules for designing P1S-printable robot parts
     ├── power_system_design/               RevA design package (docx + Markdown sources)
-    └── demo_captures_2026-10-21/          software setup demo captures
+    └── demo_captures_2026-10-21/          software setup demo captures (local only, not in the repo)
 ```
 
 | I want to… | Open |

@@ -35,7 +35,7 @@ kiro_wiring/
 └── docs/
     ├── design_and_printing_guideline.md   P1S로 출력 가능한 로봇 부품 설계 규칙
     ├── power_system_design/               RevA 설계 문서 (docx + Markdown 원본)
-    └── demo_captures_2026-10-21/          소프트웨어 설치 시연 캡처
+    └── demo_captures_2026-10-21/          소프트웨어 설치 시연 캡처 (로컬 전용, 저장소에 없음)
 ```
 
 | 하고 싶은 작업 | 열어야 할 파일 |
