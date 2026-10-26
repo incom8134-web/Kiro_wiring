@@ -17,10 +17,8 @@
 | 폴더 | 내용 |
 |---|---|
 | [`images/`](images) | 전원 플레이트 렌더 이미지와 **배선도** – 여기서 시작하세요 |
-| [`docs/`](docs) | 전원 시스템 설계, 부품 목록, 설계 및 출력 가이드라인 |
-| [`print_files/`](print_files) | Bambu Lab P1S용 출력 파일 (3MF) |
-| [`3d_models/`](3d_models) | STEP 파일 (Fusion 360), OBJ, 상세 Blender 씬 |
-| [`scripts/`](scripts) | 모델과 배선도를 생성하는 Python 소스 |
+| [`docs/`](docs) | 전원 시스템 설계, 부품 목록 |
+| [`3d_models/`](3d_models) | STEP 파일 (Fusion 360), OBJ, 상세 Blender 씬, `print_files/` (Bambu Lab P1S용 3MF) |
 
 ---
 
@@ -67,9 +65,9 @@
 
 | 파일 | 크기 | 비고 |
 |---|---|---|
-| `print_files/base_plate_left.3mf` | 118 × 231 × 15 mm | – |
-| `print_files/base_plate_right.3mf` | 217 × 231 × 112 mm | AC 인렛 타워 포함 |
-| `print_files/usb_hub_tray.3mf` | 165 × 73 × 25 mm | – |
+| `3d_models/print_files/base_plate_left.3mf` | 118 × 231 × 15 mm | – |
+| `3d_models/print_files/base_plate_right.3mf` | 217 × 231 × 112 mm | AC 인렛 타워 포함 |
+| `3d_models/print_files/usb_hub_tray.3mf` | 165 × 73 × 25 mm | – |
 
 PETG 또는 ASA, 레이어 0.2 mm, 벽 3개, 인필 15–20 %, 평평한 면을 아래로, 서포트 불필요. 플레이트 두 조각은 도브테일 부분을 접착합니다.
 
@@ -83,30 +81,12 @@ PETG 또는 ASA, 레이어 0.2 mm, 벽 3개, 인필 15–20 %, 평평한 면을 
 
 ---
 
-## 다시 생성하기
-
-모든 모델은 파라메트릭입니다 – 치수는 각 스크립트 상단의 상수로 정의되어 있습니다.
-
-```bash
-pip install cadquery trimesh networkx lxml vtk
-python scripts/base_plate.py          # 베이스 플레이트 STEP + 3MF
-python scripts/usb_hub_tray.py        # 허브 트레이 STEP + 3MF
-python scripts/export_assembly.py     # 어셈블리 STEP + OBJ
-python scripts/render_base_plate.py   # images/base_plate_print.png
-python scripts/wiring_diagram.py      # images/wiring_diagram.png (Chrome 또는 Edge 필요)
-```
-
-스크립트에서 `VERIFY`로 표시된 값(Jetson 홀 간격, SMPS 마운팅 귀 위치, 퓨즈 박스와 벅 컨버터 크기)은 최종 출력 전에 실제 부품을 측정해 확인해야 합니다.
-
----
-
 ## 문서 (영문)
 
 | 문서 | 내용 |
 |---|---|
 | [전원 시스템 설계](docs/power_system_design.md) | 구조, 부하 계산, 퓨즈, 배선, 초기 가동 절차, 향후 업그레이드 |
 | [부품 목록](docs/parts_list.md) | 보유 부품, 구매 필요 부품, 출력 부품 |
-| [설계 및 출력 가이드라인](docs/design_and_printing_guideline.md) | P1S로 출력할 새 로봇 부품 설계 규칙 |
 
 ---
 

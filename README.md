@@ -17,10 +17,8 @@ The project replaces the robot cart's pile of wall adapters and loose cables wit
 | Folder | What is inside |
 |---|---|
 | [`images/`](images) | Renders of the power plate and the **wiring diagram** – start here |
-| [`docs/`](docs) | Power system design, parts list, design & printing guideline |
-| [`print_files/`](print_files) | Ready-to-print 3MF files for the Bambu Lab P1S |
-| [`3d_models/`](3d_models) | STEP files (Fusion 360), OBJ and the detailed Blender scene |
-| [`scripts/`](scripts) | Python sources that generate the models and the diagram |
+| [`docs/`](docs) | Power system design and parts list |
+| [`3d_models/`](3d_models) | STEP files (Fusion 360), OBJ, the detailed Blender scene and `print_files/` (3MF for the Bambu Lab P1S) |
 
 ---
 
@@ -67,9 +65,9 @@ Full calculations, wire sizes and the bring-up checklist: **[docs/power_system_d
 
 | File | Size | Notes |
 |---|---|---|
-| `print_files/base_plate_left.3mf` | 118 × 231 × 15 mm | – |
-| `print_files/base_plate_right.3mf` | 217 × 231 × 112 mm | includes the AC inlet tower |
-| `print_files/usb_hub_tray.3mf` | 165 × 73 × 25 mm | – |
+| `3d_models/print_files/base_plate_left.3mf` | 118 × 231 × 15 mm | – |
+| `3d_models/print_files/base_plate_right.3mf` | 217 × 231 × 112 mm | includes the AC inlet tower |
+| `3d_models/print_files/usb_hub_tray.3mf` | 165 × 73 × 25 mm | – |
 
 PETG or ASA, 0.2 mm layers, 3 walls, 15–20 % infill, flat side down, no supports. Glue the two plate halves at the dovetails.
 
@@ -83,30 +81,12 @@ PETG or ASA, 0.2 mm layers, 3 walls, 15–20 % infill, flat side down, no suppor
 
 ---
 
-## Regenerating
-
-All models are parametric – sizes are constants at the top of each script.
-
-```bash
-pip install cadquery trimesh networkx lxml vtk
-python scripts/base_plate.py          # base plate STEP + 3MF
-python scripts/usb_hub_tray.py        # hub tray STEP + 3MF
-python scripts/export_assembly.py     # assembly STEP + OBJ
-python scripts/render_base_plate.py   # images/base_plate_print.png
-python scripts/wiring_diagram.py      # images/wiring_diagram.png (needs Chrome or Edge)
-```
-
-Values marked `VERIFY` in the scripts (Jetson hole pattern, SMPS ear positions, fuse box and buck footprints) should be measured on the real parts before the final print.
-
----
-
 ## Documents
 
 | Document | Content |
 |---|---|
 | [Power system design](docs/power_system_design.md) | Architecture, load budget, fuses, wiring, bring-up checklist, planned upgrades |
 | [Parts list](docs/parts_list.md) | Bill of materials – on hand, to buy, printed parts |
-| [Design & printing guideline](docs/design_and_printing_guideline.md) | Rules for designing new robot parts that print on the P1S |
 
 ---
 

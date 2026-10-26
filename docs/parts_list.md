@@ -43,9 +43,9 @@ Updated 2026-10-26. Quantities are for one robot as built
 
 | # | Part | File | Notes |
 |---|---|---|---|
-| D1 | Base plate, left half | `print_files/base_plate_left.3mf` | 118 × 231 × 15 mm |
-| D2 | Base plate, right half (AC tower) | `print_files/base_plate_right.3mf` | 217 × 231 × 112 mm, glue the dovetails |
-| D3 | USB hub tray | `print_files/usb_hub_tray.3mf` | middle floor, zip-tied to the mesh |
+| D1 | Base plate, left half | `3d_models/print_files/base_plate_left.3mf` | 118 × 231 × 15 mm |
+| D2 | Base plate, right half (AC tower) | `3d_models/print_files/base_plate_right.3mf` | 217 × 231 × 112 mm, glue the dovetails |
+| D3 | USB hub tray | `3d_models/print_files/usb_hub_tray.3mf` | middle floor, zip-tied to the mesh |
 | D4 | Screws | M4 × 10 (SMPS ears), M3 / M2.5 self-tapping (Jetson, fuse boxes, buck) | – |
 
 ## E. Test equipment

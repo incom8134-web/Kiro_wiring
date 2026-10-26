@@ -127,10 +127,10 @@ Rules:
 
 ## 7. Mechanical packaging
 
-- **Lower basket:** one 3D-printed base plate (`print_files/base_plate_*.3mf`) holds the SMPS (flat, fan up, on slotted
+- **Lower basket:** one 3D-printed base plate (`3d_models/print_files/base_plate_*.3mf`) holds the SMPS (flat, fan up, on slotted
   ear pads), Jetson (10 mm standoffs), FB1, FB2, the buck and the AC inlet tower (inlet lower edge 67 mm
   above the plate so the cord clears the basket rim). Honeycomb cut-outs give airflow from the basket's mesh floor.
-- **Middle floor:** the ST Lab USB hub sits in its own printed tray (`print_files/usb_hub_tray.3mf`), next to the devices it serves.
+- **Middle floor:** the ST Lab USB hub sits in its own printed tray (`3d_models/print_files/usb_hub_tray.3mf`), next to the devices it serves.
 - Riser cables (12 V wheels, 5 V arms, USB) leave the plate at the left rear corner towards the upper floors.
 
 ---
@@ -143,8 +143,7 @@ Rules:
 4. Fit F4. Connect the leader adapter. Servo tester: leader servos read 5.0–5.2 V.
 5. Fit F5. Connect the follower adapter. Run teleop for a minute and watch servo temperatures.
 6. Fit F2. Connect the wheel board. Servo tester: wheels 12.0–12.4 V. Run `mecanum_test.py` with the robot on blocks, then on the floor.
-7. Clamp-meter the SMPS output during the full demo and record the peak.
-8. Update `~/so101/CLAUDE.md` with the final set points and measurements.
+7. Clamp-meter the SMPS output during the full demo and record the peak and the final set points.
 
 Power-up order: mains on → Jetson boots → wait for the desktop → start software.
 Shutdown: stop software (torque off) → shut down the Jetson → mains off.
