@@ -16,6 +16,8 @@ The goal of this repository is to replace the pile of wall adapters and loose ca
 |---|---|
 | [`cart_power_plate/`](cart_power_plate) | Parametric base plate for the cart's lower tray (CadQuery source, STEP + 3MF exports, previews) |
 | [`wiring/`](wiring) | Electrical wiring diagram (PNG + SVG) and its generator script |
+| [`usb_hub_tray/`](usb_hub_tray) | Printed tray for the USB hub on the cart's middle floor (CadQuery source, STEP + 3MF) |
+| [`export/`](export) | Combined STEP and OBJ of the plate + hub tray, and render images |
 | [`design_and_printing_guideline.md`](design_and_printing_guideline.md) | Rules for designing robot body parts that print on a Bambu Lab P1S (size limits, dovetail joints, tolerances, materials) |
 | [`KIRO_FINAL.kicad_sch`](KIRO_FINAL.kicad_sch) | KiCad schematic of the power system |
 | [`group_convo/`](group_convo) | Power system design package: design document (RevA), project context, power calculation, parts list, Markdown sources, and the 2026-10-21 software setup demo captures |
@@ -30,8 +32,8 @@ A single plate that sits in the cart's lower basket (330 × 235 mm, 55 mm deep, 
 
 | Component | Mounting |
 |---|---|
-| SMPS 12 V 200 W | Two raised rails (10 mm) with M4 slots, screwed from below; airflow channel underneath |
-| Jetson Orin Nano Super Dev Kit | Four 10 mm standoffs (M2.5/M3 self-tap pilot), I/O edge facing the side wall |
+| SMPS HS-350-12 (12 V, ~29 A, fan on top), 193 × 100 × 45 mm | Lies flat, fan up. Four 10 mm riser pads with long M4 slots under its mounting ears, plus two support rails; air gap underneath |
+| Jetson Orin Nano Super Dev Kit (100 × 90 mm) | Four 10 mm standoffs (M2.5/M3 self-tap pilot), I/O edge facing the side wall |
 | 2 × Dorhea 4-way blade fuse box (FB1 12 V, FB2 5 V) | Locating tabs + self-tapping screws |
 | 0 V ground bus bar (GB1) – star point, next to the SMPS −V terminal | Solid pad for self-tapping screws |
 | DC-DC buck 12 V → 5 V 15 A | Locating tabs + self-tapping screws |
@@ -80,7 +82,30 @@ Values marked `VERIFY` in the script are estimates from product listings and mus
 - SMPS bottom mounting-hole row spacing (currently 50 mm)
 - Exact footprints of the SMPS, the two fuse boxes, the ground bus bar and the buck converter
 
-> The plate is currently sized for the 12 V 200 W SMPS. The RevA design document specifies a Mean Well LRS-350-12; update the `COMPONENTS` table in the script if the SMPS changes.
+- SMPS mounting-ear positions (`SMPS_EAR_X`, `SMPS_EAR_OUT`) – the 30 mm slots cover ±12 mm of error
+
+> Keep at least 20 mm of free air above the SMPS fan. The USB hub is deliberately **not** on this plate – it sits on the middle floor in its own tray.
+
+---
+
+## USB hub tray (middle floor)
+
+<p align="center">
+  <img src="export/render_assembly.png" alt="Base plate and USB hub tray" width="720">
+</p>
+
+Holds one ST Lab USB hub (157 × 37 × 40 mm) flat with its ports facing up. Both ends are open for the upstream USB and DC input cables, the floor has hex vents, and six zip-tie slot pairs in the side flanges tie it to the basket mesh. 165 × 73 × 25 mm – one print on the P1S, no supports.
+
+Keeping the hub on the middle floor puts it next to the devices it feeds (servo adapters, lidar, gamepad, cameras), shortens the USB cables, and keeps USB away from the SMPS, mains wiring and servo power.
+
+## Exports
+
+| File | Use |
+|---|---|
+| `export/kiro_power_tray.step` | Base plate + hub tray as solids (Fusion 360) |
+| `export/kiro_power_tray.obj` | Same parts as meshes (Blender) |
+| `export/render_*.png` | Renders (boxes in the assembly render are placeholder components) |
+| `usb_hub_tray/out/hub_tray.3mf` | Print-ready hub tray |
 
 ---
 

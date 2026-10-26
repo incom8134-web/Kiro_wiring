@@ -46,8 +46,8 @@
 <rect x="572" y="486" width="50" height="20" rx="10" fill="#475569"/>
 <text x="597.0" y="501" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12" fill="#fff" font-weight="700" text-anchor="middle">PSU1</text>
 <text x="630" y="501" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="15" fill="#0f172a" font-weight="700" text-anchor="start">SMPS 12 V</text>
-<text x="574" y="524" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12" fill="#64748b" font-weight="400" text-anchor="start">Mean Well LRS-350-12</text>
-<text x="574" y="541" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12" fill="#64748b" font-weight="400" text-anchor="start">12 V · 29 A · 350 W</text>
+<text x="574" y="524" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12" fill="#64748b" font-weight="400" text-anchor="start">HS-350-12 · fan-cooled</text>
+<text x="574" y="541" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12" fill="#64748b" font-weight="400" text-anchor="start">12 V · ~29 A · 350 W</text>
 <text x="574" y="558" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12" fill="#64748b" font-weight="400" text-anchor="start">set to 12.0–12.3 V</text>
 <circle cx="560" cy="680" r="5" fill="#fff" stroke="#0f172a" stroke-width="2"/>
 <text x="570" y="684" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11.5" fill="#64748b" font-weight="600" text-anchor="start">L</text>
@@ -413,6 +413,6 @@
 <text x="720" y="1154" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start">3.  Bring-up: set SMPS to 12.0–12.3 V and the buck to 5.0–5.1 V with no load; then fit F1 + F3, then F2, then F4 / F5 in FB2 one at a time.</text>
 <text x="720" y="1180" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start">4.  Followers run on 5 V as a TEST (schematic note). Servo limit is 8.0 V — never feed the 12 V rail into an arm adapter.</text>
 <text x="720" y="1206" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start">5.  Hub DC input is intentionally left open in the schematic: confirm 5 V or 12 V input before connecting it.</text>
-<text x="720" y="1232" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start">6.  SMPS sizing: 12 V peak demand ≈ 20–27 A. The schematic specifies LRS-350-12 (29 A); a 200 W (16.7 A) unit will hiccup at peak load.</text>
+<text x="720" y="1232" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start">6.  SMPS: HS-350-12 (12 V, ~29 A) covers the 20–27 A peak. Mount flat, fan up, keep ≥ 20 mm free above the fan. USB hub lives on the middle floor.</text>
 <text x="720" y="1258" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12.5" fill="#0f172a" font-weight="400" text-anchor="start">7.  Wire sizes from power_calculation.md · servo leads 22 AWG Molex 5264 (GND / VCC / SIG) · 12 V branches XT60, 5 V outputs XT30.</text>
 </svg>

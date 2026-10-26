@@ -161,7 +161,7 @@ wire([(188, 605), (250, 605)], "#475569", 10)
 tag(219, 640, "cord", "#475569")
 
 # ------------------------------------------------------------------ SMPS
-box(560, 470, 230, 340, "SMPS 12 V", ["Mean Well LRS-350-12", "12 V · 29 A · 350 W", "set to 12.0–12.3 V"], C["psu"], ref="PSU1")
+box(560, 470, 230, 340, "SMPS 12 V", ["HS-350-12 · fan-cooled", "12 V · ~29 A · 350 W", "set to 12.0–12.3 V"], C["psu"], ref="PSU1")
 for y, lab in ((680, "L"), (710, "N"), (740, "FG")):
     term(560, y, lab, "left")
 term(790, 580, "+V", "right", C["v12"])
@@ -332,7 +332,7 @@ notes = [
     "3.  Bring-up: set SMPS to 12.0–12.3 V and the buck to 5.0–5.1 V with no load; then fit F1 + F3, then F2, then F4 / F5 in FB2 one at a time.",
     "4.  Followers run on 5 V as a TEST (schematic note). Servo limit is 8.0 V — never feed the 12 V rail into an arm adapter.",
     "5.  Hub DC input is intentionally left open in the schematic: confirm 5 V or 12 V input before connecting it.",
-    "6.  SMPS sizing: 12 V peak demand ≈ 20–27 A. The schematic specifies LRS-350-12 (29 A); a 200 W (16.7 A) unit will hiccup at peak load.",
+    "6.  SMPS: HS-350-12 (12 V, ~29 A) covers the 20–27 A peak. Mount flat, fan up, keep ≥ 20 mm free above the fan. USB hub lives on the middle floor.",
     "7.  Wire sizes from power_calculation.md · servo leads 22 AWG Molex 5264 (GND / VCC / SIG) · 12 V branches XT60, 5 V outputs XT30.",
 ]
 for i, n in enumerate(notes):

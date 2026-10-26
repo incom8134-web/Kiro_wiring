@@ -1,5 +1,5 @@
 """
-Robot cart - lower tray electronics base plate (parametric, CadQuery).  v2
+Robot cart - lower tray electronics base plate (parametric, CadQuery).  v3
 
 Run:  python power_plate.py
 Out:  out/plate_full.step / .3mf          (one piece: laser/CNC or big printer)
@@ -25,13 +25,14 @@ PL_T = 5.0                        # plate thickness
 # name: (center_x, center_y, size_x, size_y, height, tab_sides, color)
 # tab_sides: sides that get locating tabs: "N" (+Y) "S" (-Y) "E" (+X) "W" (-X)
 COMPONENTS = {
-    # SMPS 12V 200W (CL-200-12): terminals face +X (toward AC inlet). VERIFY size
-    "SMPS_12V_200W": (-25.0, 56.0, 200.0, 100.0, 42.0, "", (0.75, 0.75, 0.78)),
-    # Jetson Orin Nano Super dev kit 103 x 90.5 x 35, I/O edge faces -X
-    "JETSON_ORIN_NANO": (-84.75, -55.5, 90.5, 103.0, 35.0, "", (0.15, 0.55, 0.15)),
+    # SMPS 12V 350W (HS-350-12, fan on top face): body 193 x 100 x 45 + 2 mm clearance,
+    # lies flat with the fan facing up, terminals face +X (toward AC inlet / GND bar)
+    "SMPS_12V_350W": (-24.5, 56.0, 197.0, 104.0, 45.0, "", (0.75, 0.75, 0.78)),
+    # Jetson Orin Nano Super dev kit, measured 100 x 90 (x 35), I/O edge faces -X
+    "JETSON_ORIN_NANO": (-84.75, -58.5, 90.0, 100.0, 35.0, "", (0.15, 0.55, 0.15)),
     # 2x Dorhea 4-way blade fuse box (no negative bus), long axis along Y. VERIFY size
-    "FUSE_12V_4WAY": (-3.0, -57.0, 50.0, 105.0, 38.0, "WE", (0.2, 0.2, 0.2)),   # F1 Jetson, F2 wheels, F3 buck
-    "FUSE_5V_4WAY": (55.0, -57.0, 50.0, 105.0, 38.0, "WE", (0.2, 0.2, 0.2)),    # F4 leaders, F5 followers
+    "FUSE_12V_4WAY": (-3.0, -60.0, 50.0, 105.0, 38.0, "WE", (0.2, 0.2, 0.2)),   # F1 Jetson, F2 wheels, F3 buck
+    "FUSE_5V_4WAY": (55.0, -60.0, 50.0, 105.0, 38.0, "WE", (0.2, 0.2, 0.2)),    # F4 leaders, F5 followers
     # 0V star bus bar (fuse boxes have no negative bus), next to SMPS -V terminal. VERIFY size
     "GND_BUS_BAR": (91.0, 75.0, 22.0, 70.0, 15.0, "", (0.1, 0.1, 0.1)),
     # TOBSUN EA75-5V 12V->5V 15A buck, ears along Y. VERIFY size
@@ -41,14 +42,22 @@ TAB_LEN, TAB_T, TAB_H, TAB_GAP = 16.0, 3.0, 7.0, 0.6
 
 # ---------------------------------------------------------------- raised mounts (airflow underneath)
 STANDOFF_H = 10.0                 # air gap under SMPS and Jetson
-RAISED = {"SMPS_12V_200W", "JETSON_ORIN_NANO"}
+RAISED = {"SMPS_12V_350W", "JETSON_ORIN_NANO"}
 
 # Jetson carrier board: 4 bosses, M2.5/M3 self-tap pilot.  VERIFY pattern
 JET_HOLES_X, JET_HOLES_Y = 58.0, 86.0     # board rotated: 86 runs along Y
 JET_HOLE_OFFSET = (0.0, 0.0)              # pattern center offset from kit center
 JET_BOSS_D, JET_PILOT_D = 7.0, 2.6
 
-# SMPS: two rails along X with long slots -> screw from below, slides to fit holes
+# SMPS ear mounts: the PSU has 4 screw-on ears (2 per long side) at its base.
+# Each ear sits on a 10 mm riser pad with a long M4 slot, so unknown ear spacing still fits.
+SMPS_BODY_W = 100.0               # measured body width (ears stick out beyond this)
+SMPS_EAR_X = (-54.0, 73.5)        # VERIFY: ear centres along X, relative to SMPS centre
+SMPS_EAR_OUT = 5.0                # VERIFY: ear hole distance outside the body edge
+SMPS_PAD_LEN, SMPS_PAD_W = 40.0, 12.0
+SMPS_EAR_SLOT_LEN, SMPS_EAR_SLOT_W = 30.0, 4.5
+
+# SMPS support rails under the body (also slotted, in case the base has threaded holes)
 SMPS_RAIL_PITCH_Y = 50.0          # VERIFY: distance between the two bottom hole rows
 SMPS_RAIL_W, SMPS_RAIL_LEN = 14.0, 184.0
 SMPS_SLOT_W, SMPS_SLOT_LEN = 4.4, 60.0    # M4 clearance, 2 slots per rail
@@ -136,8 +145,27 @@ def jetson_mounts(p):
     return p.cut(pilots)
 
 
+def smps_ear_pads():
+    """(x, y, len_x, len_y) of the four ear riser pads, clipped to the plate edge."""
+    cx, cy = COMPONENTS["SMPS_12V_350W"][:2]
+    lim = PL_W / 2 - 1.5
+    pads = []
+    for sy in (-1, 1):
+        hole_y = cy + sy * (SMPS_BODY_W / 2 + SMPS_EAR_OUT)
+        y0, y1 = hole_y - SMPS_PAD_W / 2, hole_y + SMPS_PAD_W / 2
+        y0, y1 = max(y0, -lim), min(y1, lim)
+        for ex in SMPS_EAR_X:
+            pads.append((cx + ex, (y0 + y1) / 2, SMPS_PAD_LEN, y1 - y0, hole_y))
+    return pads
+
+
 def smps_mounts(p):
-    cx, cy = COMPONENTS["SMPS_12V_200W"][:2]
+    for x, y, lx, ly, hole_y in smps_ear_pads():
+        pad = cq.Workplane("XY").box(lx, ly, STANDOFF_H, centered=(True, True, False)) \
+            .translate((x, y, PL_T)).edges("|Z").fillet(2.0)
+        p = p.union(pad)
+        p = p.cut(slot(x, hole_y, SMPS_EAR_SLOT_LEN, SMPS_EAR_SLOT_W, PL_T + STANDOFF_H + 2))
+    cx, cy = COMPONENTS["SMPS_12V_350W"][:2]
     for sy in (-1, 1):
         ry = cy + sy * SMPS_RAIL_PITCH_Y / 2
         rail = cq.Workplane("XY").box(SMPS_RAIL_LEN, SMPS_RAIL_W, STANDOFF_H, centered=(True, True, False)) \
@@ -178,7 +206,9 @@ def _keepouts():
             else:
                 tx = cx + (1 if s == "E" else -1) * (sx / 2 + TAB_GAP + TAB_T / 2)
                 rects.append((tx - TAB_T / 2 - k, cy - TAB_LEN / 2 - k, tx + TAB_T / 2 + k, cy + TAB_LEN / 2 + k))
-    cx, cy = COMPONENTS["SMPS_12V_200W"][:2]                      # SMPS rails
+    for x, y, lx, ly, _ in smps_ear_pads():                        # SMPS ear pads
+        rects.append((x - lx / 2 - k, y - ly / 2 - k, x + lx / 2 + k, y + ly / 2 + k))
+    cx, cy = COMPONENTS["SMPS_12V_350W"][:2]                      # SMPS rails
     for sy in (-1, 1):
         ry = cy + sy * SMPS_RAIL_PITCH_Y / 2
         rects.append((cx - SMPS_RAIL_LEN / 2 - k, ry - SMPS_RAIL_W / 2 - k,
