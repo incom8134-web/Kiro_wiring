@@ -25,7 +25,7 @@
 ## 시스템 개요
 
 <p align="center">
-  <img src="images/wiring_diagram.png" alt="배선도" width="100%">
+  <img src="images/Korean%20Robot%20Power%20Distribution%20Wiring%20Diagram.png" alt="배선도" width="100%">
 </p>
 
 | 항목 | 부품 |

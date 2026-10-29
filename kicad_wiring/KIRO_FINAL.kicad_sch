@@ -1,0 +1,7779 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "df7a0305-5d09-479f-96d2-90bd4055470d")
+	(paper "A1")
+	(title_block
+		(title "Kiro robot - complete two-arm electrical schematic")
+		(date "2026-10-22")
+		(rev "D")
+		(company "Kiro SO-101 project")
+		(comment 1 "One 12 V SMPS, one shared 5 V buck")
+		(comment 2 "Power, servos and logical USB links; validate against hardware")
+	)
+	(lib_symbols
+		(symbol "Kiro:AC_Inlet"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board no)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "J"
+				(at 0 9 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "AC_Inlet"
+				(at 0 -9 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "AC_Inlet_1_1"
+				(rectangle
+					(start -10.16 -15.24)
+					(end 10.16 15.24)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at 20.32 10.16 180)
+					(length 2.54)
+					(name "L"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 20.32 0 180)
+					(length 2.54)
+					(name "N"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 20.32 -10.16 180)
+					(length 2.54)
+					(name "PE"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Kiro:Adapter"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board no)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "A"
+				(at 0 9 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Adapter"
+				(at 0 -9 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Adapter_1_1"
+				(rectangle
+					(start -15.24 -15.24)
+					(end 15.24 15.24)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at 0 20.32 270)
+					(length 2.54)
+					(name "V+"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -20.32 90)
+					(length 2.54)
+					(name "0V"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -20.32 0 0)
+					(length 2.54)
+					(name "USB"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 20.32 5.08 180)
+					(length 2.54)
+					(name "BUS_A"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 20.32 -5.08 180)
+					(length 2.54)
+					(name "BUS_B"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Kiro:Buck_5V"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board no)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "U"
+				(at 0 9 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Buck_5V"
+				(at 0 -9 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Buck_5V_1_1"
+				(rectangle
+					(start -15.24 -12.7)
+					(end 15.24 12.7)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -20.32 7.62 0)
+					(length 2.54)
+					(name "IN+"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -20.32 -7.62 0)
+					(length 2.54)
+					(name "IN-"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 20.32 7.62 180)
+					(length 2.54)
+					(name "OUT+"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 20.32 -7.62 180)
+					(length 2.54)
+					(name "OUT-"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Kiro:Buck_V"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board no)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "U"
+				(at 0 9 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Buck_V"
+				(at 0 -9 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Buck_V_1_1"
+				(rectangle
+					(start -15.24 -15.24)
+					(end 15.24 15.24)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at 0 20.32 270)
+					(length 2.54)
+					(name "IN+"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -20.32 90)
+					(length 2.54)
+					(name "IN-"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 20.32 7.62 180)
+					(length 2.54)
+					(name "OUT+"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 20.32 -7.62 180)
+					(length 2.54)
+					(name "OUT-"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Kiro:DC_Load"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board no)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "J"
+				(at 0 9 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "DC_Load"
+				(at 0 -9 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "DC_Load_1_1"
+				(rectangle
+					(start -10.16 -5.08)
+					(end 10.16 5.08)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -15.24 0 0)
+					(length 2.54)
+					(name "+"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 15.24 0 180)
+					(length 2.54)
+					(name "-"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Kiro:Flyback_Diode"
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board no)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "D"
+				(at 0 9 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Flyback_Diode"
+				(at 0 -9 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Flyback_Diode_1_1"
+				(polyline
+					(pts
+						(xy -2 0) (xy 2 -2.54) (xy 2 2.54) (xy -2 0)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2 -2.54) (xy -2 2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -7.62 0 0)
+					(length 2.54)
+					(name "K"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 7.62 0 180)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Kiro:Fuse"
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board no)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "F"
+				(at 0 9 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Fuse"
+				(at 0 -9 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Fuse_1_1"
+				(rectangle
+					(start -5.08 -2.54)
+					(end 5.08 2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -7.62 0 0)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 7.62 0 180)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Kiro:Fuse_V"
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board no)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "F"
+				(at 0 9 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Fuse_V"
+				(at 0 -9 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Fuse_V_1_1"
+				(rectangle
+					(start -2.54 -5.08)
+					(end 2.54 5.08)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at 0 7.62 270)
+					(length 2.54)
+					(name "IN"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -7.62 90)
+					(length 2.54)
+					(name "OUT"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Kiro:Jetson"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board no)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "U"
+				(at 0 9 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Jetson"
+				(at 0 -9 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Jetson_1_1"
+				(rectangle
+					(start -15.24 -15.24)
+					(end 15.24 15.24)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at 0 20.32 270)
+					(length 2.54)
+					(name "12V"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -20.32 90)
+					(length 2.54)
+					(name "0V"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 20.32 10.16 180)
+					(length 2.54)
+					(name "USB_CAMERA"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 20.32 0 180)
+					(length 2.54)
+					(name "USB_WRIST"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 20.32 -10.16 180)
+					(length 2.54)
+					(name "USB_HUB"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Kiro:Relay_NO"
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board no)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "K"
+				(at 0 9 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Relay_NO"
+				(at 0 -9 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Relay_NO_1_1"
+				(rectangle
+					(start -4.5 -2.8)
+					(end 4.5 2.8)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -7.62 0 0)
+					(length 2.54)
+					(name "COIL+"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 7.62 0 180)
+					(length 2.54)
+					(name "COIL-"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+			)
+			(symbol "Relay_NO_2_1"
+				(circle
+					(center -4.2 0)
+					(radius 0.55)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.7 0) (xy 3 3.2)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 4.2 0)
+					(radius 0.55)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -7.62 0 0)
+					(length 2.54)
+					(name "COM"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 7.62 0 180)
+					(length 2.54)
+					(name "NO"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Kiro:Relay_V"
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board no)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "K"
+				(at 0 9 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Relay_V"
+				(at 0 -9 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Relay_V_1_1"
+				(rectangle
+					(start -4.5 -2.8)
+					(end 4.5 2.8)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -7.62 0 0)
+					(length 2.54)
+					(name "COIL+"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 7.62 0 180)
+					(length 2.54)
+					(name "COIL-"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+			)
+			(symbol "Relay_V_2_1"
+				(circle
+					(center 0 4.2)
+					(radius 0.55)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 3.7) (xy 3.1 -2.7)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 0 -4.2)
+					(radius 0.55)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at 0 7.62 270)
+					(length 2.54)
+					(name "COM"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -7.62 90)
+					(length 2.54)
+					(name "NO"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Kiro:SMPS_12V"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board no)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "PSU"
+				(at 0 9 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "SMPS_12V"
+				(at 0 -9 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "SMPS_12V_1_1"
+				(rectangle
+					(start -15.24 -15.24)
+					(end 15.24 15.24)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -20.32 10.16 0)
+					(length 2.54)
+					(name "AC/L"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -20.32 0 0)
+					(length 2.54)
+					(name "AC/N"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -20.32 -10.16 0)
+					(length 2.54)
+					(name "FG"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 20.32 5.08 180)
+					(length 2.54)
+					(name "+V"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 20.32 -5.08 180)
+					(length 2.54)
+					(name "-V"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Kiro:Servo3"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board no)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "M"
+				(at 0 9 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Servo3"
+				(at 0 -9 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Servo3_1_1"
+				(rectangle
+					(start -6.35 -6.35)
+					(end 6.35 6.35)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at 0 12.7 270)
+					(length 2.54)
+					(name "V+"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -12.7 90)
+					(length 2.54)
+					(name "0V"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 0 180)
+					(length 2.54)
+					(name "TTL"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Kiro:Switch_DPST"
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board no)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "SW"
+				(at 0 9 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Switch_DPST"
+				(at 0 -9 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Switch_DPST_1_1"
+				(circle
+					(center -4.2 0)
+					(radius 0.55)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.7 0) (xy 3 3.2)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 4.2 0)
+					(radius 0.55)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -7.62 0 0)
+					(length 2.54)
+					(name "L_IN"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 7.62 0 180)
+					(length 2.54)
+					(name "L_OUT"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+			)
+			(symbol "Switch_DPST_2_1"
+				(circle
+					(center -4.2 0)
+					(radius 0.55)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.7 0) (xy 3 3.2)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 4.2 0)
+					(radius 0.55)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -7.62 0 0)
+					(length 2.54)
+					(name "N_IN"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 7.62 0 180)
+					(length 2.54)
+					(name "N_OUT"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Kiro:Switch_NC"
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board no)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "SW"
+				(at 0 9 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Switch_NC"
+				(at 0 -9 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Switch_NC_1_1"
+				(circle
+					(center -4.2 0)
+					(radius 0.55)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.7 0) (xy 3.7 0)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 4.2 0)
+					(radius 0.55)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -7.62 0 0)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 7.62 0 180)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Kiro:Switch_NO"
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board no)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "SW"
+				(at 0 9 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Switch_NO"
+				(at 0 -9 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Switch_NO_1_1"
+				(circle
+					(center -4.2 0)
+					(radius 0.55)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.7 0) (xy 3 3.2)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 4.2 0)
+					(radius 0.55)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -7.62 0 0)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 7.62 0 180)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Kiro:USB_Device"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board no)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "J"
+				(at 0 9 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "USB_Device"
+				(at 0 -9 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "USB_Device_1_1"
+				(rectangle
+					(start -10.16 -6.35)
+					(end 10.16 6.35)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -15.24 0 0)
+					(length 2.54)
+					(name "USB"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Kiro:USB_Hub"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board no)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "H"
+				(at 0 9 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "USB_Hub"
+				(at 0 -9 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "USB_Hub_1_1"
+				(rectangle
+					(start -17.78 -25.4)
+					(end 17.78 25.4)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at 0 27.94 270)
+					(length 2.54)
+					(name "DC+"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -27.94 90)
+					(length 2.54)
+					(name "DC-"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -22.86 0 0)
+					(length 2.54)
+					(name "UP"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 22.86 20.32 180)
+					(length 2.54)
+					(name "BASE"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 22.86 10.16 180)
+					(length 2.54)
+					(name "LEADER"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 22.86 0 180)
+					(length 2.54)
+					(name "FOLLOWER"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 22.86 -10.16 180)
+					(length 2.54)
+					(name "LIDAR"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 22.86 -20.32 180)
+					(length 2.54)
+					(name "GAMEPAD"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+	)
+	(text "USB nets are logical port links, not USB cable pinouts. Verify each CH343 adapter power path."
+		(exclude_from_sim no)
+		(at 53 292 0)
+		(effects
+			(font
+				(size 1.4 1.4)
+			)
+		)
+		(uuid "3a02e576-73cc-416b-8a1d-8662dad7fe86")
+	)
+	(text "Servo power shown as separate taps. Wire gauge, contact current and real bus harness require verification."
+		(exclude_from_sim no)
+		(at 72.39 552.45 0)
+		(effects
+			(font
+				(size 1.4 1.4)
+			)
+		)
+		(uuid "61bc520b-00cf-40e9-acf9-804c936267b1")
+	)
+	(text "12 V loads: Jetson and four wheel servos. 5 V loads: six leader + six follower servos."
+		(exclude_from_sim no)
+		(at 378 145 0)
+		(effects
+			(font
+				(size 1.4 1.4)
+			)
+		)
+		(uuid "67438618-1072-4834-818b-83f3dab01f5b")
+	)
+	(text "W_A/W_B: wheel TTL chains. L_A/L_B and F_A/F_B: arm IDs 1-3 / 4-6."
+		(exclude_from_sim no)
+		(at 53 564 0)
+		(effects
+			(font
+				(size 1.4 1.4)
+			)
+		)
+		(uuid "79526bd2-3e08-4967-ad48-c4d62af9a296")
+	)
+	(text "Hub DC supply intentionally open: verify its label, polarity and current before wiring."
+		(exclude_from_sim no)
+		(at 401 284.5 0)
+		(effects
+			(font
+				(size 1.4 1.4)
+			)
+		)
+		(uuid "c969f767-8067-42a0-916d-dd6b86e87acc")
+	)
+	(text "KIRO  |  COMPLETE TWO-ARM ELECTRICAL SCHEMATIC"
+		(exclude_from_sim no)
+		(at 378 30.48 0)
+		(effects
+			(font
+				(size 2.2 2.2)
+			)
+		)
+		(uuid "f394d8d5-280b-4bc9-8d72-dfa4b755f104")
+	)
+	(junction
+		(at 264.16 431.8)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0a3be350-6f33-4be1-ae4e-c34ad7598caf")
+	)
+	(junction
+		(at 101.6 530.86)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0d28f509-bb69-4b0c-ba5e-242a2ca66120")
+	)
+	(junction
+		(at 660.4 530.86)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0dfee9ab-4d4a-4424-8b1c-c2b6c9aa5fff")
+	)
+	(junction
+		(at 233.68 431.8)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1bec340f-8c80-45ab-a903-c842a5cedf7e")
+	)
+	(junction
+		(at 454.66 436.88)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2519467e-54d0-4dbd-92e5-fc5b45e5d0b4")
+	)
+	(junction
+		(at 220.98 130.81)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2c25e8cc-073e-41cd-8334-d57f742d89c4")
+	)
+	(junction
+		(at 751.84 530.86)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "34e699b9-bc33-4fd6-ac67-d4730b286b95")
+	)
+	(junction
+		(at 571.5 436.88)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "46a5ec2f-f349-4ba3-8c42-e43a4abc1d45")
+	)
+	(junction
+		(at 546.1 436.88)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4804aa69-d5b8-4dfb-9b1a-f51a637d10d1")
+	)
+	(junction
+		(at 203.2 431.8)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4db60d10-1791-4354-91fe-011ca3015e72")
+	)
+	(junction
+		(at 635 530.86)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "522f4f8d-452c-497e-8561-36d3e1f9c43f")
+	)
+	(junction
+		(at 480.06 530.86)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "606e649b-8904-499d-8795-24c085bf61d5")
+	)
+	(junction
+		(at 220.98 270.51)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "624de562-5a2a-45ef-aca0-4c594fb2c8ca")
+	)
+	(junction
+		(at 203.2 530.86)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "6575f4f5-9836-4604-9368-c74f3285c01f")
+	)
+	(junction
+		(at 520.7 530.86)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "6a5f5823-5996-4512-bca2-8da5ad2c75c5")
+	)
+	(junction
+		(at 500.38 360.68)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "6cad40c6-9540-4ad2-b6b7-ba09d9d093eb")
+	)
+	(junction
+		(at 101.6 130.81)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "811bff88-829f-4391-b6aa-e4dac1215742")
+	)
+	(junction
+		(at 751.84 436.88)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "818ffaef-b366-4522-a949-89102faa7967")
+	)
+	(junction
+		(at 520.7 436.88)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8693e3bc-ed55-4279-a17c-4aa98280cd5a")
+	)
+	(junction
+		(at 680.72 386.08)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "872250d3-1ba7-4c4a-87ee-e4b02987a8e3")
+	)
+	(junction
+		(at 480.06 436.88)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8a130781-a29b-4f0e-a177-855abbe85f4c")
+	)
+	(junction
+		(at 660.4 436.88)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8bbf020d-7bb7-4067-a359-d8b2fdef7abb")
+	)
+	(junction
+		(at 500.38 309.88)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "9163d4bd-7ffb-4634-8f85-5d5c4b141b07")
+	)
+	(junction
+		(at 701.04 530.86)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "986c19cf-bd5e-45f5-b9f4-39ccd78a6130")
+	)
+	(junction
+		(at 332.74 130.81)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "98dc75fd-610b-49eb-b077-d203092e58dd")
+	)
+	(junction
+		(at 429.26 530.86)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "99384c38-2960-4a63-b86e-7498a00756f1")
+	)
+	(junction
+		(at 726.44 436.88)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a4895d1c-175e-4d3d-8d4f-9a7d333e2100")
+	)
+	(junction
+		(at 546.1 530.86)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "aa0db465-8a0f-413a-85f4-39a8e5d1dced")
+	)
+	(junction
+		(at 701.04 436.88)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b1fcd474-7394-414d-9f43-d2ca53520354")
+	)
+	(junction
+		(at 726.44 530.86)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b6d1c391-a333-4600-bb82-0824e2291446")
+	)
+	(junction
+		(at 264.16 530.86)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "be23aeea-87f2-4d43-be6d-c3744dc545d7")
+	)
+	(junction
+		(at 680.72 309.88)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c17c2996-11fb-40df-80f1-818f9d854d4c")
+	)
+	(junction
+		(at 609.6 530.86)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c3a374c2-1184-4c42-b20a-01fdf446fc5d")
+	)
+	(junction
+		(at 172.72 530.86)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c70461a5-14c1-46da-8093-23f137cf197c")
+	)
+	(junction
+		(at 454.66 530.86)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e776a424-3208-4863-920e-de358312675b")
+	)
+	(junction
+		(at 571.5 530.86)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ede450fb-a428-4a29-af9f-76aecc4b81f0")
+	)
+	(junction
+		(at 233.68 530.86)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "eeeac059-5e16-496a-b31f-98fed46649f2")
+	)
+	(junction
+		(at 635 436.88)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f00fea8a-be73-4bb8-9fff-880e887ffb3f")
+	)
+	(no_connect
+		(at 530.86 193.04)
+		(uuid "8c74b920-9a85-49bd-a509-542d82986c6b")
+	)
+	(no_connect
+		(at 530.86 248.92)
+		(uuid "bc0fe935-0a9c-401d-af84-a8b06d27ff93")
+	)
+	(wire
+		(pts
+			(xy 203.2 530.86) (xy 233.68 530.86)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "00a1d030-13e1-45ca-993a-7195952c43f5")
+	)
+	(wire
+		(pts
+			(xy 121.92 218.44) (xy 152.4 218.44)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "033310a1-ac9a-4184-9fbc-2063f992b4d4")
+	)
+	(wire
+		(pts
+			(xy 241.3 345.44) (xy 261.62 345.44)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "0629a5b3-b671-4610-9b15-c115364867be")
+	)
+	(wire
+		(pts
+			(xy 332.74 130.81) (xy 340.36 130.81)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "06db77cc-fdbe-450b-ad1d-e787fb3be93d")
+	)
+	(wire
+		(pts
+			(xy 71.12 60.96) (xy 137.16 60.96)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "09444a1f-43e3-4e04-a988-6d92bc4ad01a")
+	)
+	(wire
+		(pts
+			(xy 429.26 474.98) (xy 429.26 530.86)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "0b8fd021-3ffb-4b0b-8d86-08914686b6ea")
+	)
+	(wire
+		(pts
+			(xy 622.3 462.28) (xy 629.92 462.28)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "0cd25c75-1dd2-4bcb-b45d-a0ed8bae77a9")
+	)
+	(wire
+		(pts
+			(xy 558.8 462.28) (xy 566.42 462.28)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "0d4e7db3-2780-4c20-80ca-f8c4bb3c818c")
+	)
+	(wire
+		(pts
+			(xy 360.68 236.22) (xy 380 236.22)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "0f185b0a-097c-484d-b100-ac4ee2d173d6")
+	)
+	(wire
+		(pts
+			(xy 751.84 436.88) (xy 772.16 436.88)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "107d405d-2a68-4a3c-9e05-d2fd27eccb48")
+	)
+	(wire
+		(pts
+			(xy 215.9 462.28) (xy 226.06 462.28)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "13483f40-3a1e-4ab8-8647-38ba78f12464")
+	)
+	(wire
+		(pts
+			(xy 571.5 436.88) (xy 571.5 449.58)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "15895cce-77a7-4012-ac7a-597acb2d96e4")
+	)
+	(wire
+		(pts
+			(xy 533.4 462.28) (xy 541.02 462.28)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "15e85002-df62-4264-a8a1-6e1927cea799")
+	)
+	(wire
+		(pts
+			(xy 172.72 431.8) (xy 172.72 449.58)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "183a43ae-7baf-482b-9d4e-78218a966ba3")
+	)
+	(wire
+		(pts
+			(xy 683.26 208.28) (xy 660.4 208.28)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "18b6df16-f5e7-456a-a46f-d0f48bc55c4a")
+	)
+	(wire
+		(pts
+			(xy 101.6 130.81) (xy 220.98 130.81)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "1b1a7c5e-b0d4-4216-be3e-9f54c4c0524e")
+	)
+	(wire
+		(pts
+			(xy 546.1 530.86) (xy 571.5 530.86)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "1bcd277a-94e2-484b-9ea2-698a52f3b600")
+	)
+	(wire
+		(pts
+			(xy 480.06 530.86) (xy 520.7 530.86)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "1d367ac3-dede-499b-a1a0-540b093f637d")
+	)
+	(wire
+		(pts
+			(xy 683.26 233.68) (xy 660.4 233.68)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "1df06d9b-e0ab-4521-9618-c8b09a9b9590")
+	)
+	(wire
+		(pts
+			(xy 121.92 238.76) (xy 152.4 238.76)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "1f922d10-bebb-4ed4-a84b-286d265320fe")
+	)
+	(wire
+		(pts
+			(xy 609.6 436.88) (xy 635 436.88)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "2179b35d-90c6-43e9-949c-7ec4c7efb204")
+	)
+	(wire
+		(pts
+			(xy 520.7 474.98) (xy 520.7 530.86)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "24bb6aac-e7bb-40bb-99f4-7503b3349c1a")
+	)
+	(wire
+		(pts
+			(xy 429.26 436.88) (xy 429.26 449.58)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "253dd91c-bc54-412e-bd68-c0031a409b4a")
+	)
+	(wire
+		(pts
+			(xy 390 309.88) (xy 500.38 309.88)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "25ad04b2-cec3-496a-a320-02f69bf24b1b")
+	)
+	(wire
+		(pts
+			(xy 172.72 431.8) (xy 203.2 431.8)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "263b927f-ad50-4fb3-995f-4273e253f159")
+	)
+	(wire
+		(pts
+			(xy 101.6 530.86) (xy 172.72 530.86)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "2871c483-2656-434e-be7e-2ee147bfb55e")
+	)
+	(wire
+		(pts
+			(xy 281.94 270.51) (xy 281.94 431.8)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "2a45440c-88d4-4e69-8e87-7e1c12b56cdd")
+	)
+	(wire
+		(pts
+			(xy 185.42 462.28) (xy 195.58 462.28)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "2ce49cad-8bcf-41ce-be9d-d31c8adeebdc")
+	)
+	(wire
+		(pts
+			(xy 152.4 50.8) (xy 193.04 50.8)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "31b0aabf-d7e5-4b19-9e81-c6a98fe4f064")
+	)
+	(wire
+		(pts
+			(xy 50.8 130.81) (xy 101.6 130.81)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "3312e089-a013-4d04-b9b8-fd15470d2f84")
+	)
+	(wire
+		(pts
+			(xy 680.72 347.98) (xy 680.72 386.08)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "347b3bb8-be2f-47f3-a372-f94e416b21f3")
+	)
+	(wire
+		(pts
+			(xy 726.44 436.88) (xy 726.44 449.58)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "3638bc15-7e57-45ed-ad6f-81d162eb193e")
+	)
+	(wire
+		(pts
+			(xy 233.68 431.8) (xy 264.16 431.8)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "36aae86b-454b-48e4-91ea-a7ad7b6448e6")
+	)
+	(wire
+		(pts
+			(xy 264.16 530.86) (xy 429.26 530.86)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "36ed9e3b-9321-4933-8410-476aed76714d")
+	)
+	(wire
+		(pts
+			(xy 241.3 335.28) (xy 261.62 335.28)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "386f098f-84fc-4519-a529-486a2d2045de")
+	)
+	(wire
+		(pts
+			(xy 660.4 530.86) (xy 701.04 530.86)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "3b18b619-1167-4094-af3a-7974178a9138")
+	)
+	(wire
+		(pts
+			(xy 584.2 462.28) (xy 591.82 462.28)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "3cb631d3-458e-4904-afcd-b2a1c3cef6bd")
+	)
+	(wire
+		(pts
+			(xy 553.72 220.98) (xy 581.66 220.98)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "3defba19-caa0-4f3a-9c8e-390c662b0ad1")
+	)
+	(wire
+		(pts
+			(xy 480.06 436.88) (xy 480.06 449.58)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "417346eb-7ad2-46b8-86b1-ad6d8b060425")
+	)
+	(wire
+		(pts
+			(xy 635 474.98) (xy 635 530.86)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "4955ba90-ef43-4587-bd25-9652a5d6ee5e")
+	)
+	(wire
+		(pts
+			(xy 454.66 436.88) (xy 454.66 449.58)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "49ae39ab-f9b6-4d64-bf0f-74bb46865e98")
+	)
+	(wire
+		(pts
+			(xy 233.68 474.98) (xy 233.68 530.86)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "4a1a908a-92bd-442a-b717-1f1cf4406392")
+	)
+	(wire
+		(pts
+			(xy 492.76 462.28) (xy 500.38 462.28)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "4bf86a4f-6f63-4a81-88d7-60eacebed985")
+	)
+	(wire
+		(pts
+			(xy 500.38 309.88) (xy 500.38 332.74)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "4d041590-2264-48e7-9e10-28ed3555d577")
+	)
+	(wire
+		(pts
+			(xy 220.98 130.81) (xy 220.98 157.48)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "4d431cf0-75b5-488a-b43c-101b0f186f28")
+	)
+	(wire
+		(pts
+			(xy 101.6 130.81) (xy 101.6 157.48)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "4e039bc0-95a2-44ba-b3ec-4fb939c32a62")
+	)
+	(wire
+		(pts
+			(xy 680.72 309.88) (xy 790 309.88)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "4e1217ac-72cc-4063-bc84-04f9612f0126")
+	)
+	(wire
+		(pts
+			(xy 203.2 431.8) (xy 233.68 431.8)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "4e6acc71-4d6a-4ed9-ab1a-208940c7baf3")
+	)
+	(wire
+		(pts
+			(xy 429.26 530.86) (xy 454.66 530.86)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "4faed758-cf61-4f43-9365-fb88fd75fe7c")
+	)
+	(wire
+		(pts
+			(xy 680.72 426.72) (xy 660.4 426.72)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "528168e9-582b-412f-8866-b7769ebdcee2")
+	)
+	(wire
+		(pts
+			(xy 220.98 270.51) (xy 220.98 320.04)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "5502e36b-5ed8-44f8-b179-438fb656a9be")
+	)
+	(wire
+		(pts
+			(xy 332.74 55.88) (xy 332.74 130.81)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "55d8915b-cd54-423a-95cc-c3418bacd202")
+	)
+	(wire
+		(pts
+			(xy 276.86 462.28) (xy 287.02 462.28)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "577a7a55-fb2e-43cd-bfc3-3049bf127c09")
+	)
+	(wire
+		(pts
+			(xy 609.6 530.86) (xy 635 530.86)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "58a2cb55-20c6-486c-ba72-37504252f32a")
+	)
+	(wire
+		(pts
+			(xy 726.44 530.86) (xy 751.84 530.86)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "5a01c2ed-d4a1-410e-a099-902aa50efdf6")
+	)
+	(wire
+		(pts
+			(xy 220.98 130.81) (xy 332.74 130.81)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "5a662ace-3d92-4832-a969-58ec2bc76f9d")
+	)
+	(wire
+		(pts
+			(xy 200.66 340.36) (xy 180.34 340.36)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "5d2249a5-12cb-4f05-a048-45fff161fd50")
+	)
+	(wire
+		(pts
+			(xy 454.66 436.88) (xy 480.06 436.88)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "5dbcff89-b833-45b0-83a2-0d7907041b52")
+	)
+	(wire
+		(pts
+			(xy 726.44 474.98) (xy 726.44 530.86)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "5ea4895f-2a0c-462f-95d0-6afbfd3cf129")
+	)
+	(wire
+		(pts
+			(xy 480.06 474.98) (xy 480.06 530.86)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "5f27ebcd-5526-44e0-8e1d-4fcf674672c6")
+	)
+	(wire
+		(pts
+			(xy 609.6 436.88) (xy 609.6 449.58)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "60e939fa-7876-411c-8b03-bf0a8207927a")
+	)
+	(wire
+		(pts
+			(xy 553.72 231.14) (xy 581.66 231.14)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "63b1a9dc-ea6e-4b5e-a84e-513bbf39b5ef")
+	)
+	(wire
+		(pts
+			(xy 772.16 386.08) (xy 772.16 436.88)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "64226f7d-4943-45ad-a997-f84455ab7437")
+	)
+	(wire
+		(pts
+			(xy 233.68 66.04) (xy 256.54 66.04)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "65701e91-34ea-48b8-8058-93e9990d8500")
+	)
+	(wire
+		(pts
+			(xy 713.74 462.28) (xy 721.36 462.28)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "70cf81fe-97f9-4513-a81c-cc749e51e72d")
+	)
+	(wire
+		(pts
+			(xy 340.36 248.92) (xy 340.36 266.7)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "7153ab31-7037-4e52-8e4d-b311b18b7317")
+	)
+	(wire
+		(pts
+			(xy 701.04 474.98) (xy 701.04 530.86)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "79cc76c5-c92d-4d90-a4e1-0029b475ffff")
+	)
+	(wire
+		(pts
+			(xy 500.38 309.88) (xy 680.72 309.88)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "7a7f608c-4ff7-4ab2-ae0a-0a7e2e184cdf")
+	)
+	(wire
+		(pts
+			(xy 609.6 474.98) (xy 609.6 530.86)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "7b36a97e-9433-4f72-8e74-e5ab7a58dce1")
+	)
+	(wire
+		(pts
+			(xy 701.04 530.86) (xy 726.44 530.86)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "7bb0f18c-8850-47da-a413-8b21dc57528d")
+	)
+	(wire
+		(pts
+			(xy 264.16 431.8) (xy 281.94 431.8)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "7befe760-d0e9-4e2f-aa6a-952389880ac9")
+	)
+	(wire
+		(pts
+			(xy 340.36 130.81) (xy 340.36 157.48)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "7d357145-a0a4-404d-922b-69bac96feb9f")
+	)
+	(wire
+		(pts
+			(xy 680.72 386.08) (xy 772.16 386.08)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "815859e7-4f9c-4960-9cd7-21ee726d5f56")
+	)
+	(wire
+		(pts
+			(xy 360.68 220.98) (xy 390 220.98)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "8203c3e6-10c9-4c83-a704-0ede8baf627f")
+	)
+	(wire
+		(pts
+			(xy 520.7 396.24) (xy 541.02 396.24)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "8213b4f5-0a3d-458d-8ade-01702eafd881")
+	)
+	(wire
+		(pts
+			(xy 660.4 474.98) (xy 660.4 530.86)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "822a3db5-087f-41ed-bfa4-fd2f10698379")
+	)
+	(wire
+		(pts
+			(xy 220.98 172.72) (xy 220.98 270.51)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "83f80d78-e191-43b7-9e6d-a9d7423f8b18")
+	)
+	(wire
+		(pts
+			(xy 520.7 386.08) (xy 541.02 386.08)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "857402f1-b460-455c-9da1-f5d69fa5f5d5")
+	)
+	(wire
+		(pts
+			(xy 246.38 462.28) (xy 256.54 462.28)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "861bc70b-d6b2-4dd5-a550-6d916442fb9f")
+	)
+	(wire
+		(pts
+			(xy 553.72 241.3) (xy 581.66 241.3)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "8a23c5af-eeaf-45d1-ac5a-e5efc3a54fb0")
+	)
+	(wire
+		(pts
+			(xy 429.26 436.88) (xy 454.66 436.88)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "8a524425-4f00-4c4b-9bf8-d371ede94484")
+	)
+	(wire
+		(pts
+			(xy 220.98 270.51) (xy 281.94 270.51)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "8b1729fb-d9d5-49ce-a963-2ef0e9477217")
+	)
+	(wire
+		(pts
+			(xy 571.5 474.98) (xy 571.5 530.86)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "8eb06d3a-ea9c-44f1-ad7a-4f72ca7c593c")
+	)
+	(wire
+		(pts
+			(xy 751.84 474.98) (xy 751.84 530.86)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "9068a3c5-0404-4f36-a06f-f580bc2a3251")
+	)
+	(wire
+		(pts
+			(xy 467.36 462.28) (xy 474.98 462.28)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "910812e5-8c15-4dc2-9b45-fe09e2379a47")
+	)
+	(wire
+		(pts
+			(xy 739.14 462.28) (xy 746.76 462.28)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "918aa7a0-45e4-47c9-a823-a5bd38234ec7")
+	)
+	(wire
+		(pts
+			(xy 508 220.98) (xy 487.68 220.98)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "93ae444b-29dc-4f99-990b-4a89ac25812d")
+	)
+	(wire
+		(pts
+			(xy 680.72 309.88) (xy 680.72 332.74)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "97a13adc-bca3-4e41-be94-19a499f29c10")
+	)
+	(wire
+		(pts
+			(xy 546.1 436.88) (xy 546.1 449.58)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "97b2d458-0dc0-48da-9346-b7c5c8b4b080")
+	)
+	(wire
+		(pts
+			(xy 701.04 411.48) (xy 721.36 411.48)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "9be49d2e-1e3a-4683-839c-06a4daadb36d")
+	)
+	(wire
+		(pts
+			(xy 647.7 462.28) (xy 655.32 462.28)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "9d402ba3-0d9b-4845-987a-3ec05c1438ac")
+	)
+	(wire
+		(pts
+			(xy 50.8 530.86) (xy 101.6 530.86)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "9db2a42e-e84e-40ac-ac0d-6d7e403ab3f4")
+	)
+	(wire
+		(pts
+			(xy 233.68 431.8) (xy 233.68 449.58)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "9f13ec59-10c0-444b-a133-517fc88c5869")
+	)
+	(wire
+		(pts
+			(xy 751.84 530.86) (xy 790 530.86)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "a0c560a5-6e26-4ac6-abd6-07dc6f28c721")
+	)
+	(wire
+		(pts
+			(xy 546.1 436.88) (xy 571.5 436.88)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "a1314421-8f35-4281-973b-c25b79c5a814")
+	)
+	(wire
+		(pts
+			(xy 751.84 436.88) (xy 751.84 449.58)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "a15c0db6-e8d0-42b0-a3d1-9e8d4ce6e8b1")
+	)
+	(wire
+		(pts
+			(xy 701.04 436.88) (xy 701.04 449.58)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "a2f2de8b-cd62-48c5-8680-d79a2a832712")
+	)
+	(wire
+		(pts
+			(xy 520.7 436.88) (xy 546.1 436.88)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "a90710e8-c269-47ce-b72a-c08342492c35")
+	)
+	(wire
+		(pts
+			(xy 660.4 436.88) (xy 660.4 449.58)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "ab08ff22-a4cd-4c28-b785-4983eec1e60c")
+	)
+	(wire
+		(pts
+			(xy 520.7 436.88) (xy 520.7 449.58)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "ab3f452c-e87e-4b82-a6f0-0916b9a2498e")
+	)
+	(wire
+		(pts
+			(xy 726.44 436.88) (xy 751.84 436.88)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "ac91652c-722c-402f-800c-418e0af3ad2c")
+	)
+	(wire
+		(pts
+			(xy 233.68 55.88) (xy 332.74 55.88)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "aeb86e3c-672b-49ab-aaad-3311bf3482ab")
+	)
+	(wire
+		(pts
+			(xy 553.72 200.66) (xy 581.66 200.66)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "b046591c-b691-4c32-bd95-3a3b85250b46")
+	)
+	(wire
+		(pts
+			(xy 203.2 431.8) (xy 203.2 449.58)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "b07fb97f-d2b9-4891-a693-2c08d7911aac")
+	)
+	(wire
+		(pts
+			(xy 390 220.98) (xy 390 309.88)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "b1ab4fc0-90ac-4e88-9112-b781c731ffa4")
+	)
+	(wire
+		(pts
+			(xy 553.72 210.82) (xy 581.66 210.82)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "b2236526-b510-4415-8bf7-2cae776312eb")
+	)
+	(wire
+		(pts
+			(xy 635 530.86) (xy 660.4 530.86)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "b565e012-62bc-4372-a918-e68682db6f91")
+	)
+	(wire
+		(pts
+			(xy 203.2 474.98) (xy 203.2 530.86)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "b8b4b413-6002-47b5-a496-b6b18f198008")
+	)
+	(wire
+		(pts
+			(xy 172.72 270.51) (xy 220.98 270.51)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "ba2def93-3172-44e9-b465-49271c2e57c7")
+	)
+	(wire
+		(pts
+			(xy 454.66 474.98) (xy 454.66 530.86)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "be0c7082-d840-4a88-94ae-707bbff8192a")
+	)
+	(wire
+		(pts
+			(xy 121.92 228.6) (xy 152.4 228.6)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "bfe1799b-2070-45e0-8a38-e397fbc811b4")
+	)
+	(wire
+		(pts
+			(xy 220.98 360.68) (xy 220.98 375.92)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "c154117e-500e-46e6-8a43-7b24811edbac")
+	)
+	(wire
+		(pts
+			(xy 764.54 462.28) (xy 772.16 462.28)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "c1d45c29-8aed-43ee-8b09-174cb8462a0f")
+	)
+	(wire
+		(pts
+			(xy 480.06 391.16) (xy 459.74 391.16)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "c30fdf39-4e4d-4754-8eda-8c12e25663d0")
+	)
+	(wire
+		(pts
+			(xy 264.16 431.8) (xy 264.16 449.58)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "c3468e88-1fc8-460a-a8ba-3e2d1e8f6026")
+	)
+	(wire
+		(pts
+			(xy 520.7 530.86) (xy 546.1 530.86)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "c41792ee-2b88-48d7-aa4e-137e7dbe4afa")
+	)
+	(wire
+		(pts
+			(xy 660.4 406.4) (xy 640.08 406.4)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "c4b9ce38-2e99-42ba-8c78-8f376a10194e")
+	)
+	(wire
+		(pts
+			(xy 571.5 530.86) (xy 609.6 530.86)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "c7522db3-cb5d-467f-bf11-65d6f45dee79")
+	)
+	(wire
+		(pts
+			(xy 71.12 50.8) (xy 93.98 50.8)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "c822dbfa-c380-400a-8627-1607655b65b2")
+	)
+	(wire
+		(pts
+			(xy 71.12 71.12) (xy 193.04 71.12)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "cd907f63-cad7-42a9-9329-e17645bd6e27")
+	)
+	(wire
+		(pts
+			(xy 673.1 462.28) (xy 680.72 462.28)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "cf3c4665-0b5f-4bd9-bb00-f3a44d85dd71")
+	)
+	(wire
+		(pts
+			(xy 635 436.88) (xy 660.4 436.88)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "d36b5523-a02d-4d0e-8f0f-27908e014805")
+	)
+	(wire
+		(pts
+			(xy 172.72 530.86) (xy 203.2 530.86)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "d4ca9d4c-a9fb-4d06-8b72-58196247dd3a")
+	)
+	(wire
+		(pts
+			(xy 683.26 182.88) (xy 660.4 182.88)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "d9ab2bce-a5b3-4e8b-91f1-2ba60c8002d4")
+	)
+	(wire
+		(pts
+			(xy 591.82 360.68) (xy 591.82 436.88)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "da871025-3619-4f2b-a0e4-e016501496d3")
+	)
+	(wire
+		(pts
+			(xy 172.72 474.98) (xy 172.72 530.86)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "db6f43b6-d7a3-41f8-98a1-415abc15ac9a")
+	)
+	(wire
+		(pts
+			(xy 500.38 347.98) (xy 500.38 360.68)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "dd08b317-fe71-4187-b4a2-9fadae8ccada")
+	)
+	(wire
+		(pts
+			(xy 109.22 50.8) (xy 137.16 50.8)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "dfeab444-3904-4c9a-b408-c929c0337ec2")
+	)
+	(wire
+		(pts
+			(xy 660.4 436.88) (xy 701.04 436.88)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "e28408ea-72a0-4cd3-b36a-91553303e1a9")
+	)
+	(wire
+		(pts
+			(xy 264.16 474.98) (xy 264.16 530.86)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "e4138121-f299-4761-bede-656f7d2f50c8")
+	)
+	(wire
+		(pts
+			(xy 500.38 411.48) (xy 480.06 411.48)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "e604ff83-1d2f-48e1-afe1-db20b635605c")
+	)
+	(wire
+		(pts
+			(xy 635 436.88) (xy 635 449.58)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "e6c10bcc-d782-4136-8237-b1245c89f477")
+	)
+	(wire
+		(pts
+			(xy 480.06 436.88) (xy 520.7 436.88)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "e75d9d28-e2e8-4b6e-a0b3-1dc632b4fd21")
+	)
+	(wire
+		(pts
+			(xy 571.5 436.88) (xy 591.82 436.88)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "e8ad69e5-26a3-406e-a034-010eb93de63c")
+	)
+	(wire
+		(pts
+			(xy 683.26 259.08) (xy 660.4 259.08)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "ea63abe7-2ba7-46ef-8b4f-9be1acea5b14")
+	)
+	(wire
+		(pts
+			(xy 441.96 462.28) (xy 449.58 462.28)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "ea6cbeb2-4853-4bb6-98fd-f32bd9be6741")
+	)
+	(wire
+		(pts
+			(xy 340.36 172.72) (xy 340.36 208.28)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "ea78a81a-c97b-452f-a13a-67424ce97fac")
+	)
+	(wire
+		(pts
+			(xy 500.38 360.68) (xy 591.82 360.68)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "ec73f3a5-a091-47d4-9399-eb51ff31174f")
+	)
+	(wire
+		(pts
+			(xy 546.1 474.98) (xy 546.1 530.86)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "ed008f82-db3d-460f-80c0-5b2f188c0814")
+	)
+	(wire
+		(pts
+			(xy 454.66 530.86) (xy 480.06 530.86)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "f10090dd-7508-448f-936d-3b75aaa9aee6")
+	)
+	(wire
+		(pts
+			(xy 701.04 436.88) (xy 726.44 436.88)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "f7038f7a-da44-4295-b97d-3ccaa25d80d5")
+	)
+	(wire
+		(pts
+			(xy 701.04 401.32) (xy 721.36 401.32)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "fb0439e7-d558-4d12-bf4e-149beaed2607")
+	)
+	(wire
+		(pts
+			(xy 152.4 60.96) (xy 193.04 60.96)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "fb90e88c-b638-464b-ae7e-fd50a2566528")
+	)
+	(wire
+		(pts
+			(xy 233.68 530.86) (xy 264.16 530.86)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "fc35db1a-d9e0-49db-9ddb-3ae42c3a1466")
+	)
+	(wire
+		(pts
+			(xy 101.6 172.72) (xy 101.6 208.28)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "fd00b21a-0dbf-49dd-ac4c-3a283f876578")
+	)
+	(wire
+		(pts
+			(xy 500.38 360.68) (xy 500.38 370.84)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "fd7e02d1-c4f6-40c5-948b-b0eb585df7c2")
+	)
+	(wire
+		(pts
+			(xy 101.6 248.92) (xy 101.6 530.86)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(uuid "fe50eaa8-2067-4b03-a0ea-741c05054ea5")
+	)
+	(label "0V"
+		(at 660.4 426.72 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "01b5c0a9-5cac-464a-9802-df566eadc709")
+	)
+	(label "L_A"
+		(at 541.02 386.08 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "04e31a74-b920-4bea-a11b-288520bdd905")
+	)
+	(label "F_B"
+		(at 721.36 462.28 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "05851b1e-eeb2-4b7b-b70b-868587741dc7")
+	)
+	(label "USB_LIDAR"
+		(at 581.66 231.14 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "12ac4b13-f029-4423-83e1-e19bbe67277d")
+	)
+	(label "USB_LIDAR"
+		(at 660.4 233.68 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "1b7aaf2a-076a-48b7-a67c-b0f8575dc249")
+	)
+	(label "USB_FOLLOWER"
+		(at 581.66 220.98 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "285ce4a2-77fb-4a8d-ac41-d1539e5bc3be")
+	)
+	(label "L_B"
+		(at 591.82 462.28 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "2f1c2741-8a3a-4ce1-ad1e-5880b3c5fa7d")
+	)
+	(label "USB_HUB"
+		(at 487.68 220.98 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "2f921e31-fbae-4263-9e3a-5277ba1ebbb1")
+	)
+	(label "+5V_MAIN"
+		(at 390 309.88 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "33400ef4-fec0-439e-92f7-26c89d326653")
+	)
+	(label "USB_BASE"
+		(at 581.66 200.66 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "4381319b-8b63-4461-b5d1-f45fc87c36fd")
+	)
+	(label "USB_WRIST"
+		(at 152.4 228.6 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "43e7c7c7-c77a-4db9-86a0-46bc69f832f6")
+	)
+	(label "USB_BASE"
+		(at 180.34 340.36 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "4b9ee375-aeee-4f53-8314-d068e4465cf8")
+	)
+	(label "USB_GAMEPAD"
+		(at 660.4 259.08 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "4dc601b0-d191-46cf-8e5b-c3151f1e95a6")
+	)
+	(label "W_A"
+		(at 226.06 462.28 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "54a9c1b0-29c5-4022-88b4-ef561f80b1f3")
+	)
+	(label "USB_HUB"
+		(at 152.4 238.76 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "5b6fa4e2-5a7d-4b01-8a5b-f72ba0d4a1f8")
+	)
+	(label "W_B"
+		(at 261.62 345.44 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "5ce38488-2237-45f6-a93f-b7a5878f46ea")
+	)
+	(label "0V"
+		(at 50.8 530.86 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "606ecda6-def5-4c41-861e-86b174dd6a0f")
+	)
+	(label "F_B"
+		(at 772.16 462.28 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "6925264d-dd75-4411-9d2c-d1fff13a222a")
+	)
+	(label "0V"
+		(at 380 236.22 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "6d61b471-2270-4837-af65-c6aa9e5c4ab5")
+	)
+	(label "W_A"
+		(at 261.62 335.28 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "7103871f-4a69-4ad0-b12f-3d59a1dc8bf8")
+	)
+	(label "W_B"
+		(at 287.02 462.28 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "76a94022-a82c-4adb-95a5-d68095c1b4ee")
+	)
+	(label "USB_LEADER"
+		(at 459.74 391.16 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "7970e826-e85e-4161-be61-41ef5c78c039")
+	)
+	(label "W_A"
+		(at 195.58 462.28 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "86ee6237-91cf-47b7-8f05-b39907b8820e")
+	)
+	(label "0V"
+		(at 256.54 66.04 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "898bd424-f588-4bef-b5f8-3ba52819b008")
+	)
+	(label "F_A"
+		(at 680.72 462.28 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "8ace0155-378e-4b9b-8039-d9cdede39833")
+	)
+	(label "W_B"
+		(at 256.54 462.28 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "9598f707-bbc7-4cd6-b072-1f0e280f9418")
+	)
+	(label "L_A"
+		(at 449.58 462.28 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "962b4ac8-ced1-4bee-ba18-76e290fb7542")
+	)
+	(label "+12V_MAIN"
+		(at 50.8 130.81 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "9639cdfe-44fe-4524-a917-0ddda0cda907")
+	)
+	(label "0V"
+		(at 220.98 375.92 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "96e88cb5-bf2a-40b4-b611-b3c51653df10")
+	)
+	(label "L_A"
+		(at 474.98 462.28 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "9afd7f83-be7a-4738-9286-ada285a89f03")
+	)
+	(label "USB_CAM"
+		(at 152.4 218.44 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "a7fe1656-8c64-4a37-94f6-b25f8f62cf5a")
+	)
+	(label "L_B"
+		(at 566.42 462.28 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "aa074934-6d45-4072-a812-514ac571e27d")
+	)
+	(label "F_B"
+		(at 721.36 411.48 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "afc109f0-026a-4340-9803-18a71d4b7e82")
+	)
+	(label "+12V_WHEELS"
+		(at 172.72 270.51 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "b91e9dbe-dccf-4366-883d-cfd29ed9d714")
+	)
+	(label "USB_WRIST"
+		(at 660.4 208.28 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "b935ba60-895c-4aaa-8712-098933af4f11")
+	)
+	(label "F_A"
+		(at 721.36 401.32 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "bf589d6d-9a9c-40bd-96dd-c6be26ff1c36")
+	)
+	(label "L_B"
+		(at 541.02 396.24 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "caace5a0-ccc5-40fe-b72b-0c4c7593e7e1")
+	)
+	(label "0V"
+		(at 480.06 411.48 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "cd47d0d1-6640-4bb4-8705-a46dd15975cd")
+	)
+	(label "USB_CAM"
+		(at 660.4 182.88 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "d394e7f5-fb7e-468c-a6cb-b72f1a924c77")
+	)
+	(label "USB_GAMEPAD"
+		(at 581.66 241.3 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "d51c7945-924d-4632-bfee-5bb7acb87527")
+	)
+	(label "F_B"
+		(at 746.76 462.28 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "d5b22ba3-659d-49ca-bbc5-ac46137d0387")
+	)
+	(label "L_A"
+		(at 500.38 462.28 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "d76fe3df-3c96-4b45-ae7d-9db01106b70f")
+	)
+	(label "USB_FOLLOWER"
+		(at 640.08 406.4 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "de1c91f4-d700-4bb4-bf1d-2a60a1e23972")
+	)
+	(label "USB_LEADER"
+		(at 581.66 210.82 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "eb4bf45d-d1d3-4421-a0fe-b3d629782b8a")
+	)
+	(label "0V"
+		(at 340.36 266.7 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "f1a0fab1-0744-4d99-8674-5060975d0d9f")
+	)
+	(label "F_A"
+		(at 629.92 462.28 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "f5413306-0315-455d-97f9-de352e3cc4fd")
+	)
+	(label "L_B"
+		(at 541.02 462.28 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "f6588600-2b3c-45e9-9f18-87168f749407")
+	)
+	(label "F_A"
+		(at 655.32 462.28 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "f982f6b5-e8dd-4ad5-8ea2-40445fd336a9")
+	)
+	(symbol
+		(lib_id "Kiro:Buck_V")
+		(at 340.36 228.6 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "0000412d-6981-4d8b-aef1-6e148e7c7a7e")
+		(property "Reference" "U1"
+			(at 340.36 218.44 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "12V to 5V TEST; 20A"
+			(at 340.36 238.76 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 340.36 228.6 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 340.36 228.6 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 340.36 228.6 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "df8c2961-5c29-4c43-bd0c-11db063b3740")
+		)
+		(pin "2"
+			(uuid "1d0ba5d3-3275-4bfd-9a2f-b325d3ce0923")
+		)
+		(pin "3"
+			(uuid "59402110-2cf6-4c44-a08f-02133325a6b8")
+		)
+		(pin "4"
+			(uuid "f1abb217-232f-4e79-9f6a-a4e0803e9388")
+		)
+		(instances
+			(project "KIRO_FINAL"
+				(path "/df7a0305-5d09-479f-96d2-90bd4055470d"
+					(reference "U1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Kiro:Servo3")
+		(at 203.2 462.28 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "02767314-465d-486a-bdcf-cec6d9829594")
+		(property "Reference" "M2"
+			(at 203.2 452.12 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "wheel RR 9"
+			(at 203.2 472.44 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 203.2 462.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 203.2 462.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 203.2 462.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "962fa629-7d9b-4f7d-b62a-f38b6516eaad")
+		)
+		(pin "2"
+			(uuid "a081a0ae-7d0c-4fb8-b2e3-61cfba5742b9")
+		)
+		(pin "3"
+			(uuid "34f2c230-40ed-441a-9beb-fb1a9c253e2d")
+		)
+		(instances
+			(project "KIRO_FINAL"
+				(path "/df7a0305-5d09-479f-96d2-90bd4055470d"
+					(reference "M2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Kiro:Adapter")
+		(at 500.38 391.16 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "07b2321e-2f88-4172-9f38-1f97eb064c91")
+		(property "Reference" "A2"
+			(at 500.38 381 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "CH343 leader adapter"
+			(at 500.38 401.32 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 500.38 391.16 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 500.38 391.16 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 500.38 391.16 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "6c6686fb-c582-4553-b9fb-3590cf803550")
+		)
+		(pin "2"
+			(uuid "a0efe14e-a6f3-4ddc-a7cc-2cc02fcbcc1e")
+		)
+		(pin "3"
+			(uuid "787fe243-6014-42fa-b3a5-46cda882f928")
+		)
+		(pin "4"
+			(uuid "b09ddd21-2a05-4a18-ac49-4c1d80175c93")
+		)
+		(pin "5"
+			(uuid "0d6fcf6e-124d-4b66-8e42-612816f58756")
+		)
+		(instances
+			(project "KIRO_FINAL"
+				(path "/df7a0305-5d09-479f-96d2-90bd4055470d"
+					(reference "A2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Kiro:USB_Hub")
+		(at 530.86 220.98 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "08b4730a-861e-4850-9c37-d3bc76ac6311")
+		(property "Reference" "H1"
+			(at 530.86 210.82 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "VL815 powered USB hub"
+			(at 530.86 231.14 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 530.86 220.98 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 530.86 220.98 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 530.86 220.98 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "a3141f1f-9559-462a-a3fc-daad7f2380ee")
+		)
+		(pin "2"
+			(uuid "caa8d3b7-7760-4536-8bb2-834bbc315414")
+		)
+		(pin "3"
+			(uuid "16bf97f1-7dcd-4ff8-ae15-8a4d4eb9a54b")
+		)
+		(pin "4"
+			(uuid "e77471e6-7e4e-4522-a7d3-6021a28cf2b8")
+		)
+		(pin "5"
+			(uuid "90c39c5e-86d0-4b91-9311-0d1ccea6cb47")
+		)
+		(pin "6"
+			(uuid "2381f34e-b32a-452e-b02e-1448dbec8670")
+		)
+		(pin "7"
+			(uuid "1e81b8b0-4592-448f-b878-a417c787ea16")
+		)
+		(pin "8"
+			(uuid "c4e8ecf5-3277-4bb1-a19d-b04b7718bd13")
+		)
+		(instances
+			(project "KIRO_FINAL"
+				(path "/df7a0305-5d09-479f-96d2-90bd4055470d"
+					(reference "H1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Kiro:Servo3")
+		(at 660.4 462.28 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "0a323d93-ee3d-4aca-ac61-35eeb21e78f4")
+		(property "Reference" "M13"
+			(at 660.4 452.12 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "follower ID 3"
+			(at 660.4 472.44 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 660.4 462.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 660.4 462.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 660.4 462.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "9c982a61-1a7d-4c03-bc63-b09f5b296313")
+		)
+		(pin "2"
+			(uuid "f4552e70-7549-4226-ad3e-2bd69966b416")
+		)
+		(pin "3"
+			(uuid "15f124c7-b8c7-4e71-a2a6-3e453fb5562f")
+		)
+		(instances
+			(project "KIRO_FINAL"
+				(path "/df7a0305-5d09-479f-96d2-90bd4055470d"
+					(reference "M13")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Kiro:Servo3")
+		(at 480.06 462.28 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "107db28c-749b-492c-b696-feb33de444f2")
+		(property "Reference" "M7"
+			(at 480.06 452.12 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "leader ID 3"
+			(at 480.06 472.44 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 480.06 462.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 480.06 462.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 480.06 462.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "b68a793a-e625-4ff4-a73c-485aaaef8ee5")
+		)
+		(pin "2"
+			(uuid "38d008bc-10c0-4bf6-af20-506558c225a4")
+		)
+		(pin "3"
+			(uuid "b45f91eb-ead4-47c9-bc5e-e9164a693b8f")
+		)
+		(instances
+			(project "KIRO_FINAL"
+				(path "/df7a0305-5d09-479f-96d2-90bd4055470d"
+					(reference "M7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Kiro:Adapter")
+		(at 220.98 340.36 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "207daad8-0486-4c62-8ca2-8b2c0bd96f94")
+		(property "Reference" "A1"
+			(at 220.98 330.2 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "CH343 base adapter"
+			(at 220.98 350.52 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 220.98 340.36 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 220.98 340.36 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 220.98 340.36 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "ffb99979-56df-4509-84e8-ba118014c86e")
+		)
+		(pin "2"
+			(uuid "67696ce7-865f-43d5-8a36-66acb31a9d48")
+		)
+		(pin "3"
+			(uuid "d7fc2ec9-5b53-409f-983c-88d1cd457e1b")
+		)
+		(pin "4"
+			(uuid "bf95c822-c895-42f0-878b-8ae7ad746d29")
+		)
+		(pin "5"
+			(uuid "daef1030-4c98-461f-b306-a2140c58a41a")
+		)
+		(instances
+			(project "KIRO_FINAL"
+				(path "/df7a0305-5d09-479f-96d2-90bd4055470d"
+					(reference "A1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Kiro:SMPS_12V")
+		(at 213.36 60.96 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "224c2df4-599b-4b77-86ce-326051dda67b")
+		(property "Reference" "PSU1"
+			(at 213.36 40.64 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "LRS-350-12; 12 V 29 A"
+			(at 213.36 81.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 213.36 60.96 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 213.36 60.96 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 213.36 60.96 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "d811566d-9c45-414d-b02e-64eded40e5f2")
+		)
+		(pin "2"
+			(uuid "2e77bae2-4ea0-4384-b1d0-131a322e895e")
+		)
+		(pin "3"
+			(uuid "59e2404a-76fc-4e3c-88ab-97c87df55da2")
+		)
+		(pin "4"
+			(uuid "e1f44c95-9777-477b-b251-c4ad0680b250")
+		)
+		(pin "5"
+			(uuid "1858b676-e987-4d90-89af-1e52bef58a5a")
+		)
+		(instances
+			(project "KIRO_FINAL"
+				(path "/df7a0305-5d09-479f-96d2-90bd4055470d"
+					(reference "PSU1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Kiro:USB_Device")
+		(at 698.5 259.08 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "2f80cf7b-d00e-473b-a7cc-ec0020b8a474")
+		(property "Reference" "J5"
+			(at 698.5 248.92 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "gamepad"
+			(at 698.5 269.24 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 698.5 259.08 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 698.5 259.08 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 698.5 259.08 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "cff0779e-dae7-4948-98e3-700b5804878c")
+		)
+		(instances
+			(project "KIRO_FINAL"
+				(path "/df7a0305-5d09-479f-96d2-90bd4055470d"
+					(reference "J5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Kiro:Fuse")
+		(at 101.6 50.8 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "3957663c-7842-439a-ae61-9f8a848c6b2b")
+		(property "Reference" "F0"
+			(at 101.6 40.64 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "5 A T, 250 V AC"
+			(at 101.6 60.96 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 101.6 50.8 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 101.6 50.8 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 101.6 50.8 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "3fbdbc82-5bd8-480a-8b3e-bb019b7fd22d")
+		)
+		(pin "2"
+			(uuid "417a374d-6530-486b-b240-6698139dbd02")
+		)
+		(instances
+			(project "KIRO_FINAL"
+				(path "/df7a0305-5d09-479f-96d2-90bd4055470d"
+					(reference "F0")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Kiro:Servo3")
+		(at 571.5 462.28 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "3f42ed12-70eb-4e4e-850e-9c42694a126f")
+		(property "Reference" "M10"
+			(at 571.5 452.12 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "leader ID 6"
+			(at 571.5 472.44 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 571.5 462.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 571.5 462.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 571.5 462.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "1c8bd5e9-d671-44e9-81af-942623f6b594")
+		)
+		(pin "2"
+			(uuid "e7820a37-ae28-4eed-9bfd-dad9688deada")
+		)
+		(pin "3"
+			(uuid "79bf2b5b-9216-47c6-afaa-3c60b54d9408")
+		)
+		(instances
+			(project "KIRO_FINAL"
+				(path "/df7a0305-5d09-479f-96d2-90bd4055470d"
+					(reference "M10")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Kiro:Fuse_V")
+		(at 340.36 165.1 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "43285d43-92db-481c-8931-e0eb00fbf488")
+		(property "Reference" "F3"
+			(at 340.36 154.94 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "15 A buck input"
+			(at 340.36 175.26 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 340.36 165.1 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 340.36 165.1 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 340.36 165.1 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "e6f3ad61-7015-47c9-b13d-3a88ea5cde57")
+		)
+		(pin "2"
+			(uuid "233c07e8-c354-48e2-af61-129ef1e67af4")
+		)
+		(instances
+			(project "KIRO_FINAL"
+				(path "/df7a0305-5d09-479f-96d2-90bd4055470d"
+					(reference "F3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Kiro:Servo3")
+		(at 546.1 462.28 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "43e5b986-0424-41e6-a1dc-c65520fd612a")
+		(property "Reference" "M9"
+			(at 546.1 452.12 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "leader ID 5"
+			(at 546.1 472.44 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 546.1 462.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 546.1 462.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 546.1 462.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "c14d4923-e430-465f-9a26-21ce4edb6c4c")
+		)
+		(pin "2"
+			(uuid "bc9a5f69-175b-4dba-88b0-131bf07b1cba")
+		)
+		(pin "3"
+			(uuid "a5bd8948-b1f0-4ef7-8431-c3bafed25211")
+		)
+		(instances
+			(project "KIRO_FINAL"
+				(path "/df7a0305-5d09-479f-96d2-90bd4055470d"
+					(reference "M9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Kiro:Servo3")
+		(at 429.26 462.28 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "4588fd16-262c-4ac4-b7f6-5e814667d291")
+		(property "Reference" "M5"
+			(at 429.26 452.12 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "leader ID 1"
+			(at 429.26 472.44 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 429.26 462.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 429.26 462.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 429.26 462.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "6352faff-b37e-4da5-b891-b95eb10523f7")
+		)
+		(pin "2"
+			(uuid "3674822d-72d5-4897-927c-07caef3ac42c")
+		)
+		(pin "3"
+			(uuid "858a443e-7af0-4ffe-9c32-1a719a8f411e")
+		)
+		(instances
+			(project "KIRO_FINAL"
+				(path "/df7a0305-5d09-479f-96d2-90bd4055470d"
+					(reference "M5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Kiro:USB_Device")
+		(at 698.5 182.88 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "459589c9-f91f-435d-a40e-347cb10e3e15")
+		(property "Reference" "J2"
+			(at 698.5 172.72 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Gemini 335"
+			(at 698.5 193.04 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 698.5 182.88 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 698.5 182.88 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 698.5 182.88 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "bb4cc663-a204-445b-a0f9-a9f83bf5a5e5")
+		)
+		(instances
+			(project "KIRO_FINAL"
+				(path "/df7a0305-5d09-479f-96d2-90bd4055470d"
+					(reference "J2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Kiro:Servo3")
+		(at 172.72 462.28 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "4a37c180-8c0b-44f3-b7a6-e61673afafec")
+		(property "Reference" "M1"
+			(at 172.72 452.12 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "wheel FR 7"
+			(at 172.72 472.44 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 172.72 462.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 172.72 462.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 172.72 462.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "3395bb23-dde4-4c5f-91d1-5c54bd8dd7ef")
+		)
+		(pin "2"
+			(uuid "d67776c0-985e-435b-97f7-c0eb1f6839a5")
+		)
+		(pin "3"
+			(uuid "4190e4f0-26b2-4b63-ba34-f8700c649764")
+		)
+		(instances
+			(project "KIRO_FINAL"
+				(path "/df7a0305-5d09-479f-96d2-90bd4055470d"
+					(reference "M1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Kiro:Jetson")
+		(at 101.6 228.6 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "4f76fedc-8f1a-45cb-8879-8794f4d6a26d")
+		(property "Reference" "U2"
+			(at 101.6 218.44 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Jetson Orin Nano Super"
+			(at 101.6 238.76 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 101.6 228.6 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 101.6 228.6 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 101.6 228.6 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "390d9eee-a9de-4607-b49e-283065559416")
+		)
+		(pin "2"
+			(uuid "70c4f8b9-d387-4e1d-9aeb-73326be9ae7a")
+		)
+		(pin "3"
+			(uuid "550cd78a-5da8-4f23-8f05-7863ed210d9f")
+		)
+		(pin "4"
+			(uuid "5502c758-0906-4585-b36a-1624780c2692")
+		)
+		(pin "5"
+			(uuid "b00fcf26-a5e1-4aaa-9d63-d0ecc4a761e9")
+		)
+		(instances
+			(project "KIRO_FINAL"
+				(path "/df7a0305-5d09-479f-96d2-90bd4055470d"
+					(reference "U2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Kiro:Fuse_V")
+		(at 101.6 165.1 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "590c7ac7-444c-4cb4-aecf-cdd01677cb76")
+		(property "Reference" "F1"
+			(at 101.6 154.94 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "5 A Jetson"
+			(at 101.6 175.26 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 101.6 165.1 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 101.6 165.1 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 101.6 165.1 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "ade6c212-72a5-4f10-8752-810cb0550a6a")
+		)
+		(pin "2"
+			(uuid "62d6d889-b2dd-40db-a5d2-14c5dde7b3bd")
+		)
+		(instances
+			(project "KIRO_FINAL"
+				(path "/df7a0305-5d09-479f-96d2-90bd4055470d"
+					(reference "F1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Kiro:Fuse_V")
+		(at 220.98 165.1 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "6456d7fb-40db-4603-9c13-ceb3fb5723d2")
+		(property "Reference" "F2"
+			(at 220.98 154.94 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "15 A wheel branch"
+			(at 220.98 175.26 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 220.98 165.1 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 220.98 165.1 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 220.98 165.1 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "66abe6d3-b6cb-4b46-bd37-1c93be4b7134")
+		)
+		(pin "2"
+			(uuid "b5f211c5-7382-4eb9-916d-bc703129c3ae")
+		)
+		(instances
+			(project "KIRO_FINAL"
+				(path "/df7a0305-5d09-479f-96d2-90bd4055470d"
+					(reference "F2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Kiro:Fuse_V")
+		(at 680.72 340.36 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "6d9d64ef-372c-400a-8dc3-1f59161f92a9")
+		(property "Reference" "F5"
+			(at 680.72 330.2 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "15A follower; 5V TEST"
+			(at 680.72 350.52 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 680.72 340.36 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 680.72 340.36 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 680.72 340.36 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "e97cc9ec-d2a2-4264-8b74-3890e41c9f20")
+		)
+		(pin "2"
+			(uuid "89274ed4-febc-4ce9-861c-7d49ab51f3fc")
+		)
+		(instances
+			(project "KIRO_FINAL"
+				(path "/df7a0305-5d09-479f-96d2-90bd4055470d"
+					(reference "F5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Kiro:Servo3")
+		(at 233.68 462.28 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "7a9decbd-d125-489f-aa0e-a5c9f10efed7")
+		(property "Reference" "M3"
+			(at 233.68 452.12 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "wheel FL 8"
+			(at 233.68 472.44 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 233.68 462.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 233.68 462.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 233.68 462.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "00b141e1-b8fc-4c4a-b28f-1b67bdb75085")
+		)
+		(pin "2"
+			(uuid "dc8392da-d357-4c78-b60e-6e7eb950226b")
+		)
+		(pin "3"
+			(uuid "44741923-658c-48eb-ab9d-2b59b832eb0d")
+		)
+		(instances
+			(project "KIRO_FINAL"
+				(path "/df7a0305-5d09-479f-96d2-90bd4055470d"
+					(reference "M3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Kiro:Servo3")
+		(at 520.7 462.28 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "7c9470fe-3d44-4e83-9f46-83166b22e974")
+		(property "Reference" "M8"
+			(at 520.7 452.12 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "leader ID 4"
+			(at 520.7 472.44 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 520.7 462.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 520.7 462.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 520.7 462.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "182317cf-e7e1-4215-84a1-424f9e6142da")
+		)
+		(pin "2"
+			(uuid "a11a837a-988e-4f9a-8002-0ab9ab22a040")
+		)
+		(pin "3"
+			(uuid "00061d12-a07b-4d07-a94e-090b05dba9eb")
+		)
+		(instances
+			(project "KIRO_FINAL"
+				(path "/df7a0305-5d09-479f-96d2-90bd4055470d"
+					(reference "M8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Kiro:Fuse_V")
+		(at 500.38 340.36 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "90326596-9278-4723-9e57-221b0c65e0ed")
+		(property "Reference" "F4"
+			(at 500.38 330.2 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "2 A leader branch"
+			(at 500.38 350.52 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 500.38 340.36 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 500.38 340.36 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 500.38 340.36 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "2cd7d7de-e732-401a-8d5f-a4b381c99186")
+		)
+		(pin "2"
+			(uuid "bdaa8e6d-d7b9-4c32-b06b-a3bc41b6e242")
+		)
+		(instances
+			(project "KIRO_FINAL"
+				(path "/df7a0305-5d09-479f-96d2-90bd4055470d"
+					(reference "F4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Kiro:Servo3")
+		(at 701.04 462.28 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "92763dfa-e795-4216-84e6-fb616d1d1a62")
+		(property "Reference" "M14"
+			(at 701.04 452.12 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "follower ID 4"
+			(at 701.04 472.44 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 701.04 462.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 701.04 462.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 701.04 462.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "c05e67cb-a72e-4e7f-bce4-ca48ce3620f2")
+		)
+		(pin "2"
+			(uuid "025a26ef-b1c0-4097-8795-29022ad4786d")
+		)
+		(pin "3"
+			(uuid "1b0a9788-9f04-4a15-a13b-5eaf1f0f20e5")
+		)
+		(instances
+			(project "KIRO_FINAL"
+				(path "/df7a0305-5d09-479f-96d2-90bd4055470d"
+					(reference "M14")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Kiro:USB_Device")
+		(at 698.5 208.28 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "9d0f8d76-d785-48e6-bb54-6c5e6ef97dea")
+		(property "Reference" "J3"
+			(at 698.5 198.12 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "wrist camera"
+			(at 698.5 218.44 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 698.5 208.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 698.5 208.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 698.5 208.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "2335c862-84e5-46d5-a463-da2844945933")
+		)
+		(instances
+			(project "KIRO_FINAL"
+				(path "/df7a0305-5d09-479f-96d2-90bd4055470d"
+					(reference "J3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Kiro:Servo3")
+		(at 751.84 462.28 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "a6843b63-54c3-4ae9-8eb3-127e7e553e8c")
+		(property "Reference" "M16"
+			(at 751.84 452.12 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "follower ID 6"
+			(at 751.84 472.44 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 751.84 462.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 751.84 462.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 751.84 462.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "0520a7fd-7ba3-42e4-9eff-a22cd5e077b2")
+		)
+		(pin "2"
+			(uuid "2b933a11-336b-4739-b13b-7f522098092f")
+		)
+		(pin "3"
+			(uuid "cda7f501-c46c-4a36-8b48-c0d2e65e86f5")
+		)
+		(instances
+			(project "KIRO_FINAL"
+				(path "/df7a0305-5d09-479f-96d2-90bd4055470d"
+					(reference "M16")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Kiro:Servo3")
+		(at 609.6 462.28 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "a69c4d04-8cf0-4dc9-9f08-2d765b265cc9")
+		(property "Reference" "M11"
+			(at 609.6 452.12 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "follower ID 1"
+			(at 609.6 472.44 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 609.6 462.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 609.6 462.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 609.6 462.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "5ef802ad-3cee-4ffc-b2cc-63c14f2124fa")
+		)
+		(pin "2"
+			(uuid "a59e8833-4c1e-4214-976f-40a9255ae348")
+		)
+		(pin "3"
+			(uuid "fb7e0418-53ae-4a39-85af-5193dfd9ab58")
+		)
+		(instances
+			(project "KIRO_FINAL"
+				(path "/df7a0305-5d09-479f-96d2-90bd4055470d"
+					(reference "M11")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Kiro:Adapter")
+		(at 680.72 406.4 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "afdd0585-1d2c-4562-b89e-fe58eed4bb14")
+		(property "Reference" "A3"
+			(at 680.72 396.24 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "CH343 follower adapter"
+			(at 680.72 416.56 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 680.72 406.4 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 680.72 406.4 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 680.72 406.4 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "8e963ee0-29c3-4dec-a288-36dddffbd18d")
+		)
+		(pin "2"
+			(uuid "ee8bb395-0387-43f6-874d-e3f646e568e4")
+		)
+		(pin "3"
+			(uuid "0ef71eb9-cda3-4882-91f0-d223c608cd53")
+		)
+		(pin "4"
+			(uuid "b5cb6867-e9ec-4fe6-afae-e3818e59431f")
+		)
+		(pin "5"
+			(uuid "7d2f603b-2d80-4aa0-a1e7-9f220992df15")
+		)
+		(instances
+			(project "KIRO_FINAL"
+				(path "/df7a0305-5d09-479f-96d2-90bd4055470d"
+					(reference "A3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Kiro:Switch_DPST")
+		(at 144.78 50.8 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "b6b724dc-cf03-4f30-95ee-af96ffc0cd06")
+		(property "Reference" "SW1"
+			(at 144.78 43.18 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Mains DPST"
+			(at 144.78 60.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 144.78 50.8 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 144.78 50.8 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 144.78 50.8 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "936e002d-67b4-4e57-b2db-56629b7ec1a4")
+		)
+		(pin "2"
+			(uuid "1b9febd0-23a0-412c-b41e-b6248d342823")
+		)
+		(pin "4"
+			(uuid "6e3de369-1a75-4f8f-be96-ddcd043a290a")
+		)
+		(pin "3"
+			(uuid "887727b5-e670-4bdf-8e85-e8ea2b97c055")
+		)
+		(instances
+			(project "KIRO_FINAL"
+				(path "/df7a0305-5d09-479f-96d2-90bd4055470d"
+					(reference "SW1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Kiro:Servo3")
+		(at 635 462.28 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "c0c581df-cf87-4b2c-9797-4840b0d35839")
+		(property "Reference" "M12"
+			(at 635 452.12 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "follower ID 2"
+			(at 635 472.44 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 635 462.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 635 462.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 635 462.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "cdc2afad-e64f-4b0b-b81c-bb58a6a324c5")
+		)
+		(pin "2"
+			(uuid "e4c4cf71-3336-4ae3-b2b9-d99ed4c0961a")
+		)
+		(pin "3"
+			(uuid "4953223f-54f3-48f6-9aac-a0f65c0f5bf2")
+		)
+		(instances
+			(project "KIRO_FINAL"
+				(path "/df7a0305-5d09-479f-96d2-90bd4055470d"
+					(reference "M12")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Kiro:USB_Device")
+		(at 698.5 233.68 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "cb932420-b971-422c-8c06-e3e54a791069")
+		(property "Reference" "J4"
+			(at 698.5 223.52 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "RPLIDAR C1"
+			(at 698.5 243.84 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 698.5 233.68 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 698.5 233.68 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 698.5 233.68 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "abbb51c2-50f0-4a6c-a131-9c9f5b42098c")
+		)
+		(instances
+			(project "KIRO_FINAL"
+				(path "/df7a0305-5d09-479f-96d2-90bd4055470d"
+					(reference "J4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Kiro:Switch_DPST")
+		(at 144.78 60.96 0)
+		(unit 2)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "d9b0cd6a-9435-4306-91af-b0736fcaa426")
+		(property "Reference" "SW1"
+			(at 144.78 68.58 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Mains DPST"
+			(at 144.78 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 144.78 60.96 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 144.78 60.96 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 144.78 60.96 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "3"
+			(uuid "9c26c60b-5a8d-45fd-b0be-885f543802e3")
+		)
+		(pin "4"
+			(uuid "8a1a98ef-0f3b-4190-bb84-6de8775d60e2")
+		)
+		(pin "2"
+			(uuid "51bacbd8-cc63-4f72-b0f8-bc102425865a")
+		)
+		(pin "1"
+			(uuid "69fa6225-d01f-4154-ab0e-76860c6cb792")
+		)
+		(instances
+			(project "KIRO_FINAL"
+				(path "/df7a0305-5d09-479f-96d2-90bd4055470d"
+					(reference "SW1")
+					(unit 2)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Kiro:AC_Inlet")
+		(at 50.8 60.96 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "def8aed5-4fa2-43f9-bb6c-b2fd516eedc9")
+		(property "Reference" "J1"
+			(at 50.8 40.64 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "IEC C14; L/N/PE"
+			(at 50.8 81.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 50.8 60.96 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 50.8 60.96 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 50.8 60.96 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "4f60e3b0-e059-4320-a5b7-4497549b501e")
+		)
+		(pin "2"
+			(uuid "88e6cb4f-5434-48f2-bb9b-ab64f1680831")
+		)
+		(pin "3"
+			(uuid "73ae9ba8-acaa-4e6f-bb3d-1f1e646ca7c9")
+		)
+		(instances
+			(project "KIRO_FINAL"
+				(path "/df7a0305-5d09-479f-96d2-90bd4055470d"
+					(reference "J1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Kiro:Servo3")
+		(at 264.16 462.28 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "e82e761b-b49b-4213-8150-95912ef5b1d1")
+		(property "Reference" "M4"
+			(at 264.16 452.12 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "wheel RL 10"
+			(at 264.16 472.44 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 264.16 462.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 264.16 462.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 264.16 462.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "2826a64c-4638-4559-8008-aad583b29cd5")
+		)
+		(pin "2"
+			(uuid "22426de7-6e32-4a9a-bc66-93efef6dfb6a")
+		)
+		(pin "3"
+			(uuid "be37b5e4-4015-402d-b2a2-7ab34aacae1a")
+		)
+		(instances
+			(project "KIRO_FINAL"
+				(path "/df7a0305-5d09-479f-96d2-90bd4055470d"
+					(reference "M4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Kiro:Servo3")
+		(at 454.66 462.28 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "e83b577a-50db-4987-93ab-1f58844190a8")
+		(property "Reference" "M6"
+			(at 454.66 452.12 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "leader ID 2"
+			(at 454.66 472.44 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 454.66 462.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 454.66 462.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 454.66 462.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "85b2a0fa-db06-46d0-b475-eee884002f80")
+		)
+		(pin "2"
+			(uuid "2ba0244f-fd1f-4861-b08b-72839515df51")
+		)
+		(pin "3"
+			(uuid "ca9bead9-3b28-479a-ab8d-04fd1f3c50f6")
+		)
+		(instances
+			(project "KIRO_FINAL"
+				(path "/df7a0305-5d09-479f-96d2-90bd4055470d"
+					(reference "M6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Kiro:Servo3")
+		(at 726.44 462.28 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "f4ada432-9f30-4216-8796-44c8c30deecc")
+		(property "Reference" "M15"
+			(at 726.44 452.12 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "follower ID 5"
+			(at 726.44 472.44 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 726.44 462.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 726.44 462.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 726.44 462.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "9b6f22cb-fcc7-44dd-b64a-ea351a257365")
+		)
+		(pin "2"
+			(uuid "b8c1026c-925d-403e-83f4-a573f28f57c6")
+		)
+		(pin "3"
+			(uuid "979a29c1-ee48-49f1-894d-86099cb32cd4")
+		)
+		(instances
+			(project "KIRO_FINAL"
+				(path "/df7a0305-5d09-479f-96d2-90bd4055470d"
+					(reference "M15")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
+)

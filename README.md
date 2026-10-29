@@ -25,7 +25,7 @@ The project replaces the robot cart's pile of wall adapters and loose cables wit
 ## System overview
 
 <p align="center">
-  <img src="images/wiring_diagram.png" alt="Wiring diagram" width="100%">
+  <img src="images/KIRO%20Robot%20Electrical%20Wiring%20Diagram.png" alt="Wiring diagram" width="100%">
 </p>
 
 | Item | Part |
