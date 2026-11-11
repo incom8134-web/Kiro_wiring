@@ -1,0 +1,766 @@
+(kicad_sch
+	(version 20250610)
+	(generator "konnect")
+	(generator_version "10.0")
+	(uuid "aa495064-12eb-4314-93bf-7e8e3ce3b5a0")
+	(paper "A4")
+	(lib_symbols
+		(symbol "KIRO_V2:USB_Device"
+			(pin_numbers hide)
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "U"
+				(at 0 5.0800 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "USB device"
+				(at 0 -5.0800 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "USB_Device_0_1"
+				(rectangle
+					(start -21.5900 -2.5400)
+					(end 3.8100 2.5400)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin bidirectional line
+					(at -24.13 0 0)
+					(length 2.54)
+					(name "USB (bus powered)"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "USB"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "KIRO_V2:USB_Hub_Powered"
+			(pin_numbers hide)
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "U"
+				(at 0 10.1600 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Powered USB hub (model TBD)"
+				(at 0 -7.6200 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "USB_Hub_Powered_0_1"
+				(rectangle
+					(start -26.6700 -5.0800)
+					(end 26.6700 7.6200)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin power_in line
+					(at -29.21 5.08 0)
+					(length 2.54)
+					(name "DC IN+ (barrel TBD)"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "DC+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at -29.21 2.54 0)
+					(length 2.54)
+					(name "DC IN- (barrel TBD)"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "DC-"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at -29.21 -2.54 0)
+					(length 2.54)
+					(name "USB upstream"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "UP"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 29.21 5.08 180)
+					(length 2.54)
+					(name "USB downstream 1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "DS1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 29.21 2.54 180)
+					(length 2.54)
+					(name "USB downstream 2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "DS2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 29.21 0 180)
+					(length 2.54)
+					(name "USB downstream 3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "DS3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 29.21 -2.54 180)
+					(length 2.54)
+					(name "USB downstream 4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "DS4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+	)
+	(wire
+		(pts
+			(xy 128.27 50.8)
+			(xy 125.73 50.8)
+		)
+		(uuid "bcc9675e-53ea-42f4-a232-c97f8bce0952")
+	)
+	(wire
+		(pts
+			(xy 128.27 71.12)
+			(xy 125.73 71.12)
+		)
+		(uuid "495aa24a-4f94-4fd0-a5db-2d31c0c51f2b")
+	)
+	(wire
+		(pts
+			(xy 82.55 101.6)
+			(xy 80.01 101.6)
+		)
+		(uuid "da64214c-3ce3-481e-ab7b-e7c5b002bf3f")
+	)
+	(wire
+		(pts
+			(xy 82.55 104.14)
+			(xy 80.01 104.14)
+		)
+		(uuid "2e227291-9c7d-4bdb-aa5c-78fc512569e6")
+	)
+	(wire
+		(pts
+			(xy 82.55 109.22)
+			(xy 80.01 109.22)
+		)
+		(uuid "a3170948-b0c3-420b-ac74-996a8236a6ff")
+	)
+	(wire
+		(pts
+			(xy 140.97 101.6)
+			(xy 219.71 101.6)
+		)
+		(uuid "18f36c8d-9d4e-46a6-85b2-57d3d250f3ae")
+	)
+	(wire
+		(pts
+			(xy 140.97 104.14)
+			(xy 143.51 104.14)
+		)
+		(uuid "598d39b5-c312-4c3e-b316-e11c7a8c4d28")
+	)
+	(wire
+		(pts
+			(xy 140.97 106.68)
+			(xy 143.51 106.68)
+		)
+		(uuid "179f6ad5-3c1b-43b3-968d-1a3868ad795b")
+	)
+	(wire
+		(pts
+			(xy 140.97 109.22)
+			(xy 143.51 109.22)
+		)
+		(uuid "fc30c5bf-a771-4dbb-987a-d05379f4de55")
+	)
+	(hierarchical_label "USB_GEMINI"
+		(shape bidirectional)
+		(at 125.73 50.8 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "9f25f25e-842f-4ed2-8de9-6e9e99f1b6bc")
+	)
+	(hierarchical_label "USB_WRIST"
+		(shape bidirectional)
+		(at 125.73 71.12 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "de860293-a386-4121-acc0-dfb6eddd8455")
+	)
+	(hierarchical_label "USB_SENSOR_5V"
+		(shape input)
+		(at 80.01 101.6 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "a45084b7-827a-4a10-91e1-9fcb69e91af9")
+	)
+	(hierarchical_label "POWER_GND"
+		(shape passive)
+		(at 80.01 104.14 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "5db12e2e-0c99-418b-8774-4952a2364899")
+	)
+	(hierarchical_label "USB_HUB_UP"
+		(shape bidirectional)
+		(at 80.01 109.22 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "4c7d9d7a-7882-40c9-8eee-34fb5ceb40a5")
+	)
+	(hierarchical_label "USB_WHEEL"
+		(shape bidirectional)
+		(at 143.51 104.14 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "344dc1f5-5539-4939-8f9c-530bb521e380")
+	)
+	(hierarchical_label "USB_LEADER"
+		(shape bidirectional)
+		(at 143.51 106.68 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "c57263ae-ca3a-46cf-b9b7-cd67bf7d4aa4")
+	)
+	(hierarchical_label "USB_FOLLOWER"
+		(shape bidirectional)
+		(at 143.51 109.22 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "80430e4b-6789-466a-96cb-0b1be435aa49")
+	)
+  (text "KIRO Wiring V2  |  USB_Hubs_Cameras_and_LiDAR"
+    (at 20.32 20.32 0)
+    (effects (font (size 3 3) (bold yes)) (justify left bottom))
+    (uuid "0e647874-5ce0-4705-b96a-6cfbf574d5f5")
+  )
+  (text "Only the installed hub, two cameras and one LiDAR. No other sensors."
+    (at 20.32 25.4 0)
+    (effects (font (size 1.5 1.5)) (justify left bottom))
+    (uuid "2dc14cb7-33a9-4996-b90d-927ff8c41289")
+  )
+  (text "DEVICE TABLE"
+    (at 20.32 127 0)
+    (effects (font (size 1.5 1.5) (bold yes)) (justify left bottom))
+    (uuid "05edcb3b-367d-4284-bf0c-76a7645617fb")
+  )
+  (text "Gemini 335   | USB bus 5 V | 896 mA max, <6.5 W | USB 3.2 Gen1 | bundled cable | Jetson J6 port 1 direct"
+    (at 20.32 132.08 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "bededfbd-8d52-4f4f-ac55-5b6aca500130")
+  )
+  (text "Wrist webcam | USB bus 5 V | needs 500 mA       | USB 2.0      | camera cable  | Jetson J7 port 1 direct"
+    (at 20.32 137.16 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "777d685a-340d-4afe-bc4a-2facb9962f84")
+  )
+  (text "RPLIDAR C1   | 5 V via USB | 230 mA typ, peak TBD | UART 460800 inside, USB outside (CP2102N) | hub DS1"
+    (at 20.32 142.24 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "b036de4b-6c5a-4bc6-83a2-180cf527379b")
+  )
+  (text "USB hub      | DC in 5 V 4 A, barrel 5.5 x 2.1 mm, centre positive (GEN - check against real hub label)"
+    (at 20.32 147.32 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "0931b724-6954-4a49-bb43-cace70c581be")
+  )
+  (text "Hub barrel: if the real hub is 3.5x1.35 or 5.5x2.5 mm, change the plug; never trust \"5 mm\" alone."
+    (at 20.32 152.4 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "f126f213-afd6-430f-a060-e3a39088fd79")
+  )
+  (text "Shielding: use shielded USB cables; route away from servo and 12 V harnesses. No motor current returns via USB."
+    (at 20.32 157.48 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "c23742ca-f4e8-4c84-8a50-5493f1212f1f")
+  )
+  (text "LiDAR start-up (V1): plug sensor cable into adapter with USB unplugged, then connect USB. Motor spin-up after host opens port."
+    (at 20.32 162.56 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "6a87b5f3-1faf-4fcd-aac5-f5ffea2d740b")
+  )
+	(symbol
+		(lib_id "KIRO_V2:USB_Device")
+		(at 152.4 50.8 0)
+		(unit 1)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "bd04ab95-0b16-4048-99e1-5c4ee62490d5")
+		(property "Reference" "U51"
+			(at 152.4 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Orbbec Gemini 335 (head)"
+			(at 152.4 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 152.4 50.8 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 152.4 50.8 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 152.4 50.8 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "kiro_wiring_v2"
+				(path "/6d1698fd-98cf-4499-9772-4c44045535ac/d71c7893-dda0-40a4-83e5-12eef794f7ea"
+					(reference "U51")
+					(unit 1)
+				)
+				(path "/7cfe1389-9e97-448d-8d0b-30ac17f4c495/c863b907-c832-4c62-a135-3a42a88b4b9e"
+					(reference "U51")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "KIRO_V2:USB_Device")
+		(at 152.4 71.12 0)
+		(unit 1)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "2430a6c8-95e7-4eba-b6ba-c2aba44020cc")
+		(property "Reference" "U52"
+			(at 152.4 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Suyin HD webcam 1e45:8022 (wrist)"
+			(at 152.4 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 152.4 71.12 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 152.4 71.12 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 152.4 71.12 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "kiro_wiring_v2"
+				(path "/6d1698fd-98cf-4499-9772-4c44045535ac/d71c7893-dda0-40a4-83e5-12eef794f7ea"
+					(reference "U52")
+					(unit 1)
+				)
+				(path "/7cfe1389-9e97-448d-8d0b-30ac17f4c495/c863b907-c832-4c62-a135-3a42a88b4b9e"
+					(reference "U52")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "KIRO_V2:USB_Hub_Powered")
+		(at 111.76 106.68 0)
+		(unit 1)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "159332b5-2b13-4e51-a1a2-969d5b032413")
+		(property "Reference" "U50"
+			(at 111.76 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Powered 4-port USB3 hub 5V 4A (GEN)"
+			(at 111.76 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 111.76 106.68 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 111.76 106.68 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 111.76 106.68 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "kiro_wiring_v2"
+				(path "/6d1698fd-98cf-4499-9772-4c44045535ac/d71c7893-dda0-40a4-83e5-12eef794f7ea"
+					(reference "U50")
+					(unit 1)
+				)
+				(path "/7cfe1389-9e97-448d-8d0b-30ac17f4c495/c863b907-c832-4c62-a135-3a42a88b4b9e"
+					(reference "U50")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "KIRO_V2:USB_Device")
+		(at 243.84 101.6 0)
+		(unit 1)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "c85a7299-1075-43b4-be19-6281fa44992e")
+		(property "Reference" "U53"
+			(at 243.84 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Slamtec RPLIDAR C1 + CP2102N"
+			(at 243.84 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 243.84 101.6 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 243.84 101.6 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 243.84 101.6 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "kiro_wiring_v2"
+				(path "/6d1698fd-98cf-4499-9772-4c44045535ac/d71c7893-dda0-40a4-83e5-12eef794f7ea"
+					(reference "U53")
+					(unit 1)
+				)
+				(path "/7cfe1389-9e97-448d-8d0b-30ac17f4c495/c863b907-c832-4c62-a135-3a42a88b4b9e"
+					(reference "U53")
+					(unit 1)
+				)
+			)
+		)
+	)
+)

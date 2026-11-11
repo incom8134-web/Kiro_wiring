@@ -1,0 +1,1868 @@
+(kicad_sch
+	(version 20250610)
+	(generator "konnect")
+	(generator_version "10.0")
+	(uuid "a6fac4ad-6f17-4f9a-89de-d179f458a6c9")
+	(paper "A4")
+	(lib_symbols
+		(symbol "KIRO_V2:EStop_Mushroom_NC"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "S"
+				(at 0 5.0800 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Mushroom E-stop, latching, NC (model TBD)"
+				(at 0 -5.0800 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "EStop_Mushroom_NC_0_1"
+				(rectangle
+					(start -10.1600 -2.5400)
+					(end 10.1600 2.5400)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at -12.7 0 0)
+					(length 2.54)
+					(name "NC 11"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "11"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 0 180)
+					(length 2.54)
+					(name "NC 12"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "12"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Switch:SW_Push"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "SW"
+				(at 1.27 2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "SW_Push"
+				(at 0 -1.524 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Push button switch, generic, two pins"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "switch normally-open pushbutton push-button"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "SW_Push_0_1"
+				(circle
+					(center -2.032 0)
+					(radius 0.508)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 1.27)
+						(xy 0 3.048)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 2.032 0)
+					(radius 0.508)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 1.27)
+						(xy -2.54 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 0 180)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "KIRO_V2:Contactor_1NO_AuxNO"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "K"
+				(at 0 10.1600 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Contactor (model TBD)"
+				(at 0 -10.1600 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Contactor_1NO_AuxNO_0_1"
+				(rectangle
+					(start -16.5100 -7.6200)
+					(end 16.5100 7.6200)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at -19.05 5.08 0)
+					(length 2.54)
+					(name "COIL A1 (+)"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "A1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -19.05 -5.08 0)
+					(length 2.54)
+					(name "COIL A2 (-)"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "A2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 19.05 5.08 180)
+					(length 2.54)
+					(name "MAIN 1/L1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 19.05 2.54 180)
+					(length 2.54)
+					(name "MAIN 2/T1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 19.05 -2.54 180)
+					(length 2.54)
+					(name "AUX NO 13"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "13"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 19.05 -5.08 180)
+					(length 2.54)
+					(name "AUX NO 14"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "14"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Device:D_TVS"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "D"
+				(at 0 2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "D_TVS"
+				(at 0 -2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Bidirectional transient-voltage-suppression diode"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "diode TVS thyrector"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "TO-???* *_Diode_* *SingleDiode* D_*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "D_TVS_0_1"
+				(polyline
+					(pts
+						(xy -2.54 1.27)
+						(xy -2.54 -1.27)
+						(xy 2.54 1.27)
+						(xy 2.54 -1.27)
+						(xy -2.54 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.508 1.27)
+						(xy 0 1.27)
+						(xy 0 -1.27)
+						(xy -0.508 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 0)
+						(xy -1.27 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "D_TVS_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "A1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 2.54)
+					(name "A2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Device:R"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "R"
+				(at 2.032 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "R"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at -1.778 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Resistor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "R res resistor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "R_*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "R_0_1"
+				(rectangle
+					(start -1.016 -2.54)
+					(end 1.016 2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "R_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Isolator:PC817"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "U"
+				(at -5.08 5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "PC817"
+				(at 0 5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Package_DIP:DIP-4_W7.62mm"
+				(at -5.08 -5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+						(italic yes)
+					)
+					(justify left)
+				)
+			)
+			(property "Datasheet" "http://www.soselectronic.cz/a_info/resource/d/pc817.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Description" "DC Optocoupler, Vce 35V, CTR 50-300%, DIP-4"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "NPN DC Optocoupler"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "DIP*W7.62mm*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "PC817_0_1"
+				(rectangle
+					(start -5.08 3.81)
+					(end 5.08 -3.81)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(polyline
+					(pts
+						(xy -5.08 2.54)
+						(xy -2.54 2.54)
+						(xy -2.54 -0.635)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.175 -0.635)
+						(xy -1.905 -0.635)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.54 -0.635)
+						(xy -2.54 -2.54)
+						(xy -5.08 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.54 -0.635)
+						(xy -3.175 0.635)
+						(xy -1.905 0.635)
+						(xy -2.54 -0.635)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.508 0.508)
+						(xy 0.762 0.508)
+						(xy 0.381 0.381)
+						(xy 0.381 0.635)
+						(xy 0.762 0.508)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.508 -0.508)
+						(xy 0.762 -0.508)
+						(xy 0.381 -0.635)
+						(xy 0.381 -0.381)
+						(xy 0.762 -0.508)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 1.905)
+						(xy 2.54 -1.905)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 0.635)
+						(xy 4.445 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.048 -1.651)
+						(xy 3.556 -1.143)
+						(xy 4.064 -2.159)
+						(xy 3.048 -1.651)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 4.445 2.54)
+						(xy 5.08 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 4.445 -2.54)
+						(xy 2.54 -0.635)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 4.445 -2.54)
+						(xy 5.08 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "PC817_1_1"
+				(pin passive line
+					(at -7.62 2.54 0)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -7.62 -2.54 0)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 7.62 -2.54 180)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 7.62 2.54 180)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+	)
+	(junction
+		(at 121.92 66.04)
+		(diameter 0)
+		(uuid "53174f4c-a8dc-4fb0-82b5-389bc67af254")
+	)
+	(junction
+		(at 121.92 76.2)
+		(diameter 0)
+		(uuid "bb23e2c7-3266-4e05-ac1d-ef9d38a8124e")
+	)
+	(wire
+		(pts
+			(xy 171.45 66.04)
+			(xy 173.99 66.04)
+		)
+		(uuid "4069235a-43a4-4bbe-9964-b05f824455e2")
+	)
+	(wire
+		(pts
+			(xy 171.45 68.58)
+			(xy 173.99 68.58)
+		)
+		(uuid "d9da624c-6b4d-4032-bd3c-c570e7c47a37")
+	)
+	(wire
+		(pts
+			(xy 57.15 111.76)
+			(xy 54.61 111.76)
+		)
+		(uuid "11afc93d-5c3a-496b-ba05-7f895ca44163")
+	)
+	(wire
+		(pts
+			(xy 171.45 73.66)
+			(xy 173.99 73.66)
+		)
+		(uuid "a6fc77f5-117f-4b47-86ec-334ee1b93bad")
+	)
+	(wire
+		(pts
+			(xy 171.45 76.2)
+			(xy 173.99 76.2)
+		)
+		(uuid "7c87d3d8-517e-42aa-9f72-f6fd660bc273")
+	)
+	(wire
+		(pts
+			(xy 64.77 111.76)
+			(xy 83.82 111.76)
+		)
+		(uuid "f74dbe4b-3f04-4ac3-ba26-ebba8ea3655d")
+	)
+	(wire
+		(pts
+			(xy 83.82 116.84)
+			(xy 81.28 116.84)
+		)
+		(uuid "6010a70f-6921-423e-8900-17500f41b06e")
+	)
+	(wire
+		(pts
+			(xy 99.06 111.76)
+			(xy 101.6 111.76)
+		)
+		(uuid "cee25abd-8eda-4679-9f22-8d54861f000a")
+	)
+	(wire
+		(pts
+			(xy 99.06 116.84)
+			(xy 101.6 116.84)
+		)
+		(uuid "94c7dad9-bb63-48ed-a9ac-79de9e5374d0")
+	)
+	(wire
+		(pts
+			(xy 30.48 60.96)
+			(xy 48.26 60.96)
+		)
+		(uuid "bf9aa7f3-f5a4-49dd-86d7-07a712a13aa2")
+	)
+	(wire
+		(pts
+			(xy 73.66 60.96)
+			(xy 81.28 60.96)
+		)
+		(uuid "fac7ef84-c33e-4bba-8652-1a94081755f6")
+	)
+	(wire
+		(pts
+			(xy 81.28 60.96)
+			(xy 96.52 60.96)
+		)
+		(uuid "98b06713-8ecb-4e2e-baeb-5f2339160a93")
+	)
+	(wire
+		(pts
+			(xy 106.68 60.96)
+			(xy 111.76 60.96)
+		)
+		(uuid "ad9d8047-e12c-410e-9cf4-d3522e435d46")
+	)
+	(wire
+		(pts
+			(xy 111.76 60.96)
+			(xy 121.92 60.96)
+		)
+		(uuid "e94f9527-d99b-4617-851f-672fb0f9d877")
+	)
+	(wire
+		(pts
+			(xy 121.92 60.96)
+			(xy 121.92 66.04)
+		)
+		(uuid "c4bddb0a-d938-4314-9e3b-cf1bd83ab24c")
+	)
+	(wire
+		(pts
+			(xy 121.92 66.04)
+			(xy 133.35 66.04)
+		)
+		(uuid "346ad9af-a36d-4de9-9647-6583c3f3ce97")
+	)
+	(wire
+		(pts
+			(xy 121.92 67.31)
+			(xy 121.92 66.04)
+		)
+		(uuid "d9c5386a-89ef-4ef5-adb6-b1d9ca9eb200")
+	)
+	(wire
+		(pts
+			(xy 121.92 74.93)
+			(xy 121.92 76.2)
+		)
+		(uuid "063e925f-1133-4b26-aae4-e48a4ca308cb")
+	)
+	(wire
+		(pts
+			(xy 121.92 76.2)
+			(xy 133.35 76.2)
+		)
+		(uuid "ad6abc38-5a8d-46ba-99ac-72027c2569cc")
+	)
+	(wire
+		(pts
+			(xy 121.92 76.2)
+			(xy 121.92 83.82)
+		)
+		(uuid "370538fb-45e4-4150-8666-e8637f024221")
+	)
+	(label "ESTOP_LOOP"
+		(at 173.99 73.66 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "efe474e4-da0c-4a06-b64d-e50731f2a098")
+	)
+	(label "COIL_A1"
+		(at 173.99 76.2 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "1c7b9c70-1dba-4b82-8c9a-a05914f9c73e")
+	)
+	(label "ESTOP_LOOP"
+		(at 81.28 60.96 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "0c54381d-3a2c-422b-b9ff-4ad8823f3c51")
+	)
+	(label "COIL_A1"
+		(at 111.76 60.96 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "cd899a61-1c93-4f27-84a7-08b29044a9d4")
+	)
+	(hierarchical_label "BATTERY_RAW"
+		(shape input)
+		(at 173.99 66.04 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "7d275e66-48f4-480a-be46-09506f2b6042")
+	)
+	(hierarchical_label "12V_AFTER_CONTACTOR"
+		(shape output)
+		(at 173.99 68.58 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "94c70eb8-68a3-4093-bdc7-9b9bfcafe380")
+	)
+	(hierarchical_label "12V_AFTER_CONTACTOR"
+		(shape output)
+		(at 54.61 111.76 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "d00b16c8-dd6a-426b-acd3-668d691559b8")
+	)
+	(hierarchical_label "POWER_GND"
+		(shape passive)
+		(at 81.28 116.84 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "0f625732-2f82-4ae4-b87a-c9da567a942a")
+	)
+	(hierarchical_label "ESTOP_OK_N"
+		(shape output)
+		(at 101.6 111.76 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "5fd1e81e-4e3d-49c0-83fc-1200416e7c7e")
+	)
+	(hierarchical_label "JETSON_LOGIC_GND"
+		(shape input)
+		(at 101.6 116.84 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "b2eaf75b-90b0-4594-a722-974d71f1d37e")
+	)
+	(hierarchical_label "CTRL_12V"
+		(shape input)
+		(at 30.48 60.96 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "b00fae29-d884-4b5c-ab95-f70f6e95844d")
+	)
+	(hierarchical_label "POWER_GND"
+		(shape passive)
+		(at 121.92 83.82 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "5e2c0360-27d6-490a-a067-3f9b2cea47bc")
+	)
+  (text "KIRO Wiring V2  |  Safety_EStop_and_Contactor"
+    (at 20.32 20.32 0)
+    (effects (font (size 3 3) (bold yes)) (justify left bottom))
+    (uuid "f95b337a-a116-43e4-a36d-d0ca4af226de")
+  )
+  (text "Hard-wired self-holding contactor loop. No software in the safety path."
+    (at 20.32 25.4 0)
+    (effects (font (size 1.5 1.5)) (justify left bottom))
+    (uuid "fd855c67-76ad-4f92-a7c1-c359f6646150")
+  )
+  (text "AUX 13-14 = self-hold contact, wired parallel to START"
+    (at 177.8 88.9 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "a9dbbeab-7f29-4e85-8597-54bae1fecae3")
+  )
+  (text "ESTOP_OK_N to Jetson: LOW = 12V_AFTER_CONTACTOR present."
+    (at 132.08 106.68 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "d303ef3a-0693-4383-b2a2-309a438aa9a0")
+  )
+  (text "Opto LED on POWER_GND side; transistor on Jetson logic side."
+    (at 132.08 111.76 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "e2325955-15a0-409e-b20b-f37be1872abc")
+  )
+  (text "Pull-up and 74LVC1G17 buffer: Jetson_and_GPIO sheet."
+    (at 132.08 116.84 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "586d0b8c-6eef-47bb-ba04-0fe102a34bb1")
+  )
+  (text "Broken wire -> pull-up -> HIGH -> software treats as E-stop."
+    (at 132.08 121.92 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "45ea7968-be3b-44f7-baf6-88a34dd8c10d")
+  )
+  (text "E-STOP BEHAVIOUR"
+    (at 20.32 137.16 0)
+    (effects (font (size 1.5 1.5) (bold yes)) (justify left bottom))
+    (uuid "a041d389-65c3-4e30-8654-76ee4f6ca22b")
+  )
+  (text "Press mushroom -> NC 11-12 opens -> coil current stops -> K1 opens -> 12V_AFTER_CONTACTOR = 0 V (wheels, arms, light)."
+    (at 20.32 142.24 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "4455a67a-7c22-4113-97fc-e2fc715bc781")
+  )
+  (text "Broken loop wire or blown F_CTRL -> same drop-out. Releasing the mushroom does not re-close K1 (AUX 13-14 open)."
+    (at 20.32 147.32 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "e829e731-423d-4e44-a2e3-a6e6de169f9b")
+  )
+  (text "Restart: twist-release mushroom, then press START deliberately. COMPUTE_POWER is upstream of K1: Jetson stays up."
+    (at 20.32 152.4 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "7ce9851b-1f7a-4970-b9f9-1397669e91c5")
+  )
+  (text "D2 bidirectional TVS clamps coil kick-back without the slow release of a plain flyback diode. Verify vs coil datasheet."
+    (at 20.32 157.48 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "1e04817f-baf6-4107-8495-f3452ead7581")
+  )
+  (text "GENERIC: E-stop 1NC block 11-12; K1 12 V coil <= 1.5 A, main 80 A DC, AUX NO 13-14. Replace with real part data."
+    (at 20.32 162.56 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "b8c051de-5d58-4495-9ab2-d548b342359d")
+  )
+  (text "If K1 has no AUX NO: add a 12 V relay, coil parallel to K1 coil, and use its NO contact for the self-hold."
+    (at 20.32 167.64 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "c32b3cdf-a596-4d60-90f5-173213d5ec73")
+  )
+	(symbol
+		(lib_id "KIRO_V2:EStop_Mushroom_NC")
+		(at 60.96 60.96 0)
+		(unit 1)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "c74e034b-04c7-4e61-ba64-f5509f20dd91")
+		(property "Reference" "S1"
+			(at 60.96 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "22mm mushroom twist-release 1NC (GEN)"
+			(at 60.96 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 60.96 60.96 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 60.96 60.96 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 60.96 60.96 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "kiro_wiring_v2"
+				(path "/6d1698fd-98cf-4499-9772-4c44045535ac/eb2280e6-7660-47dd-9318-3ddebae045f4"
+					(reference "S1")
+					(unit 1)
+				)
+				(path "/7cfe1389-9e97-448d-8d0b-30ac17f4c495/48490b71-710c-49b1-b50d-1603444b3480"
+					(reference "S1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Switch:SW_Push")
+		(at 101.6 60.96 0)
+		(unit 1)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "71a7bdba-5c92-4df9-a465-a948f57cc609")
+		(property "Reference" "SW2"
+			(at 102.87 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "START momentary NO"
+			(at 101.6 62.484 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 101.6 60.96 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 101.6 60.96 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Push button switch, generic, two pins"
+			(at 101.6 60.96 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "kiro_wiring_v2"
+				(path "/6d1698fd-98cf-4499-9772-4c44045535ac/eb2280e6-7660-47dd-9318-3ddebae045f4"
+					(reference "SW2")
+					(unit 1)
+				)
+				(path "/7cfe1389-9e97-448d-8d0b-30ac17f4c495/48490b71-710c-49b1-b50d-1603444b3480"
+					(reference "SW2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "KIRO_V2:Contactor_1NO_AuxNO")
+		(at 152.4 71.12 0)
+		(unit 1)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "30bacbaf-a0d8-4ed9-a61f-a7f784ee09c9")
+		(property "Reference" "K1"
+			(at 152.4 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "K1 12V DC contactor 80A + AUX NO (GEN)"
+			(at 152.4 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 152.4 71.12 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 152.4 71.12 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 152.4 71.12 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "kiro_wiring_v2"
+				(path "/6d1698fd-98cf-4499-9772-4c44045535ac/eb2280e6-7660-47dd-9318-3ddebae045f4"
+					(reference "K1")
+					(unit 1)
+				)
+				(path "/7cfe1389-9e97-448d-8d0b-30ac17f4c495/48490b71-710c-49b1-b50d-1603444b3480"
+					(reference "K1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:D_TVS")
+		(at 121.92 71.12 90)
+		(unit 1)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "a421c593-af16-4e14-8c06-6a0c04db7d92")
+		(property "Reference" "D2"
+			(at 109.22 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SMBJ18CA (verify)"
+			(at 104.14 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 121.92 71.12 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 121.92 71.12 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Bidirectional transient-voltage-suppression diode"
+			(at 121.92 71.12 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "kiro_wiring_v2"
+				(path "/6d1698fd-98cf-4499-9772-4c44045535ac/eb2280e6-7660-47dd-9318-3ddebae045f4"
+					(reference "D2")
+					(unit 1)
+				)
+				(path "/7cfe1389-9e97-448d-8d0b-30ac17f4c495/48490b71-710c-49b1-b50d-1603444b3480"
+					(reference "D2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 60.96 111.76 90)
+		(unit 1)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "e5b1a98a-af64-41e4-a5b7-e28a5b78c12d")
+		(property "Reference" "R1"
+			(at 60.96 109.728 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "4k7"
+			(at 60.96 111.76 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 60.96 111.76 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 60.96 111.76 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 60.96 111.76 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "kiro_wiring_v2"
+				(path "/6d1698fd-98cf-4499-9772-4c44045535ac/eb2280e6-7660-47dd-9318-3ddebae045f4"
+					(reference "R1")
+					(unit 1)
+				)
+				(path "/7cfe1389-9e97-448d-8d0b-30ac17f4c495/48490b71-710c-49b1-b50d-1603444b3480"
+					(reference "R1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Isolator:PC817")
+		(at 91.44 114.3 0)
+		(unit 1)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "220c09b3-efc2-4b88-a926-5997cee3adf3")
+		(property "Reference" "U5"
+			(at 86.36 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "PC817"
+			(at 91.44 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_DIP:DIP-4_W7.62mm"
+			(at 91.44 114.3 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "http://www.soselectronic.cz/a_info/resource/d/pc817.pdf"
+			(at 91.44 114.3 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "DC Optocoupler, Vce 35V, CTR 50-300%, DIP-4"
+			(at 91.44 114.3 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "kiro_wiring_v2"
+				(path "/6d1698fd-98cf-4499-9772-4c44045535ac/eb2280e6-7660-47dd-9318-3ddebae045f4"
+					(reference "U5")
+					(unit 1)
+				)
+				(path "/7cfe1389-9e97-448d-8d0b-30ac17f4c495/48490b71-710c-49b1-b50d-1603444b3480"
+					(reference "U5")
+					(unit 1)
+				)
+			)
+		)
+	)
+)

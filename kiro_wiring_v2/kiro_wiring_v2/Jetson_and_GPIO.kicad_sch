@@ -1,0 +1,2410 @@
+(kicad_sch
+	(version 20250610)
+	(generator "konnect")
+	(generator_version "10.0")
+	(uuid "398877cb-a469-485d-83d2-3074a3253306")
+	(paper "A3")
+	(lib_symbols
+		(symbol "KIRO_V2:Jetson_OrinNano_Super_DevKit"
+			(pin_numbers hide)
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "U"
+				(at 0 25.4000 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Jetson Orin Nano Super Dev Kit 8GB (P3768 carrier)"
+				(at 0 -20.3200 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://docs.nvidia.com/jetson/orin-nano-devkit/user-guide/latest/hardware_layout.html"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Jetson_OrinNano_Super_DevKit_0_1"
+				(rectangle
+					(start -40.6400 -17.7800)
+					(end 40.6400 22.8600)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin power_in line
+					(at -43.18 20.32 0)
+					(length 2.54)
+					(name "J16 DC_IN+ 9-20V (5.5x2.5, ctr +)"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "J16+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at -43.18 17.78 0)
+					(length 2.54)
+					(name "J16 DC_IN- (return)"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "J16-"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_out line
+					(at -43.18 10.16 0)
+					(length 2.54)
+					(name "J12 3V3 (pin 1)"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_out line
+					(at -43.18 7.62 0)
+					(length 2.54)
+					(name "J12 5V0 (pin 2) unused"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_out line
+					(at -43.18 5.08 0)
+					(length 2.54)
+					(name "J12 GND (pin 6)"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at -43.18 0 0)
+					(length 2.54)
+					(name "J12 GPIO01 out (pin 29) PROPOSED"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "29"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -43.18 -7.62 0)
+					(length 2.54)
+					(name "J12 GPIO11 in (pin 31) PROPOSED"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "31"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -43.18 -15.24 0)
+					(length 2.54)
+					(name "J12 GPIO09 in (pin 7) PROPOSED"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 43.18 20.32 180)
+					(length 2.54)
+					(name "J6 USB3.2 Type-A port 1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "J6.1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 43.18 17.78 180)
+					(length 2.54)
+					(name "J6 USB3.2 Type-A port 2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "J6.2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 43.18 15.24 180)
+					(length 2.54)
+					(name "J7 USB3.2 Type-A port 1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "J7.1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 43.18 12.7 180)
+					(length 2.54)
+					(name "J7 USB3.2 Type-A port 2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "J7.2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 43.18 7.62 180)
+					(length 2.54)
+					(name "J5 USB-C (data/recovery)"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "J5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 43.18 5.08 180)
+					(length 2.54)
+					(name "J15 GbE RJ45"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "J15"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 43.18 0 180)
+					(length 2.54)
+					(name "J20 CSI CAM0 (unused)"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "J20"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 43.18 -2.54 180)
+					(length 2.54)
+					(name "J21 CSI CAM1 (unused)"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "J21"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 43.18 -5.08 180)
+					(length 2.54)
+					(name "J14 button header (unused)"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "J14"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Device:R"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "R"
+				(at 2.032 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "R"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at -1.778 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Resistor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "R res resistor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "R_*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "R_0_1"
+				(rectangle
+					(start -1.016 -2.54)
+					(end 1.016 2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "R_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Device:NetTie_2"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom no)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "NT"
+				(at 0 1.27 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "NetTie_2"
+				(at 0 -1.27 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Net tie, 2 pins"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "net tie short"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "Net*Tie*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "NetTie_2_0_1"
+				(polyline
+					(pts
+						(xy -1.27 0)
+						(xy 1.27 0)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "NetTie_2_1_1"
+				(pin passive line
+					(at -2.54 0 0)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 0 180)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "74xGxx:74LVC1G17"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "U"
+				(at 0 3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "74LVC1G17"
+				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" ""
+				(at -2.54 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.ti.com/lit/ds/symlink/sn74lvc1g17.pdf"
+				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Description" "Single Schmitt Buffer Gate, Low-Voltage CMOS"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "Single Gate Buff Schmitt LVC CMOS"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "SOT?23* SOT?553* Texas?R-PDSO-G5?DCK* Texas?R-PDSO-N5?DRL* Texas?X2SON*0.8x0.8mm*P0.48mm*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "74LVC1G17_0_1"
+				(polyline
+					(pts
+						(xy -7.62 6.35)
+						(xy -7.62 -6.35)
+						(xy 5.08 0)
+						(xy -7.62 6.35)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.81 -1.27)
+						(xy -2.54 -1.27)
+						(xy -2.54 1.27)
+						(xy -1.27 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.54 -1.27)
+						(xy -1.27 -1.27)
+						(xy -1.27 1.27)
+						(xy 0 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(symbol "74LVC1G17_1_1"
+				(pin no_connect line
+					(at -7.62 5.08 180)
+					(length 5.08)
+					(hide yes)
+					(name "NC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -12.7 0 0)
+					(length 5.08)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at -5.08 -10.16 90)
+					(length 5.08)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 10.16 0 180)
+					(length 5.08)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at -5.08 10.16 270)
+					(length 5.08)
+					(name "VCC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Device:C"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0.254)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "C"
+				(at 0.635 2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "C"
+				(at 0.635 -2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" ""
+				(at 0.9652 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Unpolarized capacitor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "cap capacitor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "C_*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "C_0_1"
+				(polyline
+					(pts
+						(xy -2.032 0.762)
+						(xy 2.032 0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 -0.762)
+						(xy 2.032 -0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "C_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.794)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.794)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+	)
+	(junction
+		(at 60.96 193.04)
+		(diameter 0)
+		(uuid "d5228218-345e-485e-b04c-f8a11cc1c4f5")
+	)
+	(junction
+		(at 182.88 193.04)
+		(diameter 0)
+		(uuid "072e1c5d-b541-4d60-b760-caef361dbf81")
+	)
+	(no_connect
+		(at 160.02 119.38)
+		(uuid "5781aa39-8715-4bdd-90b9-426a2b0e5691")
+	)
+	(no_connect
+		(at 246.38 114.3)
+		(uuid "4561467b-cc3c-4a93-b1a9-9f8d231ed9b5")
+	)
+	(no_connect
+		(at 246.38 119.38)
+		(uuid "66c1e049-69e6-4066-9a2a-2a899265b4a1")
+	)
+	(no_connect
+		(at 246.38 121.92)
+		(uuid "e07dc5a0-2cd5-4ad2-a515-e12782b3e2b3")
+	)
+	(no_connect
+		(at 246.38 127)
+		(uuid "59e34a0b-af42-4c10-b94f-49575bccecde")
+	)
+	(no_connect
+		(at 246.38 129.54)
+		(uuid "5882411f-064a-40d4-8d69-dd56cc21eb35")
+	)
+	(no_connect
+		(at 246.38 132.08)
+		(uuid "b00103cd-0d49-4103-b7e1-22c5e3db2179")
+	)
+	(no_connect
+		(at 73.66 187.96)
+		(uuid "d382d794-1cfd-4168-bf6e-85fb2bb5bf21")
+	)
+	(no_connect
+		(at 195.58 187.96)
+		(uuid "eefaf964-c9b6-430c-9f81-0981a4a9fced")
+	)
+	(wire
+		(pts
+			(xy 160.02 106.68)
+			(xy 157.48 106.68)
+		)
+		(uuid "f2614589-eed5-4106-a367-a2f270e9a928")
+	)
+	(wire
+		(pts
+			(xy 160.02 109.22)
+			(xy 157.48 109.22)
+		)
+		(uuid "57b3991e-5c84-420e-ad00-8cc8507d9474")
+	)
+	(wire
+		(pts
+			(xy 129.54 167.64)
+			(xy 132.08 167.64)
+		)
+		(uuid "ee65ec21-a1ec-4230-95ff-694b19f3bdd4")
+	)
+	(wire
+		(pts
+			(xy 160.02 116.84)
+			(xy 157.48 116.84)
+		)
+		(uuid "31bbaf24-370c-490d-aca9-319df9fe9c77")
+	)
+	(wire
+		(pts
+			(xy 60.96 184.15)
+			(xy 60.96 181.61)
+		)
+		(uuid "b5e20298-07ed-4a72-8805-9fac2c6dde82")
+	)
+	(wire
+		(pts
+			(xy 76.2 182.88)
+			(xy 76.2 180.34)
+		)
+		(uuid "29a2a525-2dea-4782-bf32-c65350940785")
+	)
+	(wire
+		(pts
+			(xy 116.84 189.23)
+			(xy 116.84 186.69)
+		)
+		(uuid "f49df34c-ea6e-43da-946b-a09929c7469f")
+	)
+	(wire
+		(pts
+			(xy 182.88 184.15)
+			(xy 182.88 181.61)
+		)
+		(uuid "884f29ed-be1e-4340-abfa-c45e1d7b924b")
+	)
+	(wire
+		(pts
+			(xy 198.12 182.88)
+			(xy 198.12 180.34)
+		)
+		(uuid "fae85d28-de9b-4c35-8359-d3667e614614")
+	)
+	(wire
+		(pts
+			(xy 243.84 189.23)
+			(xy 243.84 186.69)
+		)
+		(uuid "d1cbc7c3-3664-4b1a-abfe-5b8796367ea4")
+	)
+	(wire
+		(pts
+			(xy 160.02 121.92)
+			(xy 157.48 121.92)
+		)
+		(uuid "03ffd801-9ed6-438f-b22a-cf44397f0335")
+	)
+	(wire
+		(pts
+			(xy 124.46 167.64)
+			(xy 121.92 167.64)
+		)
+		(uuid "9a41d0a7-608a-4194-b607-2ed2215e15cf")
+	)
+	(wire
+		(pts
+			(xy 76.2 203.2)
+			(xy 76.2 205.74)
+		)
+		(uuid "a45c1f4b-4165-4c35-81c7-306ddfebfbad")
+	)
+	(wire
+		(pts
+			(xy 116.84 196.85)
+			(xy 116.84 199.39)
+		)
+		(uuid "5074e601-0abe-40f7-8dc5-7a4773278c3c")
+	)
+	(wire
+		(pts
+			(xy 198.12 203.2)
+			(xy 198.12 205.74)
+		)
+		(uuid "ac4299b5-a18c-428c-a0b9-66741ba11d4d")
+	)
+	(wire
+		(pts
+			(xy 243.84 196.85)
+			(xy 243.84 199.39)
+		)
+		(uuid "ac213996-6551-464f-903d-106e18112080")
+	)
+	(wire
+		(pts
+			(xy 160.02 127)
+			(xy 156.21 127)
+		)
+		(uuid "670ae3e3-eb69-49a1-874f-2bc8fe8a4960")
+	)
+	(wire
+		(pts
+			(xy 160.02 134.62)
+			(xy 156.21 134.62)
+		)
+		(uuid "8c8b6251-ae62-473b-8911-aed64d38cd22")
+	)
+	(wire
+		(pts
+			(xy 160.02 142.24)
+			(xy 156.21 142.24)
+		)
+		(uuid "4ada766c-539e-4f70-955b-a3a5460ac702")
+	)
+	(wire
+		(pts
+			(xy 148.59 127)
+			(xy 146.05 127)
+		)
+		(uuid "427d9fb2-730d-4f43-a9dc-50d1a647fc49")
+	)
+	(wire
+		(pts
+			(xy 91.44 193.04)
+			(xy 93.98 193.04)
+		)
+		(uuid "1f1f77f5-4567-424e-ad84-fb45dc15258c")
+	)
+	(wire
+		(pts
+			(xy 148.59 134.62)
+			(xy 146.05 134.62)
+		)
+		(uuid "07d1df2c-b6c9-4e25-a815-3167e34c5916")
+	)
+	(wire
+		(pts
+			(xy 213.36 193.04)
+			(xy 215.9 193.04)
+		)
+		(uuid "cd8470c7-242b-440f-841f-70f7beef7baa")
+	)
+	(wire
+		(pts
+			(xy 148.59 142.24)
+			(xy 146.05 142.24)
+		)
+		(uuid "9ac143e0-6a16-46d5-a8b5-0eb761e2f563")
+	)
+	(wire
+		(pts
+			(xy 246.38 106.68)
+			(xy 248.92 106.68)
+		)
+		(uuid "48985488-b0d3-4e1b-be81-58601e38385b")
+	)
+	(wire
+		(pts
+			(xy 246.38 109.22)
+			(xy 248.92 109.22)
+		)
+		(uuid "8b1c2e11-fe31-4466-9843-bb634281c545")
+	)
+	(wire
+		(pts
+			(xy 246.38 111.76)
+			(xy 248.92 111.76)
+		)
+		(uuid "7c3a2318-1adf-43e6-9b17-0cc83511c1f6")
+	)
+	(wire
+		(pts
+			(xy 60.96 191.77)
+			(xy 60.96 193.04)
+		)
+		(uuid "cd3f4851-20c9-4175-b0cc-256be9d63d34")
+	)
+	(wire
+		(pts
+			(xy 60.96 193.04)
+			(xy 68.58 193.04)
+		)
+		(uuid "d90c655b-da54-4f61-898d-677edaa7ad43")
+	)
+	(wire
+		(pts
+			(xy 35.56 193.04)
+			(xy 60.96 193.04)
+		)
+		(uuid "ea20a785-0e06-4d86-b63b-90dfb0417d27")
+	)
+	(wire
+		(pts
+			(xy 182.88 191.77)
+			(xy 182.88 193.04)
+		)
+		(uuid "ea021492-6157-45c6-8b4b-e74c6fa1f042")
+	)
+	(wire
+		(pts
+			(xy 182.88 193.04)
+			(xy 190.5 193.04)
+		)
+		(uuid "8d6d6382-bdf5-4777-a61b-4c7964be2cdf")
+	)
+	(wire
+		(pts
+			(xy 152.4 193.04)
+			(xy 182.88 193.04)
+		)
+		(uuid "f2a85953-cb5b-4a90-b3c4-6a29c72ccb56")
+	)
+	(label "ESTOP_OK_BUF"
+		(at 93.98 193.04 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "302388a8-ab05-4153-82d8-80116f83b08f")
+	)
+	(label "ESTOP_OK_BUF"
+		(at 146.05 134.62 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "ee2410f4-b209-4469-8042-d142d6b76140")
+	)
+	(label "BEACON_STATE_BUF"
+		(at 215.9 193.04 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "f58311f6-b955-46f6-a0c9-c4a1775f3251")
+	)
+	(label "BEACON_STATE_BUF"
+		(at 146.05 142.24 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "aeae5b9b-11f5-4d68-b565-b312aa098519")
+	)
+	(hierarchical_label "COMPUTE_POWER"
+		(shape input)
+		(at 157.48 106.68 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "36c63d89-027d-4fa4-a76b-01c1013a349b")
+	)
+	(hierarchical_label "POWER_GND"
+		(shape passive)
+		(at 157.48 109.22 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "62b41166-30f7-427d-aa5e-08f9f1b4fc86")
+	)
+	(hierarchical_label "POWER_GND"
+		(shape passive)
+		(at 132.08 167.64 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "b096df28-a140-4678-a10f-c61ecf75509f")
+	)
+	(hierarchical_label "LOGIC_3V3"
+		(shape output)
+		(at 157.48 116.84 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "260fc150-4303-4135-babb-408beb7a981e")
+	)
+	(hierarchical_label "LOGIC_3V3"
+		(shape output)
+		(at 60.96 181.61 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "c9ceabdc-424f-4dc1-a2a5-3709d7cfe126")
+	)
+	(hierarchical_label "LOGIC_3V3"
+		(shape output)
+		(at 76.2 180.34 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "166a0451-d7cf-4394-b93c-9d0b46ee28c3")
+	)
+	(hierarchical_label "LOGIC_3V3"
+		(shape output)
+		(at 116.84 186.69 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "c8cdf884-8922-4318-affc-1f5e55195533")
+	)
+	(hierarchical_label "LOGIC_3V3"
+		(shape output)
+		(at 182.88 181.61 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "866f5675-a43b-45fd-a7b2-ff0dd05ba25a")
+	)
+	(hierarchical_label "LOGIC_3V3"
+		(shape output)
+		(at 198.12 180.34 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "9fdc7f7e-c448-4e70-ab5b-d367de7a2478")
+	)
+	(hierarchical_label "LOGIC_3V3"
+		(shape output)
+		(at 243.84 186.69 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "3c67be96-1b62-4252-bc6d-d692b5a8f378")
+	)
+	(hierarchical_label "JETSON_LOGIC_GND"
+		(shape output)
+		(at 157.48 121.92 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "09cff231-6d2e-49d2-9c32-842d4b77be1d")
+	)
+	(hierarchical_label "JETSON_LOGIC_GND"
+		(shape output)
+		(at 121.92 167.64 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "61f0f554-d87d-48a2-b344-f8778cb98051")
+	)
+	(hierarchical_label "JETSON_LOGIC_GND"
+		(shape output)
+		(at 76.2 205.74 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "2d0cdd7b-cbd7-429b-832d-cde816fe46a8")
+	)
+	(hierarchical_label "JETSON_LOGIC_GND"
+		(shape output)
+		(at 116.84 199.39 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "1706b966-8d3b-47c7-95af-f00277426f15")
+	)
+	(hierarchical_label "JETSON_LOGIC_GND"
+		(shape output)
+		(at 198.12 205.74 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "35051bd4-08a3-437c-a86d-696821ce6b29")
+	)
+	(hierarchical_label "JETSON_LOGIC_GND"
+		(shape output)
+		(at 243.84 199.39 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "085efff7-f09f-4910-b304-8deef9b1c475")
+	)
+	(hierarchical_label "BEACON_HOLDOFF_PULSE"
+		(shape output)
+		(at 146.05 127 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "a072d7f3-f4a9-4474-ac88-dd2f4f7f360a")
+	)
+	(hierarchical_label "USB_GEMINI"
+		(shape bidirectional)
+		(at 248.92 106.68 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "4d4cbacd-255d-42ae-a04f-2ed384829f7a")
+	)
+	(hierarchical_label "USB_HUB_UP"
+		(shape bidirectional)
+		(at 248.92 109.22 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "1f19cb21-0c6c-4bf7-a178-cfed94c796c8")
+	)
+	(hierarchical_label "USB_WRIST"
+		(shape bidirectional)
+		(at 248.92 111.76 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "4fe90c78-d447-436c-a2be-ee087dcc1d27")
+	)
+	(hierarchical_label "ESTOP_OK_N"
+		(shape input)
+		(at 35.56 193.04 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "ab27e387-d23b-42c0-8461-1b3e81213c08")
+	)
+	(hierarchical_label "BEACON_STATE_N"
+		(shape input)
+		(at 152.4 193.04 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "33664c09-4d47-417a-967c-611dec39334c")
+	)
+  (text "KIRO Wiring V2  |  Jetson_and_GPIO"
+    (at 20.32 20.32 0)
+    (effects (font (size 3 3) (bold yes)) (justify left bottom))
+    (uuid "b01adb8c-8cf7-47ae-bcdf-8afd5684def9")
+  )
+  (text "NVIDIA Jetson Orin Nano Super Developer Kit, reference carrier: J16 DC jack, J12 40-pin header, J6/J7 USB"
+    (at 20.32 25.4 0)
+    (effects (font (size 1.5 1.5)) (justify left bottom))
+    (uuid "84607e3d-8fe3-4dff-b14f-38f8339f8cf3")
+  )
+  (text "J12 HEADER FACTS (NVIDIA carrier spec)"
+    (at 20.32 35.56 0)
+    (effects (font (size 1.5 1.5) (bold yes)) (justify left bottom))
+    (uuid "e42ce8b6-bf6e-4f6f-a8bf-f72d76871256")
+  )
+  (text "All J12 signals 3.3 V. Non-I2C pins go through TI TXB0108 level translators: drive only +/-20 uA."
+    (at 20.32 40.64 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "93f3e1bd-ad88-4a55-87e2-aa6b1b77605c")
+  )
+  (text "External pull-ups/pull-downs on these pins must be > 50 kOhm. Never load a J12 pin directly."
+    (at 20.32 45.72 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "2cfb686b-87ef-47c2-b1f3-5f61093327d0")
+  )
+  (text "Therefore every GPIO here meets a 74LVC1G17 buffer (CMOS input, push-pull output)."
+    (at 20.32 50.8 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "10e86481-db57-4784-98de-1eb5e3522a35")
+  )
+  (text "Pins 29/31/7 are PROPOSED. Pinmux, boot state and state after cleanup: bench-verify (TBD)."
+    (at 20.32 55.88 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "26fb7f7b-0650-4482-969d-25dfcee185c4")
+  )
+  (text "J16: 9-20 V, 5.5 x 2.5 mm, centre positive, max 3.5 A. Raw battery 10-14.6 V is inside range."
+    (at 20.32 60.96 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "f5141142-80ac-49d3-ae34-ca52b99a49be")
+  )
+  (text "Do NOT use hardware PWM for BEACON_HOLDOFF_PULSE: it must stop when software freezes."
+    (at 20.32 66.04 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "5b0bb552-bb2f-4932-a588-9a1d5f24ac20")
+  )
+  (text "R21 1k: GPIO -> buffer input (light sheet).  R22/R23 100R: buffer output -> TXB0108 B-side (overdrive)."
+    (at 20.32 153.67 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "ff461ecf-0014-483c-83f4-1bdb69c6a160")
+  )
+  (text "NT1: J12 GND and J16 DC return are the same carrier-board ground. No extra wire to POWER_GND."
+    (at 20.32 158.75 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "78423575-44e3-422d-8b0a-b924c4f6af23")
+  )
+  (text "USB PORT ASSIGNMENT"
+    (at 284.48 71.12 0)
+    (effects (font (size 1.5 1.5) (bold yes)) (justify left bottom))
+    (uuid "e0aa1e25-9db5-45cd-8ea2-0024759f1be2")
+  )
+  (text "J6 port 1: Orbbec Gemini 335 (USB 3.2 Gen1, bundled cable, never via hub)"
+    (at 284.48 76.2 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "e02f3db5-0c95-4dc9-8e32-752618bfaae2")
+  )
+  (text "J6 port 2: powered USB hub upstream (LiDAR + 3x CH343 servo adapters)"
+    (at 284.48 81.28 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "33cd5313-d769-4a26-a32f-63c9ae72410d")
+  )
+  (text "J7 port 1: Suyin wrist webcam.   J7 port 2: spare.   Each J6/J7 stack: 3 A VBUS total."
+    (at 284.48 86.36 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "df395703-a010-48e9-a520-d2187819f010")
+  )
+  (text "J15 GbE, J5 USB-C, J20/J21 CSI, J14 buttons: present on the carrier, not used in V2 (no-connect)."
+    (at 284.48 91.44 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "bbb89ab8-0a48-4c31-ba11-f24e24e89c87")
+  )
+	(symbol
+		(lib_id "KIRO_V2:Jetson_OrinNano_Super_DevKit")
+		(at 203.2 127 0)
+		(unit 1)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "5c66c0c4-1335-46cf-b23b-de3f53c59806")
+		(property "Reference" "U20"
+			(at 203.2 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Jetson Orin Nano Super Dev Kit 8GB (P3768 carrier)"
+			(at 203.2 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 203.2 127 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://docs.nvidia.com/jetson/orin-nano-devkit/user-guide/latest/hardware_layout.html"
+			(at 203.2 127 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 203.2 127 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "kiro_wiring_v2"
+				(path "/6d1698fd-98cf-4499-9772-4c44045535ac/6dd5479e-b856-4721-9ad2-79336e799186"
+					(reference "U20")
+					(unit 1)
+				)
+				(path "/7cfe1389-9e97-448d-8d0b-30ac17f4c495/eda9e0b6-0a80-43e8-8e4b-f1a06b7edd80"
+					(reference "U20")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 152.4 127 90)
+		(unit 1)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "bc5a9a9f-4d8e-4621-98e0-dc614d26564a")
+		(property "Reference" "R21"
+			(at 152.4 124.968 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1k"
+			(at 152.4 127 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 152.4 127 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 152.4 127 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 152.4 127 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "kiro_wiring_v2"
+				(path "/6d1698fd-98cf-4499-9772-4c44045535ac/6dd5479e-b856-4721-9ad2-79336e799186"
+					(reference "R21")
+					(unit 1)
+				)
+				(path "/7cfe1389-9e97-448d-8d0b-30ac17f4c495/eda9e0b6-0a80-43e8-8e4b-f1a06b7edd80"
+					(reference "R21")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 152.4 134.62 90)
+		(unit 1)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "f286796c-3a39-4b8b-86a9-095ba306ac5c")
+		(property "Reference" "R22"
+			(at 152.4 132.588 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100R"
+			(at 152.4 134.62 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 152.4 134.62 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 152.4 134.62 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 152.4 134.62 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "kiro_wiring_v2"
+				(path "/6d1698fd-98cf-4499-9772-4c44045535ac/6dd5479e-b856-4721-9ad2-79336e799186"
+					(reference "R22")
+					(unit 1)
+				)
+				(path "/7cfe1389-9e97-448d-8d0b-30ac17f4c495/eda9e0b6-0a80-43e8-8e4b-f1a06b7edd80"
+					(reference "R22")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 152.4 142.24 90)
+		(unit 1)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "5f2f49cf-6939-4836-b46a-f8915f04b2c0")
+		(property "Reference" "R23"
+			(at 152.4 140.208 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100R"
+			(at 152.4 142.24 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 152.4 142.24 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 152.4 142.24 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 152.4 142.24 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "kiro_wiring_v2"
+				(path "/6d1698fd-98cf-4499-9772-4c44045535ac/6dd5479e-b856-4721-9ad2-79336e799186"
+					(reference "R23")
+					(unit 1)
+				)
+				(path "/7cfe1389-9e97-448d-8d0b-30ac17f4c495/eda9e0b6-0a80-43e8-8e4b-f1a06b7edd80"
+					(reference "R23")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:NetTie_2")
+		(at 127 167.64 0)
+		(unit 1)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "140e0c9a-41dc-4143-ab2b-db60f89fe524")
+		(property "Reference" "NT1"
+			(at 127 166.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "carrier GND = J16 return"
+			(at 127 173.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 127 167.64 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 127 167.64 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Net tie, 2 pins"
+			(at 127 167.64 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "kiro_wiring_v2"
+				(path "/6d1698fd-98cf-4499-9772-4c44045535ac/6dd5479e-b856-4721-9ad2-79336e799186"
+					(reference "NT1")
+					(unit 1)
+				)
+				(path "/7cfe1389-9e97-448d-8d0b-30ac17f4c495/eda9e0b6-0a80-43e8-8e4b-f1a06b7edd80"
+					(reference "NT1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "74xGxx:74LVC1G17")
+		(at 81.28 193.04 0)
+		(unit 1)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "52174b48-ffac-454c-9117-d91e01d0bc19")
+		(property "Reference" "U21"
+			(at 81.28 189.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "74LVC1G17"
+			(at 81.28 196.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 81.28 193.04 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/sn74lvc1g17.pdf"
+			(at 81.28 193.04 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Single Schmitt Buffer Gate, Low-Voltage CMOS"
+			(at 81.28 193.04 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "kiro_wiring_v2"
+				(path "/6d1698fd-98cf-4499-9772-4c44045535ac/6dd5479e-b856-4721-9ad2-79336e799186"
+					(reference "U21")
+					(unit 1)
+				)
+				(path "/7cfe1389-9e97-448d-8d0b-30ac17f4c495/eda9e0b6-0a80-43e8-8e4b-f1a06b7edd80"
+					(reference "U21")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 60.96 187.96 0)
+		(unit 1)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "175a5006-72a4-444e-abde-0fb66b122034")
+		(property "Reference" "R24"
+			(at 62.992 187.96 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10k"
+			(at 60.96 187.96 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 60.96 187.96 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 60.96 187.96 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 60.96 187.96 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "kiro_wiring_v2"
+				(path "/6d1698fd-98cf-4499-9772-4c44045535ac/6dd5479e-b856-4721-9ad2-79336e799186"
+					(reference "R24")
+					(unit 1)
+				)
+				(path "/7cfe1389-9e97-448d-8d0b-30ac17f4c495/eda9e0b6-0a80-43e8-8e4b-f1a06b7edd80"
+					(reference "R24")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 116.84 193.04 0)
+		(unit 1)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "2798840d-ed0a-4249-8150-82641cd05019")
+		(property "Reference" "C21"
+			(at 117.475 190.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100nF"
+			(at 117.475 195.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 116.84 193.04 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 116.84 193.04 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 116.84 193.04 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "kiro_wiring_v2"
+				(path "/6d1698fd-98cf-4499-9772-4c44045535ac/6dd5479e-b856-4721-9ad2-79336e799186"
+					(reference "C21")
+					(unit 1)
+				)
+				(path "/7cfe1389-9e97-448d-8d0b-30ac17f4c495/eda9e0b6-0a80-43e8-8e4b-f1a06b7edd80"
+					(reference "C21")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "74xGxx:74LVC1G17")
+		(at 203.2 193.04 0)
+		(unit 1)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "6aa0ed31-b55a-4546-9471-ef0ed2e17848")
+		(property "Reference" "U22"
+			(at 203.2 189.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "74LVC1G17"
+			(at 203.2 196.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 203.2 193.04 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/sn74lvc1g17.pdf"
+			(at 203.2 193.04 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Single Schmitt Buffer Gate, Low-Voltage CMOS"
+			(at 203.2 193.04 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "kiro_wiring_v2"
+				(path "/6d1698fd-98cf-4499-9772-4c44045535ac/6dd5479e-b856-4721-9ad2-79336e799186"
+					(reference "U22")
+					(unit 1)
+				)
+				(path "/7cfe1389-9e97-448d-8d0b-30ac17f4c495/eda9e0b6-0a80-43e8-8e4b-f1a06b7edd80"
+					(reference "U22")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 182.88 187.96 0)
+		(unit 1)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "30e7a7f5-fb6e-4d70-9eeb-28e6e3e64726")
+		(property "Reference" "R25"
+			(at 184.912 187.96 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10k"
+			(at 182.88 187.96 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 182.88 187.96 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 182.88 187.96 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 182.88 187.96 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "kiro_wiring_v2"
+				(path "/6d1698fd-98cf-4499-9772-4c44045535ac/6dd5479e-b856-4721-9ad2-79336e799186"
+					(reference "R25")
+					(unit 1)
+				)
+				(path "/7cfe1389-9e97-448d-8d0b-30ac17f4c495/eda9e0b6-0a80-43e8-8e4b-f1a06b7edd80"
+					(reference "R25")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 243.84 193.04 0)
+		(unit 1)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "010f0753-5f3b-42e1-94fa-6d5580c35935")
+		(property "Reference" "C22"
+			(at 244.475 190.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100nF"
+			(at 244.475 195.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 243.84 193.04 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 243.84 193.04 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 243.84 193.04 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "kiro_wiring_v2"
+				(path "/6d1698fd-98cf-4499-9772-4c44045535ac/6dd5479e-b856-4721-9ad2-79336e799186"
+					(reference "C22")
+					(unit 1)
+				)
+				(path "/7cfe1389-9e97-448d-8d0b-30ac17f4c495/eda9e0b6-0a80-43e8-8e4b-f1a06b7edd80"
+					(reference "C22")
+					(unit 1)
+				)
+			)
+		)
+	)
+)

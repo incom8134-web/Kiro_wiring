@@ -1,0 +1,1805 @@
+(kicad_sch
+	(version 20250610)
+	(generator "konnect")
+	(generator_version "10.0")
+	(uuid "7cfe1389-9e97-448d-8d0b-30ac17f4c495")
+	(paper "A3")
+	(lib_symbols)
+	(wire
+		(pts
+			(xy 60.96 149.86)
+			(xy 63.5 149.86)
+		)
+		(uuid "c2464882-2d1a-473b-8e3f-546d51d8672c")
+	)
+	(wire
+		(pts
+			(xy 60.96 152.4)
+			(xy 63.5 152.4)
+		)
+		(uuid "c741fdfb-ea58-4905-8f5b-f09042fa0d4b")
+	)
+	(wire
+		(pts
+			(xy 152.4 144.78)
+			(xy 154.94 144.78)
+		)
+		(uuid "8c3fae92-db5a-4c81-afa1-86b98bc4cbeb")
+	)
+	(wire
+		(pts
+			(xy 152.4 147.32)
+			(xy 154.94 147.32)
+		)
+		(uuid "693e57b4-8ade-4007-a720-56fa5d23244f")
+	)
+	(wire
+		(pts
+			(xy 152.4 149.86)
+			(xy 154.94 149.86)
+		)
+		(uuid "0acdf1f9-6343-4754-b2e3-7d32c7abcaa1")
+	)
+	(wire
+		(pts
+			(xy 152.4 152.4)
+			(xy 154.94 152.4)
+		)
+		(uuid "bf02bdaf-c419-420e-9614-16221e9d3472")
+	)
+	(wire
+		(pts
+			(xy 152.4 154.94)
+			(xy 154.94 154.94)
+		)
+		(uuid "6b4e1fea-d041-460d-aa28-1c434b423b3f")
+	)
+	(wire
+		(pts
+			(xy 152.4 157.48)
+			(xy 154.94 157.48)
+		)
+		(uuid "f52bb932-e480-4808-b945-81b58a310516")
+	)
+	(wire
+		(pts
+			(xy 152.4 160.02)
+			(xy 154.94 160.02)
+		)
+		(uuid "da7be8c1-e3c0-4973-b692-86f16d4dd4e0")
+	)
+	(wire
+		(pts
+			(xy 152.4 162.56)
+			(xy 154.94 162.56)
+		)
+		(uuid "fd9bad7c-3dca-4ad2-b478-cccdc117bfc8")
+	)
+	(wire
+		(pts
+			(xy 152.4 165.1)
+			(xy 154.94 165.1)
+		)
+		(uuid "6a399362-0b9b-42db-a132-6a0b56021db3")
+	)
+	(wire
+		(pts
+			(xy 152.4 167.64)
+			(xy 154.94 167.64)
+		)
+		(uuid "924c7f01-ab78-4383-9245-1316ccdcb22e")
+	)
+	(wire
+		(pts
+			(xy 101.6 73.66)
+			(xy 104.14 73.66)
+		)
+		(uuid "343b534a-269b-4850-8c8c-f6b5e21c3f24")
+	)
+	(wire
+		(pts
+			(xy 101.6 76.2)
+			(xy 104.14 76.2)
+		)
+		(uuid "e35667af-5fe0-44b3-97b0-a1ac6b9de90b")
+	)
+	(wire
+		(pts
+			(xy 101.6 78.74)
+			(xy 104.14 78.74)
+		)
+		(uuid "a276ecb2-d383-4731-be5c-6fbcf7412b66")
+	)
+	(wire
+		(pts
+			(xy 101.6 81.28)
+			(xy 104.14 81.28)
+		)
+		(uuid "59039fbd-9bd5-4be0-8ea1-321280039a2f")
+	)
+	(wire
+		(pts
+			(xy 101.6 83.82)
+			(xy 104.14 83.82)
+		)
+		(uuid "6e22febc-bb54-4426-9bfa-cf95b1b8313b")
+	)
+	(wire
+		(pts
+			(xy 101.6 86.36)
+			(xy 104.14 86.36)
+		)
+		(uuid "bde6b3e7-46c1-4459-b94a-9131cebae57f")
+	)
+	(wire
+		(pts
+			(xy 187.96 104.14)
+			(xy 185.42 104.14)
+		)
+		(uuid "272ef4f9-e62a-4b6f-a12f-ee856329ca09")
+	)
+	(wire
+		(pts
+			(xy 187.96 106.68)
+			(xy 185.42 106.68)
+		)
+		(uuid "0c196b8f-99bf-41f2-95e5-26c442795425")
+	)
+	(wire
+		(pts
+			(xy 187.96 109.22)
+			(xy 185.42 109.22)
+		)
+		(uuid "7b60f7f8-15a9-4613-911f-ab0a5c64cc14")
+	)
+	(wire
+		(pts
+			(xy 187.96 111.76)
+			(xy 185.42 111.76)
+		)
+		(uuid "34d80e74-4116-4f8d-818e-849f91c1920e")
+	)
+	(wire
+		(pts
+			(xy 187.96 114.3)
+			(xy 185.42 114.3)
+		)
+		(uuid "edaa2593-465c-4c73-8c9c-5dc0388631cf")
+	)
+	(wire
+		(pts
+			(xy 187.96 116.84)
+			(xy 185.42 116.84)
+		)
+		(uuid "3b439bdb-6674-42ba-a820-a1d9564de149")
+	)
+	(wire
+		(pts
+			(xy 187.96 119.38)
+			(xy 185.42 119.38)
+		)
+		(uuid "302ce23f-b3f4-4668-9c9f-e6c88623ded6")
+	)
+	(wire
+		(pts
+			(xy 187.96 121.92)
+			(xy 185.42 121.92)
+		)
+		(uuid "3f166f6f-d1e6-4f52-84f6-4bd2af9691ac")
+	)
+	(wire
+		(pts
+			(xy 187.96 124.46)
+			(xy 185.42 124.46)
+		)
+		(uuid "36603f24-ccc8-4604-802f-b1cbc7be853c")
+	)
+	(wire
+		(pts
+			(xy 187.96 127)
+			(xy 185.42 127)
+		)
+		(uuid "c68c8bab-0c13-40eb-b0bd-f56075fcb1a6")
+	)
+	(wire
+		(pts
+			(xy 187.96 205.74)
+			(xy 185.42 205.74)
+		)
+		(uuid "ec32116b-70f2-4d0b-966e-1a602d6cd44d")
+	)
+	(wire
+		(pts
+			(xy 187.96 208.28)
+			(xy 185.42 208.28)
+		)
+		(uuid "4d48e196-f186-4282-b423-fb502738db96")
+	)
+	(wire
+		(pts
+			(xy 187.96 210.82)
+			(xy 185.42 210.82)
+		)
+		(uuid "fe06fbe7-45d0-47bf-9ece-06abb2926243")
+	)
+	(wire
+		(pts
+			(xy 304.8 119.38)
+			(xy 302.26 119.38)
+		)
+		(uuid "b3dd312f-9f23-4881-96f0-633639c5a4fa")
+	)
+	(wire
+		(pts
+			(xy 304.8 121.92)
+			(xy 302.26 121.92)
+		)
+		(uuid "9b0a2826-8aed-458c-a0cb-664a01ac3325")
+	)
+	(wire
+		(pts
+			(xy 304.8 124.46)
+			(xy 302.26 124.46)
+		)
+		(uuid "0cc192b2-1398-4fdb-aa07-fafe4a5feea4")
+	)
+	(wire
+		(pts
+			(xy 304.8 127)
+			(xy 302.26 127)
+		)
+		(uuid "362af3e4-0f0e-4e29-99eb-e12abedfa373")
+	)
+	(wire
+		(pts
+			(xy 304.8 129.54)
+			(xy 302.26 129.54)
+		)
+		(uuid "fe3563f4-f2b1-4bfe-9685-30ba9adfc813")
+	)
+	(wire
+		(pts
+			(xy 304.8 38.1)
+			(xy 302.26 38.1)
+		)
+		(uuid "e39e3512-df6d-402e-9dd7-d59e848f5f4b")
+	)
+	(wire
+		(pts
+			(xy 304.8 40.64)
+			(xy 302.26 40.64)
+		)
+		(uuid "c1787c0a-412a-4fa0-8862-4662b1110442")
+	)
+	(wire
+		(pts
+			(xy 304.8 43.18)
+			(xy 302.26 43.18)
+		)
+		(uuid "0b4e0346-8a28-462f-ab5e-ec90fb13155d")
+	)
+	(wire
+		(pts
+			(xy 304.8 45.72)
+			(xy 302.26 45.72)
+		)
+		(uuid "cbcdb535-1f1b-4ee8-9d8e-99ff3d8dc553")
+	)
+	(wire
+		(pts
+			(xy 304.8 48.26)
+			(xy 302.26 48.26)
+		)
+		(uuid "e2f8c48b-bf8c-4bd3-8296-11fa2d3bfa3d")
+	)
+	(wire
+		(pts
+			(xy 304.8 50.8)
+			(xy 302.26 50.8)
+		)
+		(uuid "77df2ee2-8e97-41d1-ac6f-deee0103057c")
+	)
+	(wire
+		(pts
+			(xy 304.8 53.34)
+			(xy 302.26 53.34)
+		)
+		(uuid "0b001b31-0643-434d-a36d-2552525e6758")
+	)
+	(wire
+		(pts
+			(xy 304.8 55.88)
+			(xy 302.26 55.88)
+		)
+		(uuid "e0f2109b-b486-4b24-83b8-d82e29dd377c")
+	)
+	(wire
+		(pts
+			(xy 177.8 38.1)
+			(xy 175.26 38.1)
+		)
+		(uuid "45c77cb8-f8ec-478f-b630-4e396c7c2554")
+	)
+	(wire
+		(pts
+			(xy 177.8 40.64)
+			(xy 175.26 40.64)
+		)
+		(uuid "566e0322-c1a9-4f18-a940-a1adbbe5a516")
+	)
+	(wire
+		(pts
+			(xy 177.8 43.18)
+			(xy 175.26 43.18)
+		)
+		(uuid "6233a0db-eb66-4589-aa64-446e4ed6d100")
+	)
+	(wire
+		(pts
+			(xy 177.8 45.72)
+			(xy 175.26 45.72)
+		)
+		(uuid "29620f80-341c-4e49-84df-ef93e9ddadd4")
+	)
+	(wire
+		(pts
+			(xy 177.8 48.26)
+			(xy 175.26 48.26)
+		)
+		(uuid "4218f9fd-fbbf-4168-ad0c-90dfe5d2d706")
+	)
+	(wire
+		(pts
+			(xy 177.8 50.8)
+			(xy 175.26 50.8)
+		)
+		(uuid "c1510038-2e84-4a23-891a-cf46d124acde")
+	)
+	(wire
+		(pts
+			(xy 304.8 180.34)
+			(xy 302.26 180.34)
+		)
+		(uuid "ccdb64e7-badd-4f4b-a50b-a71f6a18483c")
+	)
+	(wire
+		(pts
+			(xy 304.8 182.88)
+			(xy 302.26 182.88)
+		)
+		(uuid "126fde17-ff93-4424-bdc9-295377dd781a")
+	)
+	(wire
+		(pts
+			(xy 304.8 185.42)
+			(xy 302.26 185.42)
+		)
+		(uuid "cd6c6ea9-ca8e-48b2-8db0-9458375c9b82")
+	)
+	(wire
+		(pts
+			(xy 304.8 187.96)
+			(xy 302.26 187.96)
+		)
+		(uuid "79213af3-c0b7-463f-8a32-772234ed9018")
+	)
+	(wire
+		(pts
+			(xy 304.8 190.5)
+			(xy 302.26 190.5)
+		)
+		(uuid "9486a959-d32d-46eb-b9bb-537e435d678f")
+	)
+	(wire
+		(pts
+			(xy 304.8 193.04)
+			(xy 302.26 193.04)
+		)
+		(uuid "3336fdf3-1f6d-4848-a4b7-ee7e112fa1f0")
+	)
+	(wire
+		(pts
+			(xy 304.8 195.58)
+			(xy 302.26 195.58)
+		)
+		(uuid "b692a8ab-bbc2-4467-b790-1d1bbac6104f")
+	)
+	(wire
+		(pts
+			(xy 304.8 198.12)
+			(xy 302.26 198.12)
+		)
+		(uuid "aede0d73-1d76-4836-ab18-a698b47f1fcc")
+	)
+	(wire
+		(pts
+			(xy 304.8 200.66)
+			(xy 302.26 200.66)
+		)
+		(uuid "9a1ebf9e-3607-445f-9a08-161b1ec69045")
+	)
+	(wire
+		(pts
+			(xy 304.8 203.2)
+			(xy 302.26 203.2)
+		)
+		(uuid "de7347d1-46e2-4965-b19f-e86694c7ac4b")
+	)
+	(wire
+		(pts
+			(xy 304.8 205.74)
+			(xy 302.26 205.74)
+		)
+		(uuid "b86f2dee-1ab3-48a3-94c1-d7cd1da26d43")
+	)
+	(wire
+		(pts
+			(xy 304.8 208.28)
+			(xy 302.26 208.28)
+		)
+		(uuid "afa94248-54a9-4021-a098-5341a25b6d47")
+	)
+	(label "POWER_GND"
+		(at 63.5 149.86 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "ce8307aa-d879-498d-b47c-635b7a3215a9")
+	)
+	(label "BATTERY_RAW"
+		(at 63.5 152.4 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "118cac3d-7719-4297-a764-0042f2f772bb")
+	)
+	(label "POWER_GND"
+		(at 154.94 144.78 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "16e381a5-0844-4149-a1e0-765c0ac5e55f")
+	)
+	(label "COMPUTE_POWER"
+		(at 154.94 147.32 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "809abe72-417a-4918-b416-551cb81c25f8")
+	)
+	(label "USB_SENSOR_5V"
+		(at 154.94 149.86 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "5d04e249-97a0-457d-86f1-1e5b70d4bb03")
+	)
+	(label "CTRL_12V"
+		(at 154.94 152.4 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "b788c9fb-b0ec-4209-8064-5ef9cdabf9fe")
+	)
+	(label "REGULATED_12V"
+		(at 154.94 154.94 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "e04a1b00-b09f-4608-873c-29a27d87f7bd")
+	)
+	(label "BEACON_12V"
+		(at 154.94 157.48 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "249b54ef-14be-4622-9971-123a82173279")
+	)
+	(label "BATTERY_RAW"
+		(at 154.94 160.02 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "53fb2dd4-0ae6-48de-8f59-725edb923918")
+	)
+	(label "12V_AFTER_CONTACTOR"
+		(at 154.94 162.56 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "ec96f347-5889-413b-a900-8eea805bf0ba")
+	)
+	(label "ARM_LEADER_5V"
+		(at 154.94 165.1 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "af3473c7-f043-44ab-81ac-74a736a6bccb")
+	)
+	(label "ARM_FOLLOWER_5V"
+		(at 154.94 167.64 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "c2c6310a-a8d5-4e6d-b7a0-eb07ee96148c")
+	)
+	(label "BATTERY_RAW"
+		(at 104.14 73.66 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "5defcdd4-4c97-4baf-8a0a-fa627836e118")
+	)
+	(label "12V_AFTER_CONTACTOR"
+		(at 104.14 76.2 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "fa854861-e88e-481f-8b80-659f6350dc19")
+	)
+	(label "POWER_GND"
+		(at 104.14 78.74 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "0dd7c5c0-6fe3-4558-aed9-a3eb7406f182")
+	)
+	(label "ESTOP_OK_N"
+		(at 104.14 81.28 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "f84e6d28-47e7-4e12-baf8-52e9de8a655b")
+	)
+	(label "JETSON_LOGIC_GND"
+		(at 104.14 83.82 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "a3ff45d8-08e3-4600-9636-82e1e1f83f47")
+	)
+	(label "CTRL_12V"
+		(at 104.14 86.36 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "ed74b56b-8868-4ea6-8825-c7be9442ef5c")
+	)
+	(label "COMPUTE_POWER"
+		(at 185.42 104.14 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "8d7a5e14-67d7-4025-8c33-c17e99b5638b")
+	)
+	(label "POWER_GND"
+		(at 185.42 106.68 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "28c38e0f-287d-4f76-9675-e5154ac281d6")
+	)
+	(label "LOGIC_3V3"
+		(at 185.42 109.22 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "71eaa0e6-df3d-4b10-9fb5-4091bd4632fa")
+	)
+	(label "JETSON_LOGIC_GND"
+		(at 185.42 111.76 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "5aa4cb92-e224-4095-9819-d1c853275657")
+	)
+	(label "BEACON_HOLDOFF_PULSE"
+		(at 185.42 114.3 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "f75c8cbd-fa41-465e-b7ba-6f5eeda46aba")
+	)
+	(label "USB_GEMINI"
+		(at 185.42 116.84 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "d85c5a5a-d0fc-45f0-9109-7dca47b0df9b")
+	)
+	(label "USB_HUB_UP"
+		(at 185.42 119.38 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "52c9a236-3500-48f8-b8bd-e58985f3d35e")
+	)
+	(label "USB_WRIST"
+		(at 185.42 121.92 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "820157f7-d77a-4e9e-87eb-af83f61b80ff")
+	)
+	(label "ESTOP_OK_N"
+		(at 185.42 124.46 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "25c2f14b-3f1d-4551-afc6-d26ecc6d86a9")
+	)
+	(label "BEACON_STATE_N"
+		(at 185.42 127 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "938098d1-5539-4115-ab8f-7d59df9ee530")
+	)
+	(label "REGULATED_12V"
+		(at 185.42 205.74 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "553acfd3-0a7d-41f5-90da-f2f4d4d66d25")
+	)
+	(label "POWER_GND"
+		(at 185.42 208.28 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "c52c7a26-0154-4e17-ae22-f6c0783771d2")
+	)
+	(label "USB_WHEEL"
+		(at 185.42 210.82 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "5f2fe1a8-fac4-4d0a-92e5-9c0eb91cf76a")
+	)
+	(label "ARM_LEADER_5V"
+		(at 302.26 119.38 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "4e28e18f-d213-472b-9122-f3485570e86f")
+	)
+	(label "ARM_FOLLOWER_5V"
+		(at 302.26 121.92 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "61f57ecc-06c4-4fb7-887c-8ce3c59a2e7f")
+	)
+	(label "POWER_GND"
+		(at 302.26 124.46 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "4ac799ec-c5e8-4d55-a65c-81ddd3020b2a")
+	)
+	(label "USB_LEADER"
+		(at 302.26 127 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "cface76a-539a-45b7-8ae7-b866678b793f")
+	)
+	(label "USB_FOLLOWER"
+		(at 302.26 129.54 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "2c60e210-96f5-4f34-9147-4df5f155ae17")
+	)
+	(label "USB_GEMINI"
+		(at 302.26 38.1 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "09267a41-9599-4341-b876-f4e234ba46ab")
+	)
+	(label "USB_WRIST"
+		(at 302.26 40.64 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "7d8f6e8b-2e75-4c3c-891d-15455b3b48ab")
+	)
+	(label "USB_SENSOR_5V"
+		(at 302.26 43.18 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "3d46c027-bdd0-45e8-b533-d3fe0ef466bd")
+	)
+	(label "POWER_GND"
+		(at 302.26 45.72 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "15874bc4-8633-43ba-9adb-d59422945c50")
+	)
+	(label "USB_HUB_UP"
+		(at 302.26 48.26 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "aa7f3309-7744-432d-a050-8a0d6a15237b")
+	)
+	(label "USB_WHEEL"
+		(at 302.26 50.8 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "bdf4e3b6-69a1-4e27-8f96-42dffa5f31fa")
+	)
+	(label "USB_LEADER"
+		(at 302.26 53.34 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "6930cce6-73a7-4020-a699-31f22f593616")
+	)
+	(label "USB_FOLLOWER"
+		(at 302.26 55.88 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "c60c0a6d-06dd-48eb-bf05-8b3835eb8316")
+	)
+	(label "BEACON_12V"
+		(at 175.26 38.1 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "d5765945-83b8-47ef-ad77-02b6474d13a0")
+	)
+	(label "BEACON_STATE_N"
+		(at 175.26 40.64 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "2c6decf2-004c-46bb-ab88-1c01af3b3c5c")
+	)
+	(label "JETSON_LOGIC_GND"
+		(at 175.26 43.18 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "c33753bb-8fc5-4222-a52e-f8b2bd1f4ea4")
+	)
+	(label "LOGIC_3V3"
+		(at 175.26 45.72 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "d8080ffb-fb1a-4adf-bf4c-daccafb7088a")
+	)
+	(label "POWER_GND"
+		(at 175.26 48.26 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "650b7234-f36e-45dd-87e0-2ab8e4c7ef2c")
+	)
+	(label "BEACON_HOLDOFF_PULSE"
+		(at 175.26 50.8 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "82b94fe0-b97d-4cc9-9741-9aed62400936")
+	)
+	(label "BATTERY_RAW"
+		(at 302.26 180.34 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "31858586-3100-4991-9311-4175f20dce49")
+	)
+	(label "POWER_GND"
+		(at 302.26 182.88 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "92970480-5b33-4d94-910c-e8928df2dd37")
+	)
+	(label "COMPUTE_POWER"
+		(at 302.26 185.42 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "ec6f0a3b-60a7-4924-9cce-e2f8dbc31624")
+	)
+	(label "CTRL_12V"
+		(at 302.26 187.96 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "b12723f3-0871-4b8b-ae2e-2963f4b431e4")
+	)
+	(label "12V_AFTER_CONTACTOR"
+		(at 302.26 190.5 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "42c36749-e231-4f86-90bb-fd3fd87b8353")
+	)
+	(label "REGULATED_12V"
+		(at 302.26 193.04 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "9dfb1c56-248e-4762-816a-2bc9748a4fae")
+	)
+	(label "ARM_LEADER_5V"
+		(at 302.26 195.58 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "abe42927-3a19-47db-aecd-db9cd0824605")
+	)
+	(label "ARM_FOLLOWER_5V"
+		(at 302.26 198.12 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "4d391102-b7e8-4d23-8eb8-f39549079fc0")
+	)
+	(label "BEACON_12V"
+		(at 302.26 200.66 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "d4104b51-f8a2-4606-9f8b-d5685ca076d1")
+	)
+	(label "USB_SENSOR_5V"
+		(at 302.26 203.2 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "0c8f1c75-48b8-40ec-9c37-59679ce2049a")
+	)
+	(label "LOGIC_3V3"
+		(at 302.26 205.74 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "e009c2f5-79b8-40b4-bfd8-88dc4cdc0674")
+	)
+	(label "ESTOP_OK_N"
+		(at 302.26 208.28 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "41fb906f-f73b-4b14-8aae-551330a2c180")
+	)
+	(sheet
+		(at 20.32 147.32)
+		(size 40.64 20.32)
+		(fields_autoplaced)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0)
+		)
+		(uuid "f743a8a1-2e66-4411-a9a0-f12e7cad156f")
+		(property "Sheetname" "Battery_and_Charging"
+			(at 20.32 146.685 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "Battery_and_Charging.kicad_sch"
+			(at 20.32 168.27499999999998 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "POWER_GND" passive
+			(at 60.96 149.86 0)
+			(uuid "3623e83a-61ce-409d-bc35-c4e33b709217")
+		)
+		(pin "BATTERY_RAW" output
+			(at 60.96 152.4 0)
+			(uuid "c7d1174a-07d0-4f48-a8bb-924345b1a321")
+		)
+		(instances
+			(project "kiro_wiring_v2"
+				(path "/7cfe1389-9e97-448d-8d0b-30ac17f4c495"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 96.52 142.24)
+		(size 55.88 40.64)
+		(fields_autoplaced)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0)
+		)
+		(uuid "0e1813c5-0cc1-4719-bf2a-71ba28c5a9a4")
+		(property "Sheetname" "Power_Distribution"
+			(at 96.52 141.60500000000002 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "Power_Distribution.kicad_sch"
+			(at 96.52 183.515 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "POWER_GND" passive
+			(at 152.4 144.78 0)
+			(uuid "2d7de421-2657-4bfb-a327-5019be8d19ee")
+		)
+		(pin "COMPUTE_POWER" output
+			(at 152.4 147.32 0)
+			(uuid "2f8d3b9b-7b9c-4fbe-9850-a7011483924b")
+		)
+		(pin "USB_SENSOR_5V" output
+			(at 152.4 149.86 0)
+			(uuid "9b8cb8a1-b042-4f2f-b1e6-d5525a01d271")
+		)
+		(pin "CTRL_12V" output
+			(at 152.4 152.4 0)
+			(uuid "3560e3f6-7d7f-4b38-8ffe-71325f56aab8")
+		)
+		(pin "REGULATED_12V" output
+			(at 152.4 154.94 0)
+			(uuid "6196c373-6db0-4469-a129-a1039d6a2383")
+		)
+		(pin "BEACON_12V" output
+			(at 152.4 157.48 0)
+			(uuid "781c2337-3e67-415c-b01e-0b86a0cad909")
+		)
+		(pin "BATTERY_RAW" input
+			(at 152.4 160.02 0)
+			(uuid "b0d08d9c-e061-483c-8982-82f570734c8c")
+		)
+		(pin "12V_AFTER_CONTACTOR" input
+			(at 152.4 162.56 0)
+			(uuid "195f1e84-0ff0-4f40-9df3-a21803b3c9c2")
+		)
+		(pin "ARM_LEADER_5V" output
+			(at 152.4 165.1 0)
+			(uuid "f0f40aea-19b8-41cc-aecf-0b144a35b098")
+		)
+		(pin "ARM_FOLLOWER_5V" output
+			(at 152.4 167.64 0)
+			(uuid "666e2637-e0fd-4f6e-83d2-ab35b414d104")
+		)
+		(instances
+			(project "kiro_wiring_v2"
+				(path "/7cfe1389-9e97-448d-8d0b-30ac17f4c495"
+					(page "3")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 40.64 71.12)
+		(size 60.96 25.4)
+		(fields_autoplaced)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0)
+		)
+		(uuid "48490b71-710c-49b1-b50d-1603444b3480")
+		(property "Sheetname" "Safety_EStop_and_Contactor"
+			(at 40.64 70.485 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "Safety_EStop_and_Contactor.kicad_sch"
+			(at 40.64 97.15500000000002 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "BATTERY_RAW" input
+			(at 101.6 73.66 0)
+			(uuid "26d0c0ff-fd14-4368-b164-6866043f419b")
+		)
+		(pin "12V_AFTER_CONTACTOR" output
+			(at 101.6 76.2 0)
+			(uuid "7115f369-4125-4515-bb83-4be303c71bb4")
+		)
+		(pin "POWER_GND" passive
+			(at 101.6 78.74 0)
+			(uuid "4cfdff03-56ca-415c-975b-d0bb0a4b400e")
+		)
+		(pin "ESTOP_OK_N" output
+			(at 101.6 81.28 0)
+			(uuid "cd47a277-17af-4823-aa5b-b17c1e0ed82c")
+		)
+		(pin "JETSON_LOGIC_GND" input
+			(at 101.6 83.82 0)
+			(uuid "81f66cb1-a052-4622-b9f9-afaf227226e4")
+		)
+		(pin "CTRL_12V" input
+			(at 101.6 86.36 0)
+			(uuid "6321a5bf-9e38-4bd1-8312-066a80789c95")
+		)
+		(instances
+			(project "kiro_wiring_v2"
+				(path "/7cfe1389-9e97-448d-8d0b-30ac17f4c495"
+					(page "4")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 187.96 101.6)
+		(size 71.12 40.64)
+		(fields_autoplaced)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0)
+		)
+		(uuid "eda9e0b6-0a80-43e8-8e4b-f1a06b7edd80")
+		(property "Sheetname" "Jetson_and_GPIO"
+			(at 187.96 100.96499999999999 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "Jetson_and_GPIO.kicad_sch"
+			(at 187.96 142.875 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "COMPUTE_POWER" input
+			(at 187.96 104.14 180)
+			(uuid "ea2ccfcb-b583-4558-9511-79c60092d283")
+		)
+		(pin "POWER_GND" passive
+			(at 187.96 106.68 180)
+			(uuid "b15c4624-9f60-4ffb-b96f-ca7be3a760e6")
+		)
+		(pin "LOGIC_3V3" output
+			(at 187.96 109.22 180)
+			(uuid "e458ad83-5659-4d11-a7b8-144f90e3e29b")
+		)
+		(pin "JETSON_LOGIC_GND" output
+			(at 187.96 111.76 180)
+			(uuid "5bb4e101-375c-4daa-8ff7-9885e168d09c")
+		)
+		(pin "BEACON_HOLDOFF_PULSE" output
+			(at 187.96 114.3 180)
+			(uuid "6e5dbb7b-e66c-4af4-bc91-f1e5b0b24856")
+		)
+		(pin "USB_GEMINI" bidirectional
+			(at 187.96 116.84 180)
+			(uuid "d1d842e0-b498-40bc-a55a-b98ee81b9e4b")
+		)
+		(pin "USB_HUB_UP" bidirectional
+			(at 187.96 119.38 180)
+			(uuid "df0df654-13f5-4b24-ae0f-71cda8f04740")
+		)
+		(pin "USB_WRIST" bidirectional
+			(at 187.96 121.92 180)
+			(uuid "02b11add-3501-44a8-96f5-8fc6e6d45573")
+		)
+		(pin "ESTOP_OK_N" input
+			(at 187.96 124.46 180)
+			(uuid "72034cfb-858a-4a36-8937-07cb60a7310a")
+		)
+		(pin "BEACON_STATE_N" input
+			(at 187.96 127 180)
+			(uuid "1c97bd0b-a64d-4ea5-b8c1-f75683880dfa")
+		)
+		(instances
+			(project "kiro_wiring_v2"
+				(path "/7cfe1389-9e97-448d-8d0b-30ac17f4c495"
+					(page "5")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 187.96 203.2)
+		(size 71.12 20.32)
+		(fields_autoplaced)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0)
+		)
+		(uuid "75c39b50-d725-4c13-a141-9d49ac417541")
+		(property "Sheetname" "Wheel_Drive"
+			(at 187.96 202.565 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "Wheel_Drive.kicad_sch"
+			(at 187.96 224.15499999999997 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "REGULATED_12V" input
+			(at 187.96 205.74 180)
+			(uuid "6fff39d5-03c7-403d-b106-11b0283f9e8f")
+		)
+		(pin "POWER_GND" passive
+			(at 187.96 208.28 180)
+			(uuid "88aa51db-d841-409f-9b56-9eac53d1de2d")
+		)
+		(pin "USB_WHEEL" bidirectional
+			(at 187.96 210.82 180)
+			(uuid "cb0d6d60-5147-4539-814a-1d02573c2711")
+		)
+		(instances
+			(project "kiro_wiring_v2"
+				(path "/7cfe1389-9e97-448d-8d0b-30ac17f4c495"
+					(page "6")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 304.8 116.84)
+		(size 76.2 25.4)
+		(fields_autoplaced)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0)
+		)
+		(uuid "296e7a08-1ade-4018-9cac-5567cb8b59a4")
+		(property "Sheetname" "Leader_Follower_Arms"
+			(at 304.8 116.205 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "Leader_Follower_Arms.kicad_sch"
+			(at 304.8 142.875 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "ARM_LEADER_5V" input
+			(at 304.8 119.38 180)
+			(uuid "d7515c86-7673-41ec-adff-7dcd418db52d")
+		)
+		(pin "ARM_FOLLOWER_5V" input
+			(at 304.8 121.92 180)
+			(uuid "bff2b839-6939-415c-aca7-8fc0d9e3f2a2")
+		)
+		(pin "POWER_GND" passive
+			(at 304.8 124.46 180)
+			(uuid "89aedb03-1d72-4b49-9abe-589f5004eb70")
+		)
+		(pin "USB_LEADER" bidirectional
+			(at 304.8 127 180)
+			(uuid "e284dfe8-6da3-4c54-a613-cce71f15e9de")
+		)
+		(pin "USB_FOLLOWER" bidirectional
+			(at 304.8 129.54 180)
+			(uuid "22db308a-8dd8-45f9-ab94-337e433db6f6")
+		)
+		(instances
+			(project "kiro_wiring_v2"
+				(path "/7cfe1389-9e97-448d-8d0b-30ac17f4c495"
+					(page "7")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 304.8 35.56)
+		(size 76.2 30.48)
+		(fields_autoplaced)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0)
+		)
+		(uuid "c863b907-c832-4c62-a135-3a42a88b4b9e")
+		(property "Sheetname" "USB_Hubs_Cameras_and_LiDAR"
+			(at 304.8 34.925000000000004 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "USB_Hubs_Cameras_and_LiDAR.kicad_sch"
+			(at 304.8 66.67500000000001 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "USB_GEMINI" bidirectional
+			(at 304.8 38.1 180)
+			(uuid "218a3909-52ac-4739-a369-f33c06fc9993")
+		)
+		(pin "USB_WRIST" bidirectional
+			(at 304.8 40.64 180)
+			(uuid "98391b32-795d-488d-854e-4c7528e616aa")
+		)
+		(pin "USB_SENSOR_5V" input
+			(at 304.8 43.18 180)
+			(uuid "9cb5e76a-0696-4d17-ab76-6f907efd8bc2")
+		)
+		(pin "POWER_GND" passive
+			(at 304.8 45.72 180)
+			(uuid "53134d58-8b0b-4f93-9a77-0069d62106dd")
+		)
+		(pin "USB_HUB_UP" bidirectional
+			(at 304.8 48.26 180)
+			(uuid "ba21d562-78d2-422c-b484-c6fbcae98a81")
+		)
+		(pin "USB_WHEEL" bidirectional
+			(at 304.8 50.8 180)
+			(uuid "46f78eac-e66b-48b7-a0e8-b6e0fe86ddcc")
+		)
+		(pin "USB_LEADER" bidirectional
+			(at 304.8 53.34 180)
+			(uuid "cca44870-509e-48da-aa57-26801ccb7d27")
+		)
+		(pin "USB_FOLLOWER" bidirectional
+			(at 304.8 55.88 180)
+			(uuid "4ddf4b53-da17-4aaf-86af-ed0f6b6f106e")
+		)
+		(instances
+			(project "kiro_wiring_v2"
+				(path "/7cfe1389-9e97-448d-8d0b-30ac17f4c495"
+					(page "8")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 177.8 35.56)
+		(size 76.2 25.4)
+		(fields_autoplaced)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0)
+		)
+		(uuid "9b77af2a-170f-4688-89ef-3e1f53cdbb2e")
+		(property "Sheetname" "Red_Motion_Warning_Light"
+			(at 177.8 34.925000000000004 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "Red_Motion_Warning_Light.kicad_sch"
+			(at 177.8 61.595 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "BEACON_12V" input
+			(at 177.8 38.1 180)
+			(uuid "f9d52948-3f0c-4581-af78-94f7192a52e6")
+		)
+		(pin "BEACON_STATE_N" output
+			(at 177.8 40.64 180)
+			(uuid "3661643a-810c-4e36-8e9e-b2d4a0fea384")
+		)
+		(pin "JETSON_LOGIC_GND" input
+			(at 177.8 43.18 180)
+			(uuid "ed733061-3529-41ce-bac2-7710e4485feb")
+		)
+		(pin "LOGIC_3V3" input
+			(at 177.8 45.72 180)
+			(uuid "0556df2e-d60c-4074-be27-0340931441be")
+		)
+		(pin "POWER_GND" passive
+			(at 177.8 48.26 180)
+			(uuid "58b386b0-1ecc-447c-9d01-cb5d1481891d")
+		)
+		(pin "BEACON_HOLDOFF_PULSE" input
+			(at 177.8 50.8 180)
+			(uuid "2d384f83-d600-445a-a6b3-22339eb3b66e")
+		)
+		(instances
+			(project "kiro_wiring_v2"
+				(path "/7cfe1389-9e97-448d-8d0b-30ac17f4c495"
+					(page "9")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 304.8 177.8)
+		(size 76.2 40.64)
+		(fields_autoplaced)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0)
+		)
+		(uuid "e847665f-6153-41f4-b70b-cb21ab1a5b36")
+		(property "Sheetname" "Connectors_and_Test_Points"
+			(at 304.8 177.16500000000002 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "Connectors_and_Test_Points.kicad_sch"
+			(at 304.8 219.075 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "BATTERY_RAW" passive
+			(at 304.8 180.34 180)
+			(uuid "142484e4-c2b0-4b1a-813d-e07eb5915f3f")
+		)
+		(pin "POWER_GND" passive
+			(at 304.8 182.88 180)
+			(uuid "83c7901b-3038-4adb-998f-cbcc48425f3c")
+		)
+		(pin "COMPUTE_POWER" passive
+			(at 304.8 185.42 180)
+			(uuid "2d7ed7cc-2b00-4a88-a21f-778fcc38dd6e")
+		)
+		(pin "CTRL_12V" passive
+			(at 304.8 187.96 180)
+			(uuid "4ddc1283-cd5f-4feb-8b23-1601f2dbfe30")
+		)
+		(pin "12V_AFTER_CONTACTOR" passive
+			(at 304.8 190.5 180)
+			(uuid "6ffa1c06-f6b9-4f10-9055-cc67d8327159")
+		)
+		(pin "REGULATED_12V" passive
+			(at 304.8 193.04 180)
+			(uuid "1b71e66c-04b0-4d65-aa84-cca61ba75ea1")
+		)
+		(pin "ARM_LEADER_5V" passive
+			(at 304.8 195.58 180)
+			(uuid "b12bf336-f376-4849-94b7-1a517d715d45")
+		)
+		(pin "ARM_FOLLOWER_5V" passive
+			(at 304.8 198.12 180)
+			(uuid "1c588500-f8ab-42ed-b5cc-7621549f592c")
+		)
+		(pin "BEACON_12V" passive
+			(at 304.8 200.66 180)
+			(uuid "4f23d5ae-8a9b-4769-a21a-88c9d455c2d3")
+		)
+		(pin "USB_SENSOR_5V" passive
+			(at 304.8 203.2 180)
+			(uuid "edec3a32-fb89-4550-b6c4-4f0b77a0e9d7")
+		)
+		(pin "LOGIC_3V3" passive
+			(at 304.8 205.74 180)
+			(uuid "8a45086c-4f6a-4889-a8f1-7c6c42054ad1")
+		)
+		(pin "ESTOP_OK_N" input
+			(at 304.8 208.28 180)
+			(uuid "a0f37d4b-1fec-4c55-af3b-79b11bdd16ee")
+		)
+		(instances
+			(project "kiro_wiring_v2"
+				(path "/7cfe1389-9e97-448d-8d0b-30ac17f4c495"
+					(page "10")
+				)
+			)
+		)
+	)
+	(embedded_fonts no)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+  (text "KIRO Wiring V2  |  System_Overview"
+    (at 20.32 17.78 0)
+    (effects (font (size 3.5 3.5) (bold yes)) (justify left bottom))
+    (uuid "92cdae54-1ec7-4561-bd9e-a8f3c5a46ec0")
+  )
+  (text "Battery-powered KIRO robot: 12 V 45 Ah battery, Jetson Orin Nano Super, 4-wheel mecanum (ST3215), LeRobot leader + follower arms, 2 cameras, 1 LiDAR, mushroom E-stop + contactor, red motion-warning light"
+    (at 20.32 24.13 0)
+    (effects (font (size 1.5 1.5)) (justify left bottom))
+    (uuid "6cd9cb01-92f4-42a6-8c28-50afdac9206b")
+  )
+  (text "POWER DOMAINS"
+    (at 20.32 193.04 0)
+    (effects (font (size 1.8 1.8) (bold yes)) (justify left bottom))
+    (uuid "71bede3c-21d7-475b-9481-3ca9b2a543df")
+  )
+  (text "BATTERY_RAW ......... battery after F_MAIN and SW_MAIN (10.0-14.6 V worst case)         not cut by E-stop"
+    (at 20.32 198.12 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "2769ad84-f1c5-43ba-b9df-5232bd27bae9")
+  )
+  (text "COMPUTE_POWER ....... F_JETSON -> ideal-diode -> Jetson J16                            not cut by E-stop"
+    (at 20.32 202.18 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "274c6b19-c015-4b49-a5ba-7504eca5403c")
+  )
+  (text "USB_SENSOR_5V ....... F_HUB -> hub PSU -> powered USB hub (cameras/LiDAR on USB)        not cut by E-stop"
+    (at 20.32 206.25 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "838bfb24-6377-46a6-83b2-4b6bdc361cb2")
+  )
+  (text "CTRL_12V ............ F_CTRL -> mushroom NC -> START / K1 AUX -> K1 coil                 E-stop loop"
+    (at 20.32 210.31 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "94d27b88-5add-4582-ab7c-f8817385a4c5")
+  )
+  (text "12V_AFTER_CONTACTOR . K1 main contact output = DRIVE_ARMED                             cut by E-stop"
+    (at 20.32 214.38 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "b03d4e30-98dd-4efe-b20c-cd3054d1d027")
+  )
+  (text "DRIVE_POWER / REGULATED_12V .. F_DRIVE -> 12 V stabiliser -> wheel adapter             cut by E-stop"
+    (at 20.32 218.44 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "698fef3f-a8d5-4f1a-8c3f-344b8d8de40c")
+  )
+  (text "ARM_POWER ........... F_ARM_IN -> EA75-5V -> F_LEADER / F_FOLLOWER                      cut by E-stop"
+    (at 20.32 222.5 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "88b58b94-a437-46e3-9bed-db81c239f506")
+  )
+  (text "BEACON_12V .......... F_BEACON -> red light, low-side MOSFET                            cut by E-stop"
+    (at 20.32 226.57 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "ecf928dd-2ce4-49e5-b4db-fc3a79bf2ef4")
+  )
+  (text "LOGIC_3V3 / JETSON_LOGIC_GND .. Jetson J12 pin 1 / pin 6 (buffers only)   LOGIC_5V (J12 pin 2): unused"
+    (at 20.32 230.63 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "d7e3d7f5-3609-436e-9d13-d8083e0994de")
+  )
+  (text "POWER_GND ........... single star point at battery negative"
+    (at 20.32 234.7 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "4b574f40-1fb1-4c50-a882-4636919450cd")
+  )
+  (text "Signals to/from Jetson: ESTOP_OK_N (in, LOW = armed), BEACON_STATE_N (in, LOW = light on), BEACON_HOLDOFF_PULSE (out, >=100 Hz = light off; stopped = MOTION_WARNING_REQUEST)."
+    (at 20.32 243.84 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "9e32a320-886c-4677-88ff-caa493def918")
+  )
+  (text "V2 2026-11-11. Values marked (GEN) are generic placeholders until real part data is supplied - see engineering document section 15."
+    (at 20.32 248.92 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "47aa1962-634a-4f87-82f5-88b9c82a9ddf")
+  )
+)

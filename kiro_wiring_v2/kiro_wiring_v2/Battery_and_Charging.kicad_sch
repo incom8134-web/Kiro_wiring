@@ -1,0 +1,1675 @@
+(kicad_sch
+	(version 20250610)
+	(generator "konnect")
+	(generator_version "10.0")
+	(uuid "2ecefcd4-0519-4413-b94c-f951b3326f1b")
+	(paper "A4")
+	(lib_symbols
+		(symbol "Device:Battery"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "BT"
+				(at 2.54 2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "Battery"
+				(at 2.54 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 1.524 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 1.524 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Multiple-cell battery"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Sim.Device" "V"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Sim.Type" "DC"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Sim.Pins" "1=+ 2=-"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "batt voltage-source cell"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Battery_0_1"
+				(rectangle
+					(start -2.286 1.778)
+					(end 2.286 1.524)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(rectangle
+					(start -2.286 -1.27)
+					(end 2.286 -1.524)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(rectangle
+					(start -1.524 1.016)
+					(end 1.524 0.508)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(rectangle
+					(start -1.524 -2.032)
+					(end 1.524 -2.54)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 1.778)
+						(xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0)
+						(xy 0 0.254)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -0.508)
+						(xy 0 -0.254)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -1.016)
+						(xy 0 -0.762)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 3.048)
+						(xy 1.778 3.048)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 3.556)
+						(xy 1.27 2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Battery_1_1"
+				(pin passive line
+					(at 0 5.08 270)
+					(length 2.54)
+					(name "+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -5.08 90)
+					(length 2.54)
+					(name "-"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Device:Fuse"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "F"
+				(at 2.032 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Fuse"
+				(at -1.905 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at -1.778 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Fuse"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "fuse"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "*Fuse*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Fuse_0_1"
+				(rectangle
+					(start -0.762 -2.54)
+					(end 0.762 2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 2.54)
+						(xy 0 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Fuse_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Switch:SW_SPST"
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "SW"
+				(at 0 3.175 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "SW_SPST"
+				(at 0 -2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Single Pole Single Throw (SPST) switch"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "switch lever"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "SW_SPST_0_0"
+				(circle
+					(center -2.032 0)
+					(radius 0.508)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.524 0.254)
+						(xy 1.524 1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 2.032 0)
+					(radius 0.508)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "SW_SPST_1_1"
+				(pin passive line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 0 180)
+					(length 2.54)
+					(name "B"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Connector_Generic:Conn_01x02"
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "J"
+				(at 0 2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Conn_01x02"
+				(at 0 -5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "connector"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "Connector*:*_1x??_*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Conn_01x02_1_1"
+				(rectangle
+					(start -1.27 1.27)
+					(end 1.27 -3.81)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(rectangle
+					(start -1.27 0.127)
+					(end 0 -0.127)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 -2.413)
+					(end 0 -2.667)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -5.08 0 0)
+					(length 3.81)
+					(name "Pin_1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -2.54 0)
+					(length 3.81)
+					(name "Pin_2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "power:PWR_FLAG"
+			(power global)
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "#FLG"
+				(at 0 1.905 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "PWR_FLAG"
+				(at 0 3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Special symbol for telling ERC where power comes from"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "flag power"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "PWR_FLAG_0_0"
+				(pin power_out line
+					(at 0 0 90)
+					(length 0)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "PWR_FLAG_0_1"
+				(polyline
+					(pts
+						(xy 0 0)
+						(xy 0 1.27)
+						(xy -1.016 1.905)
+						(xy 0 2.54)
+						(xy 1.016 1.905)
+						(xy 0 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+	)
+	(junction
+		(at 91.44 60.96)
+		(diameter 0)
+		(uuid "1c55e750-cf87-40cd-afa9-2811b2cee2f1")
+	)
+	(junction
+		(at 40.64 66.04)
+		(diameter 0)
+		(uuid "12ffb31d-5a00-47d7-b160-7e6b3ddfd309")
+	)
+	(junction
+		(at 132.08 60.96)
+		(diameter 0)
+		(uuid "b979bfa9-6a7c-42ea-9dc8-1ab8b9820ca8")
+	)
+	(junction
+		(at 40.64 86.36)
+		(diameter 0)
+		(uuid "e6c16cef-faa8-4d25-bfe7-549a6bef987a")
+	)
+	(wire
+		(pts
+			(xy 91.44 73.66)
+			(xy 93.98 73.66)
+		)
+		(uuid "6596518c-c71b-4724-a6f4-c376367fb1ef")
+	)
+	(wire
+		(pts
+			(xy 40.64 71.12)
+			(xy 40.64 66.04)
+		)
+		(uuid "acd6fc59-1939-4523-b2ed-a88d7784fb9d")
+	)
+	(wire
+		(pts
+			(xy 40.64 66.04)
+			(xy 40.64 60.96)
+		)
+		(uuid "b398c85f-0653-4e2d-8fe6-2649cf6c930f")
+	)
+	(wire
+		(pts
+			(xy 40.64 60.96)
+			(xy 57.15 60.96)
+		)
+		(uuid "caf0982b-2dd6-453a-8cd2-8ccf85f64d9b")
+	)
+	(wire
+		(pts
+			(xy 64.77 60.96)
+			(xy 91.44 60.96)
+		)
+		(uuid "f5035cb9-0383-4532-a1ec-53b730479a80")
+	)
+	(wire
+		(pts
+			(xy 91.44 60.96)
+			(xy 111.76 60.96)
+		)
+		(uuid "aae202fb-4002-4a2e-9b0a-8f1810780361")
+	)
+	(wire
+		(pts
+			(xy 91.44 60.96)
+			(xy 91.44 71.12)
+		)
+		(uuid "2342341d-6c59-4a05-a89f-462eca2d341e")
+	)
+	(wire
+		(pts
+			(xy 121.92 60.96)
+			(xy 132.08 60.96)
+		)
+		(uuid "47d337a9-7c23-402d-84dd-537692010ec5")
+	)
+	(wire
+		(pts
+			(xy 132.08 60.96)
+			(xy 139.7 60.96)
+		)
+		(uuid "3cf85363-6800-4d9a-97c4-284f260bc792")
+	)
+	(wire
+		(pts
+			(xy 132.08 50.8)
+			(xy 132.08 60.96)
+		)
+		(uuid "83aee663-c163-4d5e-9360-ee82199a868e")
+	)
+	(wire
+		(pts
+			(xy 40.64 81.28)
+			(xy 40.64 86.36)
+		)
+		(uuid "a7eabb05-4fa4-4c69-9d90-9be88aa81f02")
+	)
+	(wire
+		(pts
+			(xy 40.64 86.36)
+			(xy 40.64 88.9)
+		)
+		(uuid "4990576c-b53f-46f9-81b5-ffdf29d7132d")
+	)
+	(wire
+		(pts
+			(xy 25.4 81.28)
+			(xy 25.4 86.36)
+		)
+		(uuid "9f27ce62-da75-489c-b541-37c5552acedd")
+	)
+	(wire
+		(pts
+			(xy 25.4 86.36)
+			(xy 40.64 86.36)
+		)
+		(uuid "88104cb2-6a86-4977-8a73-44edfb2a43ff")
+	)
+	(wire
+		(pts
+			(xy 40.64 66.04)
+			(xy 20.32 66.04)
+		)
+		(uuid "4d202a82-0be2-40ab-b960-8004b0355e14")
+	)
+	(wire
+		(pts
+			(xy 20.32 66.04)
+			(xy 20.32 106.68)
+		)
+		(uuid "f3fbf8ec-0c9e-4224-baa6-f3955a61d837")
+	)
+	(wire
+		(pts
+			(xy 20.32 106.68)
+			(xy 31.75 106.68)
+		)
+		(uuid "0716cd6f-33c2-4a31-bf10-e89295469e36")
+	)
+	(wire
+		(pts
+			(xy 39.37 106.68)
+			(xy 50.8 106.68)
+		)
+		(uuid "8fc83372-eca6-4b0e-b5e2-7f9c6fcbf71d")
+	)
+	(wire
+		(pts
+			(xy 50.8 109.22)
+			(xy 48.26 109.22)
+		)
+		(uuid "3f91c755-c28e-45a8-a3ba-388783431a2c")
+	)
+	(wire
+		(pts
+			(xy 48.26 109.22)
+			(xy 48.26 114.3)
+		)
+		(uuid "44e9294d-1191-44b9-8437-a61f1ff38ed4")
+	)
+	(wire
+		(pts
+			(xy 48.26 114.3)
+			(xy 66.04 114.3)
+		)
+		(uuid "183f1f49-7d8e-4cd4-81d2-f52c365fdb6d")
+	)
+	(hierarchical_label "POWER_GND"
+		(shape passive)
+		(at 93.98 73.66 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "92c0f764-03ba-4960-8a85-a3d200c801f8")
+	)
+	(hierarchical_label "BATTERY_RAW"
+		(shape output)
+		(at 139.7 60.96 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "8d9bd9de-5e17-4a8b-93a7-6ab4160527bf")
+	)
+	(hierarchical_label "POWER_GND"
+		(shape passive)
+		(at 40.64 88.9 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "48fe7bbd-387d-4096-9248-a1d7ffe36694")
+	)
+	(hierarchical_label "POWER_GND"
+		(shape passive)
+		(at 66.04 114.3 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "908bf881-0d03-4868-8a29-99e18cb739e2")
+	)
+  (text "KIRO Wiring V2  |  Battery_and_Charging"
+    (at 20.32 20.32 0)
+    (effects (font (size 3 3) (bold yes)) (justify left bottom))
+    (uuid "f0910794-4b7a-4bba-8e88-9bf8fd96c3bc")
+  )
+  (text "Battery, main fuse, disconnect, charger inlet and POWER_GND star point"
+    (at 20.32 25.4 0)
+    (effects (font (size 1.5 1.5)) (justify left bottom))
+    (uuid "9723de4f-f3e2-4d18-8bc7-1126fd5a0b53")
+  )
+  (text "POWER_GND star point = battery negative stud"
+    (at 50.8 93.98 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "e287bd52-17d2-48f6-b8b5-09b4c1750d3d")
+  )
+  (text "J2/F2: charger joins on the battery side of SW_MAIN, so the robot can charge while switched off."
+    (at 15.24 132.08 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "038eb4a1-e78e-4c8a-976d-28938b5ab1cd")
+  )
+  (text "Reverse polarity: J_BATT must be keyed; compute branch adds an ideal-diode stage (Power_Distribution)."
+    (at 15.24 137.16 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "f11af944-39eb-4b1d-8598-78213c2fc95e")
+  )
+  (text "F_MAIN within 150 mm of BT1+. 40 A: above 25.5 A peak load, below 50 A BMS and 8 AWG rating."
+    (at 15.24 142.24 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "e9e9c550-5ed7-4f25-8055-1e23a129e3cc")
+  )
+  (text "BATTERY - GENERIC ASSUMPTION (replace with label data)"
+    (at 162.56 40.64 0)
+    (effects (font (size 1.5 1.5) (bold yes)) (justify left bottom))
+    (uuid "9995dd86-8bed-4b21-b46b-78e0b34e5e63")
+  )
+  (text "Chemistry ........... LiFePO4 4S (GEN)"
+    (at 162.56 46.99 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "da45a589-0952-4a7f-8b61-df65d91bdd02")
+  )
+  (text "Nominal voltage ...... 12.8 V"
+    (at 162.56 52.07 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "0af1f4b8-a8f5-4c33-affe-cfb92733109d")
+  )
+  (text "Full-charge voltage .. 14.6 V"
+    (at 162.56 57.15 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "703d1cd4-d67b-4b1f-9be6-297a525ff07b")
+  )
+  (text "Minimum safe voltage . 10.0 V (BMS cut-off)"
+    (at 162.56 62.23 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "f69c6c1f-1320-4bcf-85f0-a8b80c1a5c1e")
+  )
+  (text "BMS ............ 50 A continuous / 100 A peak (GEN)"
+    (at 162.56 67.31 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "1182d5a9-72b0-40ac-abfc-794bca695e2d")
+  )
+  (text "Charger ........ LiFePO4 14.6 V 10 A (GEN)"
+    (at 162.56 72.39 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "ee43e756-ee9d-40b9-9cb3-dc2d70dfbf28")
+  )
+  (text "Main connector . Anderson SB50, red = + (GEN)"
+    (at 162.56 77.47 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "6da0e22a-a60b-4560-ad95-e21f0fa1c5eb")
+  )
+  (text "Design worst case raw range: 10.0 - 14.6 V"
+    (at 162.56 82.55 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "8cb23229-feb3-4cbb-a59a-a60e14745100")
+  )
+  (text "Energy 576 Wh nominal; ~461 Wh usable (80 %, estimate)"
+    (at 162.56 87.63 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "52aa542a-9079-47fa-af22-1ca73178afb9")
+  )
+	(symbol
+		(lib_id "Device:Battery")
+		(at 40.64 76.2 0)
+		(unit 1)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "8a256f68-cf9d-4682-a91d-e343481b1463")
+		(property "Reference" "BT1"
+			(at 43.18 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "LiFePO4 12.8V 45Ah (GEN)"
+			(at 43.18 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 40.64 76.2 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 40.64 76.2 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Multiple-cell battery"
+			(at 40.64 76.2 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "kiro_wiring_v2"
+				(path "/6d1698fd-98cf-4499-9772-4c44045535ac/372250b4-49ba-4e30-b4d4-09ff0f334a78"
+					(reference "BT1")
+					(unit 1)
+				)
+				(path "/7cfe1389-9e97-448d-8d0b-30ac17f4c495/f743a8a1-2e66-4411-a9a0-f12e7cad156f"
+					(reference "BT1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Fuse")
+		(at 60.96 60.96 90)
+		(unit 1)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "c49368a3-1b9d-4541-a0e5-f46c4a927763")
+		(property "Reference" "F1"
+			(at 60.96 53.34 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "F_MAIN 40A ANL / 8AWG (GEN)"
+			(at 60.96 57.15 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 60.96 60.96 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 60.96 60.96 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Fuse"
+			(at 60.96 60.96 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "kiro_wiring_v2"
+				(path "/6d1698fd-98cf-4499-9772-4c44045535ac/372250b4-49ba-4e30-b4d4-09ff0f334a78"
+					(reference "F1")
+					(unit 1)
+				)
+				(path "/7cfe1389-9e97-448d-8d0b-30ac17f4c495/f743a8a1-2e66-4411-a9a0-f12e7cad156f"
+					(reference "F1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Switch:SW_SPST")
+		(at 116.84 60.96 0)
+		(unit 1)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "79d963c4-17fb-4f4c-b641-d1ec498bf767")
+		(property "Reference" "SW1"
+			(at 116.84 57.785 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SW_MAIN 100A disconnect (GEN)"
+			(at 116.84 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 116.84 60.96 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 116.84 60.96 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Single Pole Single Throw (SPST) switch"
+			(at 116.84 60.96 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "kiro_wiring_v2"
+				(path "/6d1698fd-98cf-4499-9772-4c44045535ac/372250b4-49ba-4e30-b4d4-09ff0f334a78"
+					(reference "SW1")
+					(unit 1)
+				)
+				(path "/7cfe1389-9e97-448d-8d0b-30ac17f4c495/f743a8a1-2e66-4411-a9a0-f12e7cad156f"
+					(reference "SW1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_01x02")
+		(at 86.36 71.12 0)
+		(mirror y)
+		(unit 1)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "9623f011-19e6-4c35-8c0f-18b2b11fb125")
+		(property "Reference" "J1"
+			(at 86.36 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "J_BATT Anderson SB50 (GEN)"
+			(at 86.36 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 86.36 71.12 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 86.36 71.12 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 86.36 71.12 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "kiro_wiring_v2"
+				(path "/6d1698fd-98cf-4499-9772-4c44045535ac/372250b4-49ba-4e30-b4d4-09ff0f334a78"
+					(reference "J1")
+					(unit 1)
+				)
+				(path "/7cfe1389-9e97-448d-8d0b-30ac17f4c495/f743a8a1-2e66-4411-a9a0-f12e7cad156f"
+					(reference "J1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Fuse")
+		(at 35.56 106.68 90)
+		(unit 1)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "eb43b111-37b3-463e-a5cd-c20d3fa34fca")
+		(property "Reference" "F2"
+			(at 35.56 104.648 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "F_CHG 15A (GEN)"
+			(at 35.56 108.585 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 35.56 106.68 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 35.56 106.68 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Fuse"
+			(at 35.56 106.68 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "kiro_wiring_v2"
+				(path "/6d1698fd-98cf-4499-9772-4c44045535ac/372250b4-49ba-4e30-b4d4-09ff0f334a78"
+					(reference "F2")
+					(unit 1)
+				)
+				(path "/7cfe1389-9e97-448d-8d0b-30ac17f4c495/f743a8a1-2e66-4411-a9a0-f12e7cad156f"
+					(reference "F2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_01x02")
+		(at 55.88 106.68 0)
+		(unit 1)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "6c134a8c-c3f4-4331-aaf7-bb261b8a8320")
+		(property "Reference" "J2"
+			(at 55.88 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "J_CHG XT60 charger inlet (GEN)"
+			(at 81.28 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 55.88 106.68 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 55.88 106.68 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 55.88 106.68 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "kiro_wiring_v2"
+				(path "/6d1698fd-98cf-4499-9772-4c44045535ac/372250b4-49ba-4e30-b4d4-09ff0f334a78"
+					(reference "J2")
+					(unit 1)
+				)
+				(path "/7cfe1389-9e97-448d-8d0b-30ac17f4c495/f743a8a1-2e66-4411-a9a0-f12e7cad156f"
+					(reference "J2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 132.08 50.8 0)
+		(unit 1)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "89ecf214-9328-4efc-8787-a0f57202f1ca")
+		(property "Reference" "#FLG01"
+			(at 132.08 48.895 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 132.08 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 132.08 50.8 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 132.08 50.8 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 132.08 50.8 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "kiro_wiring_v2"
+				(path "/6d1698fd-98cf-4499-9772-4c44045535ac/372250b4-49ba-4e30-b4d4-09ff0f334a78"
+					(reference "#FLG01")
+					(unit 1)
+				)
+				(path "/7cfe1389-9e97-448d-8d0b-30ac17f4c495/f743a8a1-2e66-4411-a9a0-f12e7cad156f"
+					(reference "#FLG01")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 25.4 81.28 0)
+		(unit 1)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "0c93ab8e-8f33-49d2-9c36-7017f5a64618")
+		(property "Reference" "#FLG02"
+			(at 25.4 79.375 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 25.4 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 25.4 81.28 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 25.4 81.28 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 25.4 81.28 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "kiro_wiring_v2"
+				(path "/6d1698fd-98cf-4499-9772-4c44045535ac/372250b4-49ba-4e30-b4d4-09ff0f334a78"
+					(reference "#FLG02")
+					(unit 1)
+				)
+				(path "/7cfe1389-9e97-448d-8d0b-30ac17f4c495/f743a8a1-2e66-4411-a9a0-f12e7cad156f"
+					(reference "#FLG02")
+					(unit 1)
+				)
+			)
+		)
+	)
+)

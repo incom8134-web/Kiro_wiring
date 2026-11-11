@@ -1,0 +1,1101 @@
+(kicad_sch
+	(version 20250610)
+	(generator "konnect")
+	(generator_version "10.0")
+	(uuid "44a1f43c-7ce3-4b0a-b397-179f7bfa588c")
+	(paper "A4")
+	(lib_symbols
+		(symbol "KIRO_V2:BusServoAdapter_A_CH343"
+			(pin_numbers hide)
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "U"
+				(at 0 10.1600 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Waveshare Bus Servo Adapter (A), CH343"
+				(at 0 -12.7000 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://waveshare.com/wiki/Bus_Servo_Adapter_(A)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "BusServoAdapter_A_CH343_0_1"
+				(rectangle
+					(start -22.8600 -10.1600)
+					(end 22.8600 7.6200)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin power_in line
+					(at -25.4 5.08 0)
+					(length 2.54)
+					(name "VIN+ (screw terminal)"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "VIN+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at -25.4 2.54 0)
+					(length 2.54)
+					(name "VIN- (screw terminal)"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "VIN-"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at -25.4 -2.54 0)
+					(length 2.54)
+					(name "USB (CH343 1a86:55d3)"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "USB"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 25.4 5.08 180)
+					(length 2.54)
+					(name "BUS1 V+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1V"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 25.4 2.54 180)
+					(length 2.54)
+					(name "BUS1 GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1G"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 25.4 0 180)
+					(length 2.54)
+					(name "BUS1 DATA"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1S"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 25.4 -2.54 180)
+					(length 2.54)
+					(name "BUS2 V+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2V"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 25.4 -5.08 180)
+					(length 2.54)
+					(name "BUS2 GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2G"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 25.4 -7.62 180)
+					(length 2.54)
+					(name "BUS2 DATA"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2S"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "KIRO_V2:Servo_ST3215"
+			(pin_numbers hide)
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "M"
+				(at 0 7.6200 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "ST3215-C018"
+				(at 0 -7.6200 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://waveshare.com/wiki/ST3215_Servo"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Servo_ST3215_0_1"
+				(rectangle
+					(start -12.7000 -5.0800)
+					(end -5.0800 5.0800)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at -15.24 2.54 0)
+					(length 2.54)
+					(name "V+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "V"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -15.24 0 0)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "G"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at -15.24 -2.54 0)
+					(length 2.54)
+					(name "DATA"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "S"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+	)
+	(wire
+		(pts
+			(xy 76.2 71.12)
+			(xy 73.66 71.12)
+		)
+		(uuid "afa9e34d-a3c1-4962-b4f8-b4797dea2300")
+	)
+	(wire
+		(pts
+			(xy 76.2 73.66)
+			(xy 73.66 73.66)
+		)
+		(uuid "3cf5c74d-2ecd-4508-b489-ac41046ee018")
+	)
+	(wire
+		(pts
+			(xy 76.2 78.74)
+			(xy 73.66 78.74)
+		)
+		(uuid "3de13ffb-7593-4f27-ad47-9fb1ed957266")
+	)
+	(wire
+		(pts
+			(xy 127 71.12)
+			(xy 129.54 71.12)
+		)
+		(uuid "de1a0b29-b388-46d6-9c30-7288f07d5172")
+	)
+	(wire
+		(pts
+			(xy 177.8 48.26)
+			(xy 175.26 48.26)
+		)
+		(uuid "61ab8339-6f4c-4c68-8401-1829e67d4cc1")
+	)
+	(wire
+		(pts
+			(xy 177.8 73.66)
+			(xy 175.26 73.66)
+		)
+		(uuid "ac31a2d6-e36a-4905-987f-db20fe43e85d")
+	)
+	(wire
+		(pts
+			(xy 127 73.66)
+			(xy 129.54 73.66)
+		)
+		(uuid "dcad313d-ac6b-4461-98aa-01ec7ba0c6a6")
+	)
+	(wire
+		(pts
+			(xy 177.8 50.8)
+			(xy 175.26 50.8)
+		)
+		(uuid "fe51bf83-7895-41a9-8414-880908d7d343")
+	)
+	(wire
+		(pts
+			(xy 177.8 76.2)
+			(xy 175.26 76.2)
+		)
+		(uuid "76938907-d2d8-4165-9fff-27535edceb5e")
+	)
+	(wire
+		(pts
+			(xy 127 76.2)
+			(xy 129.54 76.2)
+		)
+		(uuid "4c43d13c-0112-4269-8b50-142c9a7ef7f6")
+	)
+	(wire
+		(pts
+			(xy 177.8 53.34)
+			(xy 175.26 53.34)
+		)
+		(uuid "14ea140a-1cd1-4c29-89f2-6578da9ef53f")
+	)
+	(wire
+		(pts
+			(xy 177.8 78.74)
+			(xy 175.26 78.74)
+		)
+		(uuid "f4b502b1-e2b7-4b3c-940a-76cedb32f927")
+	)
+	(wire
+		(pts
+			(xy 127 78.74)
+			(xy 129.54 78.74)
+		)
+		(uuid "736a150b-73d0-4ca9-beca-3d7fce86f093")
+	)
+	(wire
+		(pts
+			(xy 177.8 104.14)
+			(xy 175.26 104.14)
+		)
+		(uuid "a1f141be-b79b-4584-9493-eb08fd997500")
+	)
+	(wire
+		(pts
+			(xy 177.8 129.54)
+			(xy 175.26 129.54)
+		)
+		(uuid "fb435f6b-00ac-4edf-b54a-18dcd6b936d5")
+	)
+	(wire
+		(pts
+			(xy 127 81.28)
+			(xy 129.54 81.28)
+		)
+		(uuid "d43a0d08-3aea-4495-b261-1def765e3821")
+	)
+	(wire
+		(pts
+			(xy 177.8 106.68)
+			(xy 175.26 106.68)
+		)
+		(uuid "f217190b-88bc-406f-abf8-4083ca7dd685")
+	)
+	(wire
+		(pts
+			(xy 177.8 132.08)
+			(xy 175.26 132.08)
+		)
+		(uuid "acc30310-28a8-4bb3-ae11-615f9aba5b30")
+	)
+	(wire
+		(pts
+			(xy 127 83.82)
+			(xy 129.54 83.82)
+		)
+		(uuid "585efa79-2f04-45f5-a0d3-0d83b38272b4")
+	)
+	(wire
+		(pts
+			(xy 177.8 109.22)
+			(xy 175.26 109.22)
+		)
+		(uuid "4f49f2d1-f20c-4eb5-afea-86a0ba887157")
+	)
+	(wire
+		(pts
+			(xy 177.8 134.62)
+			(xy 175.26 134.62)
+		)
+		(uuid "1756fbcb-db88-43ee-8a09-9fd9339e5587")
+	)
+	(label "WHL_BUS1_V"
+		(at 129.54 71.12 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "a6183fe1-4c15-4dc5-a194-0f718cf80023")
+	)
+	(label "WHL_BUS1_V"
+		(at 175.26 48.26 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "a99f6e84-bcd5-4b85-9fb8-7d73cc2d5817")
+	)
+	(label "WHL_BUS1_V"
+		(at 175.26 73.66 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "11636be9-39d5-4ae6-bd17-8c8339809a5e")
+	)
+	(label "WHL_BUS1_G"
+		(at 129.54 73.66 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "1649f574-06a0-4666-83de-30dae4bbde54")
+	)
+	(label "WHL_BUS1_G"
+		(at 175.26 50.8 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "4c508477-7637-4b0d-837c-ec68bacb7462")
+	)
+	(label "WHL_BUS1_G"
+		(at 175.26 76.2 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "608b055d-41a0-4f45-a47f-d6781a2d141e")
+	)
+	(label "WHL_BUS1_D"
+		(at 129.54 76.2 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "6e15a0cb-7992-401a-b0f9-b2094d8d02f2")
+	)
+	(label "WHL_BUS1_D"
+		(at 175.26 53.34 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "ce138dd4-e3dc-4c53-b8aa-5b31d77f86c8")
+	)
+	(label "WHL_BUS1_D"
+		(at 175.26 78.74 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "3619a6c6-854b-441a-a496-9de7f3562f48")
+	)
+	(label "WHL_BUS2_V"
+		(at 129.54 78.74 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "4a3a860d-9de3-466a-8f32-423a85f2e76b")
+	)
+	(label "WHL_BUS2_V"
+		(at 175.26 104.14 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "f990390d-fed6-4780-903e-6945f060d0b9")
+	)
+	(label "WHL_BUS2_V"
+		(at 175.26 129.54 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "4400cf75-eb59-4e52-b2f9-532800be9ab9")
+	)
+	(label "WHL_BUS2_G"
+		(at 129.54 81.28 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "bf00ad6a-d242-471a-8d92-f7ed18895848")
+	)
+	(label "WHL_BUS2_G"
+		(at 175.26 106.68 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "7ca5e02e-8dd1-4cbb-a4f3-4d08b90756fd")
+	)
+	(label "WHL_BUS2_G"
+		(at 175.26 132.08 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "6d0e091a-02dd-4cce-a6cc-880b89a3a32c")
+	)
+	(label "WHL_BUS2_D"
+		(at 129.54 83.82 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "e98d145f-4772-48dd-9b8e-422ad2da5d33")
+	)
+	(label "WHL_BUS2_D"
+		(at 175.26 109.22 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "f8349dba-ece6-4a23-b47e-c3ccef4fc4cb")
+	)
+	(label "WHL_BUS2_D"
+		(at 175.26 134.62 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "9153ff75-b3b2-4cc0-bfd7-db57cd6b28af")
+	)
+	(hierarchical_label "REGULATED_12V"
+		(shape input)
+		(at 73.66 71.12 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "507dd5c1-b457-4e94-95c2-26ab8ccbe044")
+	)
+	(hierarchical_label "POWER_GND"
+		(shape passive)
+		(at 73.66 73.66 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "daf7f0eb-6a09-425d-a435-381c027d955b")
+	)
+	(hierarchical_label "USB_WHEEL"
+		(shape bidirectional)
+		(at 73.66 78.74 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "676b0baf-e713-476f-9272-2e1fa906858e")
+	)
+  (text "KIRO Wiring V2  |  Wheel_Drive"
+    (at 20.32 20.32 0)
+    (effects (font (size 3 3) (bold yes)) (justify left bottom))
+    (uuid "e75b6aa4-9b83-4bba-b35e-6096bcdd27de")
+  )
+  (text "4 x Feetech/Waveshare ST3215-C018 smart serial servos on one CH343 bus adapter (no generic motor driver)"
+    (at 20.32 25.4 0)
+    (effects (font (size 1.5 1.5)) (justify left bottom))
+    (uuid "e7af2c60-5fb9-4a81-875c-efaabb88173d")
+  )
+  (text "Chain 1 (BUS1): adapter -> FR ID7 -> RR ID9.  Chain 2 (BUS2): adapter -> FL ID8 -> RL ID10.  Max two servos per Molex 5264 contact (~3 A)."
+    (at 20.32 152.4 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "748b8f73-1a25-4639-bb10-54ebfffb5617")
+  )
+  (text "Supply: REGULATED_12V (ST3215 6-12.6 V; V1 Max_Voltage_Limit 14.0 V). Adapter powered via screw terminal, not its DC jack."
+    (at 20.32 157.48 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "0e04f06f-ed19-4801-a815-e1bb548aa802")
+  )
+  (text "Current: idle ~1.2 A total, design 6 A, all four stalled 10.8 A (2.7 A each). Feed 14 AWG to screw terminal; 20 AWG servo leads."
+    (at 20.32 162.56 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "8adb1a2a-66aa-428c-8947-ee60cf302452")
+  )
+  (text "Servo cable: 3-pin Molex 5264 (V+, GND, DATA). Physical pin order: verify against Waveshare ST3215 wiki before crimping (TBD)."
+    (at 20.32 167.64 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "7cbdc985-753d-42d7-b435-b6e60c960558")
+  )
+  (text "Data: half-duplex TTL 1 Mbps. USB_WHEEL via powered hub. Servo GND returns to the adapter, never through the USB cable shield."
+    (at 20.32 172.72 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "0d261da6-9924-4b59-a144-31e27326eb6c")
+  )
+  (text "E-stop: K1 removes REGULATED_12V -> servos unpowered, no holding torque, robot coasts. Speed feedback over bus = ROBOT_MOVING."
+    (at 20.32 177.8 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid "4b99a316-efcd-4432-9145-3fa53f6a1cc2")
+  )
+	(symbol
+		(lib_id "KIRO_V2:BusServoAdapter_A_CH343")
+		(at 101.6 76.2 0)
+		(unit 1)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "8479faf5-cde9-4d96-93cf-ef542fcd1a41")
+		(property "Reference" "U30"
+			(at 101.6 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Bus Servo Adapter (A) CH343 - WHEELS"
+			(at 101.6 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 101.6 76.2 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://waveshare.com/wiki/Bus_Servo_Adapter_(A)"
+			(at 101.6 76.2 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 101.6 76.2 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "kiro_wiring_v2"
+				(path "/6d1698fd-98cf-4499-9772-4c44045535ac/bd09d4b7-3cf7-4762-a682-de47247446c3"
+					(reference "U30")
+					(unit 1)
+				)
+				(path "/7cfe1389-9e97-448d-8d0b-30ac17f4c495/75c39b50-d725-4c13-a141-9d49ac417541"
+					(reference "U30")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "KIRO_V2:Servo_ST3215")
+		(at 193.04 50.8 0)
+		(unit 1)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "69e40b70-d61b-4dd5-ae7f-e92280822721")
+		(property "Reference" "M31"
+			(at 193.04 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "ST3215-C018 FR ID7"
+			(at 193.04 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 193.04 50.8 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://waveshare.com/wiki/ST3215_Servo"
+			(at 193.04 50.8 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 193.04 50.8 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "kiro_wiring_v2"
+				(path "/6d1698fd-98cf-4499-9772-4c44045535ac/bd09d4b7-3cf7-4762-a682-de47247446c3"
+					(reference "M31")
+					(unit 1)
+				)
+				(path "/7cfe1389-9e97-448d-8d0b-30ac17f4c495/75c39b50-d725-4c13-a141-9d49ac417541"
+					(reference "M31")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "KIRO_V2:Servo_ST3215")
+		(at 193.04 76.2 0)
+		(unit 1)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "f846f490-c013-4599-83ae-27560a017bbf")
+		(property "Reference" "M33"
+			(at 193.04 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "ST3215-C018 RR ID9"
+			(at 193.04 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 193.04 76.2 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://waveshare.com/wiki/ST3215_Servo"
+			(at 193.04 76.2 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 193.04 76.2 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "kiro_wiring_v2"
+				(path "/6d1698fd-98cf-4499-9772-4c44045535ac/bd09d4b7-3cf7-4762-a682-de47247446c3"
+					(reference "M33")
+					(unit 1)
+				)
+				(path "/7cfe1389-9e97-448d-8d0b-30ac17f4c495/75c39b50-d725-4c13-a141-9d49ac417541"
+					(reference "M33")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "KIRO_V2:Servo_ST3215")
+		(at 193.04 106.68 0)
+		(unit 1)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "1531f7b0-badf-46b1-a96e-a0bc8fabef52")
+		(property "Reference" "M32"
+			(at 193.04 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "ST3215-C018 FL ID8"
+			(at 193.04 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 193.04 106.68 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://waveshare.com/wiki/ST3215_Servo"
+			(at 193.04 106.68 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 193.04 106.68 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "kiro_wiring_v2"
+				(path "/6d1698fd-98cf-4499-9772-4c44045535ac/bd09d4b7-3cf7-4762-a682-de47247446c3"
+					(reference "M32")
+					(unit 1)
+				)
+				(path "/7cfe1389-9e97-448d-8d0b-30ac17f4c495/75c39b50-d725-4c13-a141-9d49ac417541"
+					(reference "M32")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "KIRO_V2:Servo_ST3215")
+		(at 193.04 132.08 0)
+		(unit 1)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "43fe7082-2922-4f80-85bd-73faa85fd073")
+		(property "Reference" "M34"
+			(at 193.04 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "ST3215-C018 RL ID10"
+			(at 193.04 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 193.04 132.08 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://waveshare.com/wiki/ST3215_Servo"
+			(at 193.04 132.08 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 193.04 132.08 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "kiro_wiring_v2"
+				(path "/6d1698fd-98cf-4499-9772-4c44045535ac/bd09d4b7-3cf7-4762-a682-de47247446c3"
+					(reference "M34")
+					(unit 1)
+				)
+				(path "/7cfe1389-9e97-448d-8d0b-30ac17f4c495/75c39b50-d725-4c13-a141-9d49ac417541"
+					(reference "M34")
+					(unit 1)
+				)
+			)
+		)
+	)
+)
