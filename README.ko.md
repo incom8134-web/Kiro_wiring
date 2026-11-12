@@ -9,7 +9,7 @@
 | 폴더 | 내용 |
 |---|---|
 | [`kiro-wiring/`](kiro-wiring) | **V1** AC/SMPS 배선 — `KIRO_FINAL.kicad_sch` + PDF |
-| [`kiro-wiring-2/`](kiro-wiring-2) | **V2** 배터리 기반 계층형 KiCad 프로젝트 + exports/PDF |
+| [`kiro-wiring-2/`](kiro-wiring-2) | **V2** 배터리 기반 단일 시트 KiCad 회로도 + PDF/exports |
 | [`images/`](images) | 공유 렌더·배선도 |
 | [`docs/`](docs) | 공유 전원 설계·부품 목록 |
 | [`3d_models/`](3d_models) | 공유 STEP / OBJ / Blender / 출력 파일 |

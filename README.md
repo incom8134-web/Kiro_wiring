@@ -9,13 +9,13 @@ Power system and electronics packaging for the **Kiro / SO-101 mobile dual-arm r
 | Folder | Contents |
 |---|---|
 | [`kiro-wiring/`](kiro-wiring) | **V1** AC/SMPS wiring — `KIRO_FINAL.kicad_sch` + PDF |
-| [`kiro-wiring-2/`](kiro-wiring-2) | **V2** battery-powered hierarchical KiCad project + exports/PDF |
+| [`kiro-wiring-2/`](kiro-wiring-2) | **V2** battery-powered flat KiCad schematic + PDF/exports |
 | [`images/`](images) | Shared renders and wiring diagrams |
 | [`docs/`](docs) | Shared power-system design and parts list |
 | [`3d_models/`](3d_models) | Shared STEP / OBJ / Blender / print files |
 
 Open V1 in KiCad from `kiro-wiring/KIRO_FINAL.kicad_sch`.  
-Open V2 from `kiro-wiring-2/kiro_wiring_v2.kicad_pro`.
+Open V2 from `kiro-wiring-2/kiro_wiring_v2.kicad_pro` (single-sheet flat schematic).
 
 <p align="center">
   <img src="images/hero.png" alt="Kiro power plate" width="820">
