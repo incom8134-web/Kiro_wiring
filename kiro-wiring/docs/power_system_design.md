@@ -1,7 +1,9 @@
 # Power System Design – Kiro / SO-101 mobile robot (Rev F)
 
+> **V1 legacy document.** This describes the AC/SMPS system in `kiro-wiring/`. The battery systems are in `kiro-wiring-2/`.
+
 Updated 2026-10-26. This replaces the RevA design of 2026-10-22. It matches the hardware that is
-actually on hand and the [wiring diagram](../images/KIRO%20Robot%20Electrical%20Wiring%20Diagram.png).
+actually on hand and the [wiring diagram](../../images/haebot_wiring_rev3_2026_11_02_eng.png).
 Numbers marked **measured** come from this robot, **spec** from manufacturer data, **estimate** from
 engineering judgement.
 
