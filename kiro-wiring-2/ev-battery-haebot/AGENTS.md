@@ -79,7 +79,11 @@ Every return is its own wire to the star point at the battery negative. No retur
 kicad-cli sch export pdf --no-background-color kicad/HAEBOT_EV.kicad_sch -o exports/HAEBOT_EV_SCHEMATIC.pdf
 kicad-cli sch export netlist kicad/HAEBOT_EV.kicad_sch -o exports/HAEBOT_EV_NETLIST.net
 rsvg-convert -f pdf -o exports/HAEBOT_EV_BLOCK_DIAGRAM.pdf block-diagrams/HAEBOT_EV_BLOCK_DIAGRAM.svg
+rsvg-convert -f pdf -o exports/HAEBOT_EV_BLOCK_DIAGRAM_KO.pdf block-diagrams/HAEBOT_EV_BLOCK_DIAGRAM_KO.svg
 ```
+
+The block diagram exists in English and Korean. Change both SVG files together. The Korean file needs the
+Noto Sans CJK KR font installed.
 
 Open each PDF after export and check that nothing is clipped or overlapping.
 

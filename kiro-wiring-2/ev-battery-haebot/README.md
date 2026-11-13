@@ -9,7 +9,7 @@ replaces the AC supply with one 12 V 45 Ah battery. Both arms move to 12 V servo
 |---|---|
 | Schematic (KiCad) | [`kicad/HAEBOT_EV.kicad_pro`](kicad/HAEBOT_EV.kicad_pro) |
 | Schematic PDF | [`exports/HAEBOT_EV_SCHEMATIC.pdf`](exports/HAEBOT_EV_SCHEMATIC.pdf) |
-| Block diagram | [`exports/HAEBOT_EV_BLOCK_DIAGRAM.pdf`](exports/HAEBOT_EV_BLOCK_DIAGRAM.pdf), source [`block-diagrams/`](block-diagrams) |
+| Block diagram | [`exports/HAEBOT_EV_BLOCK_DIAGRAM.pdf`](exports/HAEBOT_EV_BLOCK_DIAGRAM.pdf), [Korean](exports/HAEBOT_EV_BLOCK_DIAGRAM_KO.pdf), source [`block-diagrams/`](block-diagrams) |
 | Bill of materials | [`bom/`](bom) |
 | Power budget and runtime | [`docs/power_budget.md`](docs/power_budget.md) |
 | Wiring connection table | [`docs/wiring_connections.md`](docs/wiring_connections.md) |
