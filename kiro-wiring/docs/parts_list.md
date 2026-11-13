@@ -1,5 +1,7 @@
 # Parts List – Kiro power system (Rev F)
 
+> **V1 legacy document.** This describes the AC/SMPS system in `kiro-wiring/`. The battery systems are in `kiro-wiring-2/`.
+
 Updated 2026-10-26. Quantities are for one robot as built
 (one leader arm, one follower arm, mecanum base). **On hand** = already bought.
 

@@ -1,0 +1,167 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="297mm" height="210mm" viewBox="0 0 297 210" font-family="DejaVu Sans, Arial, sans-serif"><defs><marker id="a12" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c62828"/></marker><marker id="a5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e65100"/></marker><marker id="a20" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6a1b9a"/></marker><marker id="abat" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8d1c1c"/></marker><marker id="adata" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1565c0"/></marker><marker id="actl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2e7d32"/></marker><marker id="an" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker></defs><rect width="297" height="210" fill="#ffffff"/><rect x="4" y="4" width="289" height="202" fill="none" stroke="#222" stroke-width="0.5"/><text x="8" y="13" font-size="5.6" font-weight="bold" fill="#111">HAEBOT / KIRO V2-A   Anker SOLIX C300 DC   power block diagram</text><text x="8" y="19" font-size="3.0" fill="#c62828" font-weight="bold">Rev A, 2026-11-13.  PROPOSED architecture, not bench-verified.  Port limits from the Anker A1726 user manual; loads from V1 Rev F records.</text>
+<rect x="8" y="26" width="34" height="160" rx="1.5" fill="#fff4d6" stroke="#222" stroke-width="0.45"/>
+<text x="25.0" y="95.80" font-size="3.00" text-anchor="middle" fill="#111" font-weight="bold">ANKER SOLIX</text>
+<text x="25.0" y="99.55" font-size="2.58" text-anchor="middle" fill="#111">C300 DC (A1726)</text>
+<text x="25.0" y="103.30" font-size="2.58" text-anchor="middle" fill="#111">288 Wh LiFePO4</text>
+<text x="25.0" y="107.05" font-size="2.58" text-anchor="middle" fill="#111">300 W total</text>
+<text x="25.0" y="110.80" font-size="2.58" text-anchor="middle" fill="#111"></text>
+<text x="25.0" y="114.55" font-size="2.58" text-anchor="middle" fill="#111">USB-C3 kept free</text>
+<text x="25.0" y="118.30" font-size="2.58" text-anchor="middle" fill="#111">for recharging</text>
+<rect x="42" y="34" width="26" height="12" rx="1.5" fill="#fff4d6" stroke="#222" stroke-width="0.45"/>
+<text x="55.0" y="39.23" font-size="2.80" text-anchor="middle" fill="#111" font-weight="bold">USB-C2</text>
+<text x="55.0" y="42.73" font-size="2.41" text-anchor="middle" fill="#111">20 V PD, 100 W*</text>
+<rect x="42" y="62" width="26" height="12" rx="1.5" fill="#fff4d6" stroke="#222" stroke-width="0.45"/>
+<text x="55.0" y="67.23" font-size="2.80" text-anchor="middle" fill="#111" font-weight="bold">USB-C1</text>
+<text x="55.0" y="70.73" font-size="2.41" text-anchor="middle" fill="#111">20 V PD, 30 W*</text>
+<rect x="42" y="98" width="26" height="12" rx="1.5" fill="#fff4d6" stroke="#222" stroke-width="0.45"/>
+<text x="55.0" y="103.23" font-size="2.80" text-anchor="middle" fill="#111" font-weight="bold">USB-C4</text>
+<text x="55.0" y="106.73" font-size="2.41" text-anchor="middle" fill="#111">5 V 3 A</text>
+<rect x="42" y="122" width="26" height="12" rx="1.5" fill="#fff4d6" stroke="#222" stroke-width="0.45"/>
+<text x="55.0" y="127.23" font-size="2.80" text-anchor="middle" fill="#111" font-weight="bold">Car socket</text>
+<text x="55.0" y="130.73" font-size="2.41" text-anchor="middle" fill="#111">12 V 10 A</text>
+<rect x="42" y="148" width="26" height="12" rx="1.5" fill="#fff4d6" stroke="#222" stroke-width="0.45"/>
+<text x="55.0" y="153.23" font-size="2.80" text-anchor="middle" fill="#111" font-weight="bold">USB-A1</text>
+<text x="55.0" y="156.73" font-size="2.41" text-anchor="middle" fill="#111">5 V 2.4 A</text>
+<rect x="42" y="168" width="26" height="12" rx="1.5" fill="#fff4d6" stroke="#222" stroke-width="0.45"/>
+<text x="55.0" y="173.23" font-size="2.80" text-anchor="middle" fill="#111" font-weight="bold">USB-A2</text>
+<text x="55.0" y="176.73" font-size="2.41" text-anchor="middle" fill="#111">5 V 2.4 A</text>
+<polyline points="68,40 78,40" fill="none" stroke="#6a1b9a" stroke-width="0.8" marker-end="url(#a20)"/>
+<rect x="78" y="32.5" width="28" height="15" rx="1.5" fill="#e3f0fb" stroke="#222" stroke-width="0.45" stroke-dasharray="2 1.2"/>
+<text x="92.0" y="39.23" font-size="2.80" text-anchor="middle" fill="#111" font-weight="bold">PD trigger</text>
+<text x="92.0" y="42.73" font-size="2.41" text-anchor="middle" fill="#111">fixed 20 V out</text>
+<polyline points="106,40 112,40" fill="none" stroke="#6a1b9a" stroke-width="0.8" marker-end="url(#a20)"/>
+<rect x="112" y="32.5" width="30" height="15" rx="1.5" fill="#e3f0fb" stroke="#222" stroke-width="0.45" stroke-dasharray="2 1.2"/>
+<text x="127.0" y="39.23" font-size="2.80" text-anchor="middle" fill="#111" font-weight="bold">Buck to 12.0 V</text>
+<text x="127.0" y="42.73" font-size="2.41" text-anchor="middle" fill="#111">20 V in, &gt;= 12 A</text>
+<polyline points="142,40 150,40" fill="none" stroke="#c62828" stroke-width="0.8" marker-end="url(#a12)"/>
+<rect x="150" y="32.5" width="18" height="15" rx="1.5" fill="#e6f4e7" stroke="#222" stroke-width="0.45"/>
+<text x="159.0" y="39.23" font-size="2.80" text-anchor="middle" fill="#111" font-weight="bold">F1</text>
+<text x="159.0" y="42.73" font-size="2.41" text-anchor="middle" fill="#111">15 A, 12 V</text>
+<polyline points="168,40 176,40" fill="none" stroke="#c62828" stroke-width="0.8" marker-end="url(#a12)"/>
+<rect x="176" y="32.5" width="20" height="15" rx="1.5" fill="#e6f4e7" stroke="#222" stroke-width="0.45" stroke-dasharray="2 1.2"/>
+<text x="186.0" y="39.23" font-size="2.80" text-anchor="middle" fill="#111" font-weight="bold">K1 pole 1</text>
+<text x="186.0" y="42.73" font-size="2.41" text-anchor="middle" fill="#111">12 V</text>
+<polyline points="196,40 206,40" fill="none" stroke="#c62828" stroke-width="0.8" marker-end="url(#a12)"/>
+<rect x="206" y="32.5" width="34" height="15" rx="1.5" fill="#f3f3f3" stroke="#222" stroke-width="0.45"/>
+<text x="223.0" y="37.48" font-size="2.80" text-anchor="middle" fill="#111" font-weight="bold">Wheel motor driver</text>
+<text x="223.0" y="40.98" font-size="2.41" text-anchor="middle" fill="#111">Bus Servo Adapter (A)</text>
+<text x="223.0" y="44.48" font-size="2.41" text-anchor="middle" fill="#111">12 V in</text>
+<polyline points="240,40 250,40" fill="none" stroke="#c62828" stroke-width="0.8" marker-end="url(#a12)"/>
+<rect x="250" y="32.5" width="39" height="15" rx="1.5" fill="#f3f3f3" stroke="#222" stroke-width="0.45"/>
+<text x="269.5" y="37.48" font-size="2.80" text-anchor="middle" fill="#111" font-weight="bold">4 x mecanum servo</text>
+<text x="269.5" y="40.98" font-size="2.41" text-anchor="middle" fill="#111">ST3215-C018, 12 V</text>
+<text x="269.5" y="44.48" font-size="2.41" text-anchor="middle" fill="#111">6 A design, 10.8 A stall</text>
+<polyline points="68,68 78,68" fill="none" stroke="#6a1b9a" stroke-width="0.8" marker-end="url(#a20)"/>
+<rect x="78" y="60.5" width="28" height="15" rx="1.5" fill="#e3f0fb" stroke="#222" stroke-width="0.45" stroke-dasharray="2 1.2"/>
+<text x="92.0" y="67.23" font-size="2.80" text-anchor="middle" fill="#111" font-weight="bold">PD trigger</text>
+<text x="92.0" y="70.73" font-size="2.41" text-anchor="middle" fill="#111">fixed 20 V out</text>
+<polyline points="106,68 112,68" fill="none" stroke="#6a1b9a" stroke-width="0.8" marker-end="url(#a20)"/>
+<rect x="112" y="60.5" width="30" height="15" rx="1.5" fill="#e3f0fb" stroke="#222" stroke-width="0.45"/>
+<text x="127.0" y="67.23" font-size="2.80" text-anchor="middle" fill="#111" font-weight="bold">Buck EA75-5V</text>
+<text x="127.0" y="70.73" font-size="2.41" text-anchor="middle" fill="#111">20 V in, 5 V 15 A</text>
+<polyline points="142,68 150,68" fill="none" stroke="#e65100" stroke-width="0.8" marker-end="url(#a5)"/>
+<rect x="150" y="60.5" width="18" height="15" rx="1.5" fill="#e6f4e7" stroke="#222" stroke-width="0.45"/>
+<text x="159.0" y="67.23" font-size="2.80" text-anchor="middle" fill="#111" font-weight="bold">F2</text>
+<text x="159.0" y="70.73" font-size="2.41" text-anchor="middle" fill="#111">15 A, 5 V</text>
+<polyline points="168,68 176,68" fill="none" stroke="#e65100" stroke-width="0.8" marker-end="url(#a5)"/>
+<rect x="176" y="60.5" width="20" height="15" rx="1.5" fill="#e6f4e7" stroke="#222" stroke-width="0.45" stroke-dasharray="2 1.2"/>
+<text x="186.0" y="67.23" font-size="2.80" text-anchor="middle" fill="#111" font-weight="bold">K1 pole 2</text>
+<text x="186.0" y="70.73" font-size="2.41" text-anchor="middle" fill="#111">5 V</text>
+<polyline points="196,68 206,68" fill="none" stroke="#e65100" stroke-width="0.8" marker-end="url(#a5)"/>
+<rect x="206" y="60.5" width="34" height="15" rx="1.5" fill="#f3f3f3" stroke="#222" stroke-width="0.45"/>
+<text x="223.0" y="65.48" font-size="2.80" text-anchor="middle" fill="#111" font-weight="bold">Arm 2 driver</text>
+<text x="223.0" y="68.98" font-size="2.41" text-anchor="middle" fill="#111">Bus Servo Adapter (A)</text>
+<text x="223.0" y="72.48" font-size="2.41" text-anchor="middle" fill="#111">5 V in</text>
+<polyline points="240,68 250,68" fill="none" stroke="#e65100" stroke-width="0.8" marker-end="url(#a5)"/>
+<rect x="250" y="60.5" width="39" height="15" rx="1.5" fill="#f3f3f3" stroke="#222" stroke-width="0.45"/>
+<text x="269.5" y="65.48" font-size="2.80" text-anchor="middle" fill="#111" font-weight="bold">ARM 2 (follower)</text>
+<text x="269.5" y="68.98" font-size="2.41" text-anchor="middle" fill="#111">6 x STS3215 on 5 V</text>
+<text x="269.5" y="72.48" font-size="2.41" text-anchor="middle" fill="#111">5 A design, 8 A burst</text>
+<rect x="150" y="82" width="46" height="12" rx="1.5" fill="#e6f4e7" stroke="#222" stroke-width="0.45" stroke-dasharray="2 1.2"/>
+<text x="173.0" y="87.23" font-size="2.80" text-anchor="middle" fill="#111" font-weight="bold">E-STOP (NC) + START</text>
+<text x="173.0" y="90.73" font-size="2.41" text-anchor="middle" fill="#111">hardware loop, F3 1 A</text>
+<polyline points="186,82 186,75.5" fill="none" stroke="#2e7d32" stroke-width="0.8" marker-end="url(#actl)"/>
+<text x="188" y="80.00" font-size="2.5" text-anchor="start" fill="#2e7d32">K1 coil</text>
+<polyline points="186,60.5 186,47.5" fill="none" stroke="#2e7d32" stroke-width="0.8"/>
+<text x="198" y="87.00" font-size="2.5" fill="#2e7d32" text-anchor="start">cuts wheels + arm 2 power</text>
+<text x="198" y="90.25" font-size="2.5" fill="#2e7d32" text-anchor="start">Jetson and hubs stay on</text>
+<polyline points="68,104 78,104" fill="none" stroke="#e65100" stroke-width="0.8" marker-end="url(#a5)"/>
+<rect x="78" y="96.5" width="28" height="15" rx="1.5" fill="#e3f0fb" stroke="#222" stroke-width="0.45" stroke-dasharray="2 1.2"/>
+<text x="92.0" y="103.23" font-size="2.80" text-anchor="middle" fill="#111" font-weight="bold">USB-C 5 V lead</text>
+<text x="92.0" y="106.73" font-size="2.41" text-anchor="middle" fill="#111">to screw terminal</text>
+<polyline points="106,104 150,104" fill="none" stroke="#e65100" stroke-width="0.8" marker-end="url(#a5)"/>
+<text x="128.0" y="102.80" font-size="2.5" text-anchor="middle" fill="#e65100">5 V 3 A max</text>
+<rect x="150" y="96.5" width="18" height="15" rx="1.5" fill="#e6f4e7" stroke="#222" stroke-width="0.45" stroke-dasharray="2 1.2"/>
+<text x="159.0" y="103.23" font-size="2.80" text-anchor="middle" fill="#111" font-weight="bold">F4</text>
+<text x="159.0" y="106.73" font-size="2.41" text-anchor="middle" fill="#111">3 A, 5 V</text>
+<polyline points="168,104 206,104" fill="none" stroke="#e65100" stroke-width="0.8" marker-end="url(#a5)"/>
+<text x="187.0" y="102.80" font-size="2.5" text-anchor="middle" fill="#e65100">5 V</text>
+<rect x="206" y="96.5" width="34" height="15" rx="1.5" fill="#f3f3f3" stroke="#222" stroke-width="0.45"/>
+<text x="223.0" y="101.48" font-size="2.80" text-anchor="middle" fill="#111" font-weight="bold">Arm 1 driver</text>
+<text x="223.0" y="104.98" font-size="2.41" text-anchor="middle" fill="#111">Bus Servo Adapter (A)</text>
+<text x="223.0" y="108.48" font-size="2.41" text-anchor="middle" fill="#111">5 V in</text>
+<polyline points="240,104 250,104" fill="none" stroke="#e65100" stroke-width="0.8" marker-end="url(#a5)"/>
+<rect x="250" y="96.5" width="39" height="15" rx="1.5" fill="#f3f3f3" stroke="#222" stroke-width="0.45"/>
+<text x="269.5" y="101.48" font-size="2.80" text-anchor="middle" fill="#111" font-weight="bold">ARM 1 (leader)</text>
+<text x="269.5" y="104.98" font-size="2.41" text-anchor="middle" fill="#111">6 x STS3215, torque off</text>
+<text x="269.5" y="108.48" font-size="2.41" text-anchor="middle" fill="#111">0.3 A design, 0.6 A peak</text>
+<polyline points="68,128 78,128" fill="none" stroke="#c62828" stroke-width="0.8" marker-end="url(#a12)"/>
+<rect x="78" y="120.5" width="28" height="15" rx="1.5" fill="#e3f0fb" stroke="#222" stroke-width="0.45" stroke-dasharray="2 1.2"/>
+<text x="92.0" y="127.23" font-size="2.80" text-anchor="middle" fill="#111" font-weight="bold">Car-plug lead</text>
+<text x="92.0" y="130.73" font-size="2.41" text-anchor="middle" fill="#111">fused, 18 AWG</text>
+<polyline points="106,128 150,128" fill="none" stroke="#c62828" stroke-width="0.8" marker-end="url(#a12)"/>
+<text x="128.0" y="126.80" font-size="2.5" text-anchor="middle" fill="#c62828">12 V (10.8-14 V)</text>
+<rect x="150" y="120.5" width="18" height="15" rx="1.5" fill="#e6f4e7" stroke="#222" stroke-width="0.45"/>
+<text x="159.0" y="127.23" font-size="2.80" text-anchor="middle" fill="#111" font-weight="bold">F5</text>
+<text x="159.0" y="130.73" font-size="2.41" text-anchor="middle" fill="#111">5 A, 12 V</text>
+<polyline points="168,128 206,128" fill="none" stroke="#c62828" stroke-width="0.8" marker-end="url(#a12)"/>
+<text x="187.0" y="126.80" font-size="2.5" text-anchor="middle" fill="#c62828">12 V</text>
+<rect x="206" y="120.5" width="44" height="15" rx="1.5" fill="#ece6f7" stroke="#222" stroke-width="0.45"/>
+<text x="228.0" y="125.48" font-size="2.80" text-anchor="middle" fill="#111" font-weight="bold">JETSON Orin Nano Super</text>
+<text x="228.0" y="128.98" font-size="2.41" text-anchor="middle" fill="#111">DC jack 9-20 V, no boost</text>
+<text x="228.0" y="132.48" font-size="2.41" text-anchor="middle" fill="#111">25 W typ / 45 W peak</text>
+<polyline points="68,154 78,154" fill="none" stroke="#e65100" stroke-width="0.8" marker-end="url(#a5)"/>
+<rect x="78" y="146.5" width="28" height="15" rx="1.5" fill="#e3f0fb" stroke="#c62828" stroke-width="0.7" stroke-dasharray="2 1.2"/>
+<text x="92.0" y="153.23" font-size="2.80" text-anchor="middle" fill="#111" font-weight="bold">USB-A &gt; DC lead</text>
+<text x="92.0" y="156.73" font-size="2.41" text-anchor="middle" fill="#111">only if hub = 5 V</text>
+<polyline points="106,154 206,154" fill="none" stroke="#e65100" stroke-width="0.8" marker-end="url(#a5)"/>
+<text x="156.0" y="152.80" font-size="2.5" text-anchor="middle" fill="#e65100">5 V, &lt;= 2.4 A</text>
+<rect x="206" y="146.5" width="44" height="15" rx="1.5" fill="#f3f3f3" stroke="#c62828" stroke-width="0.7" stroke-dasharray="2 1.2"/>
+<text x="228.0" y="151.48" font-size="2.80" text-anchor="middle" fill="#111" font-weight="bold">USB HUB 1</text>
+<text x="228.0" y="154.98" font-size="2.41" text-anchor="middle" fill="#c62828">[BLOCKED: input voltage?]</text>
+<text x="228.0" y="158.48" font-size="2.41" text-anchor="middle" fill="#111">power input only</text>
+<polyline points="68,174 78,174" fill="none" stroke="#e65100" stroke-width="0.8" marker-end="url(#a5)"/>
+<rect x="78" y="166.5" width="28" height="15" rx="1.5" fill="#e3f0fb" stroke="#c62828" stroke-width="0.7" stroke-dasharray="2 1.2"/>
+<text x="92.0" y="173.23" font-size="2.80" text-anchor="middle" fill="#111" font-weight="bold">USB-A &gt; DC lead</text>
+<text x="92.0" y="176.73" font-size="2.41" text-anchor="middle" fill="#111">only if hub = 5 V</text>
+<polyline points="106,174 206,174" fill="none" stroke="#e65100" stroke-width="0.8" marker-end="url(#a5)"/>
+<text x="156.0" y="172.80" font-size="2.5" text-anchor="middle" fill="#e65100">5 V, &lt;= 2.4 A</text>
+<rect x="206" y="166.5" width="44" height="15" rx="1.5" fill="#f3f3f3" stroke="#c62828" stroke-width="0.7" stroke-dasharray="2 1.2"/>
+<text x="228.0" y="171.48" font-size="2.80" text-anchor="middle" fill="#111" font-weight="bold">USB HUB 2</text>
+<text x="228.0" y="174.98" font-size="2.41" text-anchor="middle" fill="#c62828">[BLOCKED: not in records]</text>
+<text x="228.0" y="178.48" font-size="2.41" text-anchor="middle" fill="#111">power input only</text>
+<polyline points="250,154 262,154 262,128 250,128" fill="none" stroke="#1565c0" stroke-width="0.8" stroke-dasharray="1.6 1.2" marker-end="url(#adata)"/>
+<polyline points="250,172 268,172 268,125 250,125" fill="none" stroke="#1565c0" stroke-width="0.8" stroke-dasharray="1.6 1.2" marker-end="url(#adata)"/>
+<text x="270" y="140.00" font-size="2.5" fill="#1565c0" text-anchor="start">USB data</text>
+<text x="270" y="143.25" font-size="2.5" fill="#1565c0" text-anchor="start">hubs &gt; Jetson</text>
+<text x="270" y="146.50" font-size="2.5" fill="#1565c0" text-anchor="start">(separate from</text>
+<text x="270" y="149.75" font-size="2.5" fill="#1565c0" text-anchor="start">power leads)</text>
+<text x="223" y="50.90" font-size="2.4" fill="#1565c0" text-anchor="middle">USB data &gt; hub 1</text>
+<text x="223" y="78.90" font-size="2.4" fill="#1565c0" text-anchor="middle">USB data &gt; hub 1</text>
+<text x="223" y="114.90" font-size="2.4" fill="#1565c0" text-anchor="middle">USB data &gt; hub 1</text>
+<text x="228" y="138.90" font-size="2.4" fill="#1565c0" text-anchor="middle">USB: cameras direct on Jetson</text>
+<text x="78" y="28.00" font-size="2.5" fill="#555" text-anchor="start">* port mix C1 + C2 + (A1, A2, C4) + car socket: C1 30 W, C2 100 W, USB group 20 W, car socket 120 W (manual, 4-port case)</text>
+<text x="46" y="191.50" font-size="2.8" fill="#111" text-anchor="start" font-weight="bold">LEGEND</text>
+<line x1="64" y1="190.5" x2="73" y2="190.5" stroke="#6a1b9a" stroke-width="0.9"/>
+<text x="75" y="191.50" font-size="2.5" fill="#111" text-anchor="start">20 V USB-C PD</text>
+<line x1="97.15" y1="190.5" x2="106.15" y2="190.5" stroke="#c62828" stroke-width="0.9"/>
+<text x="108.15" y="191.50" font-size="2.5" fill="#111" text-anchor="start">12 V</text>
+<line x1="116.35000000000001" y1="190.5" x2="125.35000000000001" y2="190.5" stroke="#e65100" stroke-width="0.9"/>
+<text x="127.35000000000001" y="191.50" font-size="2.5" fill="#111" text-anchor="start">5 V</text>
+<line x1="134.0" y1="190.5" x2="143.0" y2="190.5" stroke="#1565c0" stroke-width="0.9" stroke-dasharray="1.6 1.2"/>
+<text x="145.0" y="191.50" font-size="2.5" fill="#111" text-anchor="start">USB data</text>
+<line x1="159.4" y1="190.5" x2="168.4" y2="190.5" stroke="#2e7d32" stroke-width="0.9"/>
+<text x="170.4" y="191.50" font-size="2.5" fill="#111" text-anchor="start">protection / E-stop control</text>
+<text x="46" y="197.00" font-size="2.5" fill="#111" text-anchor="start">Borders:  solid = existing V1 hardware    dashed = PROPOSED (not bought / tested)    red dashed = BLOCKED (needs a hardware fact)</text>
+<text x="46" y="202.00" font-size="2.5" fill="#c62828" text-anchor="start" font-weight="bold">Not supported as requested: 12 V PD trigger (station has no 12 V USB-C profile) and 5 V PD trigger for a follower arm (5 V PD is 3 A max).</text>
+</svg>
