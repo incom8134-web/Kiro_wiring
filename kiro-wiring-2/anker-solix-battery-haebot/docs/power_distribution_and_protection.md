@@ -1,4 +1,4 @@
-# Power distribution and protection: Anker design (Rev A)
+# Power distribution and protection: Anker design (Rev B)
 
 ## 1. Verified Anker SOLIX C300 DC limits
 
@@ -32,10 +32,10 @@ Confirm the 4-port row on the bench before relying on it.
 
 ## 2. Branch assignment
 
-| Branch | Requested | Drawn in Rev A | Why it differs | Status |
+| Branch | Requested | Drawn in Rev B | Why it differs | Status |
 |---|---|---|---|---|
 | A hubs | 2 x USB 5 V -> hub 1, hub 2 | USB-A1 -> hub 1, USB-A2 -> hub 2 through USB-A to DC leads | same | Blocked: hub input voltage and plug not recorded; hub 2 is not in the records |
-| B arm 1 | USB-C -> 5 V -> arm 1 | USB-C4 (5 V 3 A) -> USB-C 5 V lead -> F4 3 A -> adapter | limited to a leader / torque-off arm | Proposed |
+| B arm 1 | USB-C -> 5 V -> arm 1 | USB-C4 (5 V 3 A) -> USB-C 5 V lead -> F4 3 A -> K1 -> adapter | limited to a leader / torque-off arm | Proposed |
 | C arm 2 | USB-C PD -> 5 V trigger -> arm 2 | USB-C1 -> **20 V** trigger -> EA75-5V buck -> F2 15 A -> K1 -> adapter | 5 V over USB-C is 3 A max; a follower needs 5 A design, 8 A burst | Proposed |
 | D wheels | USB-C PD -> 12 V trigger -> driver | USB-C2 -> **20 V** trigger -> 12.0 V buck -> F1 15 A -> K1 -> adapter | the station has no 12 V profile | Proposed |
 | E Jetson | car socket -> Jetson | car socket -> fused plug lead -> F5 5 A -> DC jack | same; no boost needed | Proposed lead, verified voltage range |
@@ -66,11 +66,13 @@ rail. Rating and position are **Proposed**.
 ## 4. Emergency stop
 
 - Hardware only: `DRIVE_12V -> F3 -> S1 (NC) -> START || K1 aux -> K1 coil -> GND_C2`.
-- K1 has two power poles: pole 1 opens the 12 V wheel branch, pole 2 opens the 5 V follower branch.
-- The Jetson, the hubs and arm 1 (torque off, cannot move by itself) stay powered.
+- K1 has three power poles: pole 1 opens the 12 V wheel branch, pole 2 opens the 5 V arm 2 branch, pole 3 opens the
+  5 V arm 1 branch. One press of the mushroom button removes power from the wheels and both arms at the same time.
+- The Jetson and the hubs stay powered.
 - Releasing S1 does not restart anything. START must be pressed.
 - The follower arm drops under gravity when K1 opens (V1 record). People near the robot must know this.
-- If USB-C2 is off, K1 cannot close, so the follower cannot be powered without the wheel rail. This is intended.
+- If USB-C2 is off, K1 cannot close, so neither arm can be powered without the wheel rail. This is intended.
+- Rev B change (2026-11-13): arm 1 was added to the E-stop. Rev A switched only the wheels and arm 2.
 
 ## 5. Grounds and cross-connections
 

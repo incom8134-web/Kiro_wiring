@@ -1,4 +1,4 @@
-# Wiring connection table: Anker design (Rev A)
+# Wiring connection table: Anker design (Rev B)
 
 Matches `kicad/HAEBOT_ANKER.kicad_sch` and `exports/HAEBOT_ANKER_NETLIST.net`. Reference designators are the ones on
 the schematic. Power leads (W-) and USB data links (U-) are listed separately: a USB data cable is never the power feed
@@ -19,7 +19,7 @@ of a servo rail.
 | W-C5 | U42 port 1 | M42 arm 2 chain | servo bus | 5 V | arm current | Molex 5264 3-pin | Verified (V1) |
 | W-K1 | DRIVE_12V | F3 -> S1 -> SW2 || K1 13-14 -> K1 A1 | control loop | 12 V | < 0.5 A | 20 AWG | Proposed |
 | W-K2 | K1 A2 | GND_C2 | control return | 0 V | < 0.5 A | 20 AWG | Proposed |
-| W-B1 | PS1 USB-C4 | J41 -> F4 -> U41 VIN+ / VIN- | ARM1_5V | 5 V | 0.3 A design, 3 A max | USB-C 5 V lead with 5.1 k CC resistors, 20 AWG | Proposed |
+| W-B1 | PS1 USB-C4 | J41 -> F4 -> K1 pole 3 -> U41 VIN+; VIN- direct | ARM1_5V / ARM1_SW | 5 V | 0.3 A design, 3 A max | USB-C 5 V lead with 5.1 k CC resistors, 20 AWG | Proposed |
 | W-B2 | U41 port 1 | M41 arm 1 chain | servo bus | 5 V | 0.6 A peak | Molex 5264 3-pin | Verified (V1) |
 | W-E1 | PS1 car socket | P1 -> F5 -> U20 DC jack | JETSON_12V | 10.8-14 V | 3.0 A design, 3.8 A peak | car plug to 5.5 x 2.5 mm barrel, centre +, 18 AWG | Proposed lead; jack verified (V1) |
 | W-A1 | PS1 USB-A1 | W1 -> U50 DC in | HUB1_5V | 5 V | <= 2.4 A | USB-A to DC barrel (size TBD) | Blocked |

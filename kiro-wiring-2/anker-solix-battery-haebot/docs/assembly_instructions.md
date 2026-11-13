@@ -1,4 +1,4 @@
-# Assembly instructions: Anker design (Rev A)
+# Assembly instructions: Anker design (Rev B)
 
 Do not start before the bench checks in `verification_report.md` section 4 are done. Work with every station output
 switched off.
@@ -13,8 +13,8 @@ Multimeter, USB-C power meter, ferrule crimper, small screwdrivers, heat-shrink,
    socket, switch the socket on, measure 10.8-14 V at the barrel plug, then connect the Jetson and boot it.
 2. **Hub branch (A).** Only after the hub label confirms a 5 V input. Connect hub 1 to USB-A1 with the USB-A to DC lead.
    Connect the hub's upstream cable to Jetson USB port 3. Check `lsusb -t`.
-3. **Arm 1 branch (B).** Connect the USB-C 5 V lead to USB-C4 and measure 5 V at its screw terminal. Fit F4 (3 A). Wire
-   to the arm 1 adapter screw terminal. Servo tester: leader servos read about 5 V.
+3. **Arm 1 branch (B).** Arm 1 is powered only while K1 is closed, so test it after the E-stop loop (step 6). Connect the USB-C 5 V lead to USB-C4 and measure 5 V at its screw terminal. Fit F4 (3 A). Wire
+   through K1 pole 3 to the arm 1 adapter screw terminal. Servo tester: leader servos read about 5 V.
 4. **Arm 2 branch (C).** PD1 on USB-C1: measure 20 V. Wire PD1 to the EA75-5V input. Measure 5.0-5.2 V at its output
    **before** connecting anything else. Then F2 (15 A), K1 pole 2, arm 2 adapter. Label this rail "5 V ONLY".
 5. **Wheel branch (D).** PD2 on USB-C2 with a 5 A e-marked cable: measure 20 V. Set the buck U3 to 12.0 V with no load.

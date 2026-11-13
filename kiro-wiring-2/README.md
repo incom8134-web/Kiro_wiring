@@ -11,7 +11,7 @@ assembly instructions and its own `AGENTS.md`.
 | Wheels | USB-C2, 20 V PD, 12.0 V buck | fuse box 1 through a 12.0 V regulator |
 | Arms | existing 5 V servos; leader on USB-C4, follower on USB-C1 through a 5 V buck | both arms on new 12 V servos (STS3215-C018) |
 | Jetson | car socket, direct | battery bus, direct |
-| E-stop | 2-pole contactor, hardware loop | battery contactor, hardware loop |
+| E-stop | 3-pole contactor: wheels, arm 1 and arm 2 together; hardware loop | battery contactor, hardware loop |
 | Typical runtime (calculated) | about 3.9 h | 3.7 h lead-acid, 6.3 h LiFePO4, 5.4 h 3S Li-ion |
 | Status | Proposed, not bench-verified | Proposed; battery and charger are blocked items |
 | Schematic PDF | [HAEBOT_ANKER_SCHEMATIC.pdf](anker-solix-battery-haebot/exports/HAEBOT_ANKER_SCHEMATIC.pdf) | [HAEBOT_EV_SCHEMATIC.pdf](ev-battery-haebot/exports/HAEBOT_EV_SCHEMATIC.pdf) |

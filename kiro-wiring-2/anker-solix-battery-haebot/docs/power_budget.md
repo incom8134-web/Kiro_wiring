@@ -1,4 +1,4 @@
-# Power budget and runtime: Anker SOLIX C300 DC design (Rev A)
+# Power budget and runtime: Anker SOLIX C300 DC design (Rev B)
 
 All load figures come from the V1 Rev F records (`kiro-wiring/docs/power_system_design.md`). Nothing here was measured on
 the Anker station. Status of this document: **Calculated**.

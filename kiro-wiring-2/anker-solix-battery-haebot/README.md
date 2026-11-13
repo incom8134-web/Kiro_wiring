@@ -3,13 +3,13 @@
 Battery version of the HAEBOT / KIRO robot that runs from one **Anker SOLIX C300 DC (A1726)** portable power station
 with ready-made leads and a minimum of extra modules.
 
-**Status: Rev A, PROPOSED. Not built, not bench-verified.**
+**Status: Rev B, PROPOSED. Not built, not bench-verified.**
 
 | | |
 |---|---|
 | Schematic (KiCad) | [`kicad/HAEBOT_ANKER.kicad_pro`](kicad/HAEBOT_ANKER.kicad_pro) |
 | Schematic PDF | [`exports/HAEBOT_ANKER_SCHEMATIC.pdf`](exports/HAEBOT_ANKER_SCHEMATIC.pdf) |
-| Block diagram | [`exports/HAEBOT_ANKER_BLOCK_DIAGRAM.pdf`](exports/HAEBOT_ANKER_BLOCK_DIAGRAM.pdf), source [`block-diagrams/`](block-diagrams) |
+| Block diagram | [`exports/HAEBOT_ANKER_BLOCK_DIAGRAM.pdf`](exports/HAEBOT_ANKER_BLOCK_DIAGRAM.pdf), [Korean](exports/HAEBOT_ANKER_BLOCK_DIAGRAM_KO.pdf), source [`block-diagrams/`](block-diagrams) |
 | Bill of materials | [`bom/`](bom) |
 | Power budget and runtime | [`docs/power_budget.md`](docs/power_budget.md) |
 | Wiring connection table | [`docs/wiring_connections.md`](docs/wiring_connections.md) |
@@ -23,7 +23,7 @@ with ready-made leads and a minimum of extra modules.
 | Branch | Station port | Path | Load |
 |---|---|---|---|
 | A | USB-A1, USB-A2 (5 V 2.4 A) | USB-A to DC lead | USB hub 1 and hub 2 |
-| B | USB-C4 (5 V 3 A) | USB-C 5 V lead, fuse 3 A | Arm 1 (leader) |
+| B | USB-C4 (5 V 3 A) | USB-C 5 V lead, fuse 3 A, E-stop | Arm 1 (leader) |
 | C | USB-C1 (20 V PD) | PD trigger, 5 V 15 A buck, fuse 15 A, E-stop | Arm 2 (follower) |
 | D | USB-C2 (20 V PD) | PD trigger, 12.0 V buck, fuse 15 A, E-stop | Wheel driver and four mecanum servos |
 | E | Car socket (12 V 10 A) | fused plug lead, fuse 5 A | Jetson Orin Nano Super |

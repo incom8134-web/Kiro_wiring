@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="297mm" height="210mm" viewBox="0 0 297 210" font-family="DejaVu Sans, Arial, sans-serif"><defs><marker id="a12" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c62828"/></marker><marker id="a5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e65100"/></marker><marker id="a20" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6a1b9a"/></marker><marker id="abat" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8d1c1c"/></marker><marker id="adata" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1565c0"/></marker><marker id="actl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2e7d32"/></marker><marker id="an" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker></defs><rect width="297" height="210" fill="#ffffff"/><rect x="4" y="4" width="289" height="202" fill="none" stroke="#222" stroke-width="0.5"/><text x="8" y="13" font-size="5.6" font-weight="bold" fill="#111">HAEBOT / KIRO V2-A   Anker SOLIX C300 DC   power block diagram</text><text x="8" y="19" font-size="3.0" fill="#c62828" font-weight="bold">Rev A, 2026-11-13.  PROPOSED architecture, not bench-verified.  Port limits from the Anker A1726 user manual; loads from V1 Rev F records.</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="297mm" height="210mm" viewBox="0 0 297 210" font-family="DejaVu Sans, Arial, sans-serif"><defs><marker id="a12" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c62828"/></marker><marker id="a5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e65100"/></marker><marker id="a20" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6a1b9a"/></marker><marker id="abat" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8d1c1c"/></marker><marker id="adata" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1565c0"/></marker><marker id="actl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2e7d32"/></marker><marker id="an" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker></defs><rect width="297" height="210" fill="#ffffff"/><rect x="4" y="4" width="289" height="202" fill="none" stroke="#222" stroke-width="0.5"/><text x="8" y="13" font-size="5.6" font-weight="bold" fill="#111">HAEBOT / KIRO V2-A   Anker SOLIX C300 DC   power block diagram</text><text x="8" y="19" font-size="3.0" fill="#c62828" font-weight="bold">Rev B, 2026-11-13.  PROPOSED architecture, not bench-verified.  Port limits from the Anker A1726 user manual; loads from V1 Rev F records.</text>
 <rect x="8" y="26" width="34" height="160" rx="1.5" fill="#fff4d6" stroke="#222" stroke-width="0.45"/>
 <text x="25.0" y="95.80" font-size="3.00" text-anchor="middle" fill="#111" font-weight="bold">ANKER SOLIX</text>
 <text x="25.0" y="99.55" font-size="2.58" text-anchor="middle" fill="#111">C300 DC (A1726)</text>
@@ -82,9 +82,11 @@
 <text x="173.0" y="90.73" font-size="2.41" text-anchor="middle" fill="#111">hardware loop, F3 1 A</text>
 <polyline points="186,82 186,75.5" fill="none" stroke="#2e7d32" stroke-width="0.8" marker-end="url(#actl)"/>
 <text x="188" y="80.00" font-size="2.5" text-anchor="start" fill="#2e7d32">K1 coil</text>
-<polyline points="186,60.5 186,47.5" fill="none" stroke="#2e7d32" stroke-width="0.8"/>
-<text x="198" y="87.00" font-size="2.5" fill="#2e7d32" text-anchor="start">cuts wheels + arm 2 power</text>
-<text x="198" y="90.25" font-size="2.5" fill="#2e7d32" text-anchor="start">Jetson and hubs stay on</text>
+<polyline points="186,60.5 186,47.5" fill="none" stroke="#2e7d32" stroke-width="0.8" marker-end="url(#actl)"/>
+<polyline points="186,94 186,96.5" fill="none" stroke="#2e7d32" stroke-width="0.8" marker-end="url(#actl)"/>
+<text x="198" y="84.50" font-size="2.5" fill="#2e7d32" text-anchor="start">one button cuts wheels,</text>
+<text x="198" y="87.75" font-size="2.5" fill="#2e7d32" text-anchor="start">arm 1 and arm 2 together.</text>
+<text x="198" y="91.00" font-size="2.5" fill="#2e7d32" text-anchor="start">Jetson and hubs stay on.</text>
 <polyline points="68,104 78,104" fill="none" stroke="#e65100" stroke-width="0.8" marker-end="url(#a5)"/>
 <rect x="78" y="96.5" width="28" height="15" rx="1.5" fill="#e3f0fb" stroke="#222" stroke-width="0.45" stroke-dasharray="2 1.2"/>
 <text x="92.0" y="103.23" font-size="2.80" text-anchor="middle" fill="#111" font-weight="bold">USB-C 5 V lead</text>
@@ -94,8 +96,11 @@
 <rect x="150" y="96.5" width="18" height="15" rx="1.5" fill="#e6f4e7" stroke="#222" stroke-width="0.45" stroke-dasharray="2 1.2"/>
 <text x="159.0" y="103.23" font-size="2.80" text-anchor="middle" fill="#111" font-weight="bold">F4</text>
 <text x="159.0" y="106.73" font-size="2.41" text-anchor="middle" fill="#111">3 A, 5 V</text>
-<polyline points="168,104 206,104" fill="none" stroke="#e65100" stroke-width="0.8" marker-end="url(#a5)"/>
-<text x="187.0" y="102.80" font-size="2.5" text-anchor="middle" fill="#e65100">5 V</text>
+<polyline points="168,104 176,104" fill="none" stroke="#e65100" stroke-width="0.8" marker-end="url(#a5)"/>
+<rect x="176" y="96.5" width="20" height="15" rx="1.5" fill="#e6f4e7" stroke="#222" stroke-width="0.45" stroke-dasharray="2 1.2"/>
+<text x="186.0" y="103.23" font-size="2.80" text-anchor="middle" fill="#111" font-weight="bold">K1 pole 3</text>
+<text x="186.0" y="106.73" font-size="2.41" text-anchor="middle" fill="#111">5 V</text>
+<polyline points="196,104 206,104" fill="none" stroke="#e65100" stroke-width="0.8" marker-end="url(#a5)"/>
 <rect x="206" y="96.5" width="34" height="15" rx="1.5" fill="#f3f3f3" stroke="#222" stroke-width="0.45"/>
 <text x="223.0" y="101.48" font-size="2.80" text-anchor="middle" fill="#111" font-weight="bold">Arm 1 driver</text>
 <text x="223.0" y="104.98" font-size="2.41" text-anchor="middle" fill="#111">Bus Servo Adapter (A)</text>

@@ -1,4 +1,4 @@
-# Verification report: Anker design (Rev A, 2026-11-13)
+# Verification report: Anker design (Rev B, 2026-11-13)
 
 **Overall status: PROPOSED. This design is not validated.** No part of it has been built or measured.
 
@@ -48,8 +48,8 @@
 
 ## 3. Requested items that cannot work as written
 
-1. **12 V PD trigger for the wheels.** The station has no 12 V USB-C profile. Rev A uses a 20 V trigger and a 12.0 V buck.
-2. **5 V PD trigger for a powered arm.** USB-C gives at most 3 A at 5 V. Rev A uses a 20 V trigger and the existing
+1. **12 V PD trigger for the wheels.** The station has no 12 V USB-C profile. Rev B uses a 20 V trigger and a 12.0 V buck.
+2. **5 V PD trigger for a powered arm.** USB-C gives at most 3 A at 5 V. Rev B uses a 20 V trigger and the existing
    5 V 15 A buck.
 3. **Plain USB-C cable for a powered arm.** Same 3 A limit. Branch B is restricted to the leader arm.
 

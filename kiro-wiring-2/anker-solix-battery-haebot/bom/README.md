@@ -1,4 +1,4 @@
-# Bill of materials: Anker design (Rev A)
+# Bill of materials: Anker design (Rev B)
 
 Full table with every column: [`HAEBOT_ANKER_BOM.csv`](HAEBOT_ANKER_BOM.csv). "not selected" means no part number has
 been chosen. No part number in this file is invented.
@@ -10,7 +10,7 @@ been chosen. No part number in this file is invented.
 | PD2 | USB-C PD trigger, fixed 20 V | Wheel PD sink | not selected | 20 V out | >= 5 A | - | 1 | Proposed | Not verified |
 | U3 | Buck converter 20 V -> 12.0 V | Wheel 12 V regulator | not selected | in 20 V, out 12.0 V | >= 12 A | current-limited | 1 | Proposed | Not verified |
 | U4 | Buck converter 5 V | Arm 2 5 V rail | TOBSUN EA75-5V | in 8-40 V, out 5 V | 15 A | 75 W | 1 | Existing (V1) | Verified part (V1), 20 V input per vendor range |
-| K1 | Relay / contactor, 2 NO power poles + 1 NO aux | E-stop power switch | not selected | 12 V DC coil | >= 20 A per pole | - | 1 | Proposed | Not verified |
+| K1 | Relay / contactor, 3 NO power poles + 1 NO aux | E-stop power switch | not selected | 12 V DC coil | >= 20 A per pole | - | 1 | Proposed | Not verified |
 | S1 | E-stop mushroom, 22 mm, 1 NC, twist release | Emergency stop | not selected | 12 V control | < 1 A | - | 1 | Proposed (V1 planned part) | Not verified |
 | SW2 | Pushbutton, momentary NO | START / re-arm | not selected | 12 V control | < 1 A | - | 1 | Proposed | Not verified |
 | D1 | Diode | K1 coil suppression | 1N4007 | 12 V | 1 A | - | 1 | Proposed (V1 parts list) | Not verified |

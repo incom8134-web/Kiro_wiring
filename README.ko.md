@@ -26,7 +26,7 @@ V2가 두 가지인 이유는 검토 중인 배터리가 두 종류이기 때문
 |---|---|---|---|
 | KiCad 회로도 | [`KIRO_FINAL.kicad_sch`](kiro-wiring/kicad/KIRO_FINAL.kicad_sch) | [`HAEBOT_ANKER.kicad_pro`](kiro-wiring-2/anker-solix-battery-haebot/kicad/HAEBOT_ANKER.kicad_pro) | [`HAEBOT_EV.kicad_pro`](kiro-wiring-2/ev-battery-haebot/kicad/HAEBOT_EV.kicad_pro) |
 | 회로도 PDF | [Rev F](kiro-wiring/exports/haebot_wiring_FINAL_revF_2026_11_02.pdf) | [Rev A](kiro-wiring-2/anker-solix-battery-haebot/exports/HAEBOT_ANKER_SCHEMATIC.pdf) | [Rev A](kiro-wiring-2/ev-battery-haebot/exports/HAEBOT_EV_SCHEMATIC.pdf) |
-| 블록 다이어그램 PDF | - | [PDF](kiro-wiring-2/anker-solix-battery-haebot/exports/HAEBOT_ANKER_BLOCK_DIAGRAM.pdf) | [PDF](kiro-wiring-2/ev-battery-haebot/exports/HAEBOT_EV_BLOCK_DIAGRAM.pdf) |
+| 블록 다이어그램 PDF | - | [한국어](kiro-wiring-2/anker-solix-battery-haebot/exports/HAEBOT_ANKER_BLOCK_DIAGRAM_KO.pdf), [English](kiro-wiring-2/anker-solix-battery-haebot/exports/HAEBOT_ANKER_BLOCK_DIAGRAM.pdf) | [PDF](kiro-wiring-2/ev-battery-haebot/exports/HAEBOT_EV_BLOCK_DIAGRAM.pdf) |
 | BOM | [부품 목록](kiro-wiring/docs/parts_list.md) | [`bom/`](kiro-wiring-2/anker-solix-battery-haebot/bom) | [`bom/`](kiro-wiring-2/ev-battery-haebot/bom) |
 | 설계 문서 | [`docs/`](kiro-wiring/docs) | [`docs/`](kiro-wiring-2/anker-solix-battery-haebot/docs) | [`docs/`](kiro-wiring-2/ev-battery-haebot/docs) |
 

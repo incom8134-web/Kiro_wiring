@@ -6,7 +6,7 @@ This folder is self-contained. Do not rely on the EV battery folder to understan
 ## Purpose
 
 A portable, plug-and-play power system for the HAEBOT / KIRO robot built on one **Anker SOLIX C300 DC (A1726)**
-power station. Status: **Rev A, PROPOSED, not bench-verified.**
+power station. Status: **Rev B, PROPOSED, not bench-verified.**
 
 ## Read first
 
@@ -31,12 +31,12 @@ You must review that evidence before changing any electrical connection.
 There is **no 12 V USB-C profile** and no PPS. With USB-C1, USB-C2, the USB group and the car socket all in use the
 manual gives 30 W, 100 W, 20 W and 120 W.
 
-## Power branch assignment (Rev A)
+## Power branch assignment (Rev B)
 
 | Branch | Port | Path | Load |
 |---|---|---|---|
 | A | USB-A1, USB-A2 | USB-A to DC lead | USB hub 1, hub 2 (blocked) |
-| B | USB-C4 | USB-C 5 V lead -> F4 3 A | arm 1, leader only |
+| B | USB-C4 | USB-C 5 V lead -> F4 3 A -> K1 | arm 1, leader only |
 | C | USB-C1 | 20 V PD trigger -> EA75-5V -> F2 15 A -> K1 | arm 2, follower, 5 V |
 | D | USB-C2 | 20 V PD trigger -> 12.0 V buck -> F1 15 A -> K1 | wheel adapter, 4 x ST3215-C018 |
 | E | Car socket | fused plug lead -> F5 5 A | Jetson DC jack (9-20 V) |
@@ -53,6 +53,7 @@ manual gives 30 W, 100 W, 20 W and 120 W.
 - Follower servos (7.4 V type) must never see more than 8.0 V. Wheel servos must never see more than 12.6 V.
 - Do not wire 12 V PD triggers. Do not power a follower arm from a 5 V USB-C source.
 - The E-stop must stay a hardware loop that opens K1. Never replace it with a software command.
+- K1 has three power poles: wheels, arm 2 and arm 1. The E-stop must always cut all three together.
 
 ### Plug-and-play principles
 
@@ -82,7 +83,11 @@ manual gives 30 W, 100 W, 20 W and 120 W.
 kicad-cli sch export pdf --no-background-color kicad/HAEBOT_ANKER.kicad_sch -o exports/HAEBOT_ANKER_SCHEMATIC.pdf
 kicad-cli sch export netlist kicad/HAEBOT_ANKER.kicad_sch -o exports/HAEBOT_ANKER_NETLIST.net
 rsvg-convert -f pdf -o exports/HAEBOT_ANKER_BLOCK_DIAGRAM.pdf block-diagrams/HAEBOT_ANKER_BLOCK_DIAGRAM.svg
+rsvg-convert -f pdf -o exports/HAEBOT_ANKER_BLOCK_DIAGRAM_KO.pdf block-diagrams/HAEBOT_ANKER_BLOCK_DIAGRAM_KO.svg
 ```
+
+The block diagram exists in English and Korean. Change both SVG files together. The Korean file needs the
+Noto Sans CJK KR font installed.
 
 Open each PDF after export and check that nothing is clipped or overlapping. A3 landscape for the schematic,
 A4 landscape for the block diagram.
