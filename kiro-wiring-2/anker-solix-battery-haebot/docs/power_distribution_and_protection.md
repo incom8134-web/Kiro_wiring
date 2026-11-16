@@ -35,8 +35,8 @@ Power sharing when several ports are in use (manual, "USB Power Distribution Tab
 
 | Branch | Rev B proposal | As built, Rev C | Status |
 |---|---|---|---|
-| A hub 1 | USB-A1 -> DC lead | USB-A2 -> USB-A to DC lead -> hub 1 | BLOCKED: hub input voltage unknown |
-| A hub 2 | USB-A2 -> DC lead | no power port assigned | BLOCKED |
+| A hub 1 | USB-A1 -> DC lead | USB-A2 -> USB-A to DC lead -> one 7-port 5 V USB 3 hub | RECOMMENDED. Not confirmed as fitted. Keep the load under 2 A |
+| A hub 2 | USB-A2 -> DC lead | do not fit | RECOMMENDED. Spare ports are on hub 1. USB-C3 stays free for recharge |
 | B arm 1 | USB-C4 -> fuse -> K1 -> screw terminal | USB-A1 -> USB-A to DC jack lead -> adapter DC jack. No fuse. Not on K1 | AS BUILT |
 | C arm 2 | USB-C1 -> 20 V trigger -> EA75-5V -> F2 -> K1 | USB-C1 -> 5 V PD trigger -> K1 -> adapter. No buck | AS BUILT. 3 A source vs 5 A design / 8 A burst |
 | D wheels | USB-C2 -> 20 V trigger -> 12 V buck -> F1 -> K1 | USB-C2 -> 12 V PD trigger -> FB1 -> F1 15 A -> K1 -> adapter | AS BUILT. 12 V is a builder measurement |
@@ -55,7 +55,7 @@ The V1 records give the developer-kit DC jack as **9-20 V**, and V1 Rev F runs t
 | FB1 | Dorhea 4-way, V1 | 12 V from P02. Slots: F1, F5, two spare | V1 hardware. No negative bus. Returns go to P02 OUT- |
 | F1 | 15 A blade | 12 V wheel branch | V1 wheel fuse |
 | F5 | 5 A | Jetson, ahead of K1 | V1 Jetson fuse |
-| F3 | 1 A drawn | E-stop loop | Calculated from a 3 W coil allowance. The builder reported a fuse and did not state the rating |
+| F3 | 1 A fast blade, RECOMMENDED | E-stop loop, in a spare Dorhea slot | A fuse is fitted and the rating is unknown. Hold allowance 0.25 A (3 W at 12 V, not measured). 1 A is about four times that hold, so pull-in should pass and a shorted coil still opens. The loop wire is 20 AWG class, well above 1 A |
 | D1 | 1N4007 | K1 coil switch-off spike | On the Rev C schematic, cathode to A1. Confirm it is on the coil |
 
 There is no fuse on arm 1 and no fuse on arm 2 beyond the station port. Arm 1 current is about 0.3 A on a 2.4 A port. Arm 2 is already limited by the 3 A PD contract, which is below the wire and the servo design current.

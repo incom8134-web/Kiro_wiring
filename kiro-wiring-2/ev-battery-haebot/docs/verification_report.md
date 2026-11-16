@@ -17,7 +17,7 @@
 | KiCad file validity | `kicad-cli` 7.0.11 loads the schematic and plots it | Pass |
 | Net connectivity | KiCad netlist export compared with the intended connection table | Pass after one fix: tee connections on the battery bus were not joined in the first export and were corrected |
 | Unconnected pins | netlist review | Only intended ones: spare fuse slots, second adapter ports, last servo in each chain, hub 2 downstream ports |
-| KiCad ERC | not run | **Open.** The CLI available here (7.0.11) has no ERC command. Run ERC in KiCad 8 or newer |
+| KiCad ERC | KiCad 10.0, 2026-11-16 | **0 errors, 49 warnings, all `lib_symbol_issues`** (the HAEBOT library was not in the project table). `kicad/sym-lib-table` now points at `kiro-wiring-2/shared/HAEBOT.kicad_sym`. This environment cannot re-run ERC (kicad-cli 7.0.11 has no ERC command), so the warning count after the table was added is not re-counted |
 | PDF readability | exported PDF rendered and inspected | Pass |
 | Battery voltage range against each load | table in the protection notes | Servo rail needs a regulator unless the pack is 3S Li-ion |
 | Fuse and wire sizes | V1 values and calculation | Preliminary; see below |

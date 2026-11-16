@@ -5,13 +5,13 @@ P01,"USB-C PD trigger, fixed 5 V",Arm 2 source,part number not recorded,5 V out,
 FB1,Fuse box 4-way blade,12 V distribution,Dorhea (V1),12 V,two slots used,-,1,AS BUILT (V1 hardware),blade slots,Verified part (V1),"F1 15 A wheels, F5 5 A Jetson, two slots spare. No negative bus"
 F1,Blade fuse 15 A,Wheel branch fuse,ATO,32 V,15 A,-,1,AS BUILT (V1 fuse value),slot in FB1,Value verified (V1),Feeds K1 pole 1. Opens on E-stop
 F5,Fuse 5 A,Jetson fuse,ATO,32 V,5 A,-,1,AS BUILT (V1 fuse value),slot in FB1,Value verified (V1),Before K1. Jetson stays on after E-stop
-F3,Fuse 1 A,E-stop loop fuse,amp rating not stated by the builder,32 V,1 A drawn,-,1,AS BUILT position,inline,Calculated,Builder reported a fuse in the loop and did not state the rating. 1 A is the coil allowance
+F3,Fuse 1 A fast blade,E-stop loop fuse,RECOMMENDED value; rating not stated by the builder,32 V,1 A,-,1,RECOMMENDED,spare slot in the Dorhea box FB1,Recommended,"A fuse is fitted (AS BUILT) but the rating is unknown. 1 A is about 4x a 0.25 A hold (3 W at 12 V, not measured) so pull-in should pass and a shorted coil opens. One FB1 slot stays empty"
 K1,"Contactor, 2 NO power poles + 1 NO aux",E-stop switch,part number not recorded,12 V DC coil,wheels and arm 2,-,1,AS BUILT,screw or blade terminals,"AS BUILT per builder report",Third pole is not fitted. Arm 1 is not switched
 S1,"E-stop mushroom, NC, twist release",Emergency stop,part number not recorded,12 V control,< 1 A,-,1,AS BUILT,screw terminals,AS BUILT,One button opens K1
 SW2,"Pushbutton, momentary NO",START / re-arm,part number not recorded,12 V control,< 1 A,-,1,AS BUILT,screw terminals,AS BUILT,Releasing S1 does not restart the coil
 D1,Diode,K1 coil suppression,1N4007,12 V,1 A,-,1,Shown on the Rev C schematic,across the coil,Confirm it is fitted,Cathode to A1. V1 parts list. The builder report did not name the diode separately
 W3,USB-A to DC jack lead,Arm 1 supply,ready-made lead,5 V,2.4 A,-,1,AS BUILT,USB-A plug to DC jack,AS BUILT,No fuse. Not switched by the E-stop. Plugs into the arm 1 adapter DC jack
-W1,USB-A to DC barrel lead,Hub 1 power lead,part number not recorded,5 V,2.4 A,-,1,BLOCKED,"USB-A, barrel size not recorded",Not verified,Only if the hub input is 5 V. Hub input voltage is unknown
+W1,USB-A to DC barrel lead,Hub 1 power lead,part number not recorded,5 V,2.4 A,-,1,RECOMMENDED,"USB-A to 5 V barrel, centre positive",Recommended,"Use only with a 5 V-input hub. Confirm polarity before connecting. Keep the hub load under 2 A"
 U20,Jetson Orin Nano Super Developer Kit 8 GB,Main computer,NVIDIA,9-20 V DC jack,3.0 A design at 12 V,3.8 A,1,AS BUILT (V1),5.5 x 2.5 mm barrel,Verified (V1 records),Fed from F5. Stays on after E-stop. Confirm stock carrier P3768
 U30,"Bus Servo Adapter (A), CH343",Wheel bus driver,Waveshare (model per V1 'most likely'),12 V,6 A design,-,1,AS BUILT (V1),"screw terminal, USB-C, 2 x Molex 5264",USB ID verified; silkscreen photo open,4 x ST3215-C018
 U42,"Bus Servo Adapter (A), CH343",Arm 2 bus driver,Waveshare (model per V1 'most likely'),5 V,per branch,-,1,AS BUILT (V1),"screw terminal, USB-C, Molex 5264",USB ID verified,6 x STS3215 on 5 V
@@ -19,8 +19,8 @@ U41,"Bus Servo Adapter (A), CH343",Arm 1 bus driver,Waveshare (model per V1 'mos
 M31-M34,Bus servo ST3215-C018,Mecanum wheel drive,Feetech / Waveshare,"12 V (max 12.6 V, trip 14.0 V)",1.5 A design each,2.7 A stall each,4,AS BUILT (V1 measured),Molex 5264,Verified (V1 measured),IDs FR 7 FL 8 RR 9 RL 10
 M41,"SO-101 leader arm, 6 x STS3215",Arm 1,Feetech,5 V,0.3 A,0.6 A,1,AS BUILT (V1),Molex 5264,Verified (V1 doc),Torque off. Not cut by the E-stop
 M42,"SO-101 follower arm, 6 x STS3215 (7.4 V type)",Arm 2,Feetech,5 V (trip 8.0 V),5 A design,8 A burst,1,AS BUILT (V1 measured),Molex 5264,Verified (V1 measured),Source is limited to 3 A. Drops when K1 opens
-U50,"USB 3 hub, VIA VL815, self-powered",USB data hub,model not recorded,TBD,TBD,-,1,BLOCKED,DC barrel TBD,Blocked,Input voltage current and plug are not recorded
-U54,USB hub 2,USB data hub,not recorded,no power port assigned,-,-,1,BLOCKED,upstream USB only,Blocked,No station port is assigned. Downstream ports are not assigned
+U50,"USB 3 hub, 7 port, 5 V powered",USB data hub,generic; no brand specified,5 V DC barrel,under 2.0 A,-,1,RECOMMENDED,"5 V centre-positive barrel, USB 3.x upstream and 7 downstream",Recommended,"One hub on USB-A2. Lidar and the three adapter USB leads. Leave the Orbbec on the Jetson. Not confirmed as fitted"
+U54,USB hub 2,not fitted,none,not used,-,-,0,RECOMMENDED do not fit,none,Recommended,"Do not add a second hub. USB-C4 shares 20 W with USB-A1 and USB-A2. USB-C3 stays free for recharge. Jetson USB-A4 left open"
 U51,Orbbec Gemini 335,Head camera,Orbbec,5 V USB,0.9 A max,-,1,AS BUILT (V1),USB 3 direct on Jetson USB-A1,Verified (V1 measured),
 U52,Wrist webcam (Suyin 1e45:8022),Wrist camera,retail model unknown,5 V USB,0.5 A,-,1,AS BUILT (V1),USB 2 direct on Jetson USB-A2,Verified (V1 measured),
 U53,RPLIDAR C1 + CP2102N adapter,2D lidar,Slamtec,5 V USB,0.23 A typ,-,1,AS BUILT (V1),USB via hub 1 DS4,Verified (V1 measured),

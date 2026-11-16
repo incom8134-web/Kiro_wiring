@@ -16,12 +16,12 @@ Multimeter, USB-C power meter, ferrule crimper, small screwdrivers, heat-shrink,
 1. **Wheels and Jetson (USB-C2).** USB-C cable into the PD trigger. The builder measured 12 V at the trigger output. The manual lists no 12 V USB-C profile, so confirm 12 V with a meter and do not trim the trigger upward (wheel servos max 12.6 V). OUT+ into the Dorhea 4-way box. F1 15 A then K1 pole 1 (pins 1-2) to the wheel adapter screw terminal. F5 5 A, taken before K1, to the Jetson DC jack, 5.5 x 2.5 mm, centre positive. Both returns go to the trigger OUT-. Two fuse slots stay empty. There is no negative bus and no bulk capacitor.
 2. **Arm 2 (USB-C1).** 5 V PD trigger, then K1 pole 2 (pins 3-4), then the arm 2 adapter screw terminal. No buck and no extra fuse. Label the rail "5 V ONLY". The port gives 3 A. The follower design load is 5 A and the burst is 8 A, so the arm will current-limit before the servos reach design torque.
 3. **Arm 1 (USB-A1).** USB-A to DC jack lead, straight into the arm 1 adapter DC jack. No fuse. This lead is not on K1, so arm 1 stays powered through an E-stop. Leader current is about 0.3 A.
-4. **Hub 1 (USB-A2).** A USB-A to DC lead is the intended feed. **BLOCKED** until the hub input is known to be 5 V. Do not plug it in on the strength of this drawing.
-5. **Hub 2.** No power port is assigned. **BLOCKED.** Its USB upstream cable may still go to Jetson USB-A4.
-6. **E-stop.** DRIVE_12V, from the trigger output ahead of K1, through a fuse (drawn as F3, 1 A; the builder did not state the rating), through S1 normally closed, then START in parallel with the K1 auxiliary contact, to the coil. Flyback diode cathode on A1, anode on A2, if D1 is fitted. Confirm that diode before relying on the coil.
-7. **Left unused.** USB-C3 (keep it free for recharging), USB-C4, and the car socket.
+4. **Hub (USB-A2). RECOMMENDED, not confirmed as fitted.** One 7-port USB 3.x hub with a 5 V DC barrel, centre positive, fed by the USB-A to DC lead. Keep the hub load under 2 A. Put the lidar and the three servo-adapter USB leads on it. Leave the Orbbec on Jetson USB-A1. Confirm polarity before the barrel touches the hub.
+5. **Hub 2. RECOMMENDED: do not fit.** USB-C4 shares a 20 W group with USB-A1 and USB-A2, and USB-C3 stays free for recharging. Leave Jetson USB-A4 open.
+6. **E-stop.** DRIVE_12V, from the trigger output ahead of K1, through F3, through S1 normally closed, then START in parallel with the K1 auxiliary contact, to the coil. A fuse is already in this loop and its rating is unknown. **RECOMMENDED:** replace or identify it as a 1 A fast blade in a spare slot of the Dorhea box. The coil hold allowance is 0.25 A, so 1 A leaves room for pull-in and still opens if the coil shorts. Flyback diode cathode on A1, anode on A2, if D1 is fitted. Confirm that diode before relying on the coil.
+7. **Left unused.** USB-C3 (keep it free for recharging), USB-C4, and the car socket. Do not power a second hub from either USB-C port.
 
-USB data is separate. Orbbec on Jetson USB-A1, wrist webcam on USB-A2, hub 1 upstream on USB-A3, hub 2 upstream on USB-A4. Servo-adapter USB cables go to hub 1 and are not the servo power feed.
+USB data is separate. Orbbec on Jetson USB-A1, wrist webcam on USB-A2, hub upstream on USB-A3. USB-A4 is left open. Servo-adapter USB cables go to hub 1 and are not the servo power feed.
 
 ## Power-up and shutdown
 

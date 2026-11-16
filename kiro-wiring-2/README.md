@@ -18,7 +18,7 @@ assembly instructions and its own `AGENTS.md`.
 | Block diagram PDF | [HAEBOT_ANKER_BLOCK_DIAGRAM.pdf](anker-solix-battery-haebot/exports/HAEBOT_ANKER_BLOCK_DIAGRAM.pdf) | [HAEBOT_EV_BLOCK_DIAGRAM.pdf](ev-battery-haebot/exports/HAEBOT_EV_BLOCK_DIAGRAM.pdf) |
 
 Combined review document: [`exports/HAEBOT_V2_POWER_SYSTEM_COMPARISON.pdf`](exports/HAEBOT_V2_POWER_SYSTEM_COMPARISON.pdf).
-That PDF is the 2026-11-13 review. Its Anker column is the Rev B proposal and is superseded by the Rev C as-built documents in `anker-solix-battery-haebot/`. The PDF was not regenerated.
+That PDF is the 2026-11-13 review. A cover page now says the Anker column is superseded by Rev C in `anker-solix-battery-haebot/`. The original nine pages were not redrawn. The EV pages are unchanged.
 
 ## Archive
 

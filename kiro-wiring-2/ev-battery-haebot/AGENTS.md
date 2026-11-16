@@ -103,4 +103,4 @@ Open each PDF after export and check that nothing is clipped or overlapping.
 - [ ] Hub 1 input voltage and plug; whether hub 2 exists.
 - [ ] What the "5 V control electronics" are.
 - [ ] Optional: `ESTOP_OK` input to the Jetson and the warning beacon from the archived draft.
-- [ ] Run KiCad ERC in KiCad 8 or newer and record the result.
+- [ ] Re-run KiCad 10 ERC. On 2026-11-16 it was 0 errors and 49 library warnings; `sym-lib-table` was added after that run.

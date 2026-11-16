@@ -18,8 +18,8 @@ There is no buck in this revision, so the port sees the load current directly.
 | K1 coil | same USB-C2, from DRIVE_12V | about 3 W (0.25 A), assumption | included when K1 is closed | see below | AS BUILT, coil power not measured |
 | C arm 2 | USB-C1, 5 V PD | 1.5 / 5.0 / 8.0 A at 5 V | 7.5 / 25 / 40 W | 3 A, 15 W | typical fits; design and burst do not |
 | B arm 1 | USB-A1 | 0.25 / 0.3 / 0.6 A at 5 V | 1.3 / 1.5 / 3.0 W | 2.4 A, 12 W | OK. Not E-stop switched |
-| A hub 1 | USB-A2 | about 10 W if the input is 5 V | unknown | 2.4 A, inside the 20 W USB-A group | BLOCKED |
-| Hub 2 | none | - | - | - | BLOCKED |
+| A hub 1 | USB-A2 | keep under 2.0 A (10 W allowance) | 5 V | 2.4 A, inside the 20 W USB-A group | RECOMMENDED. One 7-port hub |
+| Hub 2 | none | do not fit | - | - | RECOMMENDED |
 
 USB-C2 current, wheels + Jetson, coil not included: **3.3 A typical, 9.0 A design, 14.6 A with all four wheels stalled.**
 With the 3 W coil assumption: **3.5 A typical, 9.3 A design.** That is the pair of numbers on the schematic.
@@ -42,7 +42,7 @@ Runtimes use 245 Wh. They count the power the robot asks for, then say whether t
 | Scenario | Power asked | Runtime if delivered | Ports |
 |---|---|---|---|
 | 1. K1 open, Jetson typical, hub not counted | 25 W | 9.8 h | Jetson alone is inside 36 W |
-| 2. Same, plus a 10 W hub assumption | 35 W | 7.0 h | Hub is BLOCKED |
+| 2. Same, plus a 10 W hub allowance | 35 W | 7.0 h | Hub is RECOMMENDED, under 12 W |
 | 3. Typical combined: wheels typical, both arms typical, Jetson typical, coil, hub 10 W | 61 W | 4.0 h | USB-C2 is already about 3.5 A. Expect sag |
 | 4. Teleop, not driving, arm 2 held at the 3 A port limit | 55 W | 4.5 h | Arm 2 cannot reach its 25 W design |
 | 5. Every branch at design continuous | 148 W | 1.7 h arithmetic | Not deliverable. USB-C2 wants about 111 W, USB-C1 wants 25 W |

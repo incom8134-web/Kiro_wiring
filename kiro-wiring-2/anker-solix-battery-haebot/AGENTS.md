@@ -39,8 +39,8 @@ There is **no 12 V USB-C profile** and no PPS. The builder measured 12 V on the 
 | D + E | USB-C2 | 12 V PD trigger (builder measurement) -> Dorhea 4-way box | F1 15 A -> K1 pole 1 -> 4 x ST3215-C018. F5 5 A, before K1 -> Jetson |
 | C | USB-C1 | 5 V PD trigger -> K1 pole 2 | arm 2, follower, 6 x STS3215 on 5 V. Source is 3 A; design is 5 A; burst is 8 A |
 | B | USB-A1 | USB-A to DC jack lead, no fuse, not on K1 | arm 1, leader, into the adapter DC jack |
-| A | USB-A2 | USB-A to DC lead | hub 1. BLOCKED: input voltage unknown |
-| - | none | - | hub 2. BLOCKED: no power port assigned |
+| A | USB-A2 | USB-A to DC lead | one 7-port 5 V USB 3 hub. RECOMMENDED, load under 2 A |
+| - | none | do not fit hub 2 | spare ports are on hub 1. USB-C3 stays free for recharge |
 | - | USB-C3, USB-C4, car socket | not connected | USB-C3 stays free for recharging |
 
 ## Rules
@@ -59,7 +59,8 @@ There is **no 12 V USB-C profile** and no PPS. The builder measured 12 V on the 
 ### Status words
 
 - **AS BUILT** means the builder reported it. It does not mean this repository measured it.
-- **BLOCKED** means a hardware fact is still missing. Hub 1 and hub 2 stay BLOCKED until that fact is written down.
+- **RECOMMENDED** is a value or part chosen here because the builder did not have the fact. F3 is 1 A for that reason. The hub spec is RECOMMENDED, not AS BUILT.
+- **BLOCKED** means a hardware fact is still missing. Do not put the hubs back to BLOCKED; the recommendation above is the decision. USB-C2 current at 12 V is still unmeasured.
 - **Verified** needs a datasheet, a manual, or a measurement already in this repository.
 - Do not invent part numbers for the PD triggers, K1, S1, START or the leads.
 
@@ -77,7 +78,7 @@ There is **no 12 V USB-C profile** and no PPS. The builder measured 12 V on the 
 - Do not invent pins. Off-the-shelf products stay functional blocks.
 - Keep the status words on the drawing in step with `docs/verification_report.md`.
 - Bump the revision letter and date in the title block for any electrical change.
-- Run ERC in KiCad 8 or 9 and investigate every message. kicad-cli 7.0.11 can export a PDF and a netlist. It has no ERC command, so a clean PDF export is not an ERC pass.
+- ERC was run in KiCad 10.0 on 2026-11-16: 0 errors, 58 warnings, all `lib_symbol_issues`, `endpoint_off_grid`, or `unconnected_wire_endpoint`. The project `sym-lib-table` now points at `kiro-wiring-2/shared/HAEBOT.kicad_sym`, and the dangling wire ends were tied to pins and snapped to the 1.27 mm grid. kicad-cli 7.0.11 can export a PDF and a netlist but has no ERC command, so re-count the warnings in KiCad 10 after further edits. A clean PDF export is not an ERC pass.
 
 ### Exports
 
@@ -86,7 +87,7 @@ kicad-cli sch export pdf --no-background-color kicad/HAEBOT_ANKER.kicad_sch -o e
 kicad-cli sch export netlist kicad/HAEBOT_ANKER.kicad_sch -o exports/HAEBOT_ANKER_NETLIST.net
 ```
 
-`exports/HAEBOT_ANKER_BLOCK_DIAGRAM.pdf` and `exports/HAEBOT_ANKER_BLOCK_DIAGRAM_KO.pdf` are the approved Rev C drawings dated 2026-11-16. The SVG files in `block-diagrams/` are the same revision. Do not overwrite those two PDFs with `rsvg-convert` unless the SVG was edited and the new PDF was checked by eye. Change both SVG files together. The Korean SVG needs Noto Sans CJK KR (or another CJK font) to render.
+`exports/HAEBOT_ANKER_BLOCK_DIAGRAM.pdf` and `exports/HAEBOT_ANKER_BLOCK_DIAGRAM_KO.pdf` are rendered from the SVG files in `block-diagrams/`. Change both SVG files together, render both PDFs, and check them by eye. The Korean SVG needs a CJK font (WenQuanYi Micro Hei or Noto Sans CJK KR) to render.
 
 Open each PDF after export and check that nothing is clipped or overlapping. A3 landscape for the schematic, A4 landscape for the block diagram.
 
@@ -98,11 +99,10 @@ Open each PDF after export and check that nothing is clipped or overlapping. A3 
 
 ## Open items (TODO)
 
-- [ ] Hub 1 input voltage, current, barrel size and polarity (label photo).
-- [ ] Hub 2: assign a power port, or record that it has none.
+- [ ] Fit the recommended 7-port 5 V hub and confirm barrel polarity. Do not fit hub 2.
 - [ ] Measure the current USB-C2 holds at the builder's 12 V, with wheels and Jetson on.
-- [ ] Confirm the F3 rating and that D1 (1N4007, cathode to A1) is fitted.
+- [ ] Fit F3 as the recommended 1 A fast blade in a spare Dorhea slot. Confirm D1 (1N4007, cathode to A1) is fitted.
 - [ ] Record part numbers for the PD triggers, K1, S1, START and the leads. Do not invent them.
 - [ ] Confirm the Jetson carrier is the stock developer kit (P3768).
 - [ ] Continuity between the station's port negatives, station off.
-- [ ] Run KiCad ERC in KiCad 8 or 9 and record the result.
+- [ ] Re-run KiCad 10 ERC and confirm the 58 warnings from 2026-11-16 are gone.

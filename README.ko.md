@@ -30,7 +30,7 @@ V2가 두 가지인 이유는 검토 중인 배터리가 두 종류이기 때문
 | BOM | [부품 목록](kiro-wiring/docs/parts_list.md) | [`bom/`](kiro-wiring-2/anker-solix-battery-haebot/bom) | [`bom/`](kiro-wiring-2/ev-battery-haebot/bom) |
 | 설계 문서 | [`docs/`](kiro-wiring/docs) | [`docs/`](kiro-wiring-2/anker-solix-battery-haebot/docs) | [`docs/`](kiro-wiring-2/ev-battery-haebot/docs) |
 
-- V2 비교 검토 문서: [`HAEBOT_V2_POWER_SYSTEM_COMPARISON.pdf`](kiro-wiring-2/exports/HAEBOT_V2_POWER_SYSTEM_COMPARISON.pdf)
+- V2 비교 검토 문서: [`HAEBOT_V2_POWER_SYSTEM_COMPARISON.pdf`](kiro-wiring-2/exports/HAEBOT_V2_POWER_SYSTEM_COMPARISON.pdf). 앤커 열은 2026-11-13 Rev B 제안입니다. 표지가 Rev C로 대체됐음을 적습니다. EV 쪽은 그대로 Rev A입니다.
 - 공통 하드웨어 근거 자료: [`docs/hardware_evidence.md`](docs/hardware_evidence.md)
 - 공통 이미지: [`images/`](images), 공통 3D 모델·출력 파일: [`3d_models/`](3d_models)
 
@@ -42,8 +42,8 @@ V2가 두 가지인 이유는 검토 중인 배터리가 두 종류이기 때문
 | 전원 사양 | SMPS 보유 | 포트 한도는 앤커 설명서. USB-C2의 12 V는 제작자 실측 | **보류**: 배터리 미확인 |
 | 부하 | 실측 | V1 값 사용 | V1 값 사용, 12 V 암 서보는 제안 |
 | 회로도 연결 | - | KiCad 넷리스트로 확인 (Rev C) | KiCad 넷리스트로 확인 |
-| KiCad ERC | - | 미실행. kicad-cli 7.0.11에는 ERC 명령이 없음 | 아직 실행 안 함 |
-| 미해결 항목 | - | 허브 1 입력 전압, 허브 2 전원 포트, 12 V에서 USB-C2 전류 | 배터리, 충전기, 메인 퓨즈, 레귤레이터, 암 서보 |
+| KiCad ERC | - | KiCad 10.0, 2026-11-16: 오류 0, 경고 58. 그 뒤 라이브러리와 와이어 끝을 고침. 여기서는 다시 세지 않음 | KiCad 10.0: 오류 0, 경고 49, 모두 HAEBOT 라이브러리 없음. 표를 추가함. 여기서는 다시 세지 않음 |
+| 미해결 항목 | - | 권장한 1 A 코일 퓨즈와 7포트 5 V 허브 확인, 12 V에서 USB-C2 전류 | 배터리, 충전기, 메인 퓨즈, 레귤레이터, 암 서보 |
 
 각 V2 폴더의 `docs/verification_report.md`에 확인(Verified), 계산(Calculated), 실제 제작(AS BUILT), 보류(BLOCKED)가
 구분되어 있습니다. 앤커 보고서는 Rev C입니다. 한국어 문서는 같은 폴더의 `.ko.md` 파일입니다.
