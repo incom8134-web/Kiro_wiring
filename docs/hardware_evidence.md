@@ -19,6 +19,7 @@ Change an electrical connection only after checking it here.
 | Cameras | Orbbec Gemini 335 (0.9 A max) and a Suyin webcam (0.5 A), both directly on Jetson ports | V1 measured |
 | Lidar | Slamtec RPLIDAR C1 with CP2102N adapter, 5 V 0.23 A, on the hub | V1 measured |
 | Anker station | SOLIX C300 DC, A1726, 288 Wh LiFePO4, 300 W. No 12 V USB-C profile. 5 V USB-C limited to 3 A | Anker manual |
+| Anker as-built wiring (V2-A Rev C, 2026-11-16) | Builder report, not independently measured. Car socket unused. No 12 V buck, no EA75-5V, no third K1 pole. USB-C2 -> 12 V PD trigger (builder measured 12 V) -> Dorhea box: F1 15 A -> K1 -> wheels; F5 5 A, before K1 -> Jetson. USB-C1 -> 5 V PD trigger (3 A) -> K1 -> arm 2. USB-A1 -> DC jack lead -> arm 1, no fuse, not on the E-stop. USB-A2 -> hub 1 lead, input voltage unknown (BLOCKED). Hub 2 has no power port (BLOCKED). One button cuts wheels and arm 2 only | builder report in `kiro-wiring-2/anker-solix-battery-haebot/docs/verification_report.md` |
 | EV battery | "12 V 45 Ah". **Chemistry, BMS, charger and connector unknown** | user brief |
 | 12 V arm servo | Feetech STS3215-C018, 12 V, 30 kg.cm, used in 12 V SO-ARM101 followers | vendor pages, Waveshare wiki |
 
@@ -31,4 +32,5 @@ V1 source documents: [`../kiro-wiring/docs/power_system_design.md`](../kiro-wiri
 2. Photo of the USB hub label and its power adapter label.
 3. Photo of a servo adapter board (silkscreen).
 4. Which two arms the V2 robot carries (leader + follower, or two followers).
-5. Whether a second USB hub is fitted.
+5. Whether a second USB hub is fitted, and which port powers it on the Anker robot (currently BLOCKED: no power port assigned).
+6. How much current the Anker USB-C2 holds at the builder-measured 12 V, with the wheels and the Jetson both on.

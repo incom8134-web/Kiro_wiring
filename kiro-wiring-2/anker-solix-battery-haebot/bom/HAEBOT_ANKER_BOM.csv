@@ -1,28 +1,26 @@
 ﻿Ref,Component,Function,Manufacturer / model,Operating voltage,Rated current,Peak current,Qty,Status,Connection type,Verification,Notes
-PS1,Anker SOLIX C300 DC,Power source,Anker A1726,"5-28 V USB-C, 5 V USB-A, 12 V socket",see port table,300 W total,1,Existing (user-reported on hand),"USB-C, USB-A, car socket",Verified (manual),288 Wh LiFePO4
-PD1,"USB-C PD trigger, fixed 20 V",Arm 2 PD sink,not selected,20 V out,>= 3 A,-,1,Proposed,"USB-C in, screw terminal out",Not verified,replaces the requested 5 V trigger
-PD2,"USB-C PD trigger, fixed 20 V",Wheel PD sink,not selected,20 V out,>= 5 A,-,1,Proposed,"USB-C in, screw terminal out",Not verified,replaces the requested 12 V trigger; needs a 5 A e-marked cable
-U3,Buck converter 20 V -> 12.0 V,Wheel 12 V regulator,not selected,"in 20 V, out 12.0 V",>= 12 A,current-limited,1,Proposed,screw terminals,Not verified,output must stay <= 12.6 V
-U4,Buck converter 5 V,Arm 2 5 V rail,TOBSUN EA75-5V,"in 8-40 V, out 5 V",15 A,75 W,1,Existing (V1),flying leads,"Verified part (V1), 20 V input per vendor range",measure 5.0-5.2 V before use
-K1,"Relay / contactor, 3 NO power poles + 1 NO aux",E-stop power switch,not selected,12 V DC coil,>= 20 A per pole,-,1,Proposed,screw or blade terminals,Not verified,
-S1,"E-stop mushroom, 22 mm, 1 NC, twist release",Emergency stop,not selected,12 V control,< 1 A,-,1,Proposed (V1 planned part),screw terminals,Not verified,
-SW2,"Pushbutton, momentary NO",START / re-arm,not selected,12 V control,< 1 A,-,1,Proposed,screw terminals,Not verified,
-D1,Diode,K1 coil suppression,1N4007,12 V,1 A,-,1,Proposed (V1 parts list),soldered across coil,Not verified,cathode to A1
-"F1, F2",Blade fuse 15 A + inline holder,Wheel and arm 2 branch fuses,ATO,32 V,15 A,-,2,Fuses existing (V1 kit); holders new,"inline holder, 14 AWG",Value verified (V1),
-F3,Fuse 1 A + inline holder,E-stop loop fuse,not selected,32 V,1 A,-,1,Proposed,inline,Calculated,
-F4,Blade fuse 3 A + inline holder,Arm 1 fuse,ATO,32 V,3 A,-,1,Proposed (V1 lists 2-3 A to buy),inline,Calculated,
-F5,Fuse 5 A + inline holder,Jetson fuse,ATO,32 V,5 A,-,1,Fuse existing (V1 kit); holder new,"inline, 18 AWG",Value verified (V1),
-J41,USB-C 5 V power lead to screw terminal,Arm 1 supply lead,not selected,5 V,3 A,-,1,Proposed,USB-C plug with 5.1 k CC resistors,Not verified,a plain cable without CC resistors gets no power from a USB-C port
-P1,Car plug to 5.5 x 2.5 mm barrel lead,Jetson supply lead,not selected,12 V,10 A plug,-,1,Proposed,"car plug, barrel centre +",Not verified,check polarity with a meter
-"W1, W2",USB-A to DC barrel lead,Hub power leads,not selected,5 V,2.4 A,-,2,Blocked,"USB-A, barrel size TBD",Not verified,only if the hub input is 5 V
-U20,Jetson Orin Nano Super Developer Kit 8 GB,Main computer,NVIDIA,9-20 V DC jack,3.0 A design at 12 V,3.8 A,1,Existing (V1),5.5 x 2.5 mm barrel,Verified (V1 records),confirm stock carrier P3768
-"U30, U41, U42","Bus Servo Adapter (A), CH343",Servo bus drivers,Waveshare (model per V1 'most likely'),wheels 12 V; arms 5 V,per branch,-,3,Existing (V1),"screw terminal, USB-C, 2 x Molex 5264",USB ID verified; silkscreen photo open,
-M31-M34,Bus servo ST3215-C018,Mecanum wheel drive,Feetech / Waveshare,"12 V (max 12.6 V, trip 14.0 V)",1.5 A design each,2.7 A stall each,4,Existing (V1),Molex 5264,Verified (V1 measured),
-M41,"SO-101 leader arm, 6 x STS3215",Arm 1,Feetech,5 V,0.3 A,0.6 A,1,Existing (V1),Molex 5264,Verified (V1 doc),torque off
-M42,"SO-101 follower arm, 6 x STS3215 (7.4 V type)",Arm 2,Feetech,5 V (trip 8.0 V),5 A design,8 A burst,1,Existing (V1),Molex 5264,Verified (V1 measured),
-U50,"USB 3 hub, VIA VL815, self-powered",USB data hub,model not recorded,TBD,TBD,-,1,Existing (V1),DC barrel TBD,Blocked,read the hub and adapter labels
-U54,Second USB hub,USB data hub,not selected,TBD,TBD,-,1,Proposed,TBD,Blocked,"requested in the brief, not in V1 records"
-U51,Orbbec Gemini 335,Head camera,Orbbec,5 V USB,0.9 A max,-,1,Existing (V1),"USB 3, direct on Jetson",Verified (V1 measured),
-U52,Wrist webcam (Suyin 1e45:8022),Wrist camera,retail model unknown,5 V USB,0.5 A,-,1,Existing (V1),"USB 2, direct on Jetson",Verified (V1 measured),
-U53,RPLIDAR C1 + CP2102N adapter,2D lidar,Slamtec,5 V USB,0.23 A typ,-,1,Existing (V1),USB via hub 1,Verified (V1 measured),
-C1,Electrolytic capacitor 1000-2200 uF / 25 V,Wheel rail bulk capacitor,not selected,12 V,-,-,1,Proposed,at U30 screw terminal,Not verified,absorbs servo braking energy
+PS1,Anker SOLIX C300 DC,Power source,Anker A1726,"5-28 V USB-C, 5 V USB-A, 12 V socket not used",see port table,300 W total,1,AS BUILT,"USB-C and USB-A; car socket not connected","Verified model (manual). Wiring AS BUILT per builder report",288 Wh LiFePO4. USB-C3 USB-C4 and the car socket are not used
+P02,"USB-C PD trigger, set to 12 V",Wheel and Jetson source,part number not recorded,12 V out (builder measurement),current not measured,-,1,AS BUILT,"USB-C in, screw terminal out","AS BUILT per builder report, not independently measured",Manual lists no 12 V USB-C profile. Builder measured 12 V on USB-C2
+P01,"USB-C PD trigger, fixed 5 V",Arm 2 source,part number not recorded,5 V out,3 A max from USB-C,-,1,AS BUILT,"USB-C in, screw terminal out","AS BUILT per builder report",No buck fitted. Source is 3 A; follower design is 5 A and burst is 8 A
+FB1,Fuse box 4-way blade,12 V distribution,Dorhea (V1),12 V,two slots used,-,1,AS BUILT (V1 hardware),blade slots,Verified part (V1),"F1 15 A wheels, F5 5 A Jetson, two slots spare. No negative bus"
+F1,Blade fuse 15 A,Wheel branch fuse,ATO,32 V,15 A,-,1,AS BUILT (V1 fuse value),slot in FB1,Value verified (V1),Feeds K1 pole 1. Opens on E-stop
+F5,Fuse 5 A,Jetson fuse,ATO,32 V,5 A,-,1,AS BUILT (V1 fuse value),slot in FB1,Value verified (V1),Before K1. Jetson stays on after E-stop
+F3,Fuse 1 A,E-stop loop fuse,amp rating not stated by the builder,32 V,1 A drawn,-,1,AS BUILT position,inline,Calculated,Builder reported a fuse in the loop and did not state the rating. 1 A is the coil allowance
+K1,"Contactor, 2 NO power poles + 1 NO aux",E-stop switch,part number not recorded,12 V DC coil,wheels and arm 2,-,1,AS BUILT,screw or blade terminals,"AS BUILT per builder report",Third pole is not fitted. Arm 1 is not switched
+S1,"E-stop mushroom, NC, twist release",Emergency stop,part number not recorded,12 V control,< 1 A,-,1,AS BUILT,screw terminals,AS BUILT,One button opens K1
+SW2,"Pushbutton, momentary NO",START / re-arm,part number not recorded,12 V control,< 1 A,-,1,AS BUILT,screw terminals,AS BUILT,Releasing S1 does not restart the coil
+D1,Diode,K1 coil suppression,1N4007,12 V,1 A,-,1,Shown on the Rev C schematic,across the coil,Confirm it is fitted,Cathode to A1. V1 parts list. The builder report did not name the diode separately
+W3,USB-A to DC jack lead,Arm 1 supply,ready-made lead,5 V,2.4 A,-,1,AS BUILT,USB-A plug to DC jack,AS BUILT,No fuse. Not switched by the E-stop. Plugs into the arm 1 adapter DC jack
+W1,USB-A to DC barrel lead,Hub 1 power lead,part number not recorded,5 V,2.4 A,-,1,BLOCKED,"USB-A, barrel size not recorded",Not verified,Only if the hub input is 5 V. Hub input voltage is unknown
+U20,Jetson Orin Nano Super Developer Kit 8 GB,Main computer,NVIDIA,9-20 V DC jack,3.0 A design at 12 V,3.8 A,1,AS BUILT (V1),5.5 x 2.5 mm barrel,Verified (V1 records),Fed from F5. Stays on after E-stop. Confirm stock carrier P3768
+U30,"Bus Servo Adapter (A), CH343",Wheel bus driver,Waveshare (model per V1 'most likely'),12 V,6 A design,-,1,AS BUILT (V1),"screw terminal, USB-C, 2 x Molex 5264",USB ID verified; silkscreen photo open,4 x ST3215-C018
+U42,"Bus Servo Adapter (A), CH343",Arm 2 bus driver,Waveshare (model per V1 'most likely'),5 V,per branch,-,1,AS BUILT (V1),"screw terminal, USB-C, Molex 5264",USB ID verified,6 x STS3215 on 5 V
+U41,"Bus Servo Adapter (A), CH343",Arm 1 bus driver,Waveshare (model per V1 'most likely'),5 V,0.6 A peak,-,1,AS BUILT (V1),DC jack as built,USB ID verified,Leader arm. Power enters the DC jack
+M31-M34,Bus servo ST3215-C018,Mecanum wheel drive,Feetech / Waveshare,"12 V (max 12.6 V, trip 14.0 V)",1.5 A design each,2.7 A stall each,4,AS BUILT (V1 measured),Molex 5264,Verified (V1 measured),IDs FR 7 FL 8 RR 9 RL 10
+M41,"SO-101 leader arm, 6 x STS3215",Arm 1,Feetech,5 V,0.3 A,0.6 A,1,AS BUILT (V1),Molex 5264,Verified (V1 doc),Torque off. Not cut by the E-stop
+M42,"SO-101 follower arm, 6 x STS3215 (7.4 V type)",Arm 2,Feetech,5 V (trip 8.0 V),5 A design,8 A burst,1,AS BUILT (V1 measured),Molex 5264,Verified (V1 measured),Source is limited to 3 A. Drops when K1 opens
+U50,"USB 3 hub, VIA VL815, self-powered",USB data hub,model not recorded,TBD,TBD,-,1,BLOCKED,DC barrel TBD,Blocked,Input voltage current and plug are not recorded
+U54,USB hub 2,USB data hub,not recorded,no power port assigned,-,-,1,BLOCKED,upstream USB only,Blocked,No station port is assigned. Downstream ports are not assigned
+U51,Orbbec Gemini 335,Head camera,Orbbec,5 V USB,0.9 A max,-,1,AS BUILT (V1),USB 3 direct on Jetson USB-A1,Verified (V1 measured),
+U52,Wrist webcam (Suyin 1e45:8022),Wrist camera,retail model unknown,5 V USB,0.5 A,-,1,AS BUILT (V1),USB 2 direct on Jetson USB-A2,Verified (V1 measured),
+U53,RPLIDAR C1 + CP2102N adapter,2D lidar,Slamtec,5 V USB,0.23 A typ,-,1,AS BUILT (V1),USB via hub 1 DS4,Verified (V1 measured),

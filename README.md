@@ -14,7 +14,7 @@ dual-arm robot with a Jetson Orin Nano, SO-101 arms and a mecanum base.
 | Version | Folder | Power source | Status |
 |---|---|---|---|
 | **V1** | [`kiro-wiring/`](kiro-wiring) | AC mains, 12 V SMPS | Built. Legacy reference |
-| **V2-A** | [`kiro-wiring-2/anker-solix-battery-haebot/`](kiro-wiring-2/anker-solix-battery-haebot) | Anker SOLIX C300 DC power station | Proposed, not bench-verified |
+| **V2-A** | [`kiro-wiring-2/anker-solix-battery-haebot/`](kiro-wiring-2/anker-solix-battery-haebot) | Anker SOLIX C300 DC power station | Rev C, AS BUILT per builder report. Not independently measured |
 | **V2-B** | [`kiro-wiring-2/ev-battery-haebot/`](kiro-wiring-2/ev-battery-haebot) | 12 V 45 Ah battery | Proposed; battery and charger not identified |
 
 There are two V2 designs because two batteries are under consideration. V2-A is the quick, plug-and-play option built
@@ -26,7 +26,7 @@ on a ready-made power station. V2-B is the long-runtime option that keeps the V1
 | Need | V1 | V2-A Anker | V2-B EV battery |
 |---|---|---|---|
 | KiCad schematic | [`KIRO_FINAL.kicad_sch`](kiro-wiring/kicad/KIRO_FINAL.kicad_sch) | [`HAEBOT_ANKER.kicad_pro`](kiro-wiring-2/anker-solix-battery-haebot/kicad/HAEBOT_ANKER.kicad_pro) | [`HAEBOT_EV.kicad_pro`](kiro-wiring-2/ev-battery-haebot/kicad/HAEBOT_EV.kicad_pro) |
-| Schematic PDF | [Rev F](kiro-wiring/exports/haebot_wiring_FINAL_revF_2026_11_02.pdf) | [Rev A](kiro-wiring-2/anker-solix-battery-haebot/exports/HAEBOT_ANKER_SCHEMATIC.pdf) | [Rev A](kiro-wiring-2/ev-battery-haebot/exports/HAEBOT_EV_SCHEMATIC.pdf) |
+| Schematic PDF | [Rev F](kiro-wiring/exports/haebot_wiring_FINAL_revF_2026_11_02.pdf) | [Rev C](kiro-wiring-2/anker-solix-battery-haebot/exports/HAEBOT_ANKER_SCHEMATIC.pdf) | [Rev A](kiro-wiring-2/ev-battery-haebot/exports/HAEBOT_EV_SCHEMATIC.pdf) |
 | Block diagram PDF | - | [English](kiro-wiring-2/anker-solix-battery-haebot/exports/HAEBOT_ANKER_BLOCK_DIAGRAM.pdf), [한국어](kiro-wiring-2/anker-solix-battery-haebot/exports/HAEBOT_ANKER_BLOCK_DIAGRAM_KO.pdf) | [English](kiro-wiring-2/ev-battery-haebot/exports/HAEBOT_EV_BLOCK_DIAGRAM.pdf), [한국어](kiro-wiring-2/ev-battery-haebot/exports/HAEBOT_EV_BLOCK_DIAGRAM_KO.pdf) |
 | BOM | [parts list](kiro-wiring/docs/parts_list.md) | [`bom/`](kiro-wiring-2/anker-solix-battery-haebot/bom) | [`bom/`](kiro-wiring-2/ev-battery-haebot/bom) |
 | Design notes | [`docs/`](kiro-wiring/docs) | [`docs/`](kiro-wiring-2/anker-solix-battery-haebot/docs) | [`docs/`](kiro-wiring-2/ev-battery-haebot/docs) |
@@ -39,14 +39,14 @@ on a ready-made power station. V2-B is the long-runtime option that keeps the V1
 
 | | V1 | V2-A Anker | V2-B EV battery |
 |---|---|---|---|
-| Built and running | yes | no | no |
-| Source ratings | SMPS on hand | verified from the Anker manual | **blocked**: battery not identified |
+| Built and running | yes | wired, per the builder report; not independently measured | no |
+| Source ratings | SMPS on hand | port limits from the Anker manual; 12 V on USB-C2 is a builder measurement | **blocked**: battery not identified |
 | Loads | measured | taken from V1 | taken from V1; 12 V arm servos are proposed |
-| Schematic connectivity | - | checked by KiCad netlist | checked by KiCad netlist |
-| KiCad ERC | - | not run yet | not run yet |
-| Open items | - | hub power, PD parts, bench tests | battery, charger, main fuse, regulator, arm servos |
+| Schematic connectivity | - | checked by KiCad netlist (Rev C) | checked by KiCad netlist |
+| KiCad ERC | - | not run; kicad-cli 7.0.11 has no ERC command | not run yet |
+| Open items | - | hub 1 input voltage, hub 2 power port, USB-C2 current at 12 V | battery, charger, main fuse, regulator, arm servos |
 
-Each V2 folder has a `docs/verification_report.md` that separates verified, calculated, proposed and blocked items.
+Each V2 folder has a `docs/verification_report.md` that separates verified, calculated, as-built and blocked items. The Anker report is Rev C.
 
 ## Editing and exporting
 
@@ -59,5 +59,6 @@ kicad-cli sch export pdf --no-background-color kicad/HAEBOT_ANKER.kicad_sch -o e
 rsvg-convert -f pdf -o exports/HAEBOT_ANKER_BLOCK_DIAGRAM.pdf block-diagrams/HAEBOT_ANKER_BLOCK_DIAGRAM.svg
 ```
 
-The block diagrams are plain SVG files and can be edited in Inkscape or a text editor. Rules for changing a design
-are in each folder's `AGENTS.md`.
+The block diagrams are plain SVG files and can be edited in Inkscape or a text editor. The Anker block-diagram PDFs
+are the approved Rev C drawings. Do not replace them with a fresh `rsvg-convert` until the SVG change has been
+checked by eye. Rules for changing a design are in each folder's `AGENTS.md`.
