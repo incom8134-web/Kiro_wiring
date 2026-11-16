@@ -1,34 +1,37 @@
-# Bill of materials: Anker design (Rev B)
+# Bill of materials: Anker design (Rev C)
 
-Full table with every column: [`HAEBOT_ANKER_BOM.csv`](HAEBOT_ANKER_BOM.csv). "not selected" means no part number has
-been chosen. No part number in this file is invented.
+[English](README.md) | [한국어](README.ko.md)
 
-| Ref | Component | Function | Manufacturer / model | Operating voltage | Rated current | Peak current | Qty | Status | Verification |
+Full table: [`HAEBOT_ANKER_BOM.csv`](HAEBOT_ANKER_BOM.csv).
+
+**AS BUILT per builder report, 2026-11-16. Not independently measured.** "part number not recorded" means the builder fitted a part and did not give a manufacturer part number. No part number in this file is invented.
+
+Removed from the Rev B proposal and not fitted: the 12 V buck, the TOBSUN EA75-5V arm buck, the car-plug lead, the USB-C 5 V lead to arm 1, the second hub power lead, fuses F2 and F4, and the third K1 power pole.
+
+| Ref | Component | Function | Manufacturer / model | Operating voltage | Rated current | Peak | Qty | Status | Verification |
 |---|---|---|---|---|---|---|---|---|---|
-| PS1 | Anker SOLIX C300 DC | Power source | Anker A1726 | 5-28 V USB-C, 5 V USB-A, 12 V socket | see port table | 300 W total | 1 | Existing (user-reported on hand) | Verified (manual) |
-| PD1 | USB-C PD trigger, fixed 20 V | Arm 2 PD sink | not selected | 20 V out | >= 3 A | - | 1 | Proposed | Not verified |
-| PD2 | USB-C PD trigger, fixed 20 V | Wheel PD sink | not selected | 20 V out | >= 5 A | - | 1 | Proposed | Not verified |
-| U3 | Buck converter 20 V -> 12.0 V | Wheel 12 V regulator | not selected | in 20 V, out 12.0 V | >= 12 A | current-limited | 1 | Proposed | Not verified |
-| U4 | Buck converter 5 V | Arm 2 5 V rail | TOBSUN EA75-5V | in 8-40 V, out 5 V | 15 A | 75 W | 1 | Existing (V1) | Verified part (V1), 20 V input per vendor range |
-| K1 | Relay / contactor, 3 NO power poles + 1 NO aux | E-stop power switch | not selected | 12 V DC coil | >= 20 A per pole | - | 1 | Proposed | Not verified |
-| S1 | E-stop mushroom, 22 mm, 1 NC, twist release | Emergency stop | not selected | 12 V control | < 1 A | - | 1 | Proposed (V1 planned part) | Not verified |
-| SW2 | Pushbutton, momentary NO | START / re-arm | not selected | 12 V control | < 1 A | - | 1 | Proposed | Not verified |
-| D1 | Diode | K1 coil suppression | 1N4007 | 12 V | 1 A | - | 1 | Proposed (V1 parts list) | Not verified |
-| F1, F2 | Blade fuse 15 A + inline holder | Wheel and arm 2 branch fuses | ATO | 32 V | 15 A | - | 2 | Fuses existing (V1 kit); holders new | Value verified (V1) |
-| F3 | Fuse 1 A + inline holder | E-stop loop fuse | not selected | 32 V | 1 A | - | 1 | Proposed | Calculated |
-| F4 | Blade fuse 3 A + inline holder | Arm 1 fuse | ATO | 32 V | 3 A | - | 1 | Proposed (V1 lists 2-3 A to buy) | Calculated |
-| F5 | Fuse 5 A + inline holder | Jetson fuse | ATO | 32 V | 5 A | - | 1 | Fuse existing (V1 kit); holder new | Value verified (V1) |
-| J41 | USB-C 5 V power lead to screw terminal | Arm 1 supply lead | not selected | 5 V | 3 A | - | 1 | Proposed | Not verified |
-| P1 | Car plug to 5.5 x 2.5 mm barrel lead | Jetson supply lead | not selected | 12 V | 10 A plug | - | 1 | Proposed | Not verified |
-| W1, W2 | USB-A to DC barrel lead | Hub power leads | not selected | 5 V | 2.4 A | - | 2 | Blocked | Not verified |
-| U20 | Jetson Orin Nano Super Developer Kit 8 GB | Main computer | NVIDIA | 9-20 V DC jack | 3.0 A design at 12 V | 3.8 A | 1 | Existing (V1) | Verified (V1 records) |
-| U30, U41, U42 | Bus Servo Adapter (A), CH343 | Servo bus drivers | Waveshare (model per V1 'most likely') | wheels 12 V; arms 5 V | per branch | - | 3 | Existing (V1) | USB ID verified; silkscreen photo open |
-| M31-M34 | Bus servo ST3215-C018 | Mecanum wheel drive | Feetech / Waveshare | 12 V (max 12.6 V, trip 14.0 V) | 1.5 A design each | 2.7 A stall each | 4 | Existing (V1) | Verified (V1 measured) |
-| M41 | SO-101 leader arm, 6 x STS3215 | Arm 1 | Feetech | 5 V | 0.3 A | 0.6 A | 1 | Existing (V1) | Verified (V1 doc) |
-| M42 | SO-101 follower arm, 6 x STS3215 (7.4 V type) | Arm 2 | Feetech | 5 V (trip 8.0 V) | 5 A design | 8 A burst | 1 | Existing (V1) | Verified (V1 measured) |
-| U50 | USB 3 hub, VIA VL815, self-powered | USB data hub | model not recorded | TBD | TBD | - | 1 | Existing (V1) | Blocked |
-| U54 | Second USB hub | USB data hub | not selected | TBD | TBD | - | 1 | Proposed | Blocked |
-| U51 | Orbbec Gemini 335 | Head camera | Orbbec | 5 V USB | 0.9 A max | - | 1 | Existing (V1) | Verified (V1 measured) |
-| U52 | Wrist webcam (Suyin 1e45:8022) | Wrist camera | retail model unknown | 5 V USB | 0.5 A | - | 1 | Existing (V1) | Verified (V1 measured) |
-| U53 | RPLIDAR C1 + CP2102N adapter | 2D lidar | Slamtec | 5 V USB | 0.23 A typ | - | 1 | Existing (V1) | Verified (V1 measured) |
-| C1 | Electrolytic capacitor 1000-2200 uF / 25 V | Wheel rail bulk capacitor | not selected | 12 V | - | - | 1 | Proposed | Not verified |
+| PS1 | Anker SOLIX C300 DC | Power source | Anker A1726 | USB-C, USB-A; car socket not used | see port table | 300 W | 1 | AS BUILT | Verified model (manual) |
+| P02 | USB-C PD trigger, set to 12 V | Wheels and Jetson | part number not recorded | 12 V out, builder measurement | not measured | - | 1 | AS BUILT | Builder measurement, not a manual profile |
+| P01 | USB-C PD trigger, fixed 5 V | Arm 2 | part number not recorded | 5 V out | 3 A max | - | 1 | AS BUILT | AS BUILT. Below the 5 A / 8 A arm load |
+| FB1 | Dorhea 4-way fuse box | 12 V distribution | Dorhea (V1) | 12 V | F1 and F5 fitted | - | 1 | AS BUILT | V1 part. Two slots spare |
+| F1 | Blade fuse 15 A | Wheels, then K1 | ATO | 32 V | 15 A | - | 1 | AS BUILT | V1 value |
+| F5 | Fuse 5 A | Jetson, before K1 | ATO | 32 V | 5 A | - | 1 | AS BUILT | V1 value |
+| F3 | Fuse 1 A | E-stop loop | rating not stated | 32 V | 1 A drawn | - | 1 | AS BUILT position | 1 A is calculated. Builder did not state the rating |
+| K1 | Contactor, 2 NO poles + aux NO | E-stop | part number not recorded | 12 V coil | wheels, arm 2 | - | 1 | AS BUILT | Third pole not fitted |
+| S1 | E-stop, NC | Emergency stop | part number not recorded | 12 V | < 1 A | - | 1 | AS BUILT | AS BUILT |
+| SW2 | START, momentary NO | Re-arm | part number not recorded | 12 V | < 1 A | - | 1 | AS BUILT | AS BUILT |
+| D1 | Flyback diode | Coil suppression | 1N4007 | 12 V | 1 A | - | 1 | On the Rev C schematic | Confirm it is fitted. Cathode to A1 |
+| W3 | USB-A to DC jack lead | Arm 1 | ready-made | 5 V | 2.4 A | - | 1 | AS BUILT | No fuse, not E-stop switched |
+| W1 | USB-A to DC barrel lead | Hub 1 | not recorded | 5 V | 2.4 A | - | 1 | BLOCKED | Hub input voltage unknown |
+| U20 | Jetson Orin Nano Super 8 GB | Computer | NVIDIA | 9-20 V | 3.0 A design | 3.8 A | 1 | AS BUILT | V1 records. Stays on after E-stop |
+| U30 | Bus Servo Adapter (A) | Wheels | Waveshare, per V1 | 12 V | 6 A design | - | 1 | AS BUILT | V1 |
+| U42 | Bus Servo Adapter (A) | Arm 2 | Waveshare, per V1 | 5 V | 3 A from the port | - | 1 | AS BUILT | V1 |
+| U41 | Bus Servo Adapter (A) | Arm 1 | Waveshare, per V1 | 5 V | 0.6 A peak | - | 1 | AS BUILT | DC jack, as built |
+| M31-M34 | ST3215-C018 | Wheels | Feetech / Waveshare | 12 V, max 12.6 V | 1.5 A each | 2.7 A | 4 | AS BUILT | V1 measured |
+| M41 | Leader arm, 6 x STS3215 | Arm 1 | Feetech | 5 V | 0.3 A | 0.6 A | 1 | AS BUILT | Torque off |
+| M42 | Follower arm, 6 x STS3215 | Arm 2 | Feetech | 5 V, trip 8.0 V | 5 A design | 8 A | 1 | AS BUILT | Source is 3 A |
+| U50 | USB hub, VIA VL815 | Hub 1 | model not recorded | TBD | TBD | - | 1 | BLOCKED | Input voltage unknown |
+| U54 | USB hub 2 | Hub 2 | not recorded | no port assigned | - | - | 1 | BLOCKED | No power port |
+| U51 | Orbbec Gemini 335 | Head camera | Orbbec | 5 V USB | 0.9 A | - | 1 | AS BUILT | V1 measured |
+| U52 | Wrist webcam | Wrist camera | unknown retail | 5 V USB | 0.5 A | - | 1 | AS BUILT | V1 measured |
+| U53 | RPLIDAR C1 + CP2102N | Lidar | Slamtec | 5 V USB | 0.23 A | - | 1 | AS BUILT | V1 measured |

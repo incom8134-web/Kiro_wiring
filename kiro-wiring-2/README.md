@@ -8,16 +8,17 @@ assembly instructions and its own `AGENTS.md`.
 |---|---|---|
 | Source | Anker SOLIX C300 DC (A1726), 288 Wh, 300 W | 12 V 45 Ah battery, chemistry not identified |
 | Idea | plug-and-play leads on the station's protected ports | V1 layout with the SMPS replaced by a battery |
-| Wheels | USB-C2, 20 V PD, 12.0 V buck | fuse box 1 through a 12.0 V regulator |
-| Arms | existing 5 V servos; leader on USB-C4, follower on USB-C1 through a 5 V buck | both arms on new 12 V servos (STS3215-C018) |
-| Jetson | car socket, direct | battery bus, direct |
-| E-stop | 3-pole contactor: wheels, arm 1 and arm 2 together; hardware loop | battery contactor, hardware loop |
-| Typical runtime (calculated) | about 3.9 h | 3.7 h lead-acid, 6.3 h LiFePO4, 5.4 h 3S Li-ion |
-| Status | Proposed, not bench-verified | Proposed; battery and charger are blocked items |
+| Wheels | USB-C2, 12 V PD trigger (builder measurement), F1 15 A, K1 | fuse box 1 through a 12.0 V regulator |
+| Arms | arm 2 on USB-C1 through a 5 V PD trigger and K1 (3 A source); arm 1 on USB-A1, DC jack, not on the E-stop | both arms on new 12 V servos (STS3215-C018) |
+| Jetson | same USB-C2, F5 5 A, ahead of K1, so it stays on after E-stop | battery bus, direct |
+| E-stop | 2-pole contactor: wheels and arm 2; hardware loop. Jetson, hubs and arm 1 stay on | battery contactor, hardware loop |
+| Typical runtime (calculated) | about 4.0 h at 61 W if the ports hold; USB-C2 is already over a usual 3 A / 36 W contract | 3.7 h lead-acid, 6.3 h LiFePO4, 5.4 h 3S Li-ion |
+| Status | Rev C, 2026-11-16. AS BUILT per builder report. Not independently measured | Proposed; battery and charger are blocked items |
 | Schematic PDF | [HAEBOT_ANKER_SCHEMATIC.pdf](anker-solix-battery-haebot/exports/HAEBOT_ANKER_SCHEMATIC.pdf) | [HAEBOT_EV_SCHEMATIC.pdf](ev-battery-haebot/exports/HAEBOT_EV_SCHEMATIC.pdf) |
 | Block diagram PDF | [HAEBOT_ANKER_BLOCK_DIAGRAM.pdf](anker-solix-battery-haebot/exports/HAEBOT_ANKER_BLOCK_DIAGRAM.pdf) | [HAEBOT_EV_BLOCK_DIAGRAM.pdf](ev-battery-haebot/exports/HAEBOT_EV_BLOCK_DIAGRAM.pdf) |
 
-Combined review document: [`exports/HAEBOT_V2_POWER_SYSTEM_COMPARISON.pdf`](exports/HAEBOT_V2_POWER_SYSTEM_COMPARISON.pdf)
+Combined review document: [`exports/HAEBOT_V2_POWER_SYSTEM_COMPARISON.pdf`](exports/HAEBOT_V2_POWER_SYSTEM_COMPARISON.pdf).
+That PDF is the 2026-11-13 review. Its Anker column is the Rev B proposal and is superseded by the Rev C as-built documents in `anker-solix-battery-haebot/`. The PDF was not regenerated.
 
 ## Archive
 
