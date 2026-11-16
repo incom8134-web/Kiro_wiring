@@ -31,7 +31,7 @@ on a ready-made power station. V2-B is the long-runtime option that keeps the V1
 | BOM | [parts list](kiro-wiring/docs/parts_list.md) | [`bom/`](kiro-wiring-2/anker-solix-battery-haebot/bom) | [`bom/`](kiro-wiring-2/ev-battery-haebot/bom) |
 | Design notes | [`docs/`](kiro-wiring/docs) | [`docs/`](kiro-wiring-2/anker-solix-battery-haebot/docs) | [`docs/`](kiro-wiring-2/ev-battery-haebot/docs) |
 
-- V2 side-by-side review: [`HAEBOT_V2_POWER_SYSTEM_COMPARISON.pdf`](kiro-wiring-2/exports/HAEBOT_V2_POWER_SYSTEM_COMPARISON.pdf)
+- V2 side-by-side review: [`HAEBOT_V2_POWER_SYSTEM_COMPARISON.pdf`](kiro-wiring-2/exports/HAEBOT_V2_POWER_SYSTEM_COMPARISON.pdf). The Anker column is the 2026-11-13 Rev B proposal. A cover page marks it superseded by Rev C. The EV pages are still Rev A.
 - Shared hardware facts and their sources: [`docs/hardware_evidence.md`](docs/hardware_evidence.md)
 - Shared pictures: [`images/`](images). Shared 3D models and print files: [`3d_models/`](3d_models)
 
@@ -43,8 +43,8 @@ on a ready-made power station. V2-B is the long-runtime option that keeps the V1
 | Source ratings | SMPS on hand | port limits from the Anker manual; 12 V on USB-C2 is a builder measurement | **blocked**: battery not identified |
 | Loads | measured | taken from V1 | taken from V1; 12 V arm servos are proposed |
 | Schematic connectivity | - | checked by KiCad netlist (Rev C) | checked by KiCad netlist |
-| KiCad ERC | - | not run; kicad-cli 7.0.11 has no ERC command | not run yet |
-| Open items | - | hub 1 input voltage, hub 2 power port, USB-C2 current at 12 V | battery, charger, main fuse, regulator, arm servos |
+| KiCad ERC | - | KiCad 10.0 on 2026-11-16: 0 errors, 58 warnings. Library and wire ends fixed after that run; not re-counted here | KiCad 10.0: 0 errors, 49 warnings, all missing HAEBOT library. Table added; not re-counted here |
+| Open items | - | confirm the recommended 1 A coil fuse and 7-port 5 V hub; USB-C2 current at 12 V | battery, charger, main fuse, regulator, arm servos |
 
 Each V2 folder has a `docs/verification_report.md` that separates verified, calculated, as-built and blocked items. The Anker report is Rev C.
 

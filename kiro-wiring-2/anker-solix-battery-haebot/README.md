@@ -27,8 +27,8 @@ This revision records the wiring the builder fitted.
 | D + E | USB-C2 | USB-C cable, PD trigger set to 12 V (builder measurement), Dorhea 4-way fuse box | Wheels through F1 15 A and K1; Jetson through F5 5 A, before K1 |
 | C | USB-C1 | 5 V PD trigger, K1 pole | Arm 2 (follower), 6 x STS3215 on 5 V. Source is 3 A max |
 | B | USB-A1 (5 V 2.4 A) | USB-A to DC jack lead, no fuse | Arm 1 (leader), straight into the adapter DC jack. Not switched by the E-stop |
-| A | USB-A2 (5 V 2.4 A) | USB-A to DC lead | USB hub 1. **BLOCKED**: hub input voltage unknown |
-| - | none | - | USB hub 2. **BLOCKED**: no power port assigned |
+| A | USB-A2 (5 V 2.4 A) | USB-A to DC lead | One 7-port USB 3 hub, 5 V input, load under 2 A. **RECOMMENDED**, not confirmed as fitted |
+| - | none | do not fit | USB hub 2. **RECOMMENDED**: leave it off. USB-C3 stays free for recharging |
 | - | USB-C3, USB-C4, car socket | not connected | Left unused. USB-C3 stays free for recharging |
 
 The E-stop is fitted: `DRIVE_12V -> fuse -> E-stop (NC) -> START || K1 aux -> K1 coil`. One button cuts the wheels and arm 2. The Jetson, the hubs and arm 1 stay on.
@@ -46,9 +46,9 @@ Rev B was a proposal. Rev C is the builder's wiring.
 
 ## Still blocked
 
-Hub 1 power stays blocked until the hub input voltage is read from its label. Hub 2 has no power port. The current USB-C2 can actually hold at 12 V was not measured. Details are in the verification report.
+The hub spec and the 1 A coil fuse are recommendations. The builder had no hub label and does not know the fuse rating. The current USB-C2 can actually hold at 12 V was not measured. Details are in the verification report.
 
 ## Editing
 
 Open `kicad/HAEBOT_ANKER.kicad_pro` in KiCad 7 or newer. Export commands are in `AGENTS.md`.
-The block-diagram PDFs in `exports/` are the approved Rev C drawings. The SVG sources are the same revision.
+The block-diagram PDFs in `exports/` are rendered from the SVG sources. The hub row is the recommendation above.

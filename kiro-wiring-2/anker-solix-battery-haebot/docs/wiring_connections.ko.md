@@ -21,17 +21,17 @@
 | W-C2 | P01 OUT+ | K1 2극(핀 3-4) -> U42 VIN+ | ARM2_5V / ARM2_SW | 5 V | 공급 3 A. 설계 5 A, 순간 8 A | U42 나사 단자. 벅 없음, 추가 퓨즈 없음 | AS BUILT. 설계 부하에서 포트 초과 |
 | W-C3 | U42 VIN- | P01 OUT- | GND_C1 | 0 V | W-C2와 같음 | 자기 귀로 | AS BUILT |
 | W-C4 | U42 포트 1 | M42 암 2 체인 | 서보 버스 | 5 V | 암 전류 | Molex 5264 3핀 | Verified (V1) |
-| W-K1 | DRIVE_12V | F3 -> S1 (NC) -> SW2 \|\| K1 보조 13-14 -> K1 A1 | 제어 회로 | 12 V | 0.5 A 미만 | 20 AWG 등급(V1). F3는 도면상 1 A. 제작자는 용량을 말하지 않음 | AS BUILT |
+| W-K1 | DRIVE_12V | F3 -> S1 (NC) -> SW2 \|\| K1 보조 13-14 -> K1 A1 | 제어 회로 | 12 V | 0.5 A 미만 | 20 AWG 등급(V1). F3는 1 A 속단 날 퓨즈로 Dorhea 빈 슬롯에 넣는 것을 권장 | 경로는 AS BUILT. 퓨즈 값은 RECOMMENDED |
 | W-K2 | K1 A2와 D1 애노드 | GND_C2 | 제어 귀로 | 0 V | 0.5 A 미만 | D1 캐소드는 A1. D1 장착을 확인할 것 | Rev C 회로도에 표시 |
 | W-B1 | PS1 USB-A1 | W3 -> U41 DC 잭 | ARM1_5V | 5 V | 설계 0.3 A, 최대 0.6 A | USB-A-DC 잭 케이블. 퓨즈 없음. K1로 차단되지 않음 | AS BUILT |
 | W-B2 | U41 VIN- | W3 귀로 | GND_A1 | 0 V | W-B1과 같음 | 케이블 귀로 | AS BUILT |
 | W-B3 | U41 포트 1 | M41 암 1 체인 | 서보 버스 | 5 V | 최대 0.6 A | Molex 5264 3핀 | Verified (V1) |
-| W-A1 | PS1 USB-A2 | W1 -> U50 DC 입력 | HUB1_5V | 5 V | 2.4 A 이하 | USB-A-DC 배럴. 크기와 극성 미기록 | BLOCKED |
-| W-A2 | - | U54 DC 입력 | 없음 | - | - | 전원 포트 미지정 | BLOCKED |
+| W-A1 | PS1 USB-A2 | W1 -> U50 DC 입력 | HUB1_5V | 5 V | 2.0 A 미만 | USB-A-DC 배럴, 센터 플러스. USB 3 허브 7포트 | RECOMMENDED |
+| W-A2 | - | U54 | 없음 | - | - | 두 번째 허브는 달지 않음 | RECOMMENDED |
 | U-1 | U20 USB-A1 | U51 Orbbec Gemini 335 | USB 3 데이터 + 버스 전원 | 5 V | 최대 0.9 A | 기본 케이블, 허브 경유 금지 | Verified (V1) |
 | U-2 | U20 USB-A2 | U52 손목 웹캠 | USB 2 데이터 + 버스 전원 | 5 V | 0.5 A | 직접 | Verified (V1) |
 | U-3 | U20 USB-A3 | U50 허브 1 업스트림 | USB_JET_HUB1 | - | - | USB 3 케이블 | Verified (V1) |
-| U-4 | U20 USB-A4 | U54 허브 2 업스트림 | USB_JET_HUB2 | - | - | USB 케이블 | 데이터는 AS BUILT. 전원은 BLOCKED |
+| U-4 | U20 USB-A4 | 비워 둠 | 없음 | - | - | 두 번째 허브 없음 | RECOMMENDED |
 | U-5 | U50 DS1, DS2, DS3 | U30, U41, U42 USB | USB 데이터 | 5 V | 로직만 | USB-A-USB-C. 서보 전원이 아님 | Verified (V1) |
 | U-6 | U50 DS4 | U53 RPLIDAR C1 어댑터 | USB 데이터 + 5 V | 5 V | 평균 0.23 A | 차폐 USB, 12 V 쌍에서 떨어뜨릴 것 | Verified (V1) |
 

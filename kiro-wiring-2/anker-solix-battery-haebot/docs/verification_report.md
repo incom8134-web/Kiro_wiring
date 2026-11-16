@@ -21,7 +21,7 @@ Do not mark the builder's 12 V reading as Verified. The Anker A1726 manual lists
 | KiCad file validity | `kicad-cli` 7.0.11 loads `kicad/HAEBOT_ANKER.kicad_sch` and plots `exports/HAEBOT_ANKER_SCHEMATIC.pdf` | Pass |
 | Net connectivity | Netlist `exports/HAEBOT_ANKER_NETLIST.net` compared with `wiring_connections.md` | Pass. Jetson is on F5, ahead of K1. Arm 1 is on USB-A1 with no fuse and no K1 pole. Car socket, USB-C3 and USB-C4 are unconnected |
 | Unconnected pins | netlist review | Intended: PS1 CAR12V, USB-C3, USB-C4; hub 2 DC and its downstream ports; unused adapter ports; chain ends of the second wheel pair |
-| KiCad ERC | not run | **Open.** kicad-cli 7.0.11 has no ERC command. Run ERC in KiCad 8 or 9 before treating the sheet as released |
+| KiCad ERC | KiCad 10.0 `sch erc --severity-all`, 2026-11-16, then a geometry fix here | **Before:** 0 errors, 58 warnings (30 `lib_symbol_issues` for a missing HAEBOT library, `endpoint_off_grid`, and 5 `unconnected_wire_endpoint`). **After, verified in this tree:** a project `sym-lib-table` points at `kiro-wiring-2/shared/HAEBOT.kicad_sym`; every wire end is on the 1.27 mm grid; the five dangling ends now land on a pin (GND returns and JETSON_12V). The netlist still has the same power pins. This environment has kicad-cli 7.0.11, which cannot run ERC, so the warning count after the fix has not been re-counted on KiCad 10 |
 | Block diagrams | approved Rev C PDFs placed at the existing export filenames | Pass as approved drawings. SVG sources are the same revision and were not used to overwrite those PDFs |
 | Source voltage per branch | builder report plus the A1726 manual | See section 2 |
 | Continuous current per branch | calculation in `power_budget.md` from V1 Rev F loads | See section 2 |
@@ -38,15 +38,15 @@ Do not mark the builder's 12 V reading as Verified. The Anker A1726 manual lists
 | Jetson: F5 5 A, taken before K1, so it stays on after E-stop | AS BUILT | Builder report. Jack 9-20 V is a V1 record |
 | Arm 2: USB-C1 -> 5 V PD trigger -> K1 pole 2 | AS BUILT | Builder report. Flagged: source 3 A, design 5 A, burst 8 A |
 | Arm 1: USB-A1 -> USB-A to DC jack, no fuse, not on K1 | AS BUILT | Builder report. Leader is about 0.3 A (V1 estimate) |
-| E-stop: DRIVE_12V -> fuse -> NC -> START \|\| K1 aux -> coil | AS BUILT | Builder report. F3 is drawn as 1 A; the builder did not state the rating. D1 1N4007 is on the schematic; confirm it is fitted |
+| E-stop: DRIVE_12V -> fuse -> NC -> START \|\| K1 aux -> coil | AS BUILT path. F3 value is RECOMMENDED | A fuse is fitted. The builder does not know the rating. Recommended value: 1 A fast blade in a spare Dorhea slot. Hold current allowance is 0.25 A (3 W at 12 V, not measured); 1 A is about four times that, so it should ride through pull-in and still open on a shorted coil. D1 1N4007 is on the schematic; confirm it is fitted |
 | One button cuts wheels and arm 2; Jetson, hubs and arm 1 stay on | AS BUILT | Builder report. Arm 1 remaining live is a warning |
 | Wheel servos: 12 V, max 12.6 V, stall 2.7 A | Verified | V1 measured and vendor |
 | Follower servos trip above 8.0 V; run on 5 V | Verified | V1 register read and measurement |
 | USB-C2 wheels + Jetson vs a usual 3 A / 36 W contract | Calculated: over the usual ceiling | 3.3 A typical and 9.0 A design without the coil; 3.5 A / 9.3 A with a 3 W coil assumption. 36 W is not an Anker rating |
 | Arm 2 vs USB-C1 at 5 V | Calculated: typical fits, design does not | 1.5 A typical of 3 A. 5 A design and 8 A burst are not available |
 | Arm 1 vs USB-A1 | Calculated | 0.3 A design, 0.6 A peak, of 2.4 A |
-| Hub 1 on USB-A2 | BLOCKED | Hub input voltage, current and plug are not recorded |
-| Hub 2 | BLOCKED | No power port assigned |
+| Hub 1 on USB-A2 | RECOMMENDED | One 7-port USB 3.x hub, 5 V DC barrel, centre positive, load kept under 2.0 A of the 2.4 A port. Not confirmed as fitted. The builder has no hub label |
+| Hub 2 | RECOMMENDED: do not fit | No downstream devices were assigned. USB-C4 shares the 20 W USB-A group with arm 1 and USB-A2, so it is a poor second-hub source. USB-C3 stays free for recharging. Use spare ports on hub 1. Jetson USB-A4 is left open |
 | Station negatives common internally | BLOCKED | Not published. Measure continuity between port grounds with the station off |
 | Current USB-C2 holds at the measured 12 V | BLOCKED | Needs a USB-C meter under the wheel and Jetson load |
 | Usable energy factor 0.85 | Calculated assumption | Anker does not publish it. One measured discharge would close it |
@@ -63,14 +63,15 @@ These were reasons Rev B avoided a 12 V trigger and a 5 V arm source. The builde
 
 ## 4. Still to measure
 
-1. Read the hub label and its adapter label (voltage, current, plug size, polarity) before hub 1 is treated as powered.
-2. Assign a power port to hub 2, or record that it is bus-powered.
+1. The builder has no hub label. Choose a hub to the recommended spec: 5 V input, 7 ports, USB 3.x.
+2. Do not fit hub 2. Spare ports are on hub 1.
 3. With a USB-C meter, read voltage and current on USB-C2 while the wheels and the Jetson are both on. Record whether the trigger stays at 12 V above 3 A.
-4. Confirm F3's fuse rating and that D1 is across the coil, cathode to A1.
-5. Confirm the Jetson carrier is the stock developer-kit carrier (P3768).
-6. Test the E-stop: latch, drop-out of wheels and arm 2 on S1, no restart on release, Jetson and arm 1 still powered, drop-out with one loop wire pulled.
-7. Run KiCad ERC in KiCad 8 or 9 and record every message.
-8. One full discharge, if a usable-energy number is needed. Until then, 245 Wh stays an assumption.
+4. Fit F3 as the recommended 1 A fast blade in a spare Dorhea slot, and confirm D1 is across the coil, cathode to A1.
+5. Fit the recommended 7-port 5 V hub on the USB-A2 lead. Confirm barrel polarity before it touches the hub. Do not add a second hub.
+6. Confirm the Jetson carrier is the stock developer-kit carrier (P3768).
+7. Test the E-stop: latch, drop-out of wheels and arm 2 on S1, no restart on release, Jetson and arm 1 still powered, drop-out with one loop wire pulled.
+8. Re-run ERC in KiCad 10 and confirm the library and wire warnings from 2026-11-16 are gone. This tree was checked with kicad-cli 7.0.11 (netlist and PDF only).
+9. One full discharge, if a usable-energy number is needed. Until then, 245 Wh stays an assumption.
 
 ## Sources
 
