@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="2900" viewBox="0 0 2400 2900">
-<rect width="2400" height="2900" fill="#ffffff"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="3380" viewBox="0 0 2400 3380">
+<rect width="2400" height="3380" fill="#ffffff"/>
 <text x="36.0" y="50.0" fill="#1c2833" font-size="42" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="start">Jetson Nano battery monitor — pin wiring</text>
 <text x="36.0" y="90.0" fill="#34495e" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">Follow the colored lines. Colors are suggested. A crossing without a dot does not connect.</text>
 <text x="36.0" y="122.0" fill="#34495e" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">Pack voltage stays on the violet wires. It never lands on a header pin. Red pack + is not orange 3.3 V.</text>
@@ -274,7 +274,39 @@
 <rect x="1160.0" y="2648.0" width="52.0" height="52.0" rx="10" fill="#ffffff" stroke="#7f8c8d" stroke-width="3"/>
 <text x="1186.0" y="2684.0" fill="#7f8c8d" font-size="30" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="middle">X</text>
 <text x="1228.0" y="2682.0" fill="#7f8c8d" font-size="22" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="start">not connected</text>
-<text x="36.0" y="2804.0" fill="#34495e" font-size="18" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">Sources: NVIDIA Jetson Nano Developer Kit User Guide DA_09402, connector J41. Pins 3 and 5, and 27 and 28, are I2C. Pins 8 and 10 are UART TX and RX. Signals are 3.3 V.</text>
-<text x="36.0" y="2834.0" fill="#34495e" font-size="18" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">Pin 1 = 3.3 V, pins 2 and 4 = 5 V, pins 6 and 9 = GND, as in battery/README.md and the J41 header map. On the module, I2C_2 is pins 3 and 5. Wire the pin numbers.</text>
-<text x="36.0" y="2864.0" fill="#34495e" font-size="18" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">Editable source: battery/wiring/draw_wiring.py and battery/wiring/battery_monitor_wiring.svg. Colors on this figure are suggested.</text>
+<text x="36.0" y="2796.0" fill="#1c2833" font-size="26" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="start">3    Pod wall. Three slots. Pack current, F1, F2, the buck, and J25 do not enter.</text>
+<rect x="36.0" y="2820.0" width="1080.0" height="400.0" rx="10" fill="#f7f9fb" stroke="#243140" stroke-width="2"/>
+<text x="56.0" y="2860.0" fill="#1c2833" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="start">UART cable    one jacket</text>
+<text x="56.0" y="2896.0" fill="#d35400" font-size="22" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="start">3.3 V    pin 1</text>
+<text x="360.0" y="2896.0" fill="#1c2833" font-size="22" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="start">GND    pin 6</text>
+<text x="56.0" y="2932.0" fill="#1a5276" font-size="22" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="start">SDA    pin 3</text>
+<text x="360.0" y="2932.0" fill="#9a7d0a" font-size="22" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="start">SCL    pin 5</text>
+<text x="56.0" y="2968.0" fill="#196f3d" font-size="22" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="start">TXD    pin 8</text>
+<text x="360.0" y="2968.0" fill="#566573" font-size="22" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="start">RXD    pin 10    optional</text>
+<text x="56.0" y="3012.0" fill="#1c2833" font-size="20" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">This is the link to the Jetson header.</text>
+<text x="56.0" y="3040.0" fill="#1c2833" font-size="20" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">UART alone does not run the LCD or the INA228.</text>
+<text x="56.0" y="3068.0" fill="#1c2833" font-size="20" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">3.3 V, GND, SDA, and SCL have to be in this jacket.</text>
+<text x="56.0" y="3100.0" fill="#34495e" font-size="20" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">Keep it short. The TX pin is a weak driver.</text>
+<text x="56.0" y="3168.0" fill="#34495e" font-size="20" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">TMP117 stays on the pack and joins this</text>
+<text x="56.0" y="3196.0" fill="#34495e" font-size="20" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">bus at the Jetson, not inside the pod.</text>
+<rect x="1140.0" y="2820.0" width="600.0" height="400.0" rx="10" fill="#f5eef8" stroke="#6c3483" stroke-width="2"/>
+<text x="1160.0" y="2860.0" fill="#6c3483" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="start">Shunt cable 1</text>
+<text x="1160.0" y="2896.0" fill="#6c3483" font-size="20" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">Battery side of the shunt</text>
+<text x="1160.0" y="2940.0" fill="#6c3483" font-size="22" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="start">IN+</text>
+<text x="1160.0" y="2972.0" fill="#6c3483" font-size="22" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="start">VBUS</text>
+<text x="1160.0" y="3020.0" fill="#1c2833" font-size="20" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">F3 on each wire, at the shunt.</text>
+<text x="1160.0" y="3052.0" fill="#1c2833" font-size="20" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">10 Ω on IN+ and 100 Ω on VBUS</text>
+<text x="1160.0" y="3084.0" fill="#1c2833" font-size="20" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">sit next to the INA, in the pod.</text>
+<rect x="1764.0" y="2820.0" width="596.0" height="400.0" rx="10" fill="#f5eef8" stroke="#6c3483" stroke-width="2"/>
+<text x="1784.0" y="2860.0" fill="#6c3483" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="start">Shunt cable 2</text>
+<text x="1784.0" y="2896.0" fill="#6c3483" font-size="20" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">Bus side of the shunt</text>
+<text x="1784.0" y="2940.0" fill="#6c3483" font-size="22" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="start">IN−</text>
+<text x="1784.0" y="2972.0" fill="#6c3483" font-size="20" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">Spare wire stays open.</text>
+<text x="1784.0" y="3020.0" fill="#1c2833" font-size="20" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">F3 on IN−, at the shunt.</text>
+<text x="1784.0" y="3052.0" fill="#1c2833" font-size="20" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">10 Ω next to the INA, in the pod.</text>
+<text x="1784.0" y="3100.0" fill="#1c2833" font-size="20" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="start">Not a pack-power conductor.</text>
+<text x="36.0" y="3264.0" fill="#7f8c8d" font-size="20" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">USB–I2C board is in the pod and has no slot. Leave it unwired, or add a USB lead and take SDA and SCL out of the UART cable. Do not connect both.</text>
+<text x="36.0" y="3304.0" fill="#34495e" font-size="18" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">Sources: NVIDIA Jetson Nano Developer Kit User Guide DA_09402, connector J41. Pins 3 and 5, and 27 and 28, are I2C. Pins 8 and 10 are UART TX and RX. Signals are 3.3 V.</text>
+<text x="36.0" y="3334.0" fill="#34495e" font-size="18" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">Pin 1 = 3.3 V, pins 2 and 4 = 5 V, pins 6 and 9 = GND, as in battery/README.md and the J41 header map. On the module, I2C_2 is pins 3 and 5. Wire the pin numbers.</text>
+<text x="36.0" y="3364.0" fill="#34495e" font-size="18" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">Editable source: battery/wiring/draw_wiring.py and battery/wiring/battery_monitor_wiring.svg. Colors on this figure are suggested.</text>
 </svg>

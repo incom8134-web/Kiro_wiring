@@ -172,7 +172,7 @@ Fuses and wire gauge are in the safety section. The printed enclosure is in [sec
 
 ![Pin-level wiring. Suggested colors are marked on the figure.](wiring/battery_monitor_wiring.png)
 
-This picture is the wiring reference. Colors on it are suggested. Each line is one connection. Edit it with `wiring/draw_wiring.py`. The chart below is the same path in short form.
+This picture is the wiring reference. Colors on it are suggested. Each line is one connection. The bottom band groups the three cables that enter the display pod. Edit it with `wiring/draw_wiring.py`. The chart below is the same path in short form.
 
 ```mermaid
 flowchart TB
@@ -467,55 +467,47 @@ Ratings in the BOM that stay BLOCKED until the table above is filled:
 
 ## 11. Enclosure
 
-The shunt is outside the box. Its heat is `I²R`, and the pack current is still unknown, so that can be watts. The box is plastic and it also has to vent the Jetson heatsink. The INA228 sense inputs do not carry the pack current, so only the Kelvin pair and the VBUS lead come inside. The fuse holder stays in the box, on the battery positive before the wire that leaves for the shunt. If the cable from the cell to the box is long, put the real fuse near the cell anyway. A fuse at the far end of a long lead does not protect that lead.
+This box is the display and sense pod on the robot head. The shunt stays at the battery. The Jetson, the buck, F1, and F2 are not in the pod, and no shunt power conductor enters it.
 
 ![Base with the boards in place, and the lid lifted](enclosure/preview.png)
 
-Outer size **213.9 × 170.1 × 55.1 mm**. Inner cavity **208.9 × 165.1 × 49.6 mm**. Walls 2.5 mm, floor 3.0 mm, lid 2.5 mm. Fits use 0.25 mm clearance per side. Gland holes are the catalogue diameter plus 0.20 mm per side, because a printed hole comes out small. That allowance is separate from the board fit.
+Body **125.0 × 88.0 × 54.1 mm**. With the two side flanges and the north tie-down tab, the footprint is **153.0 × 100.0 mm**. Cavity **120.0 × 83.0 × 48.6 mm**. Walls 2.5 mm, floor 3.0 mm, lid 2.5 mm. Fits use 0.25 mm clearance per side. The floor is 3.0 mm because the mounting flanges are the floor.
 
 | Place | What | Basis |
 |---|---|---|
-| South-west, on 8 mm shelves | Jetson Nano developer kit, 100 × 80 × 29 mm envelope | NVIDIA developer-kit data sheet, January 2020. The sheet's kit contents include the module with its heatsink. Mounting-hole coordinates are not in that sheet, so the kit is cradled on the outline. `JETSON_HOLE_XY` in the script is empty until the holes are measured from the P3449 design files or the P3450 STEP. |
-| South and west walls, over the kit only | Openings for the barrel jack, USB, Ethernet, and HDMI | The user guide lists the connectors and does not locate them. Turn the kit so the connectors you need face these two edges. |
-| Lid, east of the kit | Winstar WH2004A 20×4, window 75.0 × 23.2 mm | Module 98.0 × 60.0 × 13.6 mm MAX, view area 77.0 × 25.2 mm, four Ø2.5 holes on a 93.0 × 55.0 mm pitch. The window is 1 mm inside the view area on each side. |
-| Floor under the LCD | INA228 breakout and the USB-I2C adapter | INA228 PCB and holes from Adafruit's Eagle board. Adapter size is an unverified envelope. |
-| North bay | Main fuse, 5 V 4 A buck, two terminal blocks | Envelopes only. No catalog part is chosen, because the pack voltage and current are unknown. |
-| North wall | Eight gland holes | See the list below. |
+| Lid | Winstar WH2004A 20×4, window 75.0 × 23.2 mm | Module 98.0 × 60.0 × 13.6 mm MAX, view area 77.0 × 25.2 mm, four Ø2.5 holes on a 93.0 × 55.0 mm pitch. The window is 1 mm inside the view area on each side. |
+| Floor, under the LCD | INA228 and the USB-I2C adapter, side by side | INA228 PCB and holes from Adafruit's Eagle board. Adapter size is an unverified envelope. The backpack hangs between the LCD and these boards. |
+| East and west | One floor flange each, M3 hole 3.4 mm | ISO 273 medium. Tab 14 × 18 mm is a parameter, not a robot drawing. Bolt the flanges to a plate on the head. The LCD faces out. |
+| North wall | Three open-top slots | UART multi-core, shunt battery side, shunt bus side. |
 
-Power path through the box: battery positive enters, passes the fuse, and leaves to the external shunt's battery side. The shunt's bus side returns, and a terminal block splits it to the load, the charger, and the buck input. The buck's 5 V output stays inside and plugs into J25. IN+, IN−, and VBUS use the small gland.
+| Slot | Jacket | Conductors |
+|---|---|---|
+| UART | one multi-core cable | Pin 1 3.3 V, pin 6 GND, pin 3 SDA, pin 5 SCL, pin 8 TX, pin 10 RX |
+| Shunt, battery side | one small pair | IN+ and VBUS |
+| Shunt, bus side | one small pair | IN−. The spare conductor stays open. It is not pack power. |
 
-Glands, north wall, west to east. Printed diameter is the LAPP T21 panel hole plus 0.20 mm per side. The holes are teardrop-shaped so the top bridges at 45 degrees.
+F3 is three 100 mA fuses at the shunt, outside the pod. The 10 Ω Kelvin resistors and the 100 Ω VBUS resistor sit next to the INA228, inside the pod.
 
-| Gland | Thread | Catalogue hole | Printed hole |
-|---|---|---|---|
-| Battery in | PG9 | 15.5 mm | 15.9 mm |
-| Shunt, battery side | PG9 | 15.5 mm | 15.9 mm |
-| Shunt, bus side | PG9 | 15.5 mm | 15.9 mm |
-| Load | PG9 | 15.5 mm | 15.9 mm |
-| Charger | PG9 | 15.5 mm | 15.9 mm |
-| Kelvin pair and VBUS | PG7 | 12.8 mm | 13.2 mm |
-| USB | PG7 | 12.8 mm | 13.2 mm |
-| UART | PG7 | 12.8 mm | 13.2 mm |
+The UART slot has to carry 3.3 V, GND, SDA, and SCL. TX and RX alone do not run the LCD or the INA228. Those four conductors share the jacket so the wall still has one UART opening. Keep the cable short. Pin 8 is a weak driver. Confirm this six-conductor cable before you build it.
 
-Leave about 36 mm outside the north wall. That is the SKINTOP ST PG9 overall length, and the PG7 body is 32 mm.
+The USB-I2C adapter is in the pod and has no slot. Leave it unwired. If pins 3 and 5 are already taken, add a USB lead and take SDA and SCL out of the UART jacket. Do not connect both. The TMP117 stays on the pack and joins the header at the Jetson. If the pod moves to the USB adapter, the TMP117 is not on that bus unless its wires come into the pod too.
 
-Print the base standing up and the lid with its outer face on the bed. The lid STL is already in that orientation. PETG or ABS, 0.2 mm layers, 0.4 mm nozzle, 5 perimeters, 20% infill. Supports should not be required. The long side is 213.9 mm, so the bed needs to be at least 220 × 180 mm, and a wide brim will not fit on a 220 mm axis. Five M3 screws hold the lid. The insert hole is 4.0 mm diameter by 6.0 mm deep and is **not** taken from an insert datasheet; change `INSERT_HOLE_D` and `INSERT_DEPTH` to the insert you buy. The LCD and the INA228 use M2 screws into ISO 4032 nuts. M2 and M3 clearance holes follow ISO 273 medium fit (2.4 mm and 3.4 mm).
+Print the base floor-down and the lid with its outer face on the bed. The lid STL is already in that orientation. PETG or ABS, 0.2 mm layers, 0.4 mm nozzle, 5 perimeters, 20% infill. Supports should not be required. Four M3 screws hold the lid. The insert hole is 4.0 mm by 6.0 mm and is **not** from an insert datasheet. The LCD and the INA228 use M2 screws into ISO 4032 nuts. Clearance holes follow ISO 273 medium (M2 2.4 mm, M3 3.4 mm).
 
-These defaults are parameters, not measured parts. Change them in `enclosure/enclosure.py` and rerun it. The box grows to fit.
+These defaults are parameters, not measured parts. Change them in `enclosure/enclosure.py` and rerun it. The pod grows to fit.
 
 | Parameter | Default | Why it is unverified |
 |---|---|---|
-| `LCD_STANDOFF` | 13.6 mm | WH2004A maximum module thickness. Right if the PCB is the back face. The drawing also shows 9.0 mm and 1.6 mm for the LED backlight. |
-| `LCD_BACKPACK_DEPTH` | 16 mm | PCF8574 backpack. Not on the Winstar drawing. |
-| `BUCK_L/W/H` | 66 × 36 × 20 mm | No buck is selected. The input range depends on the pack. |
-| `FUSE_L/W/H` | 48 × 22 × 28 mm | No holder is selected. F1's current is blocked on the pack current. |
-| `TB_L/W/H` | 42 × 18 × 22 mm | No terminal block is selected. The wire gauge is blocked. |
+| `LCD_STANDOFF` | 13.6 mm | WH2004A maximum module thickness, if the PCB is the back face. The drawing also shows 9.0 mm and 1.6 mm for the LED backlight. |
+| `LCD_BACKPACK_DEPTH` | 16 mm | Sets most of the pod depth. Not on the Winstar drawing. |
 | `ADAPTER_L/W/H` | 54 × 22 × 14 mm | No USB-I2C adapter is selected. |
-| `BEND_CLEAR` | 18 mm | Straight length inside the gland. The real bend radius depends on the cable. |
+| `UART_CABLE_OD` | 6.0 mm | Six-conductor jacket. Not a chosen cable. |
+| `SENSE_CABLE_OD` | 4.0 mm | Small pair. Not a chosen cable. |
+| `BEND_CLEAR` | 12 mm | Open floor between the LCD and the north wall. |
 | `INSERT_HOLE_D`, `INSERT_DEPTH` | 4.0 mm, 6.0 mm | Match the heat-set insert. |
-| `JETSON_HOLE_XY` | empty | Carrier hole coordinates are not in the published kit data sheet. |
+| `TAB_LEN`, `TAB_W` | 14 mm, 18 mm | Flange that bolts to the robot head. |
 
-Regenerate with `python3 enclosure.py` from `battery/enclosure`. Citations, the cradle, and the file list are in [`enclosure/README.md`](enclosure/README.md).
+Regenerate with `python3 enclosure.py` from `battery/enclosure`. Citations and the file list are in [`enclosure/README.md`](enclosure/README.md).
 
 ## Software map
 

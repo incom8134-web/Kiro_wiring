@@ -39,7 +39,7 @@ HERE = Path(__file__).resolve().parent
 SVG_PATH = HERE / "battery_monitor_wiring.svg"
 PNG_PATH = HERE / "battery_monitor_wiring.png"
 
-W, H = 2400, 2900
+W, H = 2400, 3380
 
 RED = "#b03a2e"
 BLACK = "#1a1a1a"
@@ -443,24 +443,75 @@ def jetson(d: Drawing, buses, colors) -> None:
     d.text(1228, 2682, "not connected", size=22, weight="bold", fill=DASH)
 
 
+def pod_cables(d: Drawing) -> None:
+    """The three jackets that cross the display-pod wall. F3 stays at the shunt."""
+    d.text(
+        36,
+        2796,
+        "3    Pod wall. Three slots. Pack current, F1, F2, the buck, and J25 do not enter.",
+        size=26,
+        weight="bold",
+    )
+    d.rect(36, 2820, 1080, 400)
+    d.text(56, 2860, "UART cable    one jacket", size=24, weight="bold")
+    d.text(56, 2896, "3.3 V    pin 1", size=22, weight="bold", fill=ORANGE)
+    d.text(360, 2896, "GND    pin 6", size=22, weight="bold")
+    d.text(56, 2932, "SDA    pin 3", size=22, weight="bold", fill=BLUE)
+    d.text(360, 2932, "SCL    pin 5", size=22, weight="bold", fill=YELLOW)
+    d.text(56, 2968, "TXD    pin 8", size=22, weight="bold", fill=GREEN)
+    d.text(360, 2968, "RXD    pin 10    optional", size=22, weight="bold", fill=SLATE)
+    d.text(56, 3012, "This is the link to the Jetson header.", size=20)
+    d.text(56, 3040, "UART alone does not run the LCD or the INA228.", size=20)
+    d.text(56, 3068, "3.3 V, GND, SDA, and SCL have to be in this jacket.", size=20)
+    d.text(56, 3100, "Keep it short. The TX pin is a weak driver.", size=20, fill=MUTED)
+    d.text(56, 3168, "TMP117 stays on the pack and joins this", size=20, fill=MUTED)
+    d.text(56, 3196, "bus at the Jetson, not inside the pod.", size=20, fill=MUTED)
+
+    d.rect(1140, 2820, 600, 400, fill="#f5eef8", stroke=VIOLET, sw=2)
+    d.text(1160, 2860, "Shunt cable 1", size=24, weight="bold", fill=VIOLET)
+    d.text(1160, 2896, "Battery side of the shunt", size=20, fill=VIOLET)
+    d.text(1160, 2940, "IN+", size=22, weight="bold", fill=VIOLET)
+    d.text(1160, 2972, "VBUS", size=22, weight="bold", fill=VIOLET)
+    d.text(1160, 3020, "F3 on each wire, at the shunt.", size=20)
+    d.text(1160, 3052, "10 Ω on IN+ and 100 Ω on VBUS", size=20)
+    d.text(1160, 3084, "sit next to the INA, in the pod.", size=20)
+
+    d.rect(1764, 2820, 596, 400, fill="#f5eef8", stroke=VIOLET, sw=2)
+    d.text(1784, 2860, "Shunt cable 2", size=24, weight="bold", fill=VIOLET)
+    d.text(1784, 2896, "Bus side of the shunt", size=20, fill=VIOLET)
+    d.text(1784, 2940, "IN−", size=22, weight="bold", fill=VIOLET)
+    d.text(1784, 2972, "Spare wire stays open.", size=20, fill=VIOLET)
+    d.text(1784, 3020, "F3 on IN−, at the shunt.", size=20)
+    d.text(1784, 3052, "10 Ω next to the INA, in the pod.", size=20)
+    d.text(1784, 3100, "Not a pack-power conductor.", size=20, weight="bold")
+
+    d.text(
+        36,
+        3264,
+        "USB–I2C board is in the pod and has no slot. Leave it unwired, or add a USB lead and take SDA and SCL out of the UART cable. Do not connect both.",
+        size=20,
+        fill=DASH,
+    )
+
+
 def footer(d: Drawing) -> None:
     d.text(
         36,
-        2804,
+        3304,
         "Sources: NVIDIA Jetson Nano Developer Kit User Guide DA_09402, connector J41. Pins 3 and 5, and 27 and 28, are I2C. Pins 8 and 10 are UART TX and RX. Signals are 3.3 V.",
         size=18,
         fill=MUTED,
     )
     d.text(
         36,
-        2834,
+        3334,
         "Pin 1 = 3.3 V, pins 2 and 4 = 5 V, pins 6 and 9 = GND, as in battery/README.md and the J41 header map. On the module, I2C_2 is pins 3 and 5. Wire the pin numbers.",
         size=18,
         fill=MUTED,
     )
     d.text(
         36,
-        2864,
+        3364,
         "Editable source: battery/wiring/draw_wiring.py and battery/wiring/battery_monitor_wiring.svg. Colors on this figure are suggested.",
         size=18,
         fill=MUTED,
@@ -487,6 +538,7 @@ def main() -> None:
     power(d)
     buses, colors = sense_and_chips(d)
     jetson(d, buses, colors)
+    pod_cables(d)
     footer(d)
     hits = d.crossings()
     d.save(SVG_PATH)

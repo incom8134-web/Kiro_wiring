@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Parametric enclosure for the Jetson Nano battery monitor.
+"""Display and sense pod for the hover-robot head.
+
+The Jetson Nano, the buck, and the main fuse are not in this box. The shunt
+stays at the battery. This shell holds the LCD, the INA228, and the USB-I2C
+adapter, and it bolts to the robot on two rear flanges.
 
 Run from this directory:
 
@@ -9,11 +13,7 @@ Writes STEP and STL for the base and the lid, an assembly STEP, a preview
 PNG, and export/dimensions.json. Dimensions are millimetres.
 
 Printed parts are the base and the lid only. The assembly STEP also contains
-reference envelopes (names start with REF_) so the layout is visible. Those
-envelopes are not for printing.
-
-Verified numbers are cited next to the constant. Anything that is not from a
-drawing or a datasheet is marked UNVERIFIED and is a parameter on purpose.
+reference envelopes (names start with REF_). Envelopes are not for printing.
 """
 
 from __future__ import annotations
@@ -39,25 +39,6 @@ EXPORT = HERE / "export"
 # Verified geometry
 # ---------------------------------------------------------------------------
 
-# NVIDIA Jetson Nano Developer Kit datasheet, January 2020 (Mouser reprint of
-# the NVIDIA data sheet). Mechanical: 100 mm x 80 mm x 29 mm.
-# Kit contents in that sheet: "NVIDIA Jetson Nano Module with Heatsink and
-# Reference Carrier Board". The 29 mm figure is the published kit envelope,
-# so the cavity clears the heatsink that ships with the kit.
-# https://www.mouser.com/datasheet/2/813/jetson_nano_devkit_datasheet_updates_us_v3-2487380.pdf
-# Mounting-hole coordinates are NOT in that sheet. NVIDIA staff have said the
-# carrier specification omits them; they live in the P3449 design files and
-# the P3450 STEP, which require an NVIDIA login. They are not invented here.
-JETSON_X = 100.0
-JETSON_Y = 80.0
-JETSON_Z = 29.0
-
-# Module only (not the carrier). NVIDIA module datasheet DA-09366 and the
-# current Jetson Nano specifications page: 69.6 mm x 45 mm. Not used to size
-# the pocket. The pocket follows the developer-kit envelope above.
-JETSON_MODULE_X = 69.6
-JETSON_MODULE_Y = 45.0
-
 # Winstar WH2004A contour drawing (WH2004A-YYH-JT / WH2004A-TMI-JT Rev K).
 # Module 98.0 x 60.0 x 13.6 mm MAX. View area 77.0 x 25.2. Four Ø2.5 PTH.
 # Hole pitch 93.0 mm (X) and 55.0 mm (Y), inset 2.5 mm from the edges.
@@ -79,8 +60,7 @@ LCD_HOLE_PITCH_Y = 55.0
 # (adafruit/Adafruit-INA228-PCB, "Adafruit INA228 I2C Power Monitor.brd"):
 # outline 25.4 x 20.32 mm with 2.54 mm corner chamfers, two 2.5 mm
 # mounting holes at (2.54, 17.78) and (22.86, 17.78) mm.
-# Assembled product size from the Adafruit product page: 25.8 x 20.2 x 10.1 mm
-# (the extra length over the PCB is the terminal block).
+# Assembled product size from the Adafruit product page: 25.8 x 20.2 x 10.1 mm.
 # https://www.adafruit.com/product/5832
 INA_PCB_X = 25.4
 INA_PCB_Y = 20.32
@@ -90,27 +70,11 @@ INA_PRODUCT_X = 25.8
 INA_PRODUCT_Y = 20.4  # page says 20.2; 20.4 covers the 20.32 PCB
 INA_PRODUCT_Z = 10.1
 
-# LAPP SKINTOP / cable-gland catalogue T21. Panel hole D3:
-#   PG7  12.8 mm (tolerance -0.2), thread OD 12.5 mm
-#   PG9  15.5 mm (tolerance -0.2), thread OD 15.2 mm
-# SKINTOP ST body (same catalogue family): PG7 wrench 15 mm, thread length
-# 7.8 mm, overall length 32 mm. PG9 wrench 19 mm, thread length 8 mm,
-# overall length 36 mm.
-# https://e-catalog.lappgroup.com/ (SKINTOP ST and catalogue sheet T21)
-PG7_HOLE = 12.8
-PG9_HOLE = 15.5
-PG7_WRENCH = 15.0
-PG9_WRENCH = 19.0
-PG7_OVERALL = 32.0
-PG9_OVERALL = 36.0
-
 # ISO 273 medium clearance holes. ISO 4032 hex nut, across flats and thickness.
 M2_CLEAR = 2.4
 M3_CLEAR = 3.4
 M2_NUT_AF = 4.0
 M2_NUT_T = 1.6
-M3_NUT_AF = 5.5
-M3_NUT_T = 2.4
 
 # ---------------------------------------------------------------------------
 # UNVERIFIED parameters. Not from a datasheet. Change these; do not treat
@@ -120,56 +84,58 @@ M3_NUT_T = 2.4
 # How far the lid standoff holds the LCD PCB back from the lid inner face.
 # Default is the WH2004A maximum module thickness, which is right if the PCB
 # is the back face of that stack. The contour drawing also shows 9.0 mm and
-# 1.6 mm (LED backlight). If the bezel hits the lid before the PCB meets the
-# standoff, shorten this.
+# 1.6 mm (LED backlight).
 LCD_STANDOFF = 13.6  # UNVERIFIED interpretation of which face 13.6 MAX is
 
 # PCF8574 backpack depth behind the LCD PCB. Not in the Winstar drawing.
+# This number sets the pod depth. Shorten it if the real backpack is thinner.
 LCD_BACKPACK_DEPTH = 16.0  # UNVERIFIED
 
-# Envelopes for parts that are not selected yet (pack current and voltage
-# are unknown, so the buck, the fuse holder, and the terminal blocks have
-# no catalog part). The box grows to fit these boxes.
-BUCK_L, BUCK_W, BUCK_H = 66.0, 36.0, 20.0  # UNVERIFIED
-FUSE_L, FUSE_W, FUSE_H = 48.0, 22.0, 28.0  # UNVERIFIED
-TB_L, TB_W, TB_H = 42.0, 18.0, 22.0  # UNVERIFIED, one 3-position block
-ADAPTER_L, ADAPTER_W, ADAPTER_H = 54.0, 22.0, 14.0  # UNVERIFIED USB-I2C dongle
+# USB-I2C adapter envelope. No adapter is selected. The board is the alternate
+# bus and is mounted in the pod; the three cable slots do not include USB.
+ADAPTER_L, ADAPTER_W, ADAPTER_H = 54.0, 22.0, 14.0  # UNVERIFIED
 
-# Straight cable length kept inside each gland before the conductor may bend.
-# Real bend radius depends on the cable, which is not chosen yet.
-BEND_CLEAR = 18.0  # UNVERIFIED
+# Jacket diameters for the three wall slots. Not a chosen cable.
+# The UART slot carries six conductors (3.3 V, GND, SDA, SCL, TX, RX).
+# Each shunt slot carries a small pair.
+UART_CABLE_OD = 6.0  # UNVERIFIED
+SENSE_CABLE_OD = 4.0  # UNVERIFIED
 
-# M3 heat-set insert. Hole diameter and depth must match the insert you buy.
-# No insert datasheet is cited. 4.0 mm x 6.0 mm is a common starting hole
-# for a short M3 brass insert and it will be wrong for some inserts.
+# Straight length inside the pod before the conductor may bend.
+BEND_CLEAR = 12.0  # UNVERIFIED
+
+# M3 heat-set insert for the lid screws.
 INSERT_HOLE_D = 4.0  # UNVERIFIED
 INSERT_DEPTH = 6.0  # UNVERIFIED
 
-# Jetson carrier mounting holes. Empty means the kit is retained by the
-# outline cradle, not by screws. Fill with (x, y) pairs in millimetres,
-# origin at the kit corner that sits at the south-west of the pocket, +X
-# along the 100 mm edge, +Y along the 80 mm edge, only after you measure
-# the P3449 board or the P3450 STEP.
-JETSON_HOLE_XY: tuple[tuple[float, float], ...] = ()  # UNVERIFIED, intentionally empty
-JETSON_HOLE_D = 2.7  # UNVERIFIED, unused while JETSON_HOLE_XY is empty
+# Rear mounting tabs. Floor thickness, sticking out of the east and west walls.
+# Hole is ISO 273 medium M3. The tab length is how far the flange sticks out.
+TAB_LEN = 14.0  # UNVERIFIED, robot-head bracket
+TAB_W = 18.0  # UNVERIFIED
+# Cable-tie hole in the north tie-down tab. Not a standard gland.
+TIE_HOLE = 4.0  # UNVERIFIED
 
 # ---------------------------------------------------------------------------
-# Design choices (print practice, not part dimensions)
+# Design choices
 # ---------------------------------------------------------------------------
 
 WALL = 2.5
 FLOOR = 3.0
 LID_T = 2.5
-FIT = 0.25  # clearance per side for boards, skirt, and cradle ribs
-PRINT_HOLE_ALLOW = 0.20  # extra radius on gland holes so a printed hole matches D3
-SHELF_H = 8.0  # air under the carrier; not a datasheet stack height
-VENT_GAP = 8.0
+FIT = 0.25  # clearance per side
+# Boss strip beside the LCD. Boss radius is 4.5, so the strip must be wider
+# than the boss or the boss lands on the module.
+SIDE_MARGIN = 11.0
+SOUTH_MARGIN = 11.0
 BOSS_R = 4.5
-SKIRT_H = 5.0
+SKIRT_H = 4.0
 SKIRT_T = 1.6
-WINDOW_MARGIN = 1.0  # lid window is this much inside the view area, per side
+WINDOW_MARGIN = 1.0
 INA_STANDOFF = 4.0
-CHANNEL = 8.0  # UART / I2C wire channel between the kit and the power bay
+BOARD_GAP = 3.0  # air between the boards and the backpack
+LID_SEAT_GAP = 0.05
+SLOT_DEPTH = 8.0  # U-slot depth from the top of the north wall
+TIE_DEPTH = 12.0  # north tab that the cable ties land on
 
 
 def _r3(value: float) -> float:
@@ -177,52 +143,28 @@ def _r3(value: float) -> float:
 
 
 def compute() -> dict:
-    """Every placement the solids, the drawing, and the README share."""
-    p: dict = {}
-    p["wall"] = WALL
-    p["floor"] = FLOOR
-    p["lid_t"] = LID_T
-    p["fit"] = FIT
-    p["shelf_h"] = SHELF_H
-    p["bend_clear"] = BEND_CLEAR
+    """Every placement the solids and the drawing share."""
+    p: dict = {
+        "wall": WALL,
+        "floor": FLOOR,
+        "lid_t": LID_T,
+        "fit": FIT,
+        "bend_clear": BEND_CLEAR,
+    }
 
-    # LCD hang from the inner face of the lid, including the unverified backpack.
-    lcd_hang = LCD_STANDOFF + LCD_BACKPACK_DEPTH
-    ina_top = INA_STANDOFF + INA_PRODUCT_Z
-    adapter_top = 2.0 + ADAPTER_H
-    under_lcd = max(ina_top, adapter_top) + 4.0
-    h_lcd = under_lcd + lcd_hang
-    h_jetson = SHELF_H + JETSON_Z + VENT_GAP
-    h_power = max(BUCK_H, FUSE_H, TB_H) + 4.0
-    internal_h = max(h_lcd, h_jetson, h_power)
+    board_top = max(INA_STANDOFF + INA_PRODUCT_Z, 2.0 + ADAPTER_H)
+    internal_h = board_top + BOARD_GAP + LCD_BACKPACK_DEPTH + LCD_STANDOFF
+    p["board_top"] = board_top
     p["internal_h"] = internal_h
-    p["lcd_hang"] = lcd_hang
     p["base_h"] = FLOOR + internal_h
     p["outer_z"] = p["base_h"] + LID_T
 
-    # Footprint. Origin is the outside south-west corner of the base.
-    board_x = WALL + FIT
-    board_y = WALL + FIT
-    bay_x0 = board_x + JETSON_X + FIT + 4.0
-    bay_w = LCD_X + 2.0 * (3.5 - LCD_HOLE_INSET + 0.4)
-    bay_x1 = bay_x0 + bay_w
-    outer_x = bay_x1 + 0.6 + WALL
-
-    tall_y0 = board_y + JETSON_Y + FIT + CHANNEL
-    # Power bay, from south to north: buck/fuse row, gap, terminal row, bend.
-    power_depth = max(BUCK_W, FUSE_W) + 4.0 + TB_W + BEND_CLEAR
-    tall_y1 = tall_y0 + power_depth
-    outer_y = tall_y1 + 0.6 + WALL
-
+    inner_w = LCD_X + 2.0 * SIDE_MARGIN
+    inner_d = SOUTH_MARGIN + LCD_Y + BEND_CLEAR
+    outer_x = inner_w + 2.0 * WALL
+    outer_y = inner_d + 2.0 * WALL
     p.update(
         {
-            "board_x": board_x,
-            "board_y": board_y,
-            "bay_x0": bay_x0,
-            "bay_x1": bay_x1,
-            "bay_w": bay_w,
-            "tall_y0": tall_y0,
-            "tall_y1": tall_y1,
             "outer_x": outer_x,
             "outer_y": outer_y,
             "inner_x0": WALL,
@@ -232,12 +174,8 @@ def compute() -> dict:
         }
     )
 
-    # LCD sits in the bay. Shifted north of center so the south-wall screw
-    # boss clears the southern mounting holes.
-    lcd_x = bay_x0 + (bay_w - LCD_X) / 2.0
-    lcd_y = board_y + (JETSON_Y - LCD_Y) / 2.0 + 4.0
-    if lcd_y + LCD_Y > board_y + JETSON_Y - 1.0:
-        raise SystemExit("LCD does not fit in the jetson-depth bay")
+    lcd_x = WALL + SIDE_MARGIN
+    lcd_y = WALL + SOUTH_MARGIN
     p["lcd_x"] = lcd_x
     p["lcd_y"] = lcd_y
     p["window_x"] = lcd_x + (LCD_X - LCD_VIEW_X) / 2.0 + WINDOW_MARGIN
@@ -256,131 +194,80 @@ def compute() -> dict:
             )
     p["lcd_holes"] = holes
 
-    # INA228 and the USB-I2C adapter sit on the floor under the LCD.
-    # The backpack hangs above them.
+    # INA228 and the adapter sit side by side on the floor, under the LCD,
+    # south of the cable alley. Stacked in Z with the backpack above them.
     gap = 4.0
     pair = INA_PRODUCT_X + gap + ADAPTER_L
+    if pair + 2.0 > LCD_X:
+        raise SystemExit(f"INA228 plus adapter need {pair:.1f} mm under a {LCD_X:.1f} mm LCD")
     pair_x = lcd_x + (LCD_X - pair) / 2.0
-    ina_y = lcd_y + (LCD_Y - INA_PRODUCT_Y) / 2.0
-    ad_y = lcd_y + (LCD_Y - ADAPTER_W) / 2.0
     p["ina_x"] = pair_x
-    p["ina_y"] = ina_y
+    p["ina_y"] = lcd_y + 2.0
     p["adapter_x"] = pair_x + INA_PRODUCT_X + gap
-    p["adapter_y"] = ad_y
+    p["adapter_y"] = lcd_y + 2.0
 
-    # Power parts. Two rows. Keep 16 mm clear of the inner east and west
-    # walls so the corner screw bosses have room.
-    keep = 16.0
-    row_x0 = p["inner_x0"] + keep
-    row_x1 = p["inner_x1"] - keep
-    row_w = row_x1 - row_x0
-    need = BUCK_L + 4.0 + FUSE_L
-    if need > row_w:
-        raise SystemExit(f"buck + fuse need {need:.1f} mm, row is {row_w:.1f} mm")
-    spare = row_w - need
-    buck_x = row_x0 + spare / 2.0
-    fuse_x = buck_x + BUCK_L + 4.0
-    # Buck/fuse row is the southern row of the power bay.
-    power_y0 = tall_y0
-    buck_y = power_y0
-    fuse_y = power_y0 + (BUCK_W - FUSE_W) / 2.0
-    tb_y = power_y0 + max(BUCK_W, FUSE_W) + 4.0
-    tb_need = TB_L + 6.0 + TB_L
-    if tb_need > row_w:
-        raise SystemExit(f"terminal blocks need {tb_need:.1f} mm, row is {row_w:.1f} mm")
-    tb_spare = row_w - tb_need
-    tb1_x = row_x0 + tb_spare / 2.0
-    tb2_x = tb1_x + TB_L + 6.0
-    p.update(
-        {
-            "buck": (buck_x, buck_y, BUCK_L, BUCK_W, BUCK_H),
-            "fuse": (fuse_x, fuse_y, FUSE_L, FUSE_W, FUSE_H),
-            "tb_shunt": (tb1_x, tb_y, TB_L, TB_W, TB_H),
-            "tb_load": (tb2_x, tb_y, TB_L, TB_W, TB_H),
-        }
-    )
-
-    # Glands along the north wall. Five PG9 power glands, three PG7 signal glands.
-    # Printed diameter is the catalogue maximum plus 0.2 mm per side.
-    p["pg7_printed"] = PG7_HOLE + 2.0 * PRINT_HOLE_ALLOW
-    p["pg9_printed"] = PG9_HOLE + 2.0 * PRINT_HOLE_ALLOW
-    glands = [
-        ("battery_in", "PG9"),
-        ("shunt_battery_side", "PG9"),
-        ("shunt_bus_side", "PG9"),
-        ("load", "PG9"),
-        ("charger", "PG9"),
-        ("kelvin_vbus", "PG7"),
-        ("usb", "PG7"),
-        ("uart", "PG7"),
+    # Three U-slots in the north wall. West to east.
+    p["uart_slot_w"] = UART_CABLE_OD + 2.0 * FIT
+    p["sense_slot_w"] = SENSE_CABLE_OD + 2.0 * FIT
+    slots = [
+        ("shunt_battery", p["sense_slot_w"], "IN+ and VBUS"),
+        ("shunt_bus", p["sense_slot_w"], "IN-"),
+        ("uart_multicore", p["uart_slot_w"], "3.3V GND SDA SCL TX RX"),
     ]
-    pitch = {"PG9": 26.0, "PG7": 22.0}
-    span = 0.0
-    for i, (_, kind) in enumerate(glands):
-        if i:
-            span += pitch[kind]
-    # End margins have to clear the north-wall screw bosses as well as the
-    # gland nuts. Boss center is BOSS_R+1 mm in from the inner wall.
-    boss_keep = (BOSS_R + 1.0) + BOSS_R + (p["pg9_printed"] / 2.0) + 1.5
-    margin = (p["inner_x1"] - p["inner_x0"] - span) / 2.0
-    if margin < boss_keep:
-        # Widen the east wall so the end glands clear the corner bosses.
-        grow = 2.0 * (boss_keep - margin)
-        p["outer_x"] += grow
-        p["inner_x1"] += grow
-        margin = boss_keep
-    x = p["inner_x0"] + margin
+    span = sum(s[1] for s in slots)
+    margin = 16.0
+    usable = outer_x - 2.0 * margin - span
+    if usable < 8.0:
+        raise SystemExit("north wall is too short for the three cable slots")
+    gap_s = usable / (len(slots) - 1)
+    x = margin
     placed = []
-    zc = FLOOR + 16.0
-    for i, (name, kind) in enumerate(glands):
-        if i:
-            x += pitch[kind]
-        dia = p["pg9_printed"] if kind == "PG9" else p["pg7_printed"]
-        placed.append(
-            {
-                "name": name,
-                "kind": kind,
-                "x": x,
-                "z": zc,
-                "diameter": dia,
-                "datasheet_hole": PG9_HOLE if kind == "PG9" else PG7_HOLE,
-                "wrench": PG9_WRENCH if kind == "PG9" else PG7_WRENCH,
-            }
-        )
-    p["glands"] = placed
+    for name, width, carries in slots:
+        placed.append({"name": name, "x": x, "w": width, "carries": carries})
+        x += width + gap_s
+    p["slots"] = placed
 
-    # Screw bosses on solid wall. The south-west corner is the port opening,
-    # so that corner is located by the lid skirt rather than a sixth screw.
+    # North boss sits in the gap between the first two slots, not under a cable.
+    gap_left = placed[0]["x"] + placed[0]["w"]
+    gap_right = placed[1]["x"]
+    north_x = (gap_left + gap_right) / 2.0
     bosses = [
-        ("west_power", p["inner_x0"] + BOSS_R + 1.0, tall_y0 + 10.0),
-        ("north_west", p["inner_x0"] + BOSS_R + 1.0, p["inner_y1"] - BOSS_R - 1.0),
-        ("north_east", p["inner_x1"] - BOSS_R - 1.0, p["inner_y1"] - BOSS_R - 1.0),
-        ("east_power", p["inner_x1"] - BOSS_R - 1.0, tall_y0 + max(BUCK_W, FUSE_W) * 0.5),
-        ("south_lcd", (bay_x0 + bay_x1) / 2.0, p["inner_y0"] + BOSS_R + 1.0),
+        ("south", outer_x / 2.0, WALL + BOSS_R + 1.0),
+        ("north", north_x, p["inner_y1"] - BOSS_R - 1.0),
+        ("west", WALL + BOSS_R + 1.0, lcd_y + LCD_Y / 2.0),
+        ("east", p["inner_x1"] - BOSS_R - 1.0, lcd_y + LCD_Y / 2.0),
     ]
     p["bosses"] = bosses
-    _assert_bosses_clear(p)
+
+    _assert_clear(p)
     return p
 
 
-def _assert_bosses_clear(p: dict) -> None:
-    """Bosses must miss the kit, the LCD holes, the glands, and the power parts."""
-    jetson = (p["board_x"] - 1.0, p["board_y"] - 1.0, JETSON_X + 2.0, JETSON_Y + 2.0)
-    blocks = [jetson]
-    for key in ("buck", "fuse", "tb_shunt", "tb_load"):
-        x, y, lx, ly, _lz = p[key]
-        blocks.append((x - 1.0, y - 1.0, lx + 2.0, ly + 2.0))
+def _hits(x: float, y: float, r: float, rx: float, ry: float, rw: float, rh: float) -> bool:
+    cx = min(max(x, rx), rx + rw)
+    cy = min(max(y, ry), ry + rh)
+    return math.hypot(x - cx, y - cy) < r
+
+
+def _assert_clear(p: dict) -> None:
+    lcd = (p["lcd_x"] - 0.4, p["lcd_y"] - 0.4, LCD_X + 0.8, LCD_Y + 0.8)
     for name, x, y in p["bosses"]:
-        for bx, by, lx, ly in blocks:
-            if bx - BOSS_R < x < bx + lx + BOSS_R and by - BOSS_R < y < by + ly + BOSS_R:
-                raise SystemExit(f"boss {name} hits a kept-out block at ({x:.1f}, {y:.1f})")
+        if _hits(x, y, BOSS_R + 0.4, *lcd):
+            raise SystemExit(f"boss {name} hits the LCD at ({x:.1f}, {y:.1f})")
         for hx, hy in p["lcd_holes"]:
-            if math.hypot(x - hx, y - hy) < BOSS_R + 3.5 + 1.0:
-                raise SystemExit(f"boss {name} is too close to an LCD standoff")
-        for gland in p["glands"]:
-            limit = gland["diameter"] / 2.0 + BOSS_R + 1.0
-            if math.hypot(x - gland["x"], y - p["inner_y1"]) < limit:
-                raise SystemExit(f"boss {name} is too close to gland {gland['name']}")
+            if math.hypot(x - hx, y - hy) < BOSS_R + 4.0:
+                raise SystemExit(f"boss {name} is too close to an LCD hole")
+        if not (p["inner_x0"] + BOSS_R < x < p["inner_x1"] - BOSS_R):
+            raise SystemExit(f"boss {name} is outside the cavity in X")
+        if not (p["inner_y0"] + BOSS_R < y < p["inner_y1"] - BOSS_R):
+            raise SystemExit(f"boss {name} is outside the cavity in Y")
+    # The north boss must not sit under a cable slot.
+    _bn, nx, ny = p["bosses"][1]
+    for slot in p["slots"]:
+        if slot["x"] - 2.0 < nx < slot["x"] + slot["w"] + 2.0:
+            raise SystemExit(f"north boss is under slot {slot['name']}")
+        if abs(ny - p["inner_y1"]) + BOSS_R > BEND_CLEAR and slot["x"] < nx < slot["x"] + slot["w"]:
+            raise SystemExit(f"north boss blocks the alley at {slot['name']}")
 
 
 def _box(x: float, y: float, z: float, lx: float, ly: float, lz: float) -> cq.Workplane:
@@ -396,7 +283,6 @@ def _cyl(x: float, y: float, z: float, r: float, h: float) -> cq.Workplane:
 
 
 def _hex(x: float, y: float, z: float, across_flats: float, h: float) -> cq.Workplane:
-    # cadquery polygon() diameter is the circumscribed diameter.
     circum = across_flats / math.cos(math.radians(30.0))
     return (
         cq.Workplane("XY")
@@ -405,33 +291,6 @@ def _hex(x: float, y: float, z: float, across_flats: float, h: float) -> cq.Work
         .polygon(6, circum)
         .extrude(h)
     )
-
-
-def _teardrop(cx: float, y0: float, cz: float, radius: float, length: float) -> cq.Workplane:
-    """Horizontal hole along +Y. The point is up, so the overhang is 45 degrees."""
-    angle = math.radians(45.0)
-    left = (radius * math.cos(math.pi - angle), radius * math.sin(angle))
-    right = (radius * math.cos(angle), radius * math.sin(angle))
-    tip_z = radius * math.sqrt(2.0)
-    # Workplane "XZ" extrudes toward -Y. Negative length runs the hole toward +Y.
-    circle = (
-        cq.Workplane("XZ")
-        .center(cx, cz)
-        .circle(radius)
-        .extrude(-length)
-        .translate((0, y0, 0))
-    )
-    wedge = (
-        cq.Workplane("XZ")
-        .center(cx, cz)
-        .moveTo(left[0], left[1])
-        .lineTo(0.0, tip_z)
-        .lineTo(right[0], right[1])
-        .close()
-        .extrude(-length)
-        .translate((0, y0, 0))
-    )
-    return circle.union(wedge)
 
 
 def _fuse(parts: list[cq.Workplane]) -> cq.Workplane:
@@ -448,6 +307,22 @@ def _cut_all(solid: cq.Workplane, cutters: list[cq.Workplane]) -> cq.Workplane:
     return acc
 
 
+def _uslot(x: float, width: float, y0: float, length: float, base_h: float) -> cq.Workplane:
+    """Notch open at the top of the wall, round at the bottom, along +Y."""
+    radius = width / 2.0
+    z_round = base_h - SLOT_DEPTH
+    rect = _box(x, y0, z_round, width, length, SLOT_DEPTH + 1.0)
+    # The cylinder is centered on the bottom of the notch so the seat is round.
+    seat = (
+        cq.Workplane("XZ")
+        .center(x + radius, z_round)
+        .circle(radius)
+        .extrude(-length)
+        .translate((0, y0, 0))
+    )
+    return rect.union(seat)
+
+
 def build_base(p: dict) -> cq.Workplane:
     ox, oy, bh = p["outer_x"], p["outer_y"], p["base_h"]
     shell = _box(0, 0, 0, ox, oy, bh)
@@ -461,108 +336,42 @@ def build_base(p: dict) -> cq.Workplane:
     )
     solid = shell.cut(cavity)
 
-    # Port openings on the south and west edges of the kit only.
-    # A sill stays below the carrier and a rail stays above the envelope.
-    opening_z0 = FLOOR + 1.5
-    opening_z1 = FLOOR + SHELF_H + JETSON_Z - 1.0
-    opening_h = opening_z1 - opening_z0
-    west = _box(
-        -1.0,
-        p["board_y"] + 14.0,
-        opening_z0,
-        WALL + 2.0,
-        JETSON_Y - 28.0,
-        opening_h,
-    )
-    south = _box(
-        p["board_x"] + 14.0,
-        -1.0,
-        opening_z0,
-        JETSON_X - 28.0,
-        WALL + 2.0,
-        opening_h,
-    )
-    solid = solid.cut(west).cut(south)
-
     features: list[cq.Workplane] = []
 
-    # Cradle shelves under the four edges of the kit. They support the
-    # carrier from below. They do not clamp an unknown PCB thickness.
-    # Embed 0.2 mm into the floor. A face-coincident union stays a separate solid.
-    shelf_z = FLOOR - 0.2
-    shelf_top = FLOOR + SHELF_H
-    bx, by = p["board_x"], p["board_y"]
-    rib_w = 7.0
-    features.append(_box(bx, by, shelf_z, JETSON_X, rib_w, SHELF_H + 0.2))
-    features.append(_box(bx, by + JETSON_Y - rib_w, shelf_z, JETSON_X, rib_w, SHELF_H + 0.2))
-    features.append(_box(bx, by, shelf_z, rib_w, JETSON_Y, SHELF_H + 0.2))
-    features.append(_box(bx + JETSON_X - rib_w, by, shelf_z, rib_w, JETSON_Y, SHELF_H + 0.2))
+    # Rear mounting flanges. They are the floor, extended east and west,
+    # so the pod bolts flat to a plate on the robot head. The LCD faces out.
+    tab_y = (oy - TAB_W) / 2.0
+    features.append(_box(-TAB_LEN, tab_y, 0, TAB_LEN + 0.4, TAB_W, FLOOR))
+    features.append(_box(ox - 0.4, tab_y, 0, TAB_LEN + 0.4, TAB_W, FLOOR))
 
-    # Corner locating ribs. Inner face is FIT clear of the 100 x 80 envelope.
-    # Only the corners, so the middle of each port edge stays open. The ribs
-    # sit in the wall or in the wire channel; they do not refill the openings.
-    loc_h = 5.0
-    loc_t = 2.2
-    loc_l = 12.0
-    g = FIT
+    # North tie-down tab, in the floor plane, outside the cable wall.
+    features.append(_box(0, oy - 0.4, 0, ox, TIE_DEPTH + 0.4, FLOOR))
 
-    def _rib_x(x_start: float, y_start: float) -> cq.Workplane:
-        return _box(x_start, y_start, shelf_z, loc_l, loc_t, SHELF_H + loc_h + 0.2)
+    for _name, x, y in p["bosses"]:
+        features.append(_cyl(x, y, FLOOR - 0.2, BOSS_R, bh - FLOOR + 0.2))
 
-    def _rib_y(x_start: float, y_start: float) -> cq.Workplane:
-        return _box(x_start, y_start, shelf_z, loc_t, loc_l, SHELF_H + loc_h + 0.2)
-
-    # South-west, outside the kit, buried in the corner walls.
-    features.append(_rib_x(bx - g - loc_t, by - g - loc_t))
-    features.append(_rib_y(bx - g - loc_t, by - g - loc_t))
-    # South-east.
-    features.append(_rib_x(bx + JETSON_X + g + loc_t - loc_l, by - g - loc_t))
-    features.append(_rib_y(bx + JETSON_X + g, by - g - loc_t))
-    # North-west, in the wire channel.
-    features.append(_rib_x(bx - g - loc_t, by + JETSON_Y + g))
-    features.append(_rib_y(bx - g - loc_t, by + JETSON_Y + g + loc_t - loc_l))
-    # North-east.
-    features.append(_rib_x(bx + JETSON_X + g + loc_t - loc_l, by + JETSON_Y + g))
-    features.append(_rib_y(bx + JETSON_X + g, by + JETSON_Y + g + loc_t - loc_l))
-
-    # Optional Jetson screw bosses. Off unless JETSON_HOLE_XY is filled in
-    # from the P3449 file or the P3450 STEP.
-    for hx, hy in JETSON_HOLE_XY:
-        features.append(_cyl(bx + hx, by + hy, FLOOR - 0.2, 3.5, SHELF_H + 0.2))
-
-    # INA228 standoffs.
     for hx, hy in INA_HOLES:
         features.append(
             _cyl(p["ina_x"] + hx, p["ina_y"] + hy, FLOOR - 0.2, 3.0, INA_STANDOFF + 0.2)
         )
 
-    # Adapter cleats. The dongle's holes are unknown, so rails locate the
-    # unverified envelope with FIT clearance per side.
+    # Adapter cleats. Its holes are unknown, so rails locate the envelope.
     ax, ay = p["adapter_x"], p["adapter_y"]
     cleat_h = 3.2
-    features.append(_box(ax - FIT - 1.6, ay - FIT - 1.6, FLOOR - 0.2, ADAPTER_L + 2 * FIT + 3.2, 1.6, cleat_h))
-    features.append(_box(ax - FIT - 1.6, ay + ADAPTER_W + FIT, FLOOR - 0.2, ADAPTER_L + 2 * FIT + 3.2, 1.6, cleat_h))
+    features.append(
+        _box(ax - FIT - 1.6, ay - FIT - 1.6, FLOOR - 0.2, ADAPTER_L + 2 * FIT + 3.2, 1.6, cleat_h)
+    )
+    features.append(
+        _box(ax - FIT - 1.6, ay + ADAPTER_W + FIT, FLOOR - 0.2, ADAPTER_L + 2 * FIT + 3.2, 1.6, cleat_h)
+    )
     features.append(_box(ax - FIT - 1.6, ay - FIT, FLOOR - 0.2, 1.6, ADAPTER_W + 2 * FIT, cleat_h))
-
-    # Screw bosses, embedded 0.2 mm into the floor.
-    for _name, x, y in p["bosses"]:
-        features.append(_cyl(x, y, FLOOR - 0.2, BOSS_R, p["base_h"] - FLOOR + 0.2))
-
-    # Low pads under the unverified power parts so a zip-tie or an M3 screw
-    # has a land. The pads are 2 mm tall.
-    for key in ("buck", "fuse", "tb_shunt", "tb_load"):
-        x, y, lx, ly, _lz = p[key]
-        features.append(_box(x, y, FLOOR - 0.2, lx, ly, 2.2))
 
     solid = solid.union(_fuse(features))
 
     cutters: list[cq.Workplane] = []
-
-    # Insert holes, from the top of each boss.
     for _name, x, y in p["bosses"]:
-        cutters.append(_cyl(x, y, p["base_h"] - INSERT_DEPTH, INSERT_HOLE_D / 2.0, INSERT_DEPTH + 1.0))
+        cutters.append(_cyl(x, y, bh - INSERT_DEPTH, INSERT_HOLE_D / 2.0, INSERT_DEPTH + 1.0))
 
-    # INA228 screw holes and M2 nut pockets opened through the bottom.
     nut_af = M2_NUT_AF + 2.0 * FIT
     for hx, hy in INA_HOLES:
         x = p["ina_x"] + hx
@@ -570,60 +379,28 @@ def build_base(p: dict) -> cq.Workplane:
         cutters.append(_cyl(x, y, -0.5, M2_CLEAR / 2.0, INA_STANDOFF + FLOOR + 1.0))
         cutters.append(_hex(x, y, -0.2, nut_af, M2_NUT_T + 0.4))
 
-    for hx, hy in JETSON_HOLE_XY:
+    # M3 holes in the side flanges. Centered in the tab, in from the tip.
+    hole_r = M3_CLEAR / 2.0
+    for sign, x_body in ((-1.0, 0.0), (1.0, ox)):
+        hx = x_body + sign * (TAB_LEN - 7.0)
+        cutters.append(_cyl(hx, oy / 2.0, -0.5, hole_r, FLOOR + 1.0))
+
+    # Cable-tie holes, one in front of each slot.
+    for slot in p["slots"]:
         cutters.append(
-            _cyl(bx + hx, by + hy, -0.5, M2_CLEAR / 2.0, SHELF_H + FLOOR + 1.0)
+            _cyl(slot["x"] + slot["w"] / 2.0, oy + TIE_DEPTH / 2.0, -0.5, TIE_HOLE / 2.0, FLOOR + 1.0)
         )
 
-    # M3 slots in the power pads. The real hole pitch is unknown, so each
-    # pad gets two slots and the screw can land anywhere along the slot.
-    for key in ("buck", "fuse", "tb_shunt", "tb_load"):
-        x, y, lx, ly, _lz = p[key]
-        slot_w = M3_CLEAR
-        slot_l = min(16.0, lx * 0.45)
-        for frac in (0.28, 0.72):
-            cutters.append(
-                _box(
-                    x + lx * frac - slot_l / 2.0,
-                    y + ly / 2.0 - slot_w / 2.0,
-                    -0.5,
-                    slot_l,
-                    slot_w,
-                    FLOOR + 2.6,
-                )
-            )
+    # U-slots. Open at the top so they print without support. The lid closes them.
+    for slot in p["slots"]:
+        cutters.append(_uslot(slot["x"], slot["w"], oy - WALL - 1.0, WALL + 2.0, bh))
 
-    # Glands. Teardrop so the top of a horizontal hole prints without support.
-    for gland in p["glands"]:
-        cutters.append(
-            _teardrop(
-                gland["x"],
-                p["outer_y"] - WALL - 1.0,
-                gland["z"],
-                gland["diameter"] / 2.0,
-                WALL + 2.0,
-            )
-        )
-
-    # Intake slots in the east wall, beside the LCD bay, low in the wall.
-    slot_z = FLOOR + 6.0
-    for i, y in enumerate(range(0, 4)):
-        yy = p["board_y"] + 8.0 + i * 16.0
-        cutters.append(_box(p["outer_x"] - WALL - 1.0, yy, slot_z, WALL + 2.0, 3.0, 12.0))
-
-    # Exhaust slots in the west rail above the port opening.
-    rail_z = opening_z1 + 1.0
-    rail_h = p["base_h"] - rail_z - 2.0
-    if rail_h > 6.0:
-        for i in range(4):
-            yy = p["board_y"] + 18.0 + i * 14.0
-            cutters.append(_box(-1.0, yy, rail_z, WALL + 2.0, 3.0, rail_h))
+    # Two short vents in each long wall. Vertical slots, no overhang.
+    for x0 in (-1.0, ox - WALL - 1.0):
+        for y in (p["lcd_y"] + 6.0, p["lcd_y"] + LCD_Y - 18.0):
+            cutters.append(_box(x0, y, FLOOR + 18.0, WALL + 2.0, 3.0, 12.0))
 
     return _cut_all(solid, cutters)
-
-
-# Keep the lid off the wall top by a hair so the two solids do not share a face.
-LID_SEAT_GAP = 0.05
 
 
 def build_lid(p: dict) -> cq.Workplane:
@@ -633,41 +410,43 @@ def build_lid(p: dict) -> cq.Workplane:
     plate = _box(0, 0, z_plate, ox, oy, LID_T)
     features: list[cq.Workplane] = []
 
-    # Skirt. FIT clear of the inner wall. Port edges of the kit are left open.
-    # Bosses are cleared afterwards with a cylindrical cut, which is safer
-    # than trying to gap every bar by hand.
     x0 = p["inner_x0"] + FIT
     y0 = p["inner_y0"] + FIT
     x1 = p["inner_x1"] - FIT
     y1 = p["inner_y1"] - FIT
     skirt_z = z_plate - SKIRT_H
-    features.append(_box(p["bay_x0"], y0, skirt_z, p["bay_w"], SKIRT_T, SKIRT_H + 0.2))
-    features.append(_box(x0 + 20.0, y1 - SKIRT_T, skirt_z, (x1 - x0) - 40.0, SKIRT_T, SKIRT_H + 0.2))
-    features.append(
-        _box(x0, p["tall_y0"] + 4.0, skirt_z, SKIRT_T, y1 - (p["tall_y0"] + 4.0) - 4.0, SKIRT_H + 0.2)
-    )
-    features.append(_box(x1 - SKIRT_T, y0, skirt_z, SKIRT_T, y1 - y0, SKIRT_H + 0.2))
+    # South, west, east run the full side. North is broken around the slots.
+    features.append(_box(x0 + 8.0, y0, skirt_z, (x1 - x0) - 16.0, SKIRT_T, SKIRT_H + 0.2))
+    features.append(_box(x0, y0 + 8.0, skirt_z, SKIRT_T, (y1 - y0) - 16.0, SKIRT_H + 0.2))
+    features.append(_box(x1 - SKIRT_T, y0 + 8.0, skirt_z, SKIRT_T, (y1 - y0) - 16.0, SKIRT_H + 0.2))
 
-    # LCD standoffs hang from the inner face. Length is LCD_STANDOFF.
+    # North skirt segments between the cable slots.
+    edges = [x0] + [s["x"] for s in p["slots"]] + [s["x"] + s["w"] for s in p["slots"]] + [x1]
+    # Build intervals that are not inside a slot.
+    blocked = [(s["x"] - 1.0, s["x"] + s["w"] + 1.0) for s in p["slots"]]
+    cursor = x0
+    north_bits = []
+    while cursor < x1 - 1.0:
+        hit = None
+        for a, b in blocked:
+            if a <= cursor < b:
+                hit = b
+                break
+        if hit is not None:
+            cursor = hit
+            continue
+        nxt = x1
+        for a, _b in blocked:
+            if cursor < a < nxt:
+                nxt = a
+        if nxt - cursor > 3.0:
+            north_bits.append((cursor, nxt - cursor))
+        cursor = nxt
+    for sx, sw in north_bits:
+        features.append(_box(sx, y1 - SKIRT_T, skirt_z, sw, SKIRT_T, SKIRT_H + 0.2))
+
     for hx, hy in p["lcd_holes"]:
         features.append(_cyl(hx, hy, z_plate - LCD_STANDOFF, 3.5, LCD_STANDOFF + 0.2))
-
-    # Stop ribs end 1 mm above the published kit envelope.
-    jetson_top = FLOOR + SHELF_H + JETSON_Z
-    rib_len = z_plate - (jetson_top + 1.0)
-    if rib_len < 2.0:
-        raise SystemExit("no room for heatsink stop ribs; internal height is short")
-    for xoff in (18.0, 62.0):
-        features.append(
-            _box(
-                p["board_x"] + xoff,
-                p["board_y"] + 22.0,
-                z_plate - rib_len,
-                6.0,
-                36.0,
-                rib_len + 0.2,
-            )
-        )
 
     solid = plate.union(_fuse(features))
 
@@ -684,31 +463,14 @@ def build_lid(p: dict) -> cq.Workplane:
     )
     for _name, x, y in p["bosses"]:
         cutters.append(_cyl(x, y, z_plate - 0.5, M3_CLEAR / 2.0, LID_T + 1.0))
-        # Clear the skirt around the boss. The boss itself is part of the base.
         cutters.append(_cyl(x, y, skirt_z - 0.5, BOSS_R + 1.5, SKIRT_H + 2.0))
 
-    # Screw hole through each LCD standoff, and an M2 nut pocket at the
-    # lower end. In the print orientation that pocket is an open hex on top.
     nut_af = M2_NUT_AF + 2.0 * FIT
     for hx, hy in p["lcd_holes"]:
-        cutters.append(_cyl(hx, hy, z_plate - LCD_STANDOFF - 0.5, M2_CLEAR / 2.0, LCD_STANDOFF + LID_T + 1.0))
+        cutters.append(
+            _cyl(hx, hy, z_plate - LCD_STANDOFF - 0.5, M2_CLEAR / 2.0, LCD_STANDOFF + LID_T + 1.0)
+        )
         cutters.append(_hex(hx, hy, z_plate - LCD_STANDOFF - 0.2, nut_af, M2_NUT_T + 0.6))
-
-    # Vent grid over the kit. Slots are 3 mm wide.
-    x = p["board_x"] + 8.0
-    while x + 12.0 < p["board_x"] + JETSON_X - 4.0:
-        y = p["board_y"] + 6.0
-        while y + 8.0 < p["board_y"] + JETSON_Y - 4.0:
-            rib_hit = False
-            for xoff in (18.0, 62.0):
-                rx = p["board_x"] + xoff
-                ry = p["board_y"] + 22.0
-                if x < rx + 6.0 and x + 3.0 > rx and y < ry + 36.0 and y + 8.0 > ry:
-                    rib_hit = True
-            if not rib_hit:
-                cutters.append(_box(x, y, z_plate - 0.5, 3.0, 8.0, LID_T + 1.0))
-            y += 14.0
-        x += 12.0
 
     return _cut_all(solid, cutters)
 
@@ -716,8 +478,8 @@ def build_lid(p: dict) -> cq.Workplane:
 def lid_to_print(lid: cq.Workplane, p: dict) -> cq.Workplane:
     """Flip the lid so the outer face is on the bed and the skirt points up.
 
-    Rotation about X mirrors Y in the file. Flipping the printed part back
-    onto the base undoes that mirror, so the window lands on the LCD bay.
+    Rotation about X mirrors Y. Flipping the printed part back onto the base
+    undoes that mirror, so the window lands on the LCD.
     """
     rotated = lid.rotate((0, 0, 0), (1, 0, 0), 180)
     outer_face = p["base_h"] + LID_SEAT_GAP + LID_T
@@ -729,12 +491,22 @@ def _envelope(x, y, z, lx, ly, lz) -> cq.Workplane:
 
 
 def reference_solids(p: dict) -> list[tuple[str, cq.Workplane]]:
-    """Non-printed envelopes. Names start with REF_."""
-    z_board = FLOOR + SHELF_H
+    pcb_z = p["base_h"] + LID_SEAT_GAP - LCD_STANDOFF
     solids = [
         (
-            "REF_jetson_kit_envelope",
-            _envelope(p["board_x"], p["board_y"], z_board, JETSON_X, JETSON_Y, JETSON_Z),
+            "REF_lcd_module",
+            _envelope(p["lcd_x"], p["lcd_y"], pcb_z, LCD_X, LCD_Y, LCD_STANDOFF),
+        ),
+        (
+            "REF_lcd_backpack_UNVERIFIED",
+            _envelope(
+                p["lcd_x"] + 20.0,
+                p["lcd_y"] + 14.0,
+                pcb_z - LCD_BACKPACK_DEPTH,
+                LCD_X - 40.0,
+                LCD_Y - 28.0,
+                LCD_BACKPACK_DEPTH,
+            ),
         ),
         (
             "REF_ina228",
@@ -748,28 +520,10 @@ def reference_solids(p: dict) -> list[tuple[str, cq.Workplane]]:
             ),
         ),
         (
-            "REF_lcd_module",
-            _envelope(p["lcd_x"], p["lcd_y"], p["base_h"] - LCD_STANDOFF, LCD_X, LCD_Y, LCD_STANDOFF),
-        ),
-        (
-            "REF_lcd_backpack_UNVERIFIED",
-            _envelope(
-                p["lcd_x"] + 15.0,
-                p["lcd_y"] + 10.0,
-                p["base_h"] - LCD_STANDOFF - LCD_BACKPACK_DEPTH,
-                LCD_X - 30.0,
-                LCD_Y - 20.0,
-                LCD_BACKPACK_DEPTH,
-            ),
-        ),
-        (
             "REF_usb_i2c_adapter_UNVERIFIED",
             _envelope(p["adapter_x"], p["adapter_y"], FLOOR + 2.0, ADAPTER_L, ADAPTER_W, ADAPTER_H),
         ),
     ]
-    for key in ("buck", "fuse", "tb_shunt", "tb_load"):
-        x, y, lx, ly, lz = p[key]
-        solids.append((f"REF_{key}_UNVERIFIED", _envelope(x, y, FLOOR + 2.0, lx, ly, lz)))
     return solids
 
 
@@ -834,7 +588,6 @@ def _shade(faces: np.ndarray, color: tuple[float, float, float], alpha: float) -
 
 
 def _paint_sorted(ax, layers: list[tuple[np.ndarray, tuple[float, float, float], float]]) -> None:
-    """Draw every triangle in one collection, far to near, so the lid does not stripe."""
     elev, azim = 24.0, -58.0
     az = math.radians(azim)
     el = math.radians(elev)
@@ -849,66 +602,54 @@ def _paint_sorted(ax, layers: list[tuple[np.ndarray, tuple[float, float, float],
     faces = np.concatenate(chunks_f, axis=0)
     colors = np.concatenate(chunks_c, axis=0)
     depth = faces.mean(axis=1) @ camera
-    order = np.argsort(depth)  # far first
+    order = np.argsort(depth)
     coll = Poly3DCollection(faces[order], facecolors=colors[order], edgecolors="none", linewidths=0)
     ax.add_collection3d(coll)
 
 
 def render_preview(p: dict, meshes: dict[str, trimesh.Trimesh], path: Path) -> None:
     fig = plt.figure(figsize=(12.8, 6.4), dpi=130)
-    # The left view looks into the base. The right view holds the lid above it.
-    # A closed stack fights matplotlib's depth sort on the lid, so the lid is
-    # shown lifted rather than as a second opaque shell.
     titles = ("Interior", "Lid lifted")
-    lifts = (0.0, 48.0)
+    lifts = (0.0, 40.0)
     show_lid = (False, True)
+    x0 = -TAB_LEN
+    x1 = p["outer_x"] + TAB_LEN
+    y1 = p["outer_y"] + TIE_DEPTH
     for panel, (title, lift, draw_lid) in enumerate(zip(titles, lifts, show_lid), start=1):
         ax = fig.add_subplot(1, 2, panel, projection="3d")
         layers: list[tuple[np.ndarray, tuple[float, float, float], float]] = []
-        layers.append((_decimate(meshes["base"], 14000), (0.62, 0.66, 0.70), 0.30))
+        layers.append((_decimate(meshes["base"], 12000), (0.62, 0.66, 0.70), 0.30))
         if draw_lid:
-            lid_faces = _decimate(meshes["lid_asm"], 10000).copy()
+            lid_faces = _decimate(meshes["lid_asm"], 8000).copy()
             lid_faces[:, :, 2] += lift
             layers.append((lid_faces, (0.16, 0.40, 0.56), 0.45))
         colors = {
-            "jetson": (0.15, 0.55, 0.32),
             "ina": (0.80, 0.38, 0.12),
             "lcd": (0.20, 0.38, 0.75),
             "backpack": (0.40, 0.28, 0.62),
             "adapter": (0.45, 0.48, 0.52),
-            "buck": (0.55, 0.40, 0.18),
-            "fuse": (0.72, 0.18, 0.18),
-            "tb": (0.25, 0.28, 0.32),
         }
         for name, mesh in meshes["refs"]:
-            if "jetson" in name:
-                color = colors["jetson"]
-            elif "ina" in name:
+            if "ina" in name:
                 color = colors["ina"]
             elif "backpack" in name:
                 color = colors["backpack"]
             elif "lcd" in name:
                 color = colors["lcd"]
-            elif "adapter" in name:
-                color = colors["adapter"]
-            elif "buck" in name:
-                color = colors["buck"]
-            elif "fuse" in name:
-                color = colors["fuse"]
             else:
-                color = colors["tb"]
-            layers.append((_decimate(mesh, 2500), color, 0.95))
+                color = colors["adapter"]
+            layers.append((_decimate(mesh, 2000), color, 0.95))
         _paint_sorted(ax, layers)
         ax.set_title(title, fontsize=11, pad=8)
-        ax.set_box_aspect((p["outer_x"], p["outer_y"], max(p["outer_z"] + lift, 80)))
-        ax.set_xlim(0, p["outer_x"])
-        ax.set_ylim(0, p["outer_y"])
+        ax.set_box_aspect((x1 - x0, y1, max(p["outer_z"] + lift, 70)))
+        ax.set_xlim(x0, x1)
+        ax.set_ylim(0, y1)
         ax.set_zlim(0, p["outer_z"] + lift)
         ax.view_init(elev=32 if draw_lid else 38, azim=-62)
         ax.set_axis_off()
     fig.suptitle(
-        "Jetson Nano battery-monitor enclosure  "
-        f"{p['outer_x']:.1f} x {p['outer_y']:.1f} x {p['outer_z']:.1f} mm",
+        "Display and sense pod  "
+        f"{p['outer_x'] + 2 * TAB_LEN:.1f} x {p['outer_y'] + TIE_DEPTH:.1f} x {p['outer_z']:.1f} mm with flanges",
         fontsize=12,
     )
     fig.tight_layout(rect=(0, 0, 1, 0.94))
@@ -917,11 +658,13 @@ def render_preview(p: dict, meshes: dict[str, trimesh.Trimesh], path: Path) -> N
 
 
 def _public_dimensions(p: dict) -> dict:
-    """JSON the README quotes. Rounded, with the unverified list called out."""
     return {
         "units": "mm",
-        "outer_x": _r3(p["outer_x"]),
-        "outer_y": _r3(p["outer_y"]),
+        "role": "display_and_sense_pod",
+        "body_x": _r3(p["outer_x"]),
+        "body_y": _r3(p["outer_y"]),
+        "outer_x_with_flanges": _r3(p["outer_x"] + 2.0 * TAB_LEN),
+        "outer_y_with_tie_tab": _r3(p["outer_y"] + TIE_DEPTH),
         "outer_z": _r3(p["outer_z"]),
         "base_h": _r3(p["base_h"]),
         "internal_x": _r3(p["inner_x1"] - p["inner_x0"]),
@@ -931,38 +674,38 @@ def _public_dimensions(p: dict) -> dict:
         "floor": FLOOR,
         "lid_t": LID_T,
         "fit_per_side": FIT,
-        "gland_print_allowance_per_side": PRINT_HOLE_ALLOW,
-        "pg7_datasheet_hole": PG7_HOLE,
-        "pg9_datasheet_hole": PG9_HOLE,
-        "pg7_printed_hole": _r3(p["pg7_printed"]),
-        "pg9_printed_hole": _r3(p["pg9_printed"]),
-        "glands": [
+        "mounting": {
+            "type": "rear floor flanges, one each side",
+            "tab_length_mm": TAB_LEN,
+            "tab_width_mm": TAB_W,
+            "hole": "M3 clearance, ISO 273 medium, 3.4 mm",
+            "hole_diameter_mm": M3_CLEAR,
+        },
+        "cables": [
             {
-                "name": g["name"],
-                "thread": g["kind"],
-                "x_mm": _r3(g["x"]),
-                "z_mm": _r3(g["z"]),
-                "printed_diameter_mm": _r3(g["diameter"]),
+                "slot": s["name"],
+                "slot_width_mm": _r3(s["w"]),
+                "carries": s["carries"],
+                "x_mm": _r3(s["x"]),
             }
-            for g in p["glands"]
+            for s in p["slots"]
         ],
-        "jetson_envelope": [JETSON_X, JETSON_Y, JETSON_Z],
-        "jetson_hole_xy": list(JETSON_HOLE_XY),
         "lcd_module": [LCD_X, LCD_Y, LCD_Z_MAX],
         "lcd_window": [_r3(p["window_w"]), _r3(p["window_h"])],
-        "shunt": "outside",
+        "shunt": "outside, at the battery. No shunt power path in this pod.",
+        "not_in_this_box": ["Jetson Nano", "buck", "F1", "F2", "shunt", "TMP117"],
         "unverified_parameters": {
             "lcd_standoff_mm": LCD_STANDOFF,
             "lcd_backpack_depth_mm": LCD_BACKPACK_DEPTH,
-            "buck_envelope_mm": [BUCK_L, BUCK_W, BUCK_H],
-            "fuse_holder_envelope_mm": [FUSE_L, FUSE_W, FUSE_H],
-            "terminal_block_envelope_mm": [TB_L, TB_W, TB_H],
             "usb_i2c_adapter_envelope_mm": [ADAPTER_L, ADAPTER_W, ADAPTER_H],
+            "uart_cable_od_mm": UART_CABLE_OD,
+            "sense_cable_od_mm": SENSE_CABLE_OD,
             "bend_clearance_mm": BEND_CLEAR,
             "insert_hole_diameter_mm": INSERT_HOLE_D,
             "insert_depth_mm": INSERT_DEPTH,
-            "jetson_hole_xy_mm": list(JETSON_HOLE_XY),
-            "jetson_hole_diameter_mm": JETSON_HOLE_D,
+            "mount_tab_length_mm": TAB_LEN,
+            "mount_tab_width_mm": TAB_W,
+            "tie_hole_mm": TIE_HOLE,
         },
     }
 
@@ -971,7 +714,8 @@ def main() -> int:
     EXPORT.mkdir(parents=True, exist_ok=True)
     p = compute()
     print(
-        f"outer {p['outer_x']:.2f} x {p['outer_y']:.2f} x {p['outer_z']:.2f} mm, "
+        f"body {p['outer_x']:.2f} x {p['outer_y']:.2f} x {p['outer_z']:.2f} mm, "
+        f"with flanges {p['outer_x'] + 2 * TAB_LEN:.2f} x {p['outer_y'] + TIE_DEPTH:.2f}, "
         f"internal {p['inner_x1'] - p['inner_x0']:.2f} x "
         f"{p['inner_y1'] - p['inner_y0']:.2f} x {p['internal_h']:.2f} mm"
     )
@@ -1000,7 +744,7 @@ def main() -> int:
     _export_solid(base, EXPORT / "base")
     _export_solid(lid_print, EXPORT / "lid")
 
-    assembly = cq.Assembly(name="battery_monitor_enclosure")
+    assembly = cq.Assembly(name="display_sense_pod")
     assembly.add(base, name="base", color=cq.Color(0.62, 0.66, 0.70, 1))
     assembly.add(lid_asm, name="lid", color=cq.Color(0.18, 0.42, 0.58, 1))
     ref_meshes = []
@@ -1012,7 +756,6 @@ def main() -> int:
         ref_path.unlink()
     assembly.export(str(EXPORT / "assembly.step"), "STEP")
 
-    # Confirm the STEP files reopen.
     for stem in ("base", "lid", "assembly"):
         reopened = cq.importers.importStep(str(EXPORT / f"{stem}.step"))
         if reopened.val().Volume() <= 0:
