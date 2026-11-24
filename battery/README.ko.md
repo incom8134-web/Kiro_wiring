@@ -170,6 +170,10 @@ PCF8574 백팩이 달린 20×4 HD44780 계열 모듈입니다. 드라이버는 �
 
 ### 배선
 
+![핀 단위 배선. 선 색은 권장색이며 그림에 적혀 있습니다.](wiring/battery_monitor_wiring.png)
+
+이 그림이 배선 기준입니다. 선 색은 권장색입니다. 선 하나가 연결 하나입니다. 고칠 때는 `wiring/draw_wiring.py`를 고칩니다. 아래 Mermaid는 같은 경로의 짧은 그림입니다.
+
 ```mermaid
 flowchart TB
   bp[배터리 +] --> f1[F1 주 퓨즈]

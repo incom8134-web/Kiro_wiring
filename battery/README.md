@@ -170,6 +170,10 @@ Fuses and wire gauge are in the safety section. The printed enclosure is in [sec
 
 ### Wiring
 
+![Pin-level wiring. Suggested colors are marked on the figure.](wiring/battery_monitor_wiring.png)
+
+This picture is the wiring reference. Colors on it are suggested. Each line is one connection. Edit it with `wiring/draw_wiring.py`. The chart below is the same path in short form.
+
 ```mermaid
 flowchart TB
   bp[Battery +] --> f1[F1 main fuse]
