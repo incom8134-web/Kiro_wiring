@@ -1,0 +1,122 @@
+{
+  "units": "mm",
+  "outer_x": 213.9,
+  "outer_y": 170.1,
+  "outer_z": 55.1,
+  "base_h": 52.6,
+  "internal_x": 208.9,
+  "internal_y": 165.1,
+  "internal_z": 49.6,
+  "wall": 2.5,
+  "floor": 3.0,
+  "lid_t": 2.5,
+  "fit_per_side": 0.25,
+  "gland_print_allowance_per_side": 0.2,
+  "pg7_datasheet_hole": 12.8,
+  "pg9_datasheet_hole": 15.5,
+  "pg7_printed_hole": 13.2,
+  "pg9_printed_hole": 15.9,
+  "glands": [
+    {
+      "name": "battery_in",
+      "thread": "PG9",
+      "x_mm": 21.95,
+      "z_mm": 19.0,
+      "printed_diameter_mm": 15.9
+    },
+    {
+      "name": "shunt_battery_side",
+      "thread": "PG9",
+      "x_mm": 47.95,
+      "z_mm": 19.0,
+      "printed_diameter_mm": 15.9
+    },
+    {
+      "name": "shunt_bus_side",
+      "thread": "PG9",
+      "x_mm": 73.95,
+      "z_mm": 19.0,
+      "printed_diameter_mm": 15.9
+    },
+    {
+      "name": "load",
+      "thread": "PG9",
+      "x_mm": 99.95,
+      "z_mm": 19.0,
+      "printed_diameter_mm": 15.9
+    },
+    {
+      "name": "charger",
+      "thread": "PG9",
+      "x_mm": 125.95,
+      "z_mm": 19.0,
+      "printed_diameter_mm": 15.9
+    },
+    {
+      "name": "kelvin_vbus",
+      "thread": "PG7",
+      "x_mm": 147.95,
+      "z_mm": 19.0,
+      "printed_diameter_mm": 13.2
+    },
+    {
+      "name": "usb",
+      "thread": "PG7",
+      "x_mm": 169.95,
+      "z_mm": 19.0,
+      "printed_diameter_mm": 13.2
+    },
+    {
+      "name": "uart",
+      "thread": "PG7",
+      "x_mm": 191.95,
+      "z_mm": 19.0,
+      "printed_diameter_mm": 13.2
+    }
+  ],
+  "jetson_envelope": [
+    100.0,
+    80.0,
+    29.0
+  ],
+  "jetson_hole_xy": [],
+  "lcd_module": [
+    98.0,
+    60.0,
+    13.6
+  ],
+  "lcd_window": [
+    75.0,
+    23.2
+  ],
+  "shunt": "outside",
+  "unverified_parameters": {
+    "lcd_standoff_mm": 13.6,
+    "lcd_backpack_depth_mm": 16.0,
+    "buck_envelope_mm": [
+      66.0,
+      36.0,
+      20.0
+    ],
+    "fuse_holder_envelope_mm": [
+      48.0,
+      22.0,
+      28.0
+    ],
+    "terminal_block_envelope_mm": [
+      42.0,
+      18.0,
+      22.0
+    ],
+    "usb_i2c_adapter_envelope_mm": [
+      54.0,
+      22.0,
+      14.0
+    ],
+    "bend_clearance_mm": 18.0,
+    "insert_hole_diameter_mm": 4.0,
+    "insert_depth_mm": 6.0,
+    "jetson_hole_xy_mm": [],
+    "jetson_hole_diameter_mm": 2.7
+  }
+}

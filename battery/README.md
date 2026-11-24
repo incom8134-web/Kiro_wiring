@@ -164,7 +164,7 @@ The adapter's I2C side must be 3.3 V if it shares a bus with the TMP117 and the 
 
 The buck is BLOCKED. It must deliver 5.0 V to 5.25 V at 4 A continuous, and its input range must include the pack from the empty cutoff through the highest voltage the charger can put on the bus. Those voltages are unknown, so no part number is listed. NVIDIA's validated GEO241DA-0540 supply is an AC adapter that meets the barrel contract; it is not a battery buck and it is not part of this build.
 
-Fuses and wire gauge are in the safety section. The enclosure is a non-conductive box that fits the developer kit and lets shunt heat out. No catalog enclosure is specified.
+Fuses and wire gauge are in the safety section. The printed enclosure is in [section 11](#11-enclosure). The shunt stays outside it.
 
 ## 4. Connection and measurement
 
@@ -460,6 +460,58 @@ Ratings in the BOM that stay BLOCKED until the table above is filled:
 | Whether this design is allowed at all | `max_voltage_v` ≤ 85 |
 
 `config/examples/example_DO_NOT_USE.json` and the simulator's internal profile are fake numbers so the file shape and the tests exist. They are marked `example_only`. The hardware path rejects them.
+
+## 11. Enclosure
+
+The shunt is outside the box. Its heat is `I²R`, and the pack current is still unknown, so that can be watts. The box is plastic and it also has to vent the Jetson heatsink. The INA228 sense inputs do not carry the pack current, so only the Kelvin pair and the VBUS lead come inside. The fuse holder stays in the box, on the battery positive before the wire that leaves for the shunt. If the cable from the cell to the box is long, put the real fuse near the cell anyway. A fuse at the far end of a long lead does not protect that lead.
+
+![Base with the boards in place, and the lid lifted](enclosure/preview.png)
+
+Outer size **213.9 × 170.1 × 55.1 mm**. Inner cavity **208.9 × 165.1 × 49.6 mm**. Walls 2.5 mm, floor 3.0 mm, lid 2.5 mm. Fits use 0.25 mm clearance per side. Gland holes are the catalogue diameter plus 0.20 mm per side, because a printed hole comes out small. That allowance is separate from the board fit.
+
+| Place | What | Basis |
+|---|---|---|
+| South-west, on 8 mm shelves | Jetson Nano developer kit, 100 × 80 × 29 mm envelope | NVIDIA developer-kit data sheet, January 2020. The sheet's kit contents include the module with its heatsink. Mounting-hole coordinates are not in that sheet, so the kit is cradled on the outline. `JETSON_HOLE_XY` in the script is empty until the holes are measured from the P3449 design files or the P3450 STEP. |
+| South and west walls, over the kit only | Openings for the barrel jack, USB, Ethernet, and HDMI | The user guide lists the connectors and does not locate them. Turn the kit so the connectors you need face these two edges. |
+| Lid, east of the kit | Winstar WH2004A 20×4, window 75.0 × 23.2 mm | Module 98.0 × 60.0 × 13.6 mm MAX, view area 77.0 × 25.2 mm, four Ø2.5 holes on a 93.0 × 55.0 mm pitch. The window is 1 mm inside the view area on each side. |
+| Floor under the LCD | INA228 breakout and the USB-I2C adapter | INA228 PCB and holes from Adafruit's Eagle board. Adapter size is an unverified envelope. |
+| North bay | Main fuse, 5 V 4 A buck, two terminal blocks | Envelopes only. No catalog part is chosen, because the pack voltage and current are unknown. |
+| North wall | Eight gland holes | See the list below. |
+
+Power path through the box: battery positive enters, passes the fuse, and leaves to the external shunt's battery side. The shunt's bus side returns, and a terminal block splits it to the load, the charger, and the buck input. The buck's 5 V output stays inside and plugs into J25. IN+, IN−, and VBUS use the small gland.
+
+Glands, north wall, west to east. Printed diameter is the LAPP T21 panel hole plus 0.20 mm per side. The holes are teardrop-shaped so the top bridges at 45 degrees.
+
+| Gland | Thread | Catalogue hole | Printed hole |
+|---|---|---|---|
+| Battery in | PG9 | 15.5 mm | 15.9 mm |
+| Shunt, battery side | PG9 | 15.5 mm | 15.9 mm |
+| Shunt, bus side | PG9 | 15.5 mm | 15.9 mm |
+| Load | PG9 | 15.5 mm | 15.9 mm |
+| Charger | PG9 | 15.5 mm | 15.9 mm |
+| Kelvin pair and VBUS | PG7 | 12.8 mm | 13.2 mm |
+| USB | PG7 | 12.8 mm | 13.2 mm |
+| UART | PG7 | 12.8 mm | 13.2 mm |
+
+Leave about 36 mm outside the north wall. That is the SKINTOP ST PG9 overall length, and the PG7 body is 32 mm.
+
+Print the base standing up and the lid with its outer face on the bed. The lid STL is already in that orientation. PETG or ABS, 0.2 mm layers, 0.4 mm nozzle, 5 perimeters, 20% infill. Supports should not be required. The long side is 213.9 mm, so the bed needs to be at least 220 × 180 mm, and a wide brim will not fit on a 220 mm axis. Five M3 screws hold the lid. The insert hole is 4.0 mm diameter by 6.0 mm deep and is **not** taken from an insert datasheet; change `INSERT_HOLE_D` and `INSERT_DEPTH` to the insert you buy. The LCD and the INA228 use M2 screws into ISO 4032 nuts. M2 and M3 clearance holes follow ISO 273 medium fit (2.4 mm and 3.4 mm).
+
+These defaults are parameters, not measured parts. Change them in `enclosure/enclosure.py` and rerun it. The box grows to fit.
+
+| Parameter | Default | Why it is unverified |
+|---|---|---|
+| `LCD_STANDOFF` | 13.6 mm | WH2004A maximum module thickness. Right if the PCB is the back face. The drawing also shows 9.0 mm and 1.6 mm for the LED backlight. |
+| `LCD_BACKPACK_DEPTH` | 16 mm | PCF8574 backpack. Not on the Winstar drawing. |
+| `BUCK_L/W/H` | 66 × 36 × 20 mm | No buck is selected. The input range depends on the pack. |
+| `FUSE_L/W/H` | 48 × 22 × 28 mm | No holder is selected. F1's current is blocked on the pack current. |
+| `TB_L/W/H` | 42 × 18 × 22 mm | No terminal block is selected. The wire gauge is blocked. |
+| `ADAPTER_L/W/H` | 54 × 22 × 14 mm | No USB-I2C adapter is selected. |
+| `BEND_CLEAR` | 18 mm | Straight length inside the gland. The real bend radius depends on the cable. |
+| `INSERT_HOLE_D`, `INSERT_DEPTH` | 4.0 mm, 6.0 mm | Match the heat-set insert. |
+| `JETSON_HOLE_XY` | empty | Carrier hole coordinates are not in the published kit data sheet. |
+
+Regenerate with `python3 enclosure.py` from `battery/enclosure`. Citations, the cradle, and the file list are in [`enclosure/README.md`](enclosure/README.md).
 
 ## Software map
 
