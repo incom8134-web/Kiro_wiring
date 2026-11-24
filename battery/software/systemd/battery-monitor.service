@@ -1,0 +1,19 @@
+[Unit]
+Description=Jetson Nano battery charge and discharge monitor
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+# Stock JetPack 4.6 on the Nano is Python 3.6. Run this service from a
+# virtualenv built with Python 3.9 or newer. See battery/software/README.md.
+WorkingDirectory=/opt/battery-monitor
+ExecStart=/opt/battery-monitor/.venv/bin/python -m battery_monitor --config /etc/battery-monitor/battery_profile.json --state /var/lib/battery-monitor/state.json --history /var/lib/battery-monitor/history.sqlite
+Restart=on-failure
+RestartSec=2
+User=battery
+SupplementaryGroups=i2c dialout
+# SIGTERM is caught in the process and writes state.json before exit.
+
+[Install]
+WantedBy=multi-user.target
