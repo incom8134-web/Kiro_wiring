@@ -1,9 +1,12 @@
-"""Monitor loop: read, integrate, store, display, serve.
+"""Monitor loop: read the INA228, integrate, store, and print UART.
 
 The first tick after start does not integrate across the time the process
 was not running. A tick whose dt is longer than ``max_integrate_dt_s`` is
 treated the same way: the current sample is shown, and the gap is not
 invented as ampere-hours.
+
+Each tick rewrites the state file. The web app already running on the
+Jetson reads that file. This process does not serve HTTP.
 """
 
 from __future__ import annotations
@@ -14,7 +17,6 @@ import signal
 import sys
 import threading
 import time
-from pathlib import Path
 
 from . import __version__
 from .accounting import (
@@ -27,7 +29,6 @@ from .accounting import (
     status_from_current,
 )
 from .faults import evaluate
-from .lcd import NullDisplay, format_lines
 from .profile import resolve_profile, validate_profile
 from .sensors import CommsError, HardwareSensor, SimulatedSensor
 from .soc import RestTracker
@@ -37,12 +38,11 @@ from .uart_out import UartLogger
 
 class Monitor:
     def __init__(self, profile: dict, sensor, store: StateStore, history: HistoryDB | None = None,
-                 display=None, uart: UartLogger | None = None, simulated: bool = False):
+                 uart: UartLogger | None = None, simulated: bool = False):
         self.profile = profile
         self.sensor = sensor
         self.store = store
         self.history = history
-        self.display = display if display is not None else NullDisplay()
         self.uart = uart
         self.simulated = simulated
         self.rest = RestTracker()
@@ -70,8 +70,6 @@ class Monitor:
             "energy_wh": float(self.state.get("watt_hours_out", 0.0)),
             "ampere_hours_out": float(self.state.get("ampere_hours_out", 0.0)),
             "status": "Fault" if not comms_ok else "Idle",
-            "temperature_c": None,
-            "die_temperature_c": None,
             "runtime_hours": None,
             "runtime_label": None,
             "faults": list(faults),
@@ -129,7 +127,6 @@ class Monitor:
         faults = evaluate(
             voltage,
             current,
-            sample.pack_temp_c,
             self.profile,
             comms_ok=True,
             memstat_ok=sample.memstat_ok,
@@ -150,8 +147,6 @@ class Monitor:
             "energy_wh": float(self.state.get("watt_hours_out", 0.0)),
             "ampere_hours_out": float(self.state.get("ampere_hours_out", 0.0)),
             "status": status_from_current(current, idle, True),
-            "temperature_c": sample.pack_temp_c,
-            "die_temperature_c": sample.die_temp_c,
             "runtime_hours": runtime,
             "runtime_label": runtime_label,
             "faults": faults,
@@ -167,10 +162,6 @@ class Monitor:
 
     def _output(self, snap: dict, wall: float) -> None:
         self.publish(snap)
-        try:
-            self.display.write_lines(format_lines(snap))
-        except OSError:
-            pass
         if self.uart is not None:
             try:
                 self.uart.write_snapshot(snap)
@@ -182,7 +173,7 @@ class Monitor:
         persist_every = float(self.profile.get("persist_interval_s", 30.0))
         history_every = float(self.profile.get("history_interval_s", 10.0))
         if self._last_persist is None or wall - self._last_persist >= persist_every:
-            self.store.save()
+            self.store.save(snap)
             self._last_persist = wall
         if self.history is not None and (
             self._last_history is None or wall - self._last_history >= history_every
@@ -191,7 +182,7 @@ class Monitor:
             self._last_history = wall
 
     def shutdown(self) -> None:
-        self.store.save()
+        self.store.save(self.snapshot())
         if self.history is not None:
             self.history.close()
             self.history = None
@@ -206,7 +197,6 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--state", default="run/state.json")
     parser.add_argument("--history", default="run/history.sqlite")
     parser.add_argument("--duration", type=float, default=None, help="exit after N seconds")
-    parser.add_argument("--no-web", action="store_true")
     parser.add_argument("--version", action="store_true")
     return parser
 
@@ -227,18 +217,6 @@ def check_profile(path: str, allow_example: bool) -> int:
         return 2
     print(f"Profile '{profile.get('profile_name')}' passed the checks.")
     return 0
-
-
-def _start_web(monitor: Monitor, host: str, port: int) -> None:
-    import uvicorn
-
-    from .dashboard import create_app
-
-    app = create_app(monitor.snapshot)
-    config = uvicorn.Config(app, host=host, port=port, log_level="warning")
-    server = uvicorn.Server(config)
-    thread = threading.Thread(target=server.run, name="battery-dashboard", daemon=True)
-    thread.start()
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -280,9 +258,6 @@ def main(argv: list[str] | None = None) -> int:
             print(f"sensor open failed: {exc}", file=sys.stderr)
             return 2
 
-    display = NullDisplay()
-    if profile.get("lcd_enabled", True) and not args.simulate:
-        display = _open_lcd(profile)
     uart = None
     if profile.get("uart_enabled", True):
         from .uart_out import open_uart
@@ -300,19 +275,9 @@ def main(argv: list[str] | None = None) -> int:
         sensor,
         store,
         history=history,
-        display=display,
         uart=uart,
         simulated=args.simulate or bool(profile.get("example_only")),
     )
-    if not args.no_web:
-        host = str(profile.get("web_host", "0.0.0.0"))
-        port = int(profile.get("web_port", 8080))
-        try:
-            _start_web(monitor, host, port)
-            print(f"dashboard http://{host}:{port}", file=sys.stderr)
-        except OSError as exc:
-            print(f"dashboard did not start: {exc}", file=sys.stderr)
-
     stop = {"flag": False}
 
     def _handle_signal(_signum, _frame):
@@ -336,20 +301,6 @@ def main(argv: list[str] | None = None) -> int:
         if closer:
             closer()
     return 0
-
-
-def _open_lcd(profile: dict):
-    from .lcd import PCF8574LCD
-    from .sensors import parse_address, parse_i2c_bus
-
-    try:
-        import smbus2
-
-        bus = smbus2.SMBus(parse_i2c_bus(profile.get("i2c_bus", "/dev/i2c-1")))
-        return PCF8574LCD(bus, address=parse_address(profile.get("lcd_address", "0x27")))
-    except (OSError, ImportError) as exc:
-        print(f"note: LCD disabled: {exc}", file=sys.stderr)
-        return NullDisplay()
 
 
 def fresh_demo_state() -> dict:

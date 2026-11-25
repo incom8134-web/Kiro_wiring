@@ -12,13 +12,9 @@ from battery_monitor.ina228 import (
     decode_energy_j,
     decode_power_w,
     decode_shunt_voltage_v,
-    kelvin_divider_gain,
     max_shunt_ohm,
     shunt_cal_register,
 )
-from battery_monitor.tmp117 import TMP117, decode_temperature_c
-
-
 def test_datasheet_shunt_cal_and_lsb():
     # Section 8.2.2.3: 10 A and 16.2 mΩ -> CURRENT_LSB 19.0735 µA, SHUNT_CAL 4050.
     register, lsb = shunt_cal_register(10.0, 0.0162, 163.84)
@@ -38,13 +34,9 @@ def test_datasheet_returned_values():
     assert decode_dietemp_c(3200) == pytest.approx(25.0)
 
 
-def test_shunt_limit_and_kelvin_divider():
+def test_shunt_limit():
     # Equation 8 at 10 A on the ±163.84 mV range.
     assert max_shunt_ohm(10.0) == pytest.approx(0.016384)
-    # 10 Ω in each lead against the typical 92 kΩ differential impedance.
-    gain = kelvin_divider_gain(10.0)
-    assert gain == pytest.approx(92_000 / (92_000 + 20))
-    assert gain == pytest.approx(1.0, rel=3e-4)
 
 
 def test_adc_range_1_multiplies_cal_by_four():
@@ -106,19 +98,3 @@ def test_identity_mismatch():
         INA228(Bus()).verify_identity()
 
 
-def test_tmp117_decode_and_driver():
-    assert decode_temperature_c(0x0C80) == pytest.approx(25.0)
-    assert decode_temperature_c(0xFC80) == pytest.approx(-7.0)
-
-    class Bus:
-        def read_i2c_block_data(self, addr, reg, n):
-            assert addr == 0x48
-            if reg == 0x0F:
-                return [0x01, 0x17]
-            if reg == 0x00:
-                return [0x0C, 0x80]
-            raise AssertionError(reg)
-
-    sensor = TMP117(Bus())
-    sensor.verify_identity()
-    assert sensor.read_c() == pytest.approx(25.0)

@@ -7,7 +7,7 @@ engine. A missing port is reported and ignored unless ``required`` is set.
 
 from __future__ import annotations
 
-HEADER = "unix_s,voltage_v,current_a,power_w,soc_percent,capacity_ah,energy_wh,status,temperature_c,faults"
+HEADER = "unix_s,voltage_v,current_a,power_w,soc_percent,capacity_ah,energy_wh,status,faults"
 
 
 def _field(value) -> str:
@@ -26,10 +26,9 @@ def format_line(snapshot: dict) -> str:
         _field(snapshot.get("current_a")),
         _field(snapshot.get("power_w")),
         _field(snapshot.get("soc_percent")),
-        _field(snapshot.get("nominal_capacity_ah")),
+        _field(snapshot.get("capacity_ah")),
         _field(snapshot.get("energy_wh")),
         _field(snapshot.get("status")),
-        _field(snapshot.get("temperature_c")),
         faults,
     ]
     return ",".join(columns)

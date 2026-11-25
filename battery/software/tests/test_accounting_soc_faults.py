@@ -78,7 +78,7 @@ def test_charge_increases_soc_and_runtime_directions(tmp_path):
     monitor = _monitor(
         tmp_path,
         profile,
-        [Sample(48.0, -10.0, pack_temp_c=26.0)],
+        [Sample(48.0, -10.0)],
     )
     snap = monitor.tick(dt=3600.0)
     assert snap["current_a"] == pytest.approx(-10.0)
@@ -135,7 +135,7 @@ def test_monitor_applies_ocv_and_then_counts(tmp_path):
     monitor = _monitor(
         tmp_path,
         profile,
-        [Sample(51.0, 0.0, pack_temp_c=25.0), Sample(51.0, 10.0, pack_temp_c=25.0)],
+        [Sample(51.0, 0.0), Sample(51.0, 10.0)],
     )
     first = monitor.tick(dt=10.0)
     assert first["ocv_corrected"] is True
@@ -147,20 +147,19 @@ def test_monitor_applies_ocv_and_then_counts(tmp_path):
 
 
 def test_faults_and_comms_do_not_integrate(tmp_path):
-    profile = _profile(temp_min_c=0.0, temp_max_c=45.0)
-    faults = evaluate(60.0, 170.0, 50.0, profile, True)
+    profile = _profile()
+    faults = evaluate(60.0, 170.0, profile, True)
     assert "OVERVOLTAGE" in faults
     assert "DISCHARGE_OVERCURRENT" in faults
     assert "SHUNT_SATURATED" in faults
-    assert "PACK_OVERTEMP" in faults
-    assert "CHARGE_OVERCURRENT" in evaluate(50.0, -30.0, 25.0, profile, True)
-    assert "UNDERVOLTAGE" in evaluate(30.0, 0.0, 25.0, profile, True)
-    assert evaluate(50.0, 1.0, 25.0, profile, False) == ["COMMS"]
+    assert "CHARGE_OVERCURRENT" in evaluate(50.0, -30.0, profile, True)
+    assert "UNDERVOLTAGE" in evaluate(30.0, 0.0, profile, True)
+    assert evaluate(50.0, 1.0, profile, False) == ["COMMS"]
 
     monitor = _monitor(
         tmp_path,
         profile,
-        [Sample(48.0, 10.0, pack_temp_c=25.0), CommsError("i2c")],
+        [Sample(48.0, 10.0), CommsError("i2c")],
     )
     good = monitor.tick(dt=1.0)
     assert good["ampere_hours_out"] == pytest.approx(10.0 / 3600.0)
@@ -174,7 +173,7 @@ def test_faults_and_comms_do_not_integrate(tmp_path):
 
 def test_long_gap_is_not_counted_as_ampere_hours(tmp_path):
     profile = _profile(max_integrate_dt_s=5.0)
-    monitor = _monitor(tmp_path, profile, [Sample(48.0, 10.0, pack_temp_c=25.0)])
+    monitor = _monitor(tmp_path, profile, [Sample(48.0, 10.0)])
     snap = monitor.tick(dt=1000.0)
     assert snap["ampere_hours_out"] == pytest.approx(0.0)
     assert snap["power_loss_gap"] is True
@@ -188,7 +187,7 @@ def test_state_survives_restart_without_counting_downtime(tmp_path):
     store.load()
     monitor = Monitor(
         profile,
-        ScriptedSensor([Sample(48.0, 10.0, pack_temp_c=25.0)]),
+        ScriptedSensor([Sample(48.0, 10.0)]),
         store,
         simulated=True,
     )
@@ -202,7 +201,7 @@ def test_state_survives_restart_without_counting_downtime(tmp_path):
     assert restored.state["ampere_hours_out"] == pytest.approx(10.0)
     again = Monitor(
         profile,
-        ScriptedSensor([Sample(48.0, 10.0, pack_temp_c=25.0)]),
+        ScriptedSensor([Sample(48.0, 10.0)]),
         restored,
         simulated=True,
     )
@@ -228,7 +227,7 @@ def test_history_and_atomic_json(tmp_path):
     monitor = _monitor(
         tmp_path / "history-case",
         profile,
-        [Sample(48.0, 1.0, pack_temp_c=25.0)],
+        [Sample(48.0, 1.0)],
         history=True,
     )
     monitor.tick(dt=1.0)

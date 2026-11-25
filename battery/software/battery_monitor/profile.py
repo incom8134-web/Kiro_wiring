@@ -2,7 +2,7 @@
 
 Nameplate values are never invented. A null required field is an error on
 hardware. ``--simulate`` may substitute a clearly marked synthetic profile
-so the dashboard and the tests can run with no pack connected.
+so the tests can run with no pack connected.
 """
 
 from __future__ import annotations
@@ -72,9 +72,6 @@ def synthetic_profile() -> dict:
         "rest_duration_s": 300.0,
         "i2c_bus": "/dev/i2c-1",
         "ina228_address": "0x40",
-        "tmp117_address": "0x48",
-        "lcd_address": "0x27",
-        "lcd_enabled": False,
         "uart_device": "/dev/ttyTHS1",
         "uart_baud": 115200,
         "uart_enabled": False,
@@ -89,10 +86,6 @@ def synthetic_profile() -> dict:
         "history_interval_s": 10.0,
         "max_integrate_dt_s": 5.0,
         "comms_timeout_s": 2.0,
-        "web_host": "0.0.0.0",
-        "web_port": 8080,
-        "temp_min_c": None,
-        "temp_max_c": None,
         "_warning": "Synthetic numbers for the simulator. Do not copy them onto a real pack.",
     }
 
@@ -218,13 +211,6 @@ def validate_profile(profile: dict, allow_example: bool = False) -> tuple[list[s
             "OCV table is empty. SOC will follow coulomb counting only, with no "
             "rest correction, until you add a curve for this chemistry."
         )
-
-    tmin = profile.get("temp_min_c", None)
-    tmax = profile.get("temp_max_c", None)
-    if (tmin is None) ^ (tmax is None):
-        errors.append("set both temp_min_c and temp_max_c, or leave both null")
-    elif tmin is not None and float(tmin) >= float(tmax):
-        errors.append("temp_min_c must be below temp_max_c")
 
     for key, default in (
         ("current_gain", 1.0),

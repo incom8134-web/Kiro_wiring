@@ -20,9 +20,6 @@
   "rest_duration_s": 300,
   "i2c_bus": "/dev/i2c-1",
   "ina228_address": "0x40",
-  "tmp117_address": "0x48",
-  "lcd_address": "0x27",
-  "lcd_enabled": true,
   "uart_device": "/dev/ttyTHS1",
   "uart_baud": 115200,
   "uart_enabled": true,
@@ -33,12 +30,8 @@
   "voltage_offset_v": 0.0,
   "invert_current": false,
   "sample_period_s": 0.5,
-  "persist_interval_s": 30,
+  "persist_interval_s": 0.5,
   "history_interval_s": 10,
   "max_integrate_dt_s": 5,
-  "comms_timeout_s": 2,
-  "web_host": "0.0.0.0",
-  "web_port": 8080,
-  "temp_min_c": null,
-  "temp_max_c": null
+  "comms_timeout_s": 2
 }

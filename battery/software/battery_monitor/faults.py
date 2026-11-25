@@ -1,8 +1,7 @@
 """Threshold and communications faults.
 
-A fault is an alarm. It does not open a contactor. The fuse is the hardware
-overcurrent device. Limits come from the profile; nothing here is a guessed
-pack rating.
+A fault is an alarm. It does not open a contactor. Limits come from the
+profile; nothing here is a guessed pack rating.
 """
 
 from __future__ import annotations
@@ -13,7 +12,6 @@ from .ina228 import VFS_V
 def evaluate(
     voltage_v: float | None,
     current_a: float | None,
-    pack_temp_c: float | None,
     profile: dict,
     comms_ok: bool,
     memstat_ok: bool = True,
@@ -37,14 +35,6 @@ def evaluate(
         faults.append("CHARGE_OVERCURRENT")
     adc = float(profile.get("adc_range_mv", 163.84))
     vfs = VFS_V[adc]
-    # Clip warning from the shunt voltage the ADC can actually represent.
     if abs(current_a) * float(profile["shunt_resistance_ohm"]) >= 0.98 * vfs:
         faults.append("SHUNT_SATURATED")
-    tmin = profile.get("temp_min_c", None)
-    tmax = profile.get("temp_max_c", None)
-    if pack_temp_c is not None and tmin is not None and tmax is not None:
-        if pack_temp_c > float(tmax):
-            faults.append("PACK_OVERTEMP")
-        if pack_temp_c < float(tmin):
-            faults.append("PACK_UNDERTEMP")
     return faults

@@ -1,7 +1,5 @@
 [Unit]
 Description=Jetson Nano battery charge and discharge monitor
-After=network-online.target
-Wants=network-online.target
 
 [Service]
 Type=simple

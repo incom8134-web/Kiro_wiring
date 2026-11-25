@@ -1,79 +1,54 @@
 {
   "units": "mm",
-  "role": "display_and_sense_pod",
-  "body_x": 125.0,
-  "body_y": 88.0,
-  "outer_x_with_flanges": 153.0,
-  "outer_y_with_tie_tab": 100.0,
-  "outer_z": 54.1,
-  "base_h": 51.6,
-  "internal_x": 120.0,
-  "internal_y": 83.0,
-  "internal_z": 48.6,
+  "role": "ina228_case",
+  "body_x": 48.8,
+  "body_y": 46.4,
+  "outer_x_with_flanges": 72.8,
+  "outer_y": 46.4,
+  "outer_z": 20.1,
+  "base_h": 17.6,
+  "internal_x": 43.8,
+  "internal_y": 41.4,
+  "internal_z": 15.1,
   "wall": 2.5,
-  "floor": 3.0,
+  "floor": 2.5,
   "lid_t": 2.5,
   "fit_per_side": 0.25,
   "mounting": {
-    "type": "rear floor flanges, one each side",
-    "tab_length_mm": 14.0,
-    "tab_width_mm": 18.0,
+    "type": "floor flanges, one each side",
+    "tab_length_mm": 12.0,
+    "tab_width_mm": 14.0,
     "hole": "M3 clearance, ISO 273 medium, 3.4 mm",
     "hole_diameter_mm": 3.4
   },
   "cables": [
     {
-      "slot": "shunt_battery",
+      "slot": "sensor",
       "slot_width_mm": 4.5,
-      "carries": "IN+ and VBUS",
+      "carries": "sensor cable: pin 1 3.3 V, pin 6 GND, pin 3 SDA, pin 5 SCL",
       "x_mm": 16.0
     },
     {
-      "slot": "shunt_bus",
+      "slot": "sense",
       "slot_width_mm": 4.5,
-      "carries": "IN-",
-      "x_mm": 59.25
-    },
-    {
-      "slot": "uart_multicore",
-      "slot_width_mm": 6.5,
-      "carries": "3.3V GND SDA SCL TX RX",
-      "x_mm": 102.5
+      "carries": "sense cable: IN+, IN-, VBUS",
+      "x_mm": 28.0
     }
   ],
-  "lcd_module": [
-    98.0,
-    60.0,
-    13.6
-  ],
-  "lcd_window": [
-    75.0,
-    23.2
-  ],
-  "shunt": "outside, at the battery. No shunt power path in this pod.",
+  "board": "Adafruit INA228 product 5832, 25.8 x 20.4 x 10.1 mm keep-out",
   "not_in_this_box": [
     "Jetson Nano",
-    "buck",
-    "F1",
-    "F2",
-    "shunt",
-    "TMP117"
+    "shunt"
   ],
   "unverified_parameters": {
-    "lcd_standoff_mm": 13.6,
-    "lcd_backpack_depth_mm": 16.0,
-    "usb_i2c_adapter_envelope_mm": [
-      54.0,
-      22.0,
-      14.0
-    ],
-    "uart_cable_od_mm": 6.0,
+    "ina_standoff_mm": 3.0,
+    "air_above_mm": 2.0,
+    "sensor_cable_od_mm": 4.0,
     "sense_cable_od_mm": 4.0,
     "bend_clearance_mm": 12.0,
-    "insert_hole_diameter_mm": 4.0,
-    "insert_depth_mm": 6.0,
-    "mount_tab_length_mm": 14.0,
-    "mount_tab_width_mm": 18.0,
-    "tie_hole_mm": 4.0
+    "insert_hole_diameter_mm": 3.2,
+    "insert_depth_mm": 4.0,
+    "mount_tab_length_mm": 12.0,
+    "mount_tab_width_mm": 14.0
   }
 }

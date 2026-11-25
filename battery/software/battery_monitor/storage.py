@@ -17,6 +17,49 @@ from pathlib import Path
 
 from .accounting import fresh_state
 
+# Fields the coulomb counter needs in order to resume after a restart.
+ACCOUNTING_KEYS = (
+    "ampere_hours_out",
+    "watt_hours_out",
+    "soc_anchor_percent",
+    "ah_at_anchor",
+    "power_loss_gap",
+)
+
+# Fields the Jetson web app reads. ``capacity_ah`` is the remaining
+# ampere-hours. ``nominal_capacity_ah`` is the profile capacity.
+READING_KEYS = (
+    "updated_unix",
+    "profile_name",
+    "chemistry",
+    "voltage_v",
+    "current_a",
+    "power_w",
+    "soc_percent",
+    "soc_unclamped_percent",
+    "capacity_ah",
+    "nominal_capacity_ah",
+    "energy_wh",
+    "status",
+    "runtime_hours",
+    "runtime_label",
+    "faults",
+    "comms_ok",
+    "stale",
+    "simulated",
+    "ocv_corrected",
+)
+
+
+def published_document(state: dict, snapshot: dict | None) -> dict:
+    """One JSON object: resume counters, then the latest reading."""
+    document = {key: state.get(key) for key in ACCOUNTING_KEYS}
+    if snapshot:
+        for key in READING_KEYS:
+            document[key] = snapshot.get(key)
+        document["power_loss_gap"] = bool(state.get("power_loss_gap"))
+    return document
+
 
 def atomic_write_json(path: str | Path, payload: dict) -> None:
     path = Path(path)
@@ -47,13 +90,16 @@ class StateStore:
 
     def load(self) -> dict:
         if self.path.is_file():
-            self.state = load_json(self.path)
-            self.state.setdefault("ampere_hours_out", 0.0)
-            self.state.setdefault("watt_hours_out", 0.0)
-            self.state.setdefault("soc_anchor_percent", None)
-            self.state.setdefault("ah_at_anchor", 0.0)
-            # Wall-clock downtime is not integrated. The flag tells the UI.
-            self.state["power_loss_gap"] = True
+            data = load_json(self.path)
+            state = fresh_state(None)
+            for key in ("ampere_hours_out", "watt_hours_out", "soc_anchor_percent", "ah_at_anchor"):
+                if key in data:
+                    state[key] = data[key]
+            if "soc_anchor_percent" not in data and self.initial_soc_percent is not None:
+                state["soc_anchor_percent"] = float(self.initial_soc_percent)
+            # Wall-clock downtime is not integrated.
+            state["power_loss_gap"] = True
+            self.state = state
             self.loaded_from_disk = True
         else:
             self.state = fresh_state(self.initial_soc_percent)
@@ -61,8 +107,8 @@ class StateStore:
             self.loaded_from_disk = False
         return self.state
 
-    def save(self) -> None:
-        atomic_write_json(self.path, self.state)
+    def save(self, snapshot: dict | None = None) -> None:
+        atomic_write_json(self.path, published_document(self.state, snapshot))
 
 
 class HistoryDB:
@@ -84,7 +130,6 @@ class HistoryDB:
                 energy_wh REAL,
                 ampere_hours_out REAL,
                 status TEXT,
-                temperature_c REAL,
                 faults TEXT
             )
             """
@@ -96,9 +141,8 @@ class HistoryDB:
             """
             INSERT INTO samples (
                 unix_time, voltage_v, current_a, power_w, soc_percent,
-                capacity_ah, energy_wh, ampere_hours_out, status,
-                temperature_c, faults
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                capacity_ah, energy_wh, ampere_hours_out, status, faults
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """,
             (
                 row.get("updated_unix"),
@@ -106,11 +150,10 @@ class HistoryDB:
                 row.get("current_a"),
                 row.get("power_w"),
                 row.get("soc_percent"),
-                row.get("nominal_capacity_ah"),
+                row.get("capacity_ah"),
                 row.get("energy_wh"),
                 row.get("ampere_hours_out"),
                 row.get("status"),
-                row.get("temperature_c"),
                 ",".join(row.get("faults") or []),
             ),
         )

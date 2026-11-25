@@ -14,9 +14,6 @@ VFS_V = {163.84: 0.16384, 40.96: 0.04096}
 SHUNT_LSB_V = {163.84: 312.5e-9, 40.96: 78.125e-9}
 VBUS_LSB_V = 195.3125e-6
 DIETEMP_LSB_C = 7.8125e-3
-# Typical differential input impedance. The datasheet gives this as a
-# typical figure (92 kΩ), not a min/max limit.
-RDIFF_TYPICAL_OHM = 92_000.0
 MANUFACTURER_ID = 0x5449
 DEVICE_ID = 0x2281
 
@@ -128,18 +125,6 @@ def max_shunt_ohm(maximum_current_a: float, adc_range_mv: float = 163.84) -> flo
     if maximum_current_a <= 0:
         raise ValueError("maximum current must be positive")
     return VFS_V[adc_range_mv] / maximum_current_a
-
-
-def kelvin_divider_gain(series_ohm: float, rdiff_ohm: float = RDIFF_TYPICAL_OHM) -> float:
-    """Fraction of the shunt voltage that reaches the IN pins.
-
-    Two series resistors and the typical 92 kΩ differential impedance form
-    ``Rdiff / (Rdiff + 2 Rseries)``. This is an estimate: 92 kΩ is typical,
-    and the real gain is what calibration measures.
-    """
-    if series_ohm < 0 or rdiff_ohm <= 0:
-        raise ValueError("invalid resistor")
-    return rdiff_ohm / (rdiff_ohm + 2.0 * series_ohm)
 
 
 def shunt_dissipation_w(current_a: float, r_shunt_ohm: float) -> float:

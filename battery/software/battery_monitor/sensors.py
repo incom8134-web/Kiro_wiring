@@ -1,9 +1,7 @@
-"""Sensor access: the INA228 + TMP117, or a simulated source.
+"""Sensor access: the INA228 on the Jetson I2C header, or a simulated source.
 
-Hardware reads go through smbus2 on a configurable ``/dev/i2c-N``. That node
-is the Jetson header bus (usually ``/dev/i2c-1``, pins 3 and 5) or the bus
-number an ``i2c-tiny-usb`` adapter receives when its kernel driver binds.
-The two are alternatives. Do not put a 5 V USB adapter on the header bus.
+Hardware reads go through smbus2 on ``/dev/i2c-1`` (J41 pins 3 and 5).
+The INA228 is an I2C device. This bus is not the UART.
 """
 
 from __future__ import annotations
@@ -19,8 +17,6 @@ class CommsError(OSError):
 class Sample:
     voltage_v: float
     current_a: float
-    pack_temp_c: float | None = None
-    die_temp_c: float | None = None
     memstat_ok: bool = True
     math_overflow: bool = False
 
@@ -77,13 +73,7 @@ class SimulatedSensor:
         else:
             current = -4.0
         voltage = nominal - 0.02 * current
-        temperature = 25.0 + 0.05 * (self.index % 25)
-        sample = Sample(
-            voltage_v=voltage,
-            current_a=current,
-            pack_temp_c=temperature,
-            die_temp_c=temperature + 2.0,
-        )
+        sample = Sample(voltage_v=voltage, current_a=current)
         self.index += 1
         return sample
 
@@ -93,7 +83,6 @@ class HardwareSensor:
         self.profile = profile
         self.bus = None
         self.ina = None
-        self.tmp = None
 
     def open(self) -> None:
         try:
@@ -101,7 +90,6 @@ class HardwareSensor:
         except ImportError as exc:
             raise CommsError("smbus2 is not installed") from exc
         from .ina228 import INA228
-        from .tmp117 import TMP117
 
         bus_number = parse_i2c_bus(self.profile.get("i2c_bus", "/dev/i2c-1"))
         try:
@@ -118,8 +106,6 @@ class HardwareSensor:
             float(self.profile["max_discharge_current_a"]),
         )
         self.ina.configure(i_max, float(self.profile["shunt_resistance_ohm"]))
-        self.tmp = TMP117(self.bus, address=parse_address(self.profile.get("tmp117_address", "0x48")))
-        self.tmp.verify_identity()
 
     def close(self) -> None:
         if self.bus is not None:
@@ -127,18 +113,15 @@ class HardwareSensor:
             self.bus = None
 
     def read(self) -> Sample:
-        if self.ina is None or self.tmp is None:
+        if self.ina is None:
             raise CommsError("sensor is not open")
         try:
             measured = self.ina.read()
-            pack_temp = self.tmp.read_c()
         except OSError as exc:
             raise CommsError(str(exc)) from exc
         return Sample(
             voltage_v=measured["bus_voltage_v"],
             current_a=measured["current_a"],
-            pack_temp_c=pack_temp,
-            die_temp_c=measured["die_temperature_c"],
             memstat_ok=measured["memstat_ok"],
             math_overflow=measured["math_overflow"],
         )
