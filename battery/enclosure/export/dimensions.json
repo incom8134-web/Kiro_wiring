@@ -1,6 +1,6 @@
 {
   "units": "mm",
-  "role": "ina228_case",
+  "role": "ina228_case_with_shunt_plate",
   "body_x": 48.8,
   "body_y": 46.4,
   "outer_x_with_flanges": 72.8,
@@ -37,9 +37,34 @@
   ],
   "board": "Adafruit INA228 product 5832, 25.8 x 20.4 x 10.1 mm keep-out",
   "not_in_this_box": [
-    "Jetson Nano",
-    "shunt"
+    "Jetson Nano"
   ],
+  "shunt_plate": {
+    "part": "shunt_base",
+    "bolts_to": "the two existing M3 flange holes; the case solid is unchanged",
+    "printed_extents_mm": [
+      116.0,
+      69.8,
+      18.05
+    ],
+    "sheet_thickness_mm": 4.0,
+    "overall_x": 116.0,
+    "overall_y": 86.0,
+    "overall_z": 24.15,
+    "shunt_model": "Accuenergy Shunt-100A, 75 mV",
+    "shunt_source": "https://www.accuenergy.com/wp-content/uploads/DC-Current-Shunt-100A-75mV.pdf",
+    "shunt_footprint_mm": [
+      104.0,
+      21.6,
+      2.0
+    ],
+    "current_hole_pitch_mm": 85.0,
+    "current_hole_diameter_mm": 8.5,
+    "sense_screw_pitch_mm": 62.0,
+    "sense_thread": "M5",
+    "lug_window_diameter_mm": 18.0,
+    "standoff_height_mm": 12.0
+  },
   "unverified_parameters": {
     "ina_standoff_mm": 3.0,
     "air_above_mm": 2.0,
@@ -49,6 +74,11 @@
     "insert_hole_diameter_mm": 3.2,
     "insert_depth_mm": 4.0,
     "mount_tab_length_mm": 12.0,
-    "mount_tab_width_mm": 14.0
+    "mount_tab_width_mm": 14.0,
+    "plate_thickness_mm": 4.0,
+    "standoff_height_mm": 12.0,
+    "lug_window_diameter_mm": 18.0,
+    "gap_north_mm": 14.0,
+    "channel_width_mm": 8.0
   }
 }

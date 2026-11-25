@@ -119,11 +119,12 @@ def draw() -> Drawing:
     d.rect(1760, 820, 590, 360)
 
     d.text(64, 230, "External shunt", size=32, weight="bold")
-    d.text(64, 274, "at the battery, high side", size=24, fill=MUTED)
-    d.text(64, 340, "4-terminal shunt", size=26)
-    d.text(64, 384, "Pack current stays here.", size=24, fill=MUTED)
+    d.text(64, 274, "on the north plate of the case", size=24, fill=MUTED)
+    d.text(64, 330, "4-terminal, high side", size=26)
+    d.text(64, 374, "Battery lugs bolt to the shunt.", size=24, fill=MUTED)
     d.text(64, 470, "Battery side", size=26, weight="bold")
     d.text(64, 560, "Load side", size=26, weight="bold")
+    d.text(64, 820, "Short leads into the sense slot.", size=24, fill=MUTED)
     d.text(64, 860, "Sense leads are unfused.", size=24, fill=MUTED)
 
     wire(d, 500, 860, 430, VIOLET, "IN+")

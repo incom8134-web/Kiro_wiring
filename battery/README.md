@@ -80,9 +80,13 @@ unix_s,voltage_v,current_a,power_w,soc_percent,capacity_ah,energy_wh,status,faul
 
 ## Case
 
-The printed case holds only the INA228 board. Body **48.8 × 46.4 × 20.1 mm**. With the two side flanges, **72.8 × 46.4 × 20.1 mm**. Cavity **43.8 × 41.4 × 15.1 mm**. Wall, floor, and lid are 2.5 mm. Fit clearance is 0.25 mm per side.
+The printed case holds only the INA228 board. Body **48.8 × 46.4 × 20.1 mm**. With the two side flanges, **72.8 × 46.4 × 20.1 mm**. Cavity **43.8 × 41.4 × 15.1 mm**. Wall, floor, and lid are 2.5 mm. Fit clearance is 0.25 mm per side. That case is unchanged.
 
-The north wall has two open slots: the sensor cable, and the sense cable (IN+, IN−, VBUS). The Jetson and the shunt are not in the box.
+A separate plate bolts to the two existing flange holes and extends off the north wall, beside the sense slot. The shunt sits on standoffs on that plate. The plate’s own bounding box is **116.0 × 69.8 × 18.05 mm**. Case plus plate is **116.0 × 86.0 × 24.15 mm**. Battery lugs bolt to the shunt. A short channel runs from the sense screws to the sense slot.
+
+The footprint is the Accuenergy Shunt-100A, 75 mV: 104 × 21.6 × 2.0 mm, Φ8.5 holes on an 85 mm pitch, M5 sense screws on a 62 mm pitch ([datasheet](https://www.accuenergy.com/wp-content/uploads/DC-Current-Shunt-100A-75mV.pdf), August 2024). The pack current is still unknown, so this is a mechanical outline, not a chosen shunt rating. Pitch, hole size, and the outline are parameters in `enclosure.py`.
+
+The north wall has two open slots: the sensor cable, and the sense cable (IN+, IN−, VBUS). The Jetson is not in the box. The sense and VBUS leads are unfused.
 
 ![INA228 case, base and lifted lid](enclosure/preview.png)
 

@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
-"""Small printable case for the INA228 breakout.
+"""Small printable case for the INA228 breakout, plus a shunt plate.
 
-The shunt stays at the battery. The Jetson stays where it already is.
-This shell holds only the INA228 board. Two slots leave the north wall:
-the sensor cable (3.3 V, GND, SDA, SCL) and the sense cable (IN+, IN-, VBUS).
+The case cavity, slots, and flanges are unchanged. A separate plate bolts
+to those flanges and carries a 4-terminal shunt on the north side, next to
+the sense slot. The Jetson stays where it already is. The case holds only
+the INA228 board. Two slots leave the north wall: the sensor cable
+(3.3 V, GND, SDA, SCL) and the sense cable (IN+, IN-, VBUS).
 
 Run from this directory:
 
@@ -74,6 +76,32 @@ INSERT_DEPTH = 4.0
 SKIRT_H = 3.0
 SKIRT_T = 1.6
 LID_SEAT_GAP = 0.05
+
+# Accuenergy Shunt-100A, 75 mV. Datasheet revision August 2024, version 1.0.3.
+# https://www.accuenergy.com/wp-content/uploads/DC-Current-Shunt-100A-75mV.pdf
+# One drawing gives these length callouts. This model centers the 85 mm and
+# 62 mm spans on the 104 mm length.
+SHUNT_L = 104.0
+SHUNT_W = 21.6
+SHUNT_T = 2.0
+SHUNT_CURRENT_PITCH = 85.0
+SHUNT_CURRENT_HOLE = 8.5
+SHUNT_SENSE_PITCH = 62.0
+SHUNT_SENSE_THREAD = 5.0  # drawing says 2-M5; thread size, not a drilled plate hole
+
+# Plate parameters. Not on the shunt drawing.
+PLATE_T = 4.0
+PLATE_GAP = 0.05  # keeps the plate from sharing a face with the case
+STANDOFF_H = 12.0  # clears an ISO 4032 M8 nut (thickness 6.8 mm) under the terminal
+STANDOFF_R = 3.0
+LUG_CLEAR_D = 18.0  # through-window; an M8 nut is 13 mm across flats
+GAP_NORTH = 14.0
+DECK_MARGIN = 6.0
+PLATE_NORTH_MARGIN = 4.0
+CHANNEL_W = 8.0
+CHANNEL_FLOOR_Z = 10.0
+CHANNEL_RIB_H = 4.0
+CHANNEL_RIB_T = 1.6
 
 
 def _r3(value: float) -> float:
@@ -153,6 +181,65 @@ def compute() -> dict:
         "ina_y": ina_y,
         "slots": slots,
         "bosses": bosses,
+    }
+
+
+def shunt_layout(p: dict) -> dict:
+    """North plate. It uses the existing flange holes and does not alter the case."""
+    sense = next(slot for slot in p["slots"] if slot["name"] == "sense")
+    slot_cx = sense["x"] + sense["w"] / 2.0
+    ox, oy = p["outer_x"], p["outer_y"]
+    shunt_south = oy + GAP_NORTH
+    shunt_cx = slot_cx
+    shunt_cy = shunt_south + SHUNT_W / 2.0
+    shunt_x0 = shunt_cx - SHUNT_L / 2.0
+    deck_x0 = shunt_x0 - DECK_MARGIN
+    deck_x1 = shunt_x0 + SHUNT_L + DECK_MARGIN
+    deck_y0 = oy + 0.05
+    deck_y1 = shunt_south + SHUNT_W + PLATE_NORTH_MARGIN
+    z1 = -PLATE_GAP
+    z0 = z1 - PLATE_T
+    tab_y0 = (oy - TAB_W) / 2.0
+    # Same centers as the M3 holes already drilled in the case flanges.
+    flange_holes = [(-(TAB_LEN - 6.0), oy / 2.0), (ox + (TAB_LEN - 6.0), oy / 2.0)]
+    standoffs = [
+        (shunt_cx + sx, shunt_cy + sy)
+        for sx in (-20.0, 20.0)
+        for sy in (-6.5, 6.5)
+    ]
+    currents = [
+        (shunt_cx + sign * SHUNT_CURRENT_PITCH / 2.0, shunt_cy) for sign in (-1.0, 1.0)
+    ]
+    senses = [
+        (shunt_cx + sign * SHUNT_SENSE_PITCH / 2.0, shunt_cy) for sign in (-1.0, 1.0)
+    ]
+    for sx, sy in standoffs:
+        for hx, hy in currents:
+            if math.hypot(sx - hx, sy - hy) < STANDOFF_R + LUG_CLEAR_D / 2.0 + 1.0:
+                raise SystemExit("a shunt standoff falls in a lug window")
+        if not (deck_x0 + STANDOFF_R < sx < deck_x1 - STANDOFF_R and deck_y0 + STANDOFF_R < sy < deck_y1 - STANDOFF_R):
+            raise SystemExit("a shunt standoff misses the plate")
+    return {
+        "slot_cx": slot_cx,
+        "shunt_x0": shunt_x0,
+        "shunt_y0": shunt_south,
+        "shunt_cx": shunt_cx,
+        "shunt_cy": shunt_cy,
+        "deck_x0": deck_x0,
+        "deck_x1": deck_x1,
+        "deck_y0": deck_y0,
+        "deck_y1": deck_y1,
+        "z0": z0,
+        "z1": z1,
+        "tab_y0": tab_y0,
+        "flange_holes": flange_holes,
+        "standoffs": standoffs,
+        "currents": currents,
+        "senses": senses,
+        "xmin": min(deck_x0, -TAB_LEN),
+        "xmax": max(deck_x1, ox + TAB_LEN),
+        "ymin": 0.0,
+        "ymax": deck_y1,
     }
 
 
@@ -302,6 +389,50 @@ def lid_to_print(lid: cq.Workplane, p: dict) -> cq.Workplane:
     return rotated.translate((0, p["outer_y"], outer_face))
 
 
+def build_shunt_base(p: dict, plate: dict) -> cq.Workplane:
+    ox = p["outer_x"]
+    z0, z1 = plate["z0"], plate["z1"]
+    parts = [
+        _box(-TAB_LEN, plate["tab_y0"], z0, TAB_LEN, plate["deck_y0"] + 0.4 - plate["tab_y0"], PLATE_T),
+        _box(ox, plate["tab_y0"], z0, TAB_LEN, plate["deck_y0"] + 0.4 - plate["tab_y0"], PLATE_T),
+        _box(
+            plate["deck_x0"],
+            plate["deck_y0"],
+            z0,
+            plate["deck_x1"] - plate["deck_x0"],
+            plate["deck_y1"] - plate["deck_y0"],
+            PLATE_T,
+        ),
+    ]
+    for x, y in plate["standoffs"]:
+        parts.append(_cyl(x, y, z1 - 0.2, STANDOFF_R, STANDOFF_H + 0.2))
+
+    y0 = p["outer_y"] + 0.2
+    y1 = plate["shunt_y0"] - 0.4
+    cx = plate["slot_cx"]
+    parts.append(_box(cx - CHANNEL_W / 2.0, y0, z1 - 0.2, CHANNEL_W, y1 - y0, CHANNEL_FLOOR_Z - z1 + 0.2))
+    rib_top = CHANNEL_FLOOR_Z + CHANNEL_RIB_H
+    parts.append(_box(cx - CHANNEL_W / 2.0 - CHANNEL_RIB_T, y0, z1 - 0.2, CHANNEL_RIB_T, y1 - y0, rib_top - z1 + 0.2))
+    parts.append(_box(cx + CHANNEL_W / 2.0, y0, z1 - 0.2, CHANNEL_RIB_T, y1 - y0, rib_top - z1 + 0.2))
+
+    solid = _fuse(parts)
+    cutters = []
+    for x, y in plate["flange_holes"]:
+        cutters.append(_cyl(x, y, z0 - 0.5, M3_CLEAR / 2.0, PLATE_T + 1.0))
+    for x, y in plate["currents"]:
+        cutters.append(_cyl(x, y, z0 - 0.5, LUG_CLEAR_D / 2.0, PLATE_T + 1.0))
+    return _cut_all(solid, cutters)
+
+
+def shunt_placeholder(plate: dict) -> cq.Workplane:
+    """Simple envelope of the Accuenergy bar, with the four terminal holes."""
+    z = plate["z1"] + STANDOFF_H + 0.05
+    body = _box(plate["shunt_x0"], plate["shunt_y0"], z, SHUNT_L, SHUNT_W, SHUNT_T)
+    cutters = [_cyl(x, y, z - 0.2, SHUNT_CURRENT_HOLE / 2.0, SHUNT_T + 0.4) for x, y in plate["currents"]]
+    cutters += [_cyl(x, y, z - 0.2, SHUNT_SENSE_THREAD / 2.0, SHUNT_T + 0.4) for x, y in plate["senses"]]
+    return _cut_all(body, cutters)
+
+
 def reference_solids(p: dict) -> list[tuple[str, cq.Workplane]]:
     z = FLOOR + INA_STANDOFF
     x = p["ina_x"] - (INA_PRODUCT_X - INA_PCB_X) / 2.0
@@ -383,34 +514,38 @@ def _paint_sorted(ax, layers) -> None:
     )
 
 
-def render_preview(p: dict, meshes: dict, path: Path) -> None:
-    fig = plt.figure(figsize=(11.2, 5.4), dpi=130)
-    x0 = -TAB_LEN
-    x1 = p["outer_x"] + TAB_LEN
+def render_preview(p: dict, plate: dict, meshes: dict, path: Path) -> None:
+    fig = plt.figure(figsize=(12.4, 5.6), dpi=130)
+    x0, x1 = plate["xmin"], plate["xmax"]
     span_x = x1 - x0
-    span_y = p["outer_y"]
+    span_y = plate["ymax"] - plate["ymin"]
+    z0 = plate["z0"]
     for panel, (title, lift, draw_lid) in enumerate(
-        (("Interior", 0.0, False), ("Lid lifted", 18.0, True)), start=1
+        (("Case and shunt", 0.0, False), ("Lid lifted", 18.0, True)), start=1
     ):
         ax = fig.add_subplot(1, 2, panel, projection="3d")
-        layers = [(_decimate(meshes["base"], 8000), (0.62, 0.66, 0.70), 0.35)]
+        layers = [
+            (_decimate(meshes["plate"], 6000), (0.45, 0.48, 0.52), 0.95),
+            (_decimate(meshes["base"], 8000), (0.62, 0.66, 0.70), 0.35),
+        ]
         if draw_lid:
             lid_faces = _decimate(meshes["lid_asm"], 4000).copy()
             lid_faces[:, :, 2] += lift
             layers.append((lid_faces, (0.16, 0.40, 0.56), 0.55))
-        for _name, mesh in meshes["refs"]:
-            layers.append((_decimate(mesh, 1500), (0.80, 0.38, 0.12), 0.95))
+        for name, mesh in meshes["refs"]:
+            color = (0.72, 0.48, 0.22) if "shunt" in name else (0.80, 0.38, 0.12)
+            layers.append((_decimate(mesh, 1500), color, 0.95))
         _paint_sorted(ax, layers)
         ax.set_title(title, fontsize=11, pad=8)
-        ax.set_box_aspect((span_x, span_y, max(p["outer_z"] + lift, 30)))
+        ax.set_box_aspect((span_x, span_y, max(p["outer_z"] + lift - z0, 30)))
         ax.set_xlim(x0, x1)
-        ax.set_ylim(0, span_y)
-        ax.set_zlim(0, p["outer_z"] + lift)
-        ax.view_init(elev=32, azim=-62)
+        ax.set_ylim(plate["ymin"], plate["ymax"])
+        ax.set_zlim(z0, p["outer_z"] + lift)
+        ax.view_init(elev=28, azim=-58)
         ax.set_axis_off()
     fig.suptitle(
-        "INA228 case  "
-        f"{p['outer_x'] + 2 * TAB_LEN:.1f} x {p['outer_y']:.1f} x {p['outer_z']:.1f} mm with flanges",
+        "INA228 case and shunt plate  "
+        f"{plate['xmax'] - plate['xmin']:.1f} x {plate['ymax']:.1f} x {p['outer_z'] - plate['z0']:.1f} mm",
         fontsize=12,
     )
     fig.tight_layout(rect=(0, 0, 1, 0.94))
@@ -418,10 +553,10 @@ def render_preview(p: dict, meshes: dict, path: Path) -> None:
     plt.close(fig)
 
 
-def _public_dimensions(p: dict) -> dict:
+def _public_dimensions(p: dict, plate: dict) -> dict:
     return {
         "units": "mm",
-        "role": "ina228_case",
+        "role": "ina228_case_with_shunt_plate",
         "body_x": _r3(p["outer_x"]),
         "body_y": _r3(p["outer_y"]),
         "outer_x_with_flanges": _r3(p["outer_x"] + 2.0 * TAB_LEN),
@@ -447,7 +582,29 @@ def _public_dimensions(p: dict) -> dict:
             for s in p["slots"]
         ],
         "board": "Adafruit INA228 product 5832, 25.8 x 20.4 x 10.1 mm keep-out",
-        "not_in_this_box": ["Jetson Nano", "shunt"],
+        "not_in_this_box": ["Jetson Nano"],
+        "shunt_plate": {
+            "part": "shunt_base",
+            "bolts_to": "the two existing M3 flange holes; the case solid is unchanged",
+            "printed_extents_mm": [
+                _r3(plate["xmax"] - plate["xmin"]),
+                _r3(plate["ymax"] - plate["tab_y0"]),
+                _r3(max(plate["z1"] + STANDOFF_H, CHANNEL_FLOOR_Z + CHANNEL_RIB_H) - plate["z0"]),
+            ],
+            "sheet_thickness_mm": PLATE_T,
+            "overall_x": _r3(plate["xmax"] - plate["xmin"]),
+            "overall_y": _r3(plate["ymax"]),
+            "overall_z": _r3(p["outer_z"] - plate["z0"]),
+            "shunt_model": "Accuenergy Shunt-100A, 75 mV",
+            "shunt_source": "https://www.accuenergy.com/wp-content/uploads/DC-Current-Shunt-100A-75mV.pdf",
+            "shunt_footprint_mm": [SHUNT_L, SHUNT_W, SHUNT_T],
+            "current_hole_pitch_mm": SHUNT_CURRENT_PITCH,
+            "current_hole_diameter_mm": SHUNT_CURRENT_HOLE,
+            "sense_screw_pitch_mm": SHUNT_SENSE_PITCH,
+            "sense_thread": "M5",
+            "lug_window_diameter_mm": LUG_CLEAR_D,
+            "standoff_height_mm": STANDOFF_H,
+        },
         "unverified_parameters": {
             "ina_standoff_mm": INA_STANDOFF,
             "air_above_mm": AIR_ABOVE,
@@ -458,6 +615,11 @@ def _public_dimensions(p: dict) -> dict:
             "insert_depth_mm": INSERT_DEPTH,
             "mount_tab_length_mm": TAB_LEN,
             "mount_tab_width_mm": TAB_W,
+            "plate_thickness_mm": PLATE_T,
+            "standoff_height_mm": STANDOFF_H,
+            "lug_window_diameter_mm": LUG_CLEAR_D,
+            "gap_north_mm": GAP_NORTH,
+            "channel_width_mm": CHANNEL_W,
         },
     }
 
@@ -476,10 +638,25 @@ def main() -> int:
     lid_asm = build_lid(p)
     _require_single_valid_solid(lid_asm, "lid")
     lid_print = lid_to_print(lid_asm, p)
+    plate = shunt_layout(p)
+    shunt_base = build_shunt_base(p, plate)
+    _require_single_valid_solid(shunt_base, "shunt base")
+    shunt_ref = shunt_placeholder(plate)
     overlap = _interference(base, lid_asm)
-    print(f"base/lid intersection volume {overlap:.3f} mm^3")
-    if overlap > 5.0:
-        raise SystemExit("base and lid intersect")
+    plate_overlap = _interference(base, shunt_base)
+    lid_overlap = _interference(lid_asm, shunt_base)
+    print(
+        f"intersection mm^3  base/lid {overlap:.3f}  "
+        f"base/plate {plate_overlap:.3f}  lid/plate {lid_overlap:.3f}"
+    )
+    if max(overlap, plate_overlap, lid_overlap) > 5.0:
+        raise SystemExit("printed solids intersect")
+    print(
+        f"shunt plate x {plate['xmin']:.2f}..{plate['xmax']:.2f}  "
+        f"y {plate['tab_y0']:.2f}..{plate['ymax']:.2f}  "
+        f"overall {plate['xmax'] - plate['xmin']:.2f} x {plate['ymax']:.2f} x "
+        f"{p['outer_z'] - plate['z0']:.2f} mm"
+    )
 
     bb = lid_asm.val().BoundingBox()
     if abs(bb.xmin) > 0.5 or abs(bb.ymin) > 0.5:
@@ -490,25 +667,29 @@ def main() -> int:
 
     _export_solid(base, EXPORT / "base")
     _export_solid(lid_print, EXPORT / "lid")
-    assembly = cq.Assembly(name="ina228_case")
+    _export_solid(shunt_base, EXPORT / "shunt_base")
+    assembly = cq.Assembly(name="ina228_with_shunt_plate")
     assembly.add(base, name="base", color=cq.Color(0.62, 0.66, 0.70, 1))
     assembly.add(lid_asm, name="lid", color=cq.Color(0.18, 0.42, 0.58, 1))
+    assembly.add(shunt_base, name="shunt_base", color=cq.Color(0.45, 0.48, 0.52, 1))
+    assembly.add(shunt_ref, name="REF_shunt", color=cq.Color(0.72, 0.48, 0.22, 0.55))
     ref_meshes = []
-    for name, solid in reference_solids(p):
-        assembly.add(solid, name=name, color=cq.Color(0.80, 0.38, 0.12, 0.45))
+    for name, solid in [("REF_shunt", shunt_ref), *reference_solids(p)]:
+        if name != "REF_shunt":
+            assembly.add(solid, name=name, color=cq.Color(0.80, 0.38, 0.12, 0.45))
         ref_path = EXPORT / f"_{name}.stl"
         cq.exporters.export(solid, str(ref_path), tolerance=0.2, angularTolerance=0.3)
         ref_meshes.append((name, trimesh.load(ref_path, force="mesh")))
         ref_path.unlink()
     assembly.export(str(EXPORT / "assembly.step"), "STEP")
 
-    for stem in ("base", "lid", "assembly"):
+    for stem in ("base", "lid", "shunt_base", "assembly"):
         reopened = cq.importers.importStep(str(EXPORT / f"{stem}.step"))
         if reopened.val().Volume() <= 0:
             raise SystemExit(f"{stem}.step reopened with no volume")
 
     reports = []
-    for stem in ("base", "lid"):
+    for stem in ("base", "lid", "shunt_base"):
         report = _mesh_report(EXPORT / f"{stem}.stl")
         reports.append(report)
         print(stem, report)
@@ -516,8 +697,14 @@ def main() -> int:
             raise SystemExit(f"{stem}.stl is not watertight")
         if not report["winding_consistent"]:
             raise SystemExit(f"{stem}.stl winding is inconsistent")
+    base_report = reports[0]
+    lid_report = reports[1]
+    if base_report["extents_mm"] != [72.8, 46.4, 17.6]:
+        raise SystemExit(f"case base extents changed: {base_report['extents_mm']}")
+    if lid_report["extents_mm"] != [48.8, 46.4, 5.5]:
+        raise SystemExit(f"case lid extents changed: {lid_report['extents_mm']}")
 
-    (EXPORT / "dimensions.json").write_text(json.dumps(_public_dimensions(p), indent=2) + "\n")
+    (EXPORT / "dimensions.json").write_text(json.dumps(_public_dimensions(p, plate), indent=2) + "\n")
     (EXPORT / "manifold.txt").write_text(
         "\n".join(
             f"{r['file']}: watertight={r['watertight']} winding={r['winding_consistent']} "
@@ -530,11 +717,12 @@ def main() -> int:
     cq.exporters.export(lid_asm, str(asm_stl), tolerance=0.15, angularTolerance=0.2)
     meshes = {
         "base": trimesh.load(EXPORT / "base.stl", force="mesh"),
+        "plate": trimesh.load(EXPORT / "shunt_base.stl", force="mesh"),
         "lid_asm": trimesh.load(asm_stl, force="mesh"),
         "refs": ref_meshes,
     }
     asm_stl.unlink()
-    render_preview(p, meshes, HERE / "preview.png")
+    render_preview(p, plate, meshes, HERE / "preview.png")
     print(f"wrote {HERE / 'preview.png'}")
     return 0
 

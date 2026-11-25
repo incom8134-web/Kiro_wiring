@@ -7,11 +7,12 @@
 <rect x="1760.0" y="150.0" width="590.0" height="620.0" rx="12" fill="#f7f9fb" stroke="#243140" stroke-width="2.5"/>
 <rect x="1760.0" y="820.0" width="590.0" height="360.0" rx="12" fill="#f7f9fb" stroke="#243140" stroke-width="2.5"/>
 <text x="64.0" y="230.0" fill="#1c2833" font-size="32" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="start">External shunt</text>
-<text x="64.0" y="274.0" fill="#34495e" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">at the battery, high side</text>
-<text x="64.0" y="340.0" fill="#1c2833" font-size="26" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">4-terminal shunt</text>
-<text x="64.0" y="384.0" fill="#34495e" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">Pack current stays here.</text>
+<text x="64.0" y="274.0" fill="#34495e" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">on the north plate of the case</text>
+<text x="64.0" y="330.0" fill="#1c2833" font-size="26" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">4-terminal, high side</text>
+<text x="64.0" y="374.0" fill="#34495e" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">Battery lugs bolt to the shunt.</text>
 <text x="64.0" y="470.0" fill="#1c2833" font-size="26" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="start">Battery side</text>
 <text x="64.0" y="560.0" fill="#1c2833" font-size="26" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="start">Load side</text>
+<text x="64.0" y="820.0" fill="#34495e" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">Short leads into the sense slot.</text>
 <text x="64.0" y="860.0" fill="#34495e" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">Sense leads are unfused.</text>
 <polyline points="500.0,430.0 860.0,430.0" fill="none" stroke="#6c3483" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
 <text x="680.0" y="416.0" fill="#6c3483" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="middle">IN+</text>
