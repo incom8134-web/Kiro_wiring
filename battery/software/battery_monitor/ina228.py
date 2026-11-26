@@ -3,8 +3,15 @@
 Numbers below are from Texas Instruments, INA228 datasheet (SLYS021):
 https://www.ti.com/lit/ds/symlink/ina228.pdf
 
-The device measures the external shunt between IN+ and IN-. It does not
-contain the shunt. Pack current must not flow through the breakout PCB.
+The die measures the shunt between IN+ and IN-. On the Matek I2C-INA-BM
+the shunt is the module's 200 µΩ conductive path, and pack current does
+flow through that path. It does not flow through the Jetson header.
+
+Matek full scale, from https://www.mateksys.com/?portfolio=i2c-ina-bm and
+SLYS021: R = 0.0002 ohm, ADCRANGE = 1 (±40.96 mV), Imax = 204.8 A,
+CURRENT_LSB = 204.8 / 2^19, SHUNT_CAL = 4096. Address 0x45 is decimal 69
+(A1=VS, A0=VS, jumpers open). The constructor default stays 0x40 so the
+datasheet example test is unchanged; the profile passes 0x45.
 """
 
 from __future__ import annotations
@@ -16,6 +23,14 @@ VBUS_LSB_V = 195.3125e-6
 DIETEMP_LSB_C = 7.8125e-3
 MANUFACTURER_ID = 0x5449
 DEVICE_ID = 0x2281
+
+# Matek I2C-INA-BM module facts. Not a pack nameplate.
+# https://www.mateksys.com/?portfolio=i2c-ina-bm
+MATEK_SHUNT_OHM = 0.0002
+MATEK_ADC_RANGE_MV = 40.96
+MATEK_ADDRESS = 0x45
+MATEK_FULL_SCALE_A = 204.8
+MATEK_CONTINUOUS_A = 150.0
 
 REG_CONFIG = 0x00
 REG_ADC_CONFIG = 0x01

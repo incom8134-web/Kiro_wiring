@@ -1,84 +1,57 @@
 {
   "units": "mm",
-  "role": "ina228_case_with_shunt_plate",
-  "body_x": 48.8,
-  "body_y": 46.4,
-  "outer_x_with_flanges": 72.8,
-  "outer_y": 46.4,
-  "outer_z": 20.1,
-  "base_h": 17.6,
-  "internal_x": 43.8,
-  "internal_y": 41.4,
-  "internal_z": 15.1,
-  "wall": 2.5,
-  "floor": 2.5,
-  "lid_t": 2.5,
-  "fit_per_side": 0.25,
-  "mounting": {
-    "type": "floor flanges, one each side",
-    "tab_length_mm": 12.0,
-    "tab_width_mm": 14.0,
-    "hole": "M3 clearance, ISO 273 medium, 3.4 mm",
-    "hole_diameter_mm": 3.4
-  },
-  "cables": [
-    {
-      "slot": "sensor",
-      "slot_width_mm": 4.5,
-      "carries": "sensor cable: pin 1 3.3 V, pin 6 GND, pin 3 SDA, pin 5 SCL",
-      "x_mm": 16.0
-    },
-    {
-      "slot": "sense",
-      "slot_width_mm": 4.5,
-      "carries": "sense cable: IN+, IN-, VBUS",
-      "x_mm": 28.0
-    }
+  "module": "Matek I2C-INA-BM",
+  "source": "https://www.mateksys.com/?portfolio=i2c-ina-bm",
+  "board_mm": [
+    27.0,
+    20.0,
+    6.0
   ],
-  "board": "Adafruit INA228 product 5832, 25.8 x 20.4 x 10.1 mm keep-out",
-  "not_in_this_box": [
-    "Jetson Nano"
+  "body_mm": [
+    33.8,
+    26.8,
+    11.8
   ],
-  "shunt_plate": {
-    "part": "shunt_base",
-    "bolts_to": "the two existing M3 flange holes; the case solid is unchanged",
-    "printed_extents_mm": [
-      116.0,
-      69.8,
-      18.05
+  "base_with_tabs_mm": [
+    49.8,
+    26.8,
+    10.0
+  ],
+  "cavity_mm": [
+    29.4,
+    22.4,
+    8.2
+  ],
+  "wall_mm": 2.2,
+  "floor_mm": 1.8,
+  "lid_mm": 1.8,
+  "fit_per_side_mm": 1.2,
+  "standoff_mm": 1.2,
+  "openings": {
+    "power_slot_mm": [
+      6.0,
+      "open top, both short walls"
     ],
-    "sheet_thickness_mm": 4.0,
-    "overall_x": 116.0,
-    "overall_y": 86.0,
-    "overall_z": 24.15,
-    "shunt_model": "Accuenergy Shunt-100A, 75 mV",
-    "shunt_source": "https://www.accuenergy.com/wp-content/uploads/DC-Current-Shunt-100A-75mV.pdf",
-    "shunt_footprint_mm": [
-      104.0,
-      21.6,
-      2.0
-    ],
-    "current_hole_pitch_mm": 85.0,
-    "current_hole_diameter_mm": 8.5,
-    "sense_screw_pitch_mm": 62.0,
-    "sense_thread": "M5",
-    "lug_window_diameter_mm": 18.0,
-    "standoff_height_mm": 12.0
+    "jst_gh_slots": 2,
+    "jst_slot_width_mm": 11.0,
+    "note": "JST positions follow the product photo. Power-lead width is a printable default, not a chosen wire gauge."
   },
-  "unverified_parameters": {
-    "ina_standoff_mm": 3.0,
-    "air_above_mm": 2.0,
-    "sensor_cable_od_mm": 4.0,
-    "sense_cable_od_mm": 4.0,
-    "bend_clearance_mm": 12.0,
-    "insert_hole_diameter_mm": 3.2,
-    "insert_depth_mm": 4.0,
-    "mount_tab_length_mm": 12.0,
-    "mount_tab_width_mm": 14.0,
-    "plate_thickness_mm": 4.0,
-    "standoff_height_mm": 12.0,
-    "lug_window_diameter_mm": 18.0,
-    "gap_north_mm": 14.0,
-    "channel_width_mm": 8.0
-  }
+  "mesh_extents_mm": {
+    "base.stl": [
+      49.8,
+      26.8,
+      10.0
+    ],
+    "lid.stl": [
+      33.8,
+      26.8,
+      4.2
+    ]
+  },
+  "unverified": [
+    "JST-GH positions and housing size (photo, not a dimensioned drawing)",
+    "power lead outside diameter (pack current is unknown)",
+    "solder-side height under the published 6 mm module height",
+    "3 mm PCB hole claimed by a retailer and not used here"
+  ]
 }

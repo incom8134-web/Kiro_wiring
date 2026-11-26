@@ -39,6 +39,15 @@ def test_shunt_limit():
     assert max_shunt_ohm(10.0) == pytest.approx(0.016384)
 
 
+def test_matek_module_full_scale():
+    # Matek I2C-INA-BM: 204.8 A across 200 µΩ is 40.96 mV (ADCRANGE=1).
+    # CURRENT_LSB = 204.8 / 2^19 = 390.625 µA. SHUNT_CAL = 4096.
+    register, lsb = shunt_cal_register(204.8, 0.0002, 40.96)
+    assert register == 4096
+    assert lsb == pytest.approx(204.8 / 2**19)
+    assert lsb == pytest.approx(390.625e-6)
+
+
 def test_adc_range_1_multiplies_cal_by_four():
     base, _ = shunt_cal_register(10.0, 0.001, 163.84)
     high, _ = shunt_cal_register(10.0, 0.001, 40.96)

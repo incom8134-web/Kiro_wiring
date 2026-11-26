@@ -5,9 +5,11 @@
 [`../README.ko.md`](../README.ko.md)의 Jetson Nano 설계를 구동하는 Python 3.9 이상 서비스입니다.
 Nano의 JetPack 4.6 기본 Python은 3.6입니다. Python 3.9 이상으로 만든 가상환경을 사용합니다.
 
-INA228은 `/dev/i2c-1`로 읽습니다. I2C 전용입니다. UART `/dev/ttyTHS1`은 직렬 로그이며 센서 연결이 아닙니다.
+Matek I2C-INA-BM은 `/dev/i2c-1`, 주소 0x45로 읽습니다. I2C 전용입니다. UART `/dev/ttyTHS1`은 직렬 로그이며 센서 연결이 아닙니다.
 
-이 패키지에는 웹 서버가 없습니다. Jetson에서 이미 실행 중인 웹 앱이 `/var/lib/battery-monitor/state.json`을 읽습니다. 필드 목록은 [`../README.ko.md`](../README.ko.md)에 있습니다.
+배포 프로필의 모듈 값은 [Matek](https://www.mateksys.com/?portfolio=i2c-ina-bm)와 TI SLYS021에서 왔습니다. 션트 0.0002 Ω, `adc_range_mv` 40.96, 풀스케일 204.8 A. 그 풀스케일에서 SHUNT_CAL은 4096, CURRENT_LSB는 390.625 µA입니다. 팩 명판이 있으면 `configure()`가 그 전류로 SHUNT_CAL을 다시 계산합니다. 드라이버는 DEVICE_ID 0x2281만 받습니다. 이 경로는 Matek 보드에서 실행한 적이 없습니다.
+
+이 패키지에는 웹 서버가 없습니다. HAEBOT 로봇 웹 앱이 `/var/lib/battery-monitor/state.json` 또는 `/dev/ttyTHS1`의 UART CSV를 읽습니다. 필드 목록은 [`../README.ko.md`](../README.ko.md)에 있습니다. 앱 소스는 이 저장소에 없습니다.
 
 ```bash
 cd battery/software

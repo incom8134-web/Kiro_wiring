@@ -1,18 +1,22 @@
 #!/usr/bin/env python3
-"""Draw the wiring diagram: shunt, INA228, Jetson I2C, Jetson UART.
+"""Draw the wiring diagram: Matek I2C-INA-BM, Jetson I2C, Jetson UART.
 
     python3 draw_wiring.py
 
 Writes battery_monitor_wiring.svg and battery_monitor_wiring.png beside
 this file. The PNG is 2400 px wide.
 
-Pins follow the NVIDIA Jetson Nano Developer Kit User Guide, DA_09402,
-connector J41. Interface signals are 3.3 V. Pins 3 and 5 are /dev/i2c-1
-(module name I2C_2; wire the pin numbers). Pins 8 and 10 are /dev/ttyTHS1.
-Pin 1 is 3.3 V. Pin 6 is ground. Do not power pins 2 and 4.
+The module is the Matek I2C-INA-BM:
+https://www.mateksys.com/?portfolio=i2c-ina-bm
+Pack current goes in BAT+ and out ESC+. The JST-GH-4P carries 5V, SCL,
+SDA, and G. Default address is decimal 69, which is 0x45 (SLYS021, A1=VS
+and A0=VS, jumpers open). The 5V pin is a 4-9 V logic supply.
 
-The INA228 address 0x40 with A1 and A0 at ground is TI SLYS021. The chip
-has an I2C interface and no UART pins.
+Pins follow the NVIDIA Jetson Nano Developer Kit User Guide, DA_09402,
+connector J41. Pins 3 and 5 are /dev/i2c-1. Pins 8 and 10 are /dev/ttyTHS1.
+Pin 2 is 5 V and feeds the module logic pin (about 1 mA). Pin 6 is ground.
+Pin 1 is 3.3 V and must not feed the module. Do not use pin 4. Do not put
+pack voltage on the header. The I2C pull-up rail on the module is unverified.
 """
 
 from __future__ import annotations
@@ -107,7 +111,7 @@ def draw() -> Drawing:
     d.text(
         48,
         108,
-        "INA228 is I2C only. The sensor cable is J41 pins 1, 3, 5, and 6. UART pins 8 and 10 are the data output.",
+        "Matek I2C-INA-BM. Pack current is BAT+ to ESC+. JST-GH-4P is 5V, SCL, SDA, G. UART pins 8 and 10 are the data output.",
         size=24,
         fill=MUTED,
     )
@@ -118,46 +122,45 @@ def draw() -> Drawing:
     d.rect(1760, 150, 590, 620)
     d.rect(1760, 820, 590, 360)
 
-    d.text(64, 230, "External shunt", size=32, weight="bold")
-    d.text(64, 274, "on the north plate of the case", size=24, fill=MUTED)
-    d.text(64, 330, "4-terminal, high side", size=26)
-    d.text(64, 374, "Battery lugs bolt to the shunt.", size=24, fill=MUTED)
-    d.text(64, 470, "Battery side", size=26, weight="bold")
-    d.text(64, 560, "Load side", size=26, weight="bold")
-    d.text(64, 820, "Short leads into the sense slot.", size=24, fill=MUTED)
-    d.text(64, 860, "Sense leads are unfused.", size=24, fill=MUTED)
+    d.text(64, 230, "Pack current", size=32, weight="bold")
+    d.text(64, 274, "through the module", size=24, fill=MUTED)
+    d.text(64, 340, "BAT+  battery side", size=28, weight="bold")
+    d.text(64, 400, "ESC+  load side", size=28, weight="bold")
+    d.text(64, 470, "200 µΩ path, on the board", size=24, fill=MUTED)
+    d.text(64, 520, "0–85 V, 150 A continuous", size=24, fill=MUTED)
+    d.text(64, 570, "204.8 A burst", size=24, fill=MUTED)
+    d.text(64, 660, "Power leads do not go to", size=24, fill=MUTED)
+    d.text(64, 700, "the Jetson header.", size=24, fill=MUTED)
+    d.text(64, 780, "Wire gauge is not chosen.", size=24, fill=MUTED)
+    d.text(64, 820, "Pack current is unknown.", size=24, fill=MUTED)
+    d.text(64, 880, "Positive current = discharge", size=22, fill=MUTED)
 
-    wire(d, 500, 860, 430, VIOLET, "IN+")
-    wire(d, 500, 860, 560, VIOLET, "VBUS")
-    wire(d, 500, 860, 700, VIOLET, "IN−")
-    d.text(680, 790, "sense cable", size=24, fill=VIOLET, weight="bold", anchor="middle")
+    wire(d, 500, 860, 360, VIOLET, "BAT+  →  ESC+")
 
-    d.text(884, 230, "INA228 breakout", size=32, weight="bold")
-    d.text(884, 274, "address 0x40", size=24, fill=MUTED)
-    d.text(884, 330, "A1 and A0 to GND", size=24)
-    d.text(884, 372, "VS from pin 1, 3.3 V", size=24)
-    d.text(884, 430, "IN+", size=26, weight="bold", fill=VIOLET)
-    d.text(884, 560, "VBUS", size=26, weight="bold", fill=VIOLET)
-    d.text(884, 700, "IN−", size=26, weight="bold", fill=VIOLET)
-    d.text(884, 900, "Positive current = discharge", size=22, fill=MUTED)
-    d.text(1180, 430, "SDA", size=26, weight="bold", fill=BLUE, anchor="end")
+    d.text(884, 230, "Matek I2C-INA-BM", size=32, weight="bold")
+    d.text(884, 274, "address 0x45 (dec 69)", size=24, fill=MUTED)
+    d.text(884, 318, "jumpers open. Also 0x44, 0x41", size=22, fill=MUTED)
+    d.text(884, 390, "JST-GH-4P", size=26, weight="bold")
+    d.text(1180, 450, "SDA", size=26, weight="bold", fill=BLUE, anchor="end")
     d.text(1180, 560, "SCL", size=26, weight="bold", fill=YELLOW, anchor="end")
-    d.text(1180, 680, "3.3 V", size=26, weight="bold", fill=ORANGE, anchor="end")
-    d.text(1180, 800, "GND", size=26, weight="bold", fill=BLACK, anchor="end")
+    d.text(1180, 680, "5V  4–9 V", size=26, weight="bold", fill=ORANGE, anchor="end")
+    d.text(1180, 800, "G", size=26, weight="bold", fill=BLACK, anchor="end")
+    d.text(884, 880, "Shunt is on the module.", size=22, fill=MUTED)
 
-    wire(d, 1360, 1760, 430, BLUE, "SDA")
+    wire(d, 1360, 1760, 450, BLUE, "SDA")
     wire(d, 1360, 1760, 560, YELLOW, "SCL")
-    wire(d, 1360, 1760, 680, ORANGE, "3.3 V")
+    wire(d, 1360, 1760, 680, ORANGE, "5 V")
     wire(d, 1360, 1760, 800, BLACK, "GND")
-    d.text(1560, 880, "sensor cable", size=24, fill=INK, weight="bold", anchor="middle")
+    d.text(1560, 880, "JST-GH-4P to J41", size=24, fill=INK, weight="bold", anchor="middle")
 
     d.text(1784, 200, "Jetson Nano J41", size=32, weight="bold")
-    d.text(1784, 250, "I2C  /dev/i2c-1", size=26, fill=MUTED)
-    d.text(1784, 330, "pin 3    SDA", size=28, fill=BLUE, weight="bold")
-    d.text(1784, 390, "pin 5    SCL", size=28, fill=YELLOW, weight="bold")
-    d.text(1784, 450, "pin 1    3.3 V", size=28, fill=ORANGE, weight="bold")
-    d.text(1784, 510, "pin 6    GND", size=28, weight="bold")
-    d.text(1784, 580, "Do not use pins 2 or 4.", size=24, fill=MUTED)
+    d.text(1784, 246, "I2C  /dev/i2c-1", size=26, fill=MUTED)
+    d.text(1784, 310, "pin 3    SDA", size=28, fill=BLUE, weight="bold")
+    d.text(1784, 365, "pin 5    SCL", size=28, fill=YELLOW, weight="bold")
+    d.text(1784, 420, "pin 2    5 V logic", size=28, fill=ORANGE, weight="bold")
+    d.text(1784, 475, "pin 6    GND", size=28, weight="bold")
+    d.text(1784, 540, "Do not use pin 1 or pin 4.", size=24, fill=MUTED)
+    d.text(1784, 580, "Measure SDA idle first.", size=24, fill=MUTED)
     d.text(1784, 630, "Do not put pack voltage", size=24, fill=MUTED)
     d.text(1784, 668, "on a header pin.", size=24, fill=MUTED)
 
@@ -165,9 +168,15 @@ def draw() -> Drawing:
     d.text(1784, 920, "/dev/ttyTHS1, 3.3 V", size=26, fill=MUTED)
     d.text(1784, 990, "pin 8    TX", size=28, fill=GREEN, weight="bold")
     d.text(1784, 1050, "pin 10   RX", size=28, fill=SLATE, weight="bold")
-    d.text(1784, 1120, "Serial log. Not the INA228.", size=24, fill=MUTED)
+    d.text(1784, 1120, "Serial log. Not the module.", size=24, fill=MUTED)
 
-    d.text(48, 1220, "TI INA228 datasheet SLYS021. NVIDIA Jetson Nano Developer Kit User Guide DA_09402, connector J41.", size=22, fill=MUTED)
+    d.text(
+        48,
+        1220,
+        "Matek I2C-INA-BM (mateksys.com). TI INA228 SLYS021. NVIDIA Jetson Nano Developer Kit User Guide DA_09402, J41.",
+        size=22,
+        fill=MUTED,
+    )
     return d
 
 

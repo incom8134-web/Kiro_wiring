@@ -1,3 +1,2 @@
-base.stl: watertight=True winding=True volume_mm3=15450.669 faces=6452
-lid.stl: watertight=True winding=True volume_mm3=5658.788 faces=3538
-shunt_base.stl: watertight=True winding=True volume_mm3=22184.255 faces=3452
+base.stl: watertight=True winding=True volume_mm3=3537.653 extents_mm=[49.8, 26.8, 10.0]
+lid.stl: watertight=True winding=True volume_mm3=1808.772 extents_mm=[33.8, 26.8, 4.2]

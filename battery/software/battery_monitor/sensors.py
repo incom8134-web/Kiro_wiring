@@ -1,4 +1,4 @@
-"""Sensor access: the INA228 on the Jetson I2C header, or a simulated source.
+"""Sensor access: the Matek I2C-INA-BM on the Jetson I2C header, or a simulated source.
 
 Hardware reads go through smbus2 on ``/dev/i2c-1`` (J41 pins 3 and 5).
 The INA228 is an I2C device. This bus is not the UART.
@@ -98,8 +98,8 @@ class HardwareSensor:
             raise CommsError(f"cannot open I2C bus {bus_number}: {exc}") from exc
         self.ina = INA228(
             self.bus,
-            address=parse_address(self.profile.get("ina228_address", "0x40")),
-            adc_range_mv=float(self.profile.get("adc_range_mv", 163.84)),
+            address=parse_address(self.profile.get("ina228_address", "0x45")),
+            adc_range_mv=float(self.profile.get("adc_range_mv", 40.96)),
         )
         i_max = max(
             float(self.profile["max_charge_current_a"]),

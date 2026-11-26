@@ -1,60 +1,57 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1280" viewBox="0 0 2400 1280">
 <rect width="100%" height="100%" fill="#ffffff"/>
 <text x="48.0" y="64.0" fill="#1c2833" font-size="40" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="start">Battery monitor wiring</text>
-<text x="48.0" y="108.0" fill="#34495e" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">INA228 is I2C only. The sensor cable is J41 pins 1, 3, 5, and 6. UART pins 8 and 10 are the data output.</text>
+<text x="48.0" y="108.0" fill="#34495e" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">Matek I2C-INA-BM. Pack current is BAT+ to ESC+. JST-GH-4P is 5V, SCL, SDA, G. UART pins 8 and 10 are the data output.</text>
 <rect x="40.0" y="180.0" width="460.0" height="760.0" rx="12" fill="#f7f9fb" stroke="#243140" stroke-width="2.5"/>
 <rect x="860.0" y="180.0" width="500.0" height="760.0" rx="12" fill="#f7f9fb" stroke="#243140" stroke-width="2.5"/>
 <rect x="1760.0" y="150.0" width="590.0" height="620.0" rx="12" fill="#f7f9fb" stroke="#243140" stroke-width="2.5"/>
 <rect x="1760.0" y="820.0" width="590.0" height="360.0" rx="12" fill="#f7f9fb" stroke="#243140" stroke-width="2.5"/>
-<text x="64.0" y="230.0" fill="#1c2833" font-size="32" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="start">External shunt</text>
-<text x="64.0" y="274.0" fill="#34495e" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">on the north plate of the case</text>
-<text x="64.0" y="330.0" fill="#1c2833" font-size="26" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">4-terminal, high side</text>
-<text x="64.0" y="374.0" fill="#34495e" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">Battery lugs bolt to the shunt.</text>
-<text x="64.0" y="470.0" fill="#1c2833" font-size="26" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="start">Battery side</text>
-<text x="64.0" y="560.0" fill="#1c2833" font-size="26" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="start">Load side</text>
-<text x="64.0" y="820.0" fill="#34495e" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">Short leads into the sense slot.</text>
-<text x="64.0" y="860.0" fill="#34495e" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">Sense leads are unfused.</text>
-<polyline points="500.0,430.0 860.0,430.0" fill="none" stroke="#6c3483" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
-<text x="680.0" y="416.0" fill="#6c3483" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="middle">IN+</text>
-<polyline points="500.0,560.0 860.0,560.0" fill="none" stroke="#6c3483" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
-<text x="680.0" y="546.0" fill="#6c3483" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="middle">VBUS</text>
-<polyline points="500.0,700.0 860.0,700.0" fill="none" stroke="#6c3483" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
-<text x="680.0" y="686.0" fill="#6c3483" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="middle">IN−</text>
-<text x="680.0" y="790.0" fill="#6c3483" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="middle">sense cable</text>
-<text x="884.0" y="230.0" fill="#1c2833" font-size="32" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="start">INA228 breakout</text>
-<text x="884.0" y="274.0" fill="#34495e" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">address 0x40</text>
-<text x="884.0" y="330.0" fill="#1c2833" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">A1 and A0 to GND</text>
-<text x="884.0" y="372.0" fill="#1c2833" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">VS from pin 1, 3.3 V</text>
-<text x="884.0" y="430.0" fill="#6c3483" font-size="26" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="start">IN+</text>
-<text x="884.0" y="560.0" fill="#6c3483" font-size="26" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="start">VBUS</text>
-<text x="884.0" y="700.0" fill="#6c3483" font-size="26" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="start">IN−</text>
-<text x="884.0" y="900.0" fill="#34495e" font-size="22" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">Positive current = discharge</text>
-<text x="1180.0" y="430.0" fill="#1a5276" font-size="26" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="end">SDA</text>
+<text x="64.0" y="230.0" fill="#1c2833" font-size="32" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="start">Pack current</text>
+<text x="64.0" y="274.0" fill="#34495e" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">through the module</text>
+<text x="64.0" y="340.0" fill="#1c2833" font-size="28" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="start">BAT+  battery side</text>
+<text x="64.0" y="400.0" fill="#1c2833" font-size="28" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="start">ESC+  load side</text>
+<text x="64.0" y="470.0" fill="#34495e" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">200 µΩ path, on the board</text>
+<text x="64.0" y="520.0" fill="#34495e" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">0–85 V, 150 A continuous</text>
+<text x="64.0" y="570.0" fill="#34495e" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">204.8 A burst</text>
+<text x="64.0" y="660.0" fill="#34495e" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">Power leads do not go to</text>
+<text x="64.0" y="700.0" fill="#34495e" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">the Jetson header.</text>
+<text x="64.0" y="780.0" fill="#34495e" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">Wire gauge is not chosen.</text>
+<text x="64.0" y="820.0" fill="#34495e" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">Pack current is unknown.</text>
+<text x="64.0" y="880.0" fill="#34495e" font-size="22" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">Positive current = discharge</text>
+<polyline points="500.0,360.0 860.0,360.0" fill="none" stroke="#6c3483" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="680.0" y="346.0" fill="#6c3483" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="middle">BAT+  →  ESC+</text>
+<text x="884.0" y="230.0" fill="#1c2833" font-size="32" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="start">Matek I2C-INA-BM</text>
+<text x="884.0" y="274.0" fill="#34495e" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">address 0x45 (dec 69)</text>
+<text x="884.0" y="318.0" fill="#34495e" font-size="22" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">jumpers open. Also 0x44, 0x41</text>
+<text x="884.0" y="390.0" fill="#1c2833" font-size="26" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="start">JST-GH-4P</text>
+<text x="1180.0" y="450.0" fill="#1a5276" font-size="26" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="end">SDA</text>
 <text x="1180.0" y="560.0" fill="#9a7d0a" font-size="26" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="end">SCL</text>
-<text x="1180.0" y="680.0" fill="#d35400" font-size="26" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="end">3.3 V</text>
-<text x="1180.0" y="800.0" fill="#1a1a1a" font-size="26" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="end">GND</text>
-<polyline points="1360.0,430.0 1760.0,430.0" fill="none" stroke="#1a5276" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
-<text x="1560.0" y="416.0" fill="#1a5276" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="middle">SDA</text>
+<text x="1180.0" y="680.0" fill="#d35400" font-size="26" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="end">5V  4–9 V</text>
+<text x="1180.0" y="800.0" fill="#1a1a1a" font-size="26" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="end">G</text>
+<text x="884.0" y="880.0" fill="#34495e" font-size="22" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">Shunt is on the module.</text>
+<polyline points="1360.0,450.0 1760.0,450.0" fill="none" stroke="#1a5276" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="1560.0" y="436.0" fill="#1a5276" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="middle">SDA</text>
 <polyline points="1360.0,560.0 1760.0,560.0" fill="none" stroke="#9a7d0a" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
 <text x="1560.0" y="546.0" fill="#9a7d0a" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="middle">SCL</text>
 <polyline points="1360.0,680.0 1760.0,680.0" fill="none" stroke="#d35400" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
-<text x="1560.0" y="666.0" fill="#d35400" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="middle">3.3 V</text>
+<text x="1560.0" y="666.0" fill="#d35400" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="middle">5 V</text>
 <polyline points="1360.0,800.0 1760.0,800.0" fill="none" stroke="#1a1a1a" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
 <text x="1560.0" y="786.0" fill="#1a1a1a" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="middle">GND</text>
-<text x="1560.0" y="880.0" fill="#1c2833" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="middle">sensor cable</text>
+<text x="1560.0" y="880.0" fill="#1c2833" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="middle">JST-GH-4P to J41</text>
 <text x="1784.0" y="200.0" fill="#1c2833" font-size="32" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="start">Jetson Nano J41</text>
-<text x="1784.0" y="250.0" fill="#34495e" font-size="26" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">I2C  /dev/i2c-1</text>
-<text x="1784.0" y="330.0" fill="#1a5276" font-size="28" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="start">pin 3    SDA</text>
-<text x="1784.0" y="390.0" fill="#9a7d0a" font-size="28" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="start">pin 5    SCL</text>
-<text x="1784.0" y="450.0" fill="#d35400" font-size="28" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="start">pin 1    3.3 V</text>
-<text x="1784.0" y="510.0" fill="#1c2833" font-size="28" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="start">pin 6    GND</text>
-<text x="1784.0" y="580.0" fill="#34495e" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">Do not use pins 2 or 4.</text>
+<text x="1784.0" y="246.0" fill="#34495e" font-size="26" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">I2C  /dev/i2c-1</text>
+<text x="1784.0" y="310.0" fill="#1a5276" font-size="28" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="start">pin 3    SDA</text>
+<text x="1784.0" y="365.0" fill="#9a7d0a" font-size="28" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="start">pin 5    SCL</text>
+<text x="1784.0" y="420.0" fill="#d35400" font-size="28" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="start">pin 2    5 V logic</text>
+<text x="1784.0" y="475.0" fill="#1c2833" font-size="28" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="start">pin 6    GND</text>
+<text x="1784.0" y="540.0" fill="#34495e" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">Do not use pin 1 or pin 4.</text>
+<text x="1784.0" y="580.0" fill="#34495e" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">Measure SDA idle first.</text>
 <text x="1784.0" y="630.0" fill="#34495e" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">Do not put pack voltage</text>
 <text x="1784.0" y="668.0" fill="#34495e" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">on a header pin.</text>
 <text x="1784.0" y="870.0" fill="#1c2833" font-size="32" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="start">UART output</text>
 <text x="1784.0" y="920.0" fill="#34495e" font-size="26" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">/dev/ttyTHS1, 3.3 V</text>
 <text x="1784.0" y="990.0" fill="#196f3d" font-size="28" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="start">pin 8    TX</text>
 <text x="1784.0" y="1050.0" fill="#566573" font-size="28" font-family="DejaVu Sans, sans-serif" font-weight="bold" text-anchor="start">pin 10   RX</text>
-<text x="1784.0" y="1120.0" fill="#34495e" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">Serial log. Not the INA228.</text>
-<text x="48.0" y="1220.0" fill="#34495e" font-size="22" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">TI INA228 datasheet SLYS021. NVIDIA Jetson Nano Developer Kit User Guide DA_09402, connector J41.</text>
+<text x="1784.0" y="1120.0" fill="#34495e" font-size="24" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">Serial log. Not the module.</text>
+<text x="48.0" y="1220.0" fill="#34495e" font-size="22" font-family="DejaVu Sans, sans-serif" font-weight="normal" text-anchor="start">Matek I2C-INA-BM (mateksys.com). TI INA228 SLYS021. NVIDIA Jetson Nano Developer Kit User Guide DA_09402, J41.</text>
 </svg>

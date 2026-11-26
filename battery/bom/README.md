@@ -6,4 +6,4 @@
 
 Prices are omitted. No Korean-supplier price was verified for this list, so the file has no price column.
 
-Rows marked **BLOCKED** cannot be ordered until the battery nameplate in the design doc is known. Do not substitute an example value from `software/config/examples/`.
+The **BLOCKED** power-lead row cannot be ordered until the pack current is known. Do not size it from the module's 150 A rating, and do not substitute an example value from `software/config/examples/`. The 200 µΩ path is part of the Matek module, not a separate shunt to select.
