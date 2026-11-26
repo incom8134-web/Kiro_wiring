@@ -6,9 +6,11 @@ It is not the robot power system in `kiro-wiring/` or `kiro-wiring-2/`. Do not e
 
 ## Do not invent the battery
 
-The pack is a YOLTON e-bike pack (Coupang 9101801616). Chemistry, nominal voltage, maximum voltage, minimum voltage, capacity, cell configuration, and maximum charge and discharge current are not verified. Leave them null in `software/config/battery_profile.json`. The fetched listing is a selectable 12 V lithium-ion family (5–45 Ah). Do not copy 12 V, 45 Ah, or a guessed series count into the profile. Do not copy the synthetic simulator profile or `config/examples/example_DO_NOT_USE.json` into a hardware profile.
+The pack is the user-confirmed YOLTON e-bike pack (Coupang 9101801616): li-ion, nominal 12.0 V, capacity 45 Ah. Volton's 12 V 45 Ah page says LG cells. `cell_configuration` 3S, `max_voltage_v` 12.6, and `min_voltage_v` 9.0 are assumed for 3S Li-ion; verify with a meter at full charge. Do not replace those with a different series count.
 
-The module shunt (0.0002 ohm), the ±40.96 mV range, address 0x45, and the 204.8 A full scale are Matek and TI facts. Do not clear them to look like a missing pack shunt. The power-lead row in `bom/BOM.csv` stays BLOCKED until the pack current is known. Do not pick a wire gauge from the module's 150 A continuous rating.
+`max_charge_current_a` and `max_discharge_current_a` stay null. There is no unverified-number flag, so do not insert a placeholder current. The service starts with those fields null, and the overcurrent alarms stay off. Do not copy the synthetic simulator profile or `config/examples/example_DO_NOT_USE.json` into a hardware profile.
+
+The module shunt (0.0002 ohm), the ±40.96 mV range, address 0x45, and the 204.8 A full scale are Matek and TI facts. Do not clear them to look like a missing pack shunt. While the pack current is null, SHUNT_CAL stays at that full scale. The power-lead row in `bom/BOM.csv` stays BLOCKED until the pack current is known. Do not pick a wire gauge from the module's 150 A continuous rating. Charge with a 12.6 V CC/CV Li-ion charger (Volton's own charger), not a plain 12 V power adapter.
 
 ## Specs
 
@@ -16,4 +18,4 @@ Cite the page for any electrical number you add. Module ratings are from https:/
 
 ## Software
 
-Run `pytest` from `software/` after a code change. `--simulate` must keep working with no hardware. Hardware mode must still refuse an incomplete profile. The live reading for the HAEBOT web app is the atomic state file documented in `README.md`. UART stays off unless `uart_enabled` is true. The driver accepts only DEVICE_ID 0x2281.
+Run `pytest` from `software/` after a code change. `--simulate` must keep working with no hardware. Hardware mode must still refuse a profile that is missing chemistry, voltage, or capacity. Null charge and discharge current is a warning, and the service still starts. The live reading for the HAEBOT web app is the atomic state file documented in `README.md`. UART stays off unless `uart_enabled` is true. The driver accepts only DEVICE_ID 0x2281.

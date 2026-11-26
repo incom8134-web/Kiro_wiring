@@ -101,10 +101,9 @@ class HardwareSensor:
             address=parse_address(self.profile.get("ina228_address", "0x45")),
             adc_range_mv=float(self.profile.get("adc_range_mv", 40.96)),
         )
-        i_max = max(
-            float(self.profile["max_charge_current_a"]),
-            float(self.profile["max_discharge_current_a"]),
-        )
+        from .profile import calibration_current_a
+
+        i_max, _from_pack = calibration_current_a(self.profile)
         self.ina.configure(i_max, float(self.profile["shunt_resistance_ohm"]))
 
     def close(self) -> None:

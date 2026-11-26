@@ -4,9 +4,13 @@
 
 이 모니터는 Jetson Orin Nano Developer Kit 40핀 헤더 J12의 Matek I2C-INA-BM 모듈로 배터리 팩 하나를 읽는다. 션트는 모듈의 도통 경로다. Jetson이 쿨롱을 적산하고 충전 상태를 추정한 뒤 JSON 파일을 쓴다. 경로는 Matek INA, I2C, Jetson, `state.json`, HAEBOT 웹 앱이다. 핀 8과 10의 UART는 선택 사항이며 쓰지 않는다. 이 폴더에는 웹 서버가 없다.
 
-팩은 YOLTON e-bike pack (Coupang 9101801616)이다. 검은 직사각형 팩이고, 빨강과 검정 리드, DC 배럴 커넥터, 작은 BMS 상자가 있다. 화학, 전압, 용량, 셀 구성, 전류는 TODO다. 그 칸은 [`software/config/battery_profile.json`](software/config/battery_profile.json)에서 null이다. 팩 라벨이나 데이터시트로 채우기 전에는 실제 센서를 열지 않는다. [`bom/BOM.csv`](bom/BOM.csv)의 전원선 행은 전류를 알기 전까지 BLOCKED다. 모듈 션트, 주소, ADC 범위는 Matek 페이지에서 채운 값이며 팩을 짐작한 것이 아니다. 예시 파일의 숫자는 권장 팩이 아니다.
+팩은 YOLTON e-bike pack (Coupang 9101801616)이다. 검은 직사각형 팩이고, 빨강과 검정 리드, DC 배럴 커넥터, 작은 BMS 상자가 있다. 사용자가 12 V, 45 Ah를 확인했다. 볼턴 12 V 45 Ah 상품 페이지는 리튬이온, LG 셀이라고 적는다 ([voltonbattery.com 12 V 45 Ah](https://www.voltonbattery.com/12v/?idx=407), [쿠팡 9101801616](https://www.coupang.com/vp/products/9101801616?vendorItemId=93727752087)). [`software/config/battery_profile.json`](software/config/battery_profile.json)의 화학은 `li-ion`, 공칭 전압은 12.0 V, 용량은 45 Ah다.
 
-쿠팡 상품 9101801616의 제목은 12 V 리튬이온, 용량 5–45 Ah 선택형이고 판매자는 주식회사 볼턴이다 ([상품 페이지](https://www.coupang.com/vp/products/9101801616?vendorItemId=93727752087)). 받아 온 페이지는 236,000원과 판매자 상품번호 26870346028을 보여 주었고, 93727752087은 나오지 않았다. 볼턴의 별도 12 V 45 Ah 페이지도 같은 가격이고 LG 리튬이온 셀이라고 적는다 ([voltonbattery.com 12 V 45 Ah](https://www.voltonbattery.com/12v/?idx=407)). 가격이 같다는 사실만으로 이 판매 옵션이 확인되지는 않으며, 두 페이지 모두 직렬 수, 만충전 전압, 방전 종료 전압, 전류 한계를 주지 않는다. 그 숫자는 프로필에 넣지 않는다.
+셀 구성은 가정한 3S다. `max_voltage_v` 12.6과 `min_voltage_v` 9.0은 3S 리튬이온으로 가정한 값이다. 만충전에서 미터로 확인한다. 12.6 V는 3 × 4.2 V, 9.0 V는 3 × 3.0 V다. 이 두 전압은 볼턴 페이지에 적혀 있지 않다.
+
+충전 전류와 방전 전류는 아직 확인되지 않았다. 프로필의 `max_charge_current_a`와 `max_discharge_current_a`는 null이다. 로더에는 자리표시 숫자를 미확인으로 남겨 두는 표시가 없어서, 전류 숫자는 만들지 않는다. 서비스는 그래도 기동한다. 과전류 경보는 꺼져 있고, SHUNT_CAL은 Matek 풀스케일을 유지한다. [`bom/BOM.csv`](bom/BOM.csv)의 전원선 행은 전류를 알기 전까지 BLOCKED다. 모듈 션트, 주소, ADC 범위는 Matek 페이지에서 채운 값이며 팩을 짐작한 것이 아니다. 예시 파일의 숫자는 권장 팩이 아니다.
+
+충전은 12.6 V CC/CV 리튬이온 충전기(볼턴 전용 충전기)를 쓴다. 일반 12 V 전원 어댑터를 쓰지 않는다.
 
 이 장치는 배터리 관리 장치가 아니다. 셀 밸런스를 하지 않고 접촉기를 열지 않는다.
 
@@ -18,7 +22,7 @@
 | JST-GH-4P | 로직과 I2C: 5V, SCL, SDA, G. 점퍼를 열면 주소는 0x45(십진 69)다. |
 | Jetson Orin Nano Developer Kit | J12의 `/dev/i2c-7`을 읽고 상태 파일을 쓴다. 핀 2가 모듈의 4–9 V 핀을 공급한다. UART는 꺼져 있다. |
 
-버스 범위는 0 V에서 85 V다 (Matek 페이지와 TI SLYS021). 팩이 85 V를 넘을 수 있으면 연결하지 않는다. 프로필 로더가 그 경우를 거절한다. Matek 정격은 연속 150 A, 순간 204.8 A다. 200 µΩ에서 그 순간 전류는 40.96 mV이므로 프로필은 ±40.96 mV ADC 범위를 쓴다. 풀스케일 보정은 CURRENT_LSB = 204.8 / 2^19 = 390.625 µA, SHUNT_CAL = 4096이다 (SLYS021). 팩 명판을 채운 뒤에는 드라이버가 그 전류로 SHUNT_CAL을 다시 계산한다. 저항은 200 µΩ, 범위는 ±40.96 mV 그대로다. 연속 150 A를 넘으면 경고가 난다. 이 코드는 Matek 보드에서 실행한 적이 없다.
+버스 범위는 0 V에서 85 V다 (Matek 페이지와 TI SLYS021). 팩이 85 V를 넘을 수 있으면 연결하지 않는다. 프로필 로더가 그 경우를 거절한다. Matek 정격은 연속 150 A, 순간 204.8 A다. 200 µΩ에서 그 순간 전류는 40.96 mV이므로 프로필은 ±40.96 mV ADC 범위를 쓴다. 풀스케일 보정은 CURRENT_LSB = 204.8 / 2^19 = 390.625 µA, SHUNT_CAL = 4096이다 (SLYS021). 배포 프로필에는 팩 전류가 없으므로 드라이버는 그 풀스케일 보정을 유지한다. 팩 전류 한계를 채운 뒤에는 드라이버가 그 전류로 SHUNT_CAL을 다시 계산한다. 저항은 200 µΩ, 범위는 ±40.96 mV 그대로다. 연속 150 A를 넘으면 경고가 난다. 이 코드는 Matek 보드에서 실행한 적이 없다.
 
 공식 페이지는 INA228과 INA238을 함께 적는다. 드라이버는 DEVICE_ID 0x2281만 받고 다른 ID는 거절한다. 어느 칩이 실렸는지는 그 레지스터를 읽기 전에는 확인되지 않는다.
 
@@ -76,7 +80,7 @@ UART 핀 8(UART1_TXD)과 핀 10(UART1_RXD)은 `/dev/ttyTHS0`이다. 이 포트�
 
 옆의 SQLite 파일(`/var/lib/battery-monitor/history.sqlite`)은 기록이다. 실시간 값은 JSON 파일이다.
 
-서비스는 `sample_period_s`마다 샘플한다(배포 프로필은 0.5초). `persist_interval_s`마다 파일을 다시 쓴다(역시 0.5초). `faults`의 경보는 프로필의 팩 한계를 쓴다. 그 한계는 아직 null이므로 하드웨어 모드는 돌지 않고, 팩 경보 문턱은 여기서 만들지 않는다. 명판이 있으면 로더가 강제하는 모듈 상한은 85 V와 션트 풀스케일이다. 150 A를 넘는 명판은 Matek 연속 정격에 대한 경고를 낸다.
+서비스는 `sample_period_s`마다 샘플한다(배포 프로필은 0.5초). `persist_interval_s`마다 파일을 다시 쓴다(역시 0.5초). 전압 경보는 12.6 V와 9.0 V를 쓴다. 이 값은 3S 리튬이온으로 가정한 것이며, 만충전에서 미터로 확인한다. 충전 전류와 방전 전류는 null이므로 과전류 경보는 꺼져 있다. 로더가 강제하는 모듈 상한은 85 V이고, 팩 전류를 채운 뒤에는 션트 풀스케일이다. 150 A를 넘는 명판은 Matek 연속 정격에 대한 경고를 낸다.
 
 UART 로그는 선택 코드이며 기본값은 꺼짐이다 (`uart_enabled` false). 켜면 같은 행을 `/dev/ttyTHS0`, 115200 baud, 3.3 V로 샘플마다 CSV 한 줄 출력한다.
 

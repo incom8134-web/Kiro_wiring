@@ -29,9 +29,11 @@ def evaluate(
         faults.append("OVERVOLTAGE")
     if voltage_v < float(profile["min_voltage_v"]):
         faults.append("UNDERVOLTAGE")
-    if current_a > float(profile["max_discharge_current_a"]):
+    discharge_limit = profile.get("max_discharge_current_a", None)
+    charge_limit = profile.get("max_charge_current_a", None)
+    if discharge_limit is not None and current_a > float(discharge_limit):
         faults.append("DISCHARGE_OVERCURRENT")
-    if -current_a > float(profile["max_charge_current_a"]):
+    if charge_limit is not None and -current_a > float(charge_limit):
         faults.append("CHARGE_OVERCURRENT")
     adc = float(profile.get("adc_range_mv", 163.84))
     vfs = VFS_V[adc]
