@@ -1,8 +1,9 @@
-"""UART measurement lines on the Jetson 40-pin UART.
+"""Optional UART measurement lines on the Jetson Orin Nano 40-pin header.
 
-Header pins 8 (TX) and 10 (RX) are ``/dev/ttyTHS1`` on the Nano developer kit,
-3.3 V, behind the carrier TXB0108. This output is a log, not a second SOC
-engine. A missing port is reported and ignored unless ``required`` is set.
+Header pins 8 (UART1_TXD) and 10 (UART1_RXD) are ``/dev/ttyTHS0`` on the
+Orin Nano developer kit, 3.3 V. The current design does not use this port.
+The HAEBOT web app reads state.json. A missing port is reported and ignored
+unless ``required`` is set. This output is a log, not a second SOC engine.
 """
 
 from __future__ import annotations

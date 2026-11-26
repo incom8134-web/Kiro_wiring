@@ -1,7 +1,7 @@
 [project]
 name = "battery-monitor"
 version = "1.0.0"
-description = "Jetson Nano battery charge and discharge monitor"
+description = "Jetson Orin Nano battery charge and discharge monitor"
 requires-python = ">=3.9"
 dependencies = [
   "smbus2>=0.4.3",

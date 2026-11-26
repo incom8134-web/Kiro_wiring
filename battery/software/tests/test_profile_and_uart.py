@@ -1,7 +1,7 @@
 import json
 
 from battery_monitor.profile import NAMEPLATE_FIELDS, load_profile, synthetic_profile, validate_profile
-from battery_monitor.service import main
+from battery_monitor.service import main, uart_is_enabled
 from battery_monitor.uart_out import HEADER, UartLogger, format_line
 
 
@@ -21,6 +21,18 @@ def test_unconfigured_profile_lists_the_nameplate_fields():
     assert profile["shunt_rated_current_a"] == 204.8
     assert profile["ina228_address"] == "0x45"
     assert profile["adc_range_mv"] == 40.96
+    assert profile["chemistry"] is None
+    assert profile["nominal_voltage_v"] is None
+    assert profile["capacity_ah"] is None
+    assert profile["i2c_bus"] == "/dev/i2c-7"
+    assert profile["uart_device"] == "/dev/ttyTHS0"
+    assert profile["uart_enabled"] is False
+    assert uart_is_enabled(profile) is False
+    assert uart_is_enabled({}) is False
+    assert uart_is_enabled({"uart_enabled": True}) is True
+    assert synthetic_profile()["i2c_bus"] == "/dev/i2c-7"
+    assert synthetic_profile()["uart_device"] == "/dev/ttyTHS0"
+    assert synthetic_profile()["uart_enabled"] is False
 
 
 def test_over_voltage_pack_is_rejected_and_example_is_not_hardware():

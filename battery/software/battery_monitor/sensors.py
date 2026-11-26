@@ -1,7 +1,7 @@
 """Sensor access: the Matek I2C-INA-BM on the Jetson I2C header, or a simulated source.
 
-Hardware reads go through smbus2 on ``/dev/i2c-1`` (J41 pins 3 and 5).
-The INA228 is an I2C device. This bus is not the UART.
+Hardware reads go through smbus2 on ``/dev/i2c-7`` (J12 pins 3 and 5,
+I2C1_SDA and I2C1_SCL). The INA228 is an I2C device. This bus is not the UART.
 """
 
 from __future__ import annotations
@@ -91,7 +91,7 @@ class HardwareSensor:
             raise CommsError("smbus2 is not installed") from exc
         from .ina228 import INA228
 
-        bus_number = parse_i2c_bus(self.profile.get("i2c_bus", "/dev/i2c-1"))
+        bus_number = parse_i2c_bus(self.profile.get("i2c_bus", "/dev/i2c-7"))
         try:
             self.bus = smbus2.SMBus(bus_number)
         except OSError as exc:

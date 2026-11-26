@@ -1,10 +1,12 @@
-# Jetson Nano 배터리 모니터
+# Jetson Orin Nano 배터리 모니터
 
 [English](README.md) | [한국어](README.ko.md)
 
-이 모니터는 Jetson Nano I2C 헤더의 Matek I2C-INA-BM 모듈로 배터리 팩 하나를 읽는다. 션트는 모듈의 도통 경로다. 서비스는 쿨롱을 적산하고, 충전 상태를 추정하고, JSON 파일을 쓰고, 같은 값을 UART로 출력한다. HAEBOT 로봇 웹 앱이 그 파일이나 UART 줄을 읽는다. 이 폴더에는 웹 서버가 없다.
+이 모니터는 Jetson Orin Nano Developer Kit 40핀 헤더 J12의 Matek I2C-INA-BM 모듈로 배터리 팩 하나를 읽는다. 션트는 모듈의 도통 경로다. Jetson이 쿨롱을 적산하고 충전 상태를 추정한 뒤 JSON 파일을 쓴다. 경로는 Matek INA, I2C, Jetson, `state.json`, HAEBOT 웹 앱이다. 핀 8과 10의 UART는 선택 사항이며 쓰지 않는다. 이 폴더에는 웹 서버가 없다.
 
-팩의 화학, 전압, 용량, 전류는 모른다. 그 칸은 [`software/config/battery_profile.json`](software/config/battery_profile.json)에서 null이다. 팩 데이터시트로 채우기 전에는 실제 센서를 열지 않는다. [`bom/BOM.csv`](bom/BOM.csv)의 전원선 행은 그때까지 BLOCKED다. 모듈 션트, 주소, ADC 범위는 Matek 페이지에서 채운 값이며 팩을 짐작한 것이 아니다. 예시 파일의 숫자는 권장 팩이 아니다.
+팩은 YOLTON e-bike pack (Coupang 9101801616)이다. 검은 직사각형 팩이고, 빨강과 검정 리드, DC 배럴 커넥터, 작은 BMS 상자가 있다. 화학, 전압, 용량, 셀 구성, 전류는 TODO다. 그 칸은 [`software/config/battery_profile.json`](software/config/battery_profile.json)에서 null이다. 팩 라벨이나 데이터시트로 채우기 전에는 실제 센서를 열지 않는다. [`bom/BOM.csv`](bom/BOM.csv)의 전원선 행은 전류를 알기 전까지 BLOCKED다. 모듈 션트, 주소, ADC 범위는 Matek 페이지에서 채운 값이며 팩을 짐작한 것이 아니다. 예시 파일의 숫자는 권장 팩이 아니다.
+
+쿠팡 상품 9101801616의 제목은 12 V 리튬이온, 용량 5–45 Ah 선택형이고 판매자는 주식회사 볼턴이다 ([상품 페이지](https://www.coupang.com/vp/products/9101801616?vendorItemId=93727752087)). 받아 온 페이지는 236,000원과 판매자 상품번호 26870346028을 보여 주었고, 93727752087은 나오지 않았다. 볼턴의 별도 12 V 45 Ah 페이지도 같은 가격이고 LG 리튬이온 셀이라고 적는다 ([voltonbattery.com 12 V 45 Ah](https://www.voltonbattery.com/12v/?idx=407)). 가격이 같다는 사실만으로 이 판매 옵션이 확인되지는 않으며, 두 페이지 모두 직렬 수, 만충전 전압, 방전 종료 전압, 전류 한계를 주지 않는다. 그 숫자는 프로필에 넣지 않는다.
 
 이 장치는 배터리 관리 장치가 아니다. 셀 밸런스를 하지 않고 접촉기를 열지 않는다.
 
@@ -14,7 +16,7 @@
 |---|---|
 | Matek I2C-INA-BM | 배터리 양극 리드에 둔다. 팩 전류는 BAT+로 들어가 ESC+로 나간다. 도통 경로는 통상 200 µΩ이다. |
 | JST-GH-4P | 로직과 I2C: 5V, SCL, SDA, G. 점퍼를 열면 주소는 0x45(십진 69)다. |
-| Jetson Nano | `/dev/i2c-1`을 읽고, 상태 파일과 `/dev/ttyTHS1`을 쓴다. 핀 2가 모듈의 4–9 V 핀을 공급한다. |
+| Jetson Orin Nano Developer Kit | J12의 `/dev/i2c-7`을 읽고 상태 파일을 쓴다. 핀 2가 모듈의 4–9 V 핀을 공급한다. UART는 꺼져 있다. |
 
 버스 범위는 0 V에서 85 V다 (Matek 페이지와 TI SLYS021). 팩이 85 V를 넘을 수 있으면 연결하지 않는다. 프로필 로더가 그 경우를 거절한다. Matek 정격은 연속 150 A, 순간 204.8 A다. 200 µΩ에서 그 순간 전류는 40.96 mV이므로 프로필은 ±40.96 mV ADC 범위를 쓴다. 풀스케일 보정은 CURRENT_LSB = 204.8 / 2^19 = 390.625 µA, SHUNT_CAL = 4096이다 (SLYS021). 팩 명판을 채운 뒤에는 드라이버가 그 전류로 SHUNT_CAL을 다시 계산한다. 저항은 200 µΩ, 범위는 ±40.96 mV 그대로다. 연속 150 A를 넘으면 경고가 난다. 이 코드는 Matek 보드에서 실행한 적이 없다.
 
@@ -22,21 +24,23 @@
 
 양전류는 방전, BAT+에서 ESC+로 나가는 방향이다. 음전류는 충전이다. 전력도 같은 부호다.
 
-![Matek 모듈에서 Jetson I2C, UART 출력](wiring/battery_monitor_wiring.png)
+![Matek 모듈에서 Jetson Orin Nano J12. UART는 선택이며 사용하지 않음](wiring/battery_monitor_wiring.png)
 
 모듈은 I2C 전용이다. UART 핀이 없다.
 
-모듈에서 Jetson으로 가는 선은 모듈에 포함된 JST-GH-4P다. 5V는 J41 핀 2, SCL은 핀 5, SDA는 핀 3, G는 핀 6. 핀 3과 5가 `/dev/i2c-1`이다 (NVIDIA Jetson Nano Developer Kit User Guide, DA_09402). 모듈의 5V 핀은 4–9 V 입력이고 약 1 mA를 쓴다. 핀 2(5 V)가 그 핀을 공급할 수 있다. 핀 1은 3.3 V이므로 그 핀에 연결하지 않는다. 핀 4는 쓰지 않는다. 헤더 핀에 팩 전압을 넣지 않는다.
+모듈에서 Jetson으로 가는 선은 모듈에 포함된 JST-GH-4P다. Matek 5V는 J12 핀 2(5 V), SDA는 핀 3(I2C1_SDA), SCL은 핀 5(I2C1_SCL), G는 핀 6(GND). 핀 3과 5는 I2C 버스 7, `/dev/i2c-7`이다 (Jetson Orin Nano Developer Kit Carrier Board Specification, SP-11324-001, 헤더 J12. 리눅스 장치 대응은 [JetsonHacks Orin Nano 핀아웃](https://jetsonhacks.com/nvidia-jetson-orin-nano-gpio-header-pinout/)). `sudo i2cdetect -y -r 7`에 0x45가 보여야 한다. 모듈의 5V 핀은 4–9 V 입력이고 약 1 mA를 쓴다. 핀 2(5 V)가 그 핀을 공급할 수 있다. 핀 1은 3.3 V이므로 그 핀에 연결하지 않는다. 핀 4는 쓰지 않는다. 헤더 핀에 팩 전압을 넣지 않는다.
 
-모듈의 I2C 풀업 전원은 확인되지 않았다. Matek의 빨간 LED는 3.3 V 표시라고만 되어 있다. 레귤레이터가 있다는 뜻이지, 풀업이 3.3 V라는 뜻은 아니다. 5V 핀과 GND만 연결한 상태에서 SDA와 SCL의 아이들 전압을 잰다. 약 3.3 V이면 핀 3과 5에 연결한다. 약 3.6 V를 넘으면 연결하지 않는다. 이 폴더에는 레벨 시프터를 넣지 않는다.
+핀 1(3.3 V)은 USB와 이더넷 포트에 가까운 헤더 끝이다. 핀 39와 40은 팬 쪽이다. JetsonHacks 사진은 핀 1을 이더넷 잭 옆에 표시하고, [NVIDIA 하드웨어 배치](https://docs.nvidia.com/jetson/orin-nano-devkit/user-guide/latest/hardware_layout.html)는 그 포트 묶음이 헤더의 한쪽, 모듈 팬이 다른 쪽에 있음을 보여 준다. 배선 전에 멀티미터로 확인한다. 핀 1은 3.3 V, 핀 2는 5 V여야 한다.
 
-UART 핀 8(TX)과 핀 10(RX)은 `/dev/ttyTHS1`이다. 이 포트는 직렬 데이터 출력이다. 모듈을 연결하는 선이 아니다.
+Jetson I2C는 3.3 V이며 5 V를 견디지 않는다. SP-11324-001은 J12의 모든 신호가 3.3 V 레벨이라고 적는다. Matek 모듈의 I2C 풀업 전원은 확인되지 않았다. Matek의 빨간 LED는 3.3 V 표시라고만 되어 있다. 레귤레이터가 있다는 뜻이지, 풀업이 3.3 V라는 뜻은 아니다. 5V 핀과 GND만 연결한 상태에서 SDA 아이들 전압을 잰다. 약 3.3 V이면 SDA와 SCL을 핀 3과 5에 연결한다. 약 3.6 V를 넘으면 그 핀 앞에 BSS138 레벨 시프터를 둔다.
+
+UART 핀 8(UART1_TXD)과 핀 10(UART1_RXD)은 `/dev/ttyTHS0`이다. 이 포트는 선택 사항이며 쓰지 않는다. 배포 프로필은 `uart_enabled`를 false로 둔다. 모듈을 연결하는 선이 아니다.
 
 전원선은 BAT+와 ESC+의 팩 도체다. 팩 전류를 모르므로 규격을 고르지 않는다. 모듈의 150 A 정격으로 전선을 고르지 않는다.
 
 ## HAEBOT 웹 앱이 값을 읽는 방법
 
-화면은 HAEBOT 로봇 웹 앱이다. 그 소스는 이 저장소에 없다. 이 서비스는 페이지를 제공하지 않는다. 앱이 모듈을 직접 열지 않는다. 이 폴더에는 HTTP나 WebSocket 서버가 없다. 앱은 아래 JSON 파일과 UART CSV, 두 경로로 같은 행을 받는다.
+화면은 HAEBOT 로봇 웹 앱이다. 그 소스는 이 저장소에 없다. 이 서비스는 페이지를 제공하지 않는다. 앱이 모듈을 직접 열지 않는다. 이 폴더에는 HTTP나 WebSocket 서버가 없다. 앱은 아래 JSON 파일을 읽는다. 선택적 UART CSV는 이 설계에 들어 있지 않다.
 
 앱은 파일 하나를 읽는다.
 
@@ -74,13 +78,13 @@ UART 핀 8(TX)과 핀 10(RX)은 `/dev/ttyTHS1`이다. 이 포트는 직렬 데�
 
 서비스는 `sample_period_s`마다 샘플한다(배포 프로필은 0.5초). `persist_interval_s`마다 파일을 다시 쓴다(역시 0.5초). `faults`의 경보는 프로필의 팩 한계를 쓴다. 그 한계는 아직 null이므로 하드웨어 모드는 돌지 않고, 팩 경보 문턱은 여기서 만들지 않는다. 명판이 있으면 로더가 강제하는 모듈 상한은 85 V와 션트 풀스케일이다. 150 A를 넘는 명판은 Matek 연속 정격에 대한 경고를 낸다.
 
-같은 행을 `/dev/ttyTHS1`, 115200 baud, 3.3 V로 샘플마다 CSV 한 줄 출력한다.
+UART 로그는 선택 코드이며 기본값은 꺼짐이다 (`uart_enabled` false). 켜면 같은 행을 `/dev/ttyTHS0`, 115200 baud, 3.3 V로 샘플마다 CSV 한 줄 출력한다.
 
 ```text
 unix_s,voltage_v,current_a,power_w,soc_percent,capacity_ah,energy_wh,status,faults
 ```
 
-그 줄의 `capacity_ah`는 남은 암페어시다. `faults`는 `|`로 잇는다.
+그 줄의 `capacity_ah`는 남은 암페어시다. `faults`는 `|`로 잇는다. 현재 설계는 이것을 켜지 않는다.
 
 ## 상자
 
