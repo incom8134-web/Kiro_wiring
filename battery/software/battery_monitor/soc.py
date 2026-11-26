@@ -49,9 +49,11 @@ class RestTracker:
         profile: dict,
     ) -> bool:
         """Return True when an OCV correction is applied on this call."""
+        from .profile import idle_threshold_a
+
         rest_current = profile.get("rest_current_a", None)
         if rest_current is None:
-            rest_current = profile["idle_current_a"]
+            rest_current = idle_threshold_a(profile)
         rest_current = float(rest_current)
         duration = float(profile.get("rest_duration_s", 300.0))
         if abs(current_a) > rest_current or dt_s < 0:

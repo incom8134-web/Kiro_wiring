@@ -30,7 +30,7 @@ from .accounting import (
     status_from_current,
 )
 from .faults import evaluate
-from .profile import resolve_profile, validate_profile
+from .profile import idle_threshold_a, resolve_profile, validate_profile
 from .sensors import CommsError, HardwareSensor, SimulatedSensor
 from .soc import RestTracker
 from .storage import HistoryDB, StateStore
@@ -124,7 +124,7 @@ class Monitor:
         else:
             self.rest.reset()
         capacity = float(self.profile["capacity_ah"])
-        idle = float(self.profile["idle_current_a"])
+        idle = idle_threshold_a(self.profile)
         faults = evaluate(
             voltage,
             current,

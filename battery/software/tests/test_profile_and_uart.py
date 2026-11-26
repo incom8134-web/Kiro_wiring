@@ -1,6 +1,12 @@
 import json
 
-from battery_monitor.profile import NAMEPLATE_FIELDS, load_profile, synthetic_profile, validate_profile
+from battery_monitor.faults import evaluate
+from battery_monitor.profile import (
+    calibration_current_a,
+    load_profile,
+    synthetic_profile,
+    validate_profile,
+)
 from battery_monitor.service import main, uart_is_enabled
 from battery_monitor.uart_out import HEADER, UartLogger, format_line
 
@@ -10,20 +16,33 @@ CONFIG = ROOT / "config" / "battery_profile.json"
 EXAMPLE = ROOT / "config" / "examples" / "example_DO_NOT_USE.json"
 
 
-def test_unconfigured_profile_lists_the_nameplate_fields():
+def test_shipped_profile_starts_with_unverified_current():
     profile = load_profile(CONFIG)
-    errors, _warnings = validate_profile(profile)
-    text = "\n".join(errors)
-    for field in NAMEPLATE_FIELDS:
-        assert field in text
+    errors, warnings = validate_profile(profile)
+    assert errors == []
+    text = "\n".join(warnings)
+    assert "unverified" in text
     assert "shunt_resistance_ohm" not in text
     assert profile["shunt_resistance_ohm"] == 0.0002
     assert profile["shunt_rated_current_a"] == 204.8
     assert profile["ina228_address"] == "0x45"
     assert profile["adc_range_mv"] == 40.96
-    assert profile["chemistry"] is None
-    assert profile["nominal_voltage_v"] is None
-    assert profile["capacity_ah"] is None
+    assert profile["chemistry"] == "li-ion"
+    assert profile["nominal_voltage_v"] == 12.0
+    assert profile["max_voltage_v"] == 12.6
+    assert profile["min_voltage_v"] == 9.0
+    assert profile["capacity_ah"] == 45
+    assert profile["cell_configuration"] == "3S"
+    assert profile["max_charge_current_a"] is None
+    assert profile["max_discharge_current_a"] is None
+    amps, from_pack = calibration_current_a(profile)
+    assert amps == 204.8
+    assert from_pack is False
+    faults = evaluate(12.0, 80.0, profile, True)
+    assert "DISCHARGE_OVERCURRENT" not in faults
+    assert "CHARGE_OVERCURRENT" not in evaluate(12.0, -40.0, profile, True)
+    assert "OVERVOLTAGE" in evaluate(13.0, 0.0, profile, True)
+    assert "UNDERVOLTAGE" in evaluate(8.5, 0.0, profile, True)
     assert profile["i2c_bus"] == "/dev/i2c-7"
     assert profile["uart_device"] == "/dev/ttyTHS0"
     assert profile["uart_enabled"] is False
@@ -33,6 +52,28 @@ def test_unconfigured_profile_lists_the_nameplate_fields():
     assert synthetic_profile()["i2c_bus"] == "/dev/i2c-7"
     assert synthetic_profile()["uart_device"] == "/dev/ttyTHS0"
     assert synthetic_profile()["uart_enabled"] is False
+
+
+def test_shipped_profile_simulate_uses_the_pack(tmp_path):
+    state = tmp_path / "state.json"
+    code = main(
+        [
+            "--config",
+            str(CONFIG),
+            "--simulate",
+            "--duration",
+            "0.6",
+            "--state",
+            str(state),
+            "--history",
+            str(tmp_path / "history.sqlite"),
+        ]
+    )
+    assert code == 0
+    saved = json.loads(state.read_text(encoding="utf-8"))
+    assert saved["chemistry"] == "li-ion"
+    assert saved["nominal_capacity_ah"] == 45.0
+    assert saved["simulated"] is True
 
 
 def test_over_voltage_pack_is_rejected_and_example_is_not_hardware():
@@ -55,8 +96,8 @@ def test_over_voltage_pack_is_rejected_and_example_is_not_hardware():
     assert any("full scale" in line for line in errors)
 
 
-def test_check_profile_command_exits_nonzero():
-    assert main(["--check-profile", "--config", str(CONFIG)]) == 2
+def test_check_profile_command_accepts_the_shipped_pack():
+    assert main(["--check-profile", "--config", str(CONFIG)]) == 0
     assert main(["--check-profile", "--config", str(EXAMPLE), "--allow-example"]) == 0
 
 

@@ -4,9 +4,13 @@
 
 This monitor reads one battery pack through a Matek I2C-INA-BM module on the Jetson Orin Nano Developer Kit 40-pin header, J12. The module's conductive path is the shunt. The Jetson counts coulombs, estimates state of charge, and writes a JSON file. The live path is Matek INA, I2C, Jetson, `state.json`, HAEBOT web app. UART on pins 8 and 10 is optional and is not used. This folder does not contain a web server.
 
-The pack is a YOLTON e-bike pack (Coupang 9101801616): a black rectangular pack with red and black leads, DC barrel connectors, and a small BMS box. Chemistry, voltage, capacity, cell configuration, and currents are TODO. Those fields stay null in [`software/config/battery_profile.json`](software/config/battery_profile.json). The program will not open the real sensor until they are filled in from the pack label or datasheet. The power-lead row in [`bom/BOM.csv`](bom/BOM.csv) stays BLOCKED until the current is known. The module shunt, address, and ADC range are filled from the Matek page and are not a guess at the pack. Nothing in the example file is a suggested pack.
+The pack is a YOLTON e-bike pack (Coupang 9101801616): a black rectangular pack with red and black leads, DC barrel connectors, and a small BMS box. The user confirmed 12 V and 45 Ah. Volton's 12 V 45 Ah listing says lithium-ion with LG cells ([voltonbattery.com 12 V 45 Ah](https://www.voltonbattery.com/12v/?idx=407), [Coupang 9101801616](https://www.coupang.com/vp/products/9101801616?vendorItemId=93727752087)). [`software/config/battery_profile.json`](software/config/battery_profile.json) uses chemistry `li-ion`, nominal 12.0 V, and capacity 45 Ah.
 
-The Coupang listing for product 9101801616 is titled a selectable 12 V lithium-ion pack, 5–45 Ah, sold by 주식회사 볼턴 ([listing](https://www.coupang.com/vp/products/9101801616?vendorItemId=93727752087)). The fetched page showed 236,000 KRW and vendor item 26870346028, not 93727752087. Volton's separate 12 V 45 Ah page is the same price and says LG lithium-ion cells ([voltonbattery.com 12 V 45 Ah](https://www.voltonbattery.com/12v/?idx=407)). That price match does not identify this vendor item, and neither page gives the series count, full-charge voltage, empty voltage, or current limit. Those numbers are not copied into the profile.
+The cell configuration is an assumed 3S string. `max_voltage_v` 12.6 and `min_voltage_v` 9.0 are assumed for 3S Li-ion; verify with a meter at full charge. 12.6 V is 3 × 4.2 V and 9.0 V is 3 × 3.0 V. Those two voltages are not printed on the Volton page.
+
+Charge and discharge current are still unverified. The profile leaves `max_charge_current_a` and `max_discharge_current_a` null. The loader has no flag that would let a placeholder number stay marked unverified, so no current number is invented. The service still starts. Overcurrent alarms stay off, and SHUNT_CAL stays at the Matek full scale. The power-lead row in [`bom/BOM.csv`](bom/BOM.csv) stays BLOCKED until the current is known. The module shunt, address, and ADC range are filled from the Matek page and are not a guess at the pack. Nothing in the example file is a suggested pack.
+
+Charge the pack with a 12.6 V CC/CV Li-ion charger (Volton's own charger). Do not use a plain 12 V power adapter.
 
 This is not a battery management system. It does not balance cells and it does not open a contactor.
 
@@ -18,7 +22,7 @@ This is not a battery management system. It does not balance cells and it does n
 | JST-GH-4P | Logic and I2C: 5V, SCL, SDA, G. Address 0x45 (decimal 69) with the jumpers open. |
 | Jetson Orin Nano Developer Kit | Reads `/dev/i2c-7` on J12 and writes the state file. Pin 2 feeds the module's 4–9 V pin. UART is off. |
 
-The bus range is 0 V to 85 V (Matek page and TI SLYS021). If the pack can exceed 85 V, do not connect it. The profile loader rejects that case. Matek rates the path at 150 A continuous and 204.8 A burst. At 200 µΩ that burst is 40.96 mV, so the profile uses the ±40.96 mV ADC range. Full-scale calibration is CURRENT_LSB = 204.8 / 2^19 = 390.625 µA and SHUNT_CAL = 4096 (SLYS021). After the pack nameplate is filled in, the driver recomputes SHUNT_CAL from that current, still with 200 µΩ and the ±40.96 mV range. Continuous current above 150 A produces a warning. This code has not been run on a Matek board.
+The bus range is 0 V to 85 V (Matek page and TI SLYS021). If the pack can exceed 85 V, do not connect it. The profile loader rejects that case. Matek rates the path at 150 A continuous and 204.8 A burst. At 200 µΩ that burst is 40.96 mV, so the profile uses the ±40.96 mV ADC range. Full-scale calibration is CURRENT_LSB = 204.8 / 2^19 = 390.625 µA and SHUNT_CAL = 4096 (SLYS021). The shipped profile has no pack current, so the driver keeps that full-scale calibration. After a pack current limit is filled in, the driver recomputes SHUNT_CAL from that current, still with 200 µΩ and the ±40.96 mV range. Continuous current above 150 A produces a warning. This code has not been run on a Matek board.
 
 The official page lists INA228 and INA238. The driver accepts only DEVICE_ID 0x2281 and refuses any other ID. Which chip is fitted is unverified until that register is read.
 
@@ -76,7 +80,7 @@ If `comms_ok` is false, `voltage_v` and `current_a` are null. Use `updated_unix`
 
 A SQLite history file is written beside it (`/var/lib/battery-monitor/history.sqlite`). That file is a log. The live reading is the JSON file.
 
-The service samples every `sample_period_s` (0.5 s in the shipped profile) and rewrites the file every `persist_interval_s` (also 0.5 s). Alarms in `faults` use the pack limits in the profile. Those limits are still null, so hardware mode will not run, and no pack alarm threshold is invented here. The module ceilings the loader does enforce, once a nameplate exists, are 85 V and the shunt full scale. A nameplate above 150 A warns against the Matek continuous rating.
+The service samples every `sample_period_s` (0.5 s in the shipped profile) and rewrites the file every `persist_interval_s` (also 0.5 s). Voltage alarms use 12.6 V and 9.0 V, which are assumed for 3S Li-ion; verify with a meter at full charge. Charge and discharge current are null, so those overcurrent alarms are off. The module ceilings the loader does enforce are 85 V and, once a pack current is filled in, the shunt full scale. A nameplate above 150 A warns against the Matek continuous rating.
 
 UART logging is optional code and is off by default (`uart_enabled` false). Turning it on prints the same row on `/dev/ttyTHS0` at 115200 baud, 3.3 V, one CSV line per sample:
 

@@ -15,21 +15,29 @@ INA228_MAX_BUS_V = 85.0
 INA228_FULL_SCALE_V = {163.84: 0.16384, 40.96: 0.04096}
 
 # These are the pack facts the user must supply. The software will not guess.
+# Charge and discharge current are not in this list: a null there is a warning,
+# and the service still starts. Overcurrent alarms stay off until a real limit exists.
 NAMEPLATE_FIELDS = (
     "chemistry",
     "nominal_voltage_v",
     "max_voltage_v",
     "min_voltage_v",
     "capacity_ah",
+)
+
+CURRENT_LIMIT_FIELDS = (
     "max_charge_current_a",
     "max_discharge_current_a",
 )
 
 # Required before a real sensor is used, but not all of them are printed on the pack.
 CONFIG_FIELDS = NAMEPLATE_FIELDS + (
-    "idle_current_a",
     "shunt_resistance_ohm",
 )
+
+# Status deadband used only when idle_current_a is null.
+# It is not a pack charge or discharge rating.
+STATUS_IDLE_CURRENT_A = 0.05
 
 NAMEPLATE_HELP = {
     "chemistry": "cell chemistry, from the cell or pack datasheet (the OCV table depends on it)",
@@ -90,6 +98,54 @@ def synthetic_profile() -> dict:
     }
 
 
+def idle_threshold_a(profile: dict) -> float:
+    """Ampere deadband for Idle versus charge or discharge.
+
+    A null ``idle_current_a`` uses ``STATUS_IDLE_CURRENT_A``. That stand-in
+    is not a pack current limit.
+    """
+    value = profile.get("idle_current_a", None)
+    if value is None or value == "":
+        return STATUS_IDLE_CURRENT_A
+    return float(value)
+
+
+def calibration_current_a(profile: dict) -> tuple[float, bool]:
+    """Current passed to SHUNT_CAL.
+
+    Returns ``(amps, from_pack)``. When both pack current limits are null,
+    the Matek full scale in ``shunt_rated_current_a`` is used. That is the
+    module rating, not a guessed pack current.
+    """
+    peaks: list[float] = []
+    for key in CURRENT_LIMIT_FIELDS:
+        value = profile.get(key, None)
+        if value is None or value == "":
+            continue
+        peaks.append(float(value))
+    if peaks:
+        return max(peaks), True
+    rated = profile.get("shunt_rated_current_a", None)
+    if rated is None or rated == "":
+        return 204.8, False
+    return float(rated), False
+
+
+def _optional_amps(profile: dict, key: str, errors: list[str]) -> float | None:
+    value = profile.get(key, None)
+    if value is None or value == "":
+        return None
+    try:
+        number = float(value)
+    except (TypeError, ValueError):
+        errors.append(f"{key} must be a number")
+        return None
+    if number <= 0:
+        errors.append(f"{key} must be positive")
+        return None
+    return number
+
+
 def _missing(profile: dict) -> list[str]:
     missing = []
     for key in CONFIG_FIELDS:
@@ -130,13 +186,27 @@ def validate_profile(profile: dict, allow_example: bool = False) -> tuple[list[s
         vnom = float(profile["nominal_voltage_v"])
         vmax = float(profile["max_voltage_v"])
         capacity = float(profile["capacity_ah"])
-        i_chg = float(profile["max_charge_current_a"])
-        i_dis = float(profile["max_discharge_current_a"])
-        i_idle = float(profile["idle_current_a"])
         r_shunt = float(profile["shunt_resistance_ohm"])
     except (TypeError, ValueError) as exc:
         errors.append(f"a required number is not numeric: {exc}")
         return errors, warnings
+
+    i_chg = _optional_amps(profile, "max_charge_current_a", errors)
+    i_dis = _optional_amps(profile, "max_discharge_current_a", errors)
+    i_idle = _optional_amps(profile, "idle_current_a", errors)
+    if i_chg is None and "max_charge_current_a must be" not in " ".join(errors):
+        warnings.append(
+            "max_charge_current_a is unverified (null). The charge overcurrent alarm is off."
+        )
+    if i_dis is None and "max_discharge_current_a must be" not in " ".join(errors):
+        warnings.append(
+            "max_discharge_current_a is unverified (null). The discharge overcurrent alarm is off."
+        )
+    if i_idle is None and "idle_current_a must be" not in " ".join(errors):
+        warnings.append(
+            f"idle_current_a is null. Status uses a {STATUS_IDLE_CURRENT_A} A deadband. "
+            "That deadband is not a pack current limit."
+        )
 
     if not (vmin < vnom <= vmax):
         errors.append("need min_voltage_v < nominal_voltage_v <= max_voltage_v")
@@ -145,9 +215,14 @@ def validate_profile(profile: dict, allow_example: bool = False) -> tuple[list[s
             f"max_voltage_v {vmax} V is above the INA228 85 V bus limit "
             "(datasheet SLYS021). Do not connect this pack to this monitor."
         )
-    if vmin <= 0 or capacity <= 0 or i_chg <= 0 or i_dis <= 0 or i_idle <= 0 or r_shunt <= 0:
-        errors.append("voltages, capacity, currents, and shunt resistance must be positive")
-    if i_idle >= min(i_chg, i_dis):
+    if vmin <= 0 or capacity <= 0 or r_shunt <= 0:
+        errors.append("voltages, capacity, and shunt resistance must be positive")
+    if (
+        i_idle is not None
+        and i_chg is not None
+        and i_dis is not None
+        and i_idle >= min(i_chg, i_dis)
+    ):
         errors.append("idle_current_a must be below both charge and discharge limits")
 
     adc = float(profile.get("adc_range_mv", 163.84))
@@ -155,39 +230,48 @@ def validate_profile(profile: dict, allow_example: bool = False) -> tuple[list[s
         errors.append("adc_range_mv must be 163.84 or 40.96")
         return errors, warnings
     vfs = INA228_FULL_SCALE_V[adc]
-    i_peak = max(i_chg, i_dis)
-    v_sense = i_peak * r_shunt
-    if v_sense > vfs:
-        errors.append(
-            f"shunt drop {v_sense * 1000:.2f} mV at {i_peak} A exceeds the "
-            f"INA228 ±{vfs * 1000:.2f} mV full scale. Lower shunt_resistance_ohm "
-            f"(limit is {vfs / i_peak:.6g} ohm)."
-        )
-    elif v_sense > 0.9 * vfs:
+    peaks = [value for value in (i_chg, i_dis) if value is not None]
+    if not peaks:
         warnings.append(
-            f"shunt drop is {v_sense / vfs * 100:.0f}% of full scale at the "
-            "nameplate current. A surge will clip. Prefer more headroom."
+            "Pack charge and discharge current are unverified, so SHUNT_CAL stays at "
+            "the Matek full scale in shunt_rated_current_a. That is not a guessed pack current."
         )
-    if abs(r_shunt - 0.0002) < 1e-9 and i_peak > 150.0:
-        warnings.append(
-            "nameplate current is above the Matek I2C-INA-BM 150 A continuous "
-            "rating (https://www.mateksys.com/?portfolio=i2c-ina-bm). The ADC "
-            "full scale at 200 µΩ and ±40.96 mV is 204.8 A."
-        )
+    else:
+        i_peak = max(peaks)
+        v_sense = i_peak * r_shunt
+        if v_sense > vfs:
+            errors.append(
+                f"shunt drop {v_sense * 1000:.2f} mV at {i_peak} A exceeds the "
+                f"INA228 ±{vfs * 1000:.2f} mV full scale. Lower shunt_resistance_ohm "
+                f"(limit is {vfs / i_peak:.6g} ohm)."
+            )
+        elif v_sense > 0.9 * vfs:
+            warnings.append(
+                f"shunt drop is {v_sense / vfs * 100:.0f}% of full scale at the "
+                "nameplate current. A surge will clip. Prefer more headroom."
+            )
+        if abs(r_shunt - 0.0002) < 1e-9 and i_peak > 150.0:
+            warnings.append(
+                "nameplate current is above the Matek I2C-INA-BM 150 A continuous "
+                "rating (https://www.mateksys.com/?portfolio=i2c-ina-bm). The ADC "
+                "full scale at 200 µΩ and ±40.96 mV is 204.8 A."
+            )
 
+        rated_i = profile.get("shunt_rated_current_a")
+        rated_p = profile.get("shunt_rated_power_w")
+        dissipation = i_peak * i_peak * r_shunt
+        if rated_i is not None and i_peak > float(rated_i):
+            errors.append(
+                f"peak current {i_peak} A is above shunt_rated_current_a {rated_i} A"
+            )
+        if rated_p is not None and dissipation > float(rated_p):
+            errors.append(
+                f"shunt dissipation {dissipation:.3f} W at peak current is above "
+                f"shunt_rated_power_w {rated_p} W. Confirm the shunt datasheet derating; "
+                "continuous use should stay inside the rating, with margin."
+            )
     rated_i = profile.get("shunt_rated_current_a")
     rated_p = profile.get("shunt_rated_power_w")
-    dissipation = i_peak * i_peak * r_shunt
-    if rated_i is not None and i_peak > float(rated_i):
-        errors.append(
-            f"peak current {i_peak} A is above shunt_rated_current_a {rated_i} A"
-        )
-    if rated_p is not None and dissipation > float(rated_p):
-        errors.append(
-            f"shunt dissipation {dissipation:.3f} W at peak current is above "
-            f"shunt_rated_power_w {rated_p} W. Confirm the shunt datasheet derating; "
-            "continuous use should stay inside the rating, with margin."
-        )
     if rated_i is None and rated_p is None:
         errors.append("set shunt_rated_current_a or shunt_rated_power_w from the shunt datasheet")
 
