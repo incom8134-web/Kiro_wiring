@@ -16,8 +16,11 @@ def test_unconfigured_profile_lists_the_nameplate_fields():
     text = "\n".join(errors)
     for field in NAMEPLATE_FIELDS:
         assert field in text
-    assert "shunt_resistance_ohm" in text
-    assert "shunt_rated_current_a" in text
+    assert "shunt_resistance_ohm" not in text
+    assert profile["shunt_resistance_ohm"] == 0.0002
+    assert profile["shunt_rated_current_a"] == 204.8
+    assert profile["ina228_address"] == "0x45"
+    assert profile["adc_range_mv"] == 40.96
 
 
 def test_over_voltage_pack_is_rejected_and_example_is_not_hardware():

@@ -5,9 +5,11 @@
 Python 3.9+ service for the Jetson Nano design in [`../README.md`](../README.md).
 Stock JetPack 4.6 on a Nano is Python 3.6. Use a virtualenv built with Python 3.9 or newer.
 
-The INA228 is read on `/dev/i2c-1`. It is I2C only. UART `/dev/ttyTHS1` is the serial log, not the sensor.
+The Matek I2C-INA-BM is read on `/dev/i2c-1` at address 0x45. It is I2C only. UART `/dev/ttyTHS1` is the serial log, not the sensor.
 
-There is no web server in this package. The web app that already runs on the Jetson reads `/var/lib/battery-monitor/state.json`. The field list is in [`../README.md`](../README.md).
+The shipped profile sets the module facts from [Matek](https://www.mateksys.com/?portfolio=i2c-ina-bm) and TI SLYS021: shunt 0.0002 ohm, `adc_range_mv` 40.96, full scale 204.8 A. At that full scale SHUNT_CAL is 4096 and CURRENT_LSB is 390.625 µA. Once the pack nameplate exists, `configure()` recomputes SHUNT_CAL from the nameplate current. The driver accepts only DEVICE_ID 0x2281. This path has not been run on a Matek board.
+
+There is no web server in this package. The HAEBOT robot web app reads `/var/lib/battery-monitor/state.json` or the UART CSV on `/dev/ttyTHS1`. The field list is in [`../README.md`](../README.md). The app source is not in this repo.
 
 ```bash
 cd battery/software

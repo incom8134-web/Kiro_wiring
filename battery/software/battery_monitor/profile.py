@@ -63,19 +63,19 @@ def synthetic_profile() -> dict:
         "max_charge_current_a": 20.0,
         "max_discharge_current_a": 50.0,
         "idle_current_a": 0.5,
-        "shunt_resistance_ohm": 0.001,
-        "shunt_rated_current_a": 100.0,
+        "shunt_resistance_ohm": 0.0002,
+        "shunt_rated_current_a": 204.8,
         "initial_soc_percent": 50.0,
         "ocv_voltage_v": [40.0, 48.0, 54.0],
         "ocv_soc_percent": [0.0, 50.0, 100.0],
         "rest_current_a": 0.5,
         "rest_duration_s": 300.0,
         "i2c_bus": "/dev/i2c-1",
-        "ina228_address": "0x40",
+        "ina228_address": "0x45",
         "uart_device": "/dev/ttyTHS1",
         "uart_baud": 115200,
         "uart_enabled": False,
-        "adc_range_mv": 163.84,
+        "adc_range_mv": 40.96,
         "current_gain": 1.0,
         "current_offset_a": 0.0,
         "voltage_gain": 1.0,
@@ -167,6 +167,12 @@ def validate_profile(profile: dict, allow_example: bool = False) -> tuple[list[s
         warnings.append(
             f"shunt drop is {v_sense / vfs * 100:.0f}% of full scale at the "
             "nameplate current. A surge will clip. Prefer more headroom."
+        )
+    if abs(r_shunt - 0.0002) < 1e-9 and i_peak > 150.0:
+        warnings.append(
+            "nameplate current is above the Matek I2C-INA-BM 150 A continuous "
+            "rating (https://www.mateksys.com/?portfolio=i2c-ina-bm). The ADC "
+            "full scale at 200 µΩ and ±40.96 mV is 204.8 A."
         )
 
     rated_i = profile.get("shunt_rated_current_a")

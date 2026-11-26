@@ -2,9 +2,9 @@
 
 [English](README.md) | [한국어](README.ko.md)
 
-This monitor reads one battery pack. An external shunt carries the pack current. An INA228 on the Jetson Nano I2C header reads that shunt. The service counts coulombs, estimates state of charge, writes a JSON file, and prints the same readings on the UART. The web app that already runs on the Jetson is the display. This folder does not contain a web server.
+This monitor reads one battery pack through a Matek I2C-INA-BM module on the Jetson Nano I2C header. The module's conductive path is the shunt. The service counts coulombs, estimates state of charge, writes a JSON file, and prints the same readings on the UART. The HAEBOT robot web app reads that file, or the UART line. This folder does not contain a web server.
 
-The pack chemistry, voltages, capacity, and currents are not known. Those fields are null in [`software/config/battery_profile.json`](software/config/battery_profile.json). The program will not open the real sensor until they are filled in from the pack datasheet. The shunt row in [`bom/BOM.csv`](bom/BOM.csv) stays BLOCKED until then. Nothing in the example file is a suggested pack.
+The pack chemistry, voltages, capacity, and currents are not known. Those fields are null in [`software/config/battery_profile.json`](software/config/battery_profile.json). The program will not open the real sensor until they are filled in from the pack datasheet. The power-lead row in [`bom/BOM.csv`](bom/BOM.csv) stays BLOCKED until then. The module shunt, address, and ADC range are filled from the Matek page and are not a guess at the pack. Nothing in the example file is a suggested pack.
 
 This is not a battery management system. It does not balance cells and it does not open a contactor.
 
@@ -12,29 +12,31 @@ This is not a battery management system. It does not balance cells and it does n
 
 | Part | Role |
 |---|---|
-| 4-terminal shunt | In the battery positive lead, outside this case. Pack current does not enter the INA228 board. |
-| INA228 breakout | Voltage and bidirectional current. Address 0x40 with A1 and A0 at ground. VS from Jetson pin 1. |
-| Jetson Nano | Reads `/dev/i2c-1` and writes the state file and `/dev/ttyTHS1`. |
+| Matek I2C-INA-BM | In the battery positive lead. Pack current enters BAT+ and leaves ESC+. The conductive path is 200 µΩ typical. |
+| JST-GH-4P | Logic and I2C: 5V, SCL, SDA, G. Address 0x45 (decimal 69) with the jumpers open. |
+| Jetson Nano | Reads `/dev/i2c-1` and writes the state file and `/dev/ttyTHS1`. Pin 2 feeds the module's 4–9 V pin. |
 
-The INA228 bus range is 0 V to 85 V (TI SLYS021). If the pack can exceed 85 V, do not connect it. The profile loader rejects that case. The shunt must satisfy R < 163.84 mV / Imax on the default range (SLYS021 equation 8). The resistance is not chosen here.
+The bus range is 0 V to 85 V (Matek page and TI SLYS021). If the pack can exceed 85 V, do not connect it. The profile loader rejects that case. Matek rates the path at 150 A continuous and 204.8 A burst. At 200 µΩ that burst is 40.96 mV, so the profile uses the ±40.96 mV ADC range. Full-scale calibration is CURRENT_LSB = 204.8 / 2^19 = 390.625 µA and SHUNT_CAL = 4096 (SLYS021). After the pack nameplate is filled in, the driver recomputes SHUNT_CAL from that current, still with 200 µΩ and the ±40.96 mV range. Continuous current above 150 A produces a warning. This code has not been run on a Matek board.
 
-Positive current is discharge, out of the battery. Negative current is charge. Power uses the same sign.
+The official page lists INA228 and INA238. The driver accepts only DEVICE_ID 0x2281 and refuses any other ID. Which chip is fitted is unverified until that register is read.
 
-VBUS is the pack terminal voltage, taken from the battery side of the shunt, not from the Kelvin pin. IN+ is the battery side of the shunt. IN− is the load side.
+Positive current is discharge, from BAT+ toward ESC+. Negative current is charge. Power uses the same sign.
 
-![Shunt to INA228 to the Jetson I2C header, and the UART output](wiring/battery_monitor_wiring.png)
+![Matek module to the Jetson I2C header, and the UART output](wiring/battery_monitor_wiring.png)
 
-The INA228 is I2C only. It has no UART pins.
+The module is I2C only. It has no UART pins.
 
-The cable from the INA228 to the Jetson is the sensor cable: J41 pin 1 (3.3 V), pin 6 (GND), pin 3 (SDA), pin 5 (SCL). Those pins are `/dev/i2c-1`. Signals are 3.3 V (NVIDIA Jetson Nano Developer Kit User Guide, DA_09402). Do not put pack voltage on a header pin. Do not power header pins 2 and 4.
+The cable from the module to the Jetson is the JST-GH-4P lead supplied with the module: 5V to J41 pin 2, SCL to pin 5, SDA to pin 3, G to pin 6. Pins 3 and 5 are `/dev/i2c-1` (NVIDIA Jetson Nano Developer Kit User Guide, DA_09402). The module's 5V pin is a 4–9 V input and draws about 1 mA, so pin 2 (5 V) can feed it. Pin 1 is 3.3 V and must not be tied to that pin. Do not use pin 4. Do not put pack voltage on a header pin.
 
-UART pins 8 (TX) and 10 (RX) are `/dev/ttyTHS1`. That port is the serial data output. It is not the connection to the INA228.
+The I2C pull-up rail on the module is unverified. Matek's red LED is labeled a 3.3 V indicator, which only says the board has a regulator; it does not say the pull-ups go to 3.3 V. With only the 5V pin and GND connected, measure idle SDA and SCL. About 3.3 V: connect them to pins 3 and 5. Above about 3.6 V: do not connect. This folder does not add a level shifter.
 
-The sense and VBUS leads are unfused. A short on those leads is a short-circuit risk, and the owner accepted it.
+UART pins 8 (TX) and 10 (RX) are `/dev/ttyTHS1`. That port is the serial data output. It is not the connection to the module.
 
-## How the Jetson web app reads the data
+The power leads are the pack conductors on BAT+ and ESC+. Their gauge is not chosen, because the pack current is unknown. Do not size them from the module's 150 A rating.
 
-The display is the web app that already runs on the Jetson Nano. This service does not serve a page, and the app should not open the INA228 itself.
+## How the HAEBOT web app reads the data
+
+The display is the HAEBOT robot web app. Its source is not in this repo. This service does not serve a page, and the app should not open the module itself. There is no HTTP or WebSocket server in this folder. The app gets the same row two ways: the JSON file below, and the UART CSV.
 
 The app reads one file:
 
@@ -70,6 +72,8 @@ If `comms_ok` is false, `voltage_v` and `current_a` are null. Use `updated_unix`
 
 A SQLite history file is written beside it (`/var/lib/battery-monitor/history.sqlite`). That file is a log. The live reading is the JSON file.
 
+The service samples every `sample_period_s` (0.5 s in the shipped profile) and rewrites the file every `persist_interval_s` (also 0.5 s). Alarms in `faults` use the pack limits in the profile. Those limits are still null, so hardware mode will not run, and no pack alarm threshold is invented here. The module ceilings the loader does enforce, once a nameplate exists, are 85 V and the shunt full scale. A nameplate above 150 A warns against the Matek continuous rating.
+
 The same row is printed on `/dev/ttyTHS1` at 115200 baud, 3.3 V, one CSV line per sample:
 
 ```text
@@ -80,15 +84,13 @@ unix_s,voltage_v,current_a,power_w,soc_percent,capacity_ah,energy_wh,status,faul
 
 ## Case
 
-The printed case holds only the INA228 board. Body **48.8 × 46.4 × 20.1 mm**. With the two side flanges, **72.8 × 46.4 × 20.1 mm**. Cavity **43.8 × 41.4 × 15.1 mm**. Wall, floor, and lid are 2.5 mm. Fit clearance is 0.25 mm per side. That case is unchanged.
+The printed case holds the Matek module. The shunt is on that board, so there is no separate shunt plate. Body **33.8 × 26.8 × 11.8 mm**. With the two mounting tabs, the base is **49.8 × 26.8 × 10.0 mm**. Cavity **29.4 × 22.4 × 8.2 mm**. The board size used here is Matek's 27 × 20 × 6 mm. Wall 2.2 mm, floor 1.8 mm, lid 1.8 mm. Fit clearance is 1.2 mm per side. The lid print is **33.8 × 26.8 × 4.2 mm** with the outer face on the bed.
 
-A separate plate bolts to the two existing flange holes and extends off the north wall, beside the sense slot. The shunt sits on standoffs on that plate. The plate’s own bounding box is **116.0 × 69.8 × 18.05 mm**. Case plus plate is **116.0 × 86.0 × 24.15 mm**. Battery lugs bolt to the shunt. A short channel runs from the sense screws to the sense slot.
+Openings, all open at the top: a power-lead slot in each short wall (6 mm, a printable default, not a chosen gauge), and two JST-GH slots in one long wall (11 mm). The JST side follows the product photo, not a dimensioned drawing. A retailer φ3 mm PCB hole is not on mateksys.com and is not used. Tabs take M3 clearance holes (3.4 mm). Floor and lid vents sit over the on-board shunt. The bottom pad Matek calls dead is held off the floor by 1.2 mm pads at the corners.
 
-The footprint is the Accuenergy Shunt-100A, 75 mV: 104 × 21.6 × 2.0 mm, Φ8.5 holes on an 85 mm pitch, M5 sense screws on a 62 mm pitch ([datasheet](https://www.accuenergy.com/wp-content/uploads/DC-Current-Shunt-100A-75mV.pdf), August 2024). The pack current is still unknown, so this is a mechanical outline, not a chosen shunt rating. Pitch, hole size, and the outline are parameters in `enclosure.py`.
+The Jetson is not in the box.
 
-The north wall has two open slots: the sensor cable, and the sense cable (IN+, IN−, VBUS). The Jetson is not in the box. The sense and VBUS leads are unfused.
-
-![INA228 case, base and lifted lid](enclosure/preview.png)
+![Matek module case, base and lifted lid](enclosure/preview.png)
 
 Regenerate with `python3 enclosure.py` from `battery/enclosure`. Details are in [`enclosure/README.md`](enclosure/README.md).
 
