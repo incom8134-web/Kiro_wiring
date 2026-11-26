@@ -6,6 +6,8 @@ Matek I2C-INA-BM measures battery discharge. There is no START/RESET button, aux
 
 | File | Purpose |
 |---|---|
+| [Photo wiring guide](exports/HAEBOT_EV_PHOTO_WIRING_GUIDE.pdf) | Three sheets with component photographs, wire colours, E-stop and connector close-ups |
+| [Photo guide notes / selected VOLTON battery](photo-wiring/README.md) | User-confirmed VOLTON 12 V 45 Ah lithium-ion selection and remaining electrical checks |
 | [KiCad project](kicad/HAEBOT_EV.kicad_pro) | Editable circuit source |
 | [Schematic PDF](exports/HAEBOT_EV_SCHEMATIC.pdf) | Export of the circuit |
 | [English block diagram](exports/HAEBOT_EV_BLOCK_DIAGRAM.pdf) | Printable power and control overview |
@@ -48,7 +50,10 @@ functional-safety system; a welded K1 contact can defeat the cut-off.
 
 ## Hardware facts still needed
 
-- Battery chemistry, full voltage range, BMS limits and matching charger.
+- **Selected battery: VOLTON 12 V 45 Ah lithium-ion** (user confirmed capacity). Exact pack voltage envelope,
+  cell-series configuration, BMS current limits, discharge connector and matching charger remain unverified.
+  See the [battery selection and photo-guide notes](photo-wiring/README.md). The generic Rev B circuit is retained
+  pending these specifications; do not bypass U3 based on the nominal 12 V label alone.
 - K1 is the user's photographed unit labelled **500A DC12V**. Manufacturer/model, continuous coil duty, actual coil
   current, polarity, DC breaking capacity and suppression remain unverified. The label alone does not verify 500 A
   continuous or breaking capability. F5 2 A and the former 6 W coil allowance are preliminary.

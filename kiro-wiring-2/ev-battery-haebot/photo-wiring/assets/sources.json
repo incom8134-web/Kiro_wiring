@@ -1,0 +1,37 @@
+[
+  {
+    "file": "matek.jpg",
+    "url": "https://www.mateksys.com/wp-content/uploads/2024/03/I2C-INA-BM_2.jpg",
+    "note": "Matek manufacturer product photograph; selected model"
+  },
+  {
+    "file": "adapter.jpg",
+    "url": "https://www.waveshare.com/media/catalog/product/b/u/bus-servo-adapter-a-3_2.jpg",
+    "note": "Waveshare manufacturer photograph; adapter type reference, verify actual board"
+  },
+  {
+    "file": "buck.jpg",
+    "url": "https://m.media-amazon.com/images/I/61hLDQ9YI9L._SL1200_.jpg",
+    "note": "TOBSUN EA75-5V seller reference photograph; verify actual terminal markings"
+  },
+  {
+    "file": "battery.png",
+    "url": "https://cdn-optimized.imweb.me/upload/S20201006fc5e1300623c2/91d7b6da5966e.png?w=750",
+    "note": "VOLTON official product-family photograph; user selected 12 V 45 Ah lithium-ion; full pack/BMS/charger specifications pending"
+  },
+  {
+    "file": "jetson.png",
+    "url": "https://docs.nvidia.com/jetson/orin-nano-devkit/user-guide/_images/jetson-orin-nano-qtr_numbered.png",
+    "note": "NVIDIA official hardware-layout reference; numbers identify features, not GPIO pin numbers"
+  },
+  {
+    "file": "contactor-user.png",
+    "url": "User-provided photograph, 2026-11-26 conversation",
+    "note": "Actual photographed contactor; label 500A DC12V; exact MPN/polarity/duty unverified"
+  },
+  {
+    "file": "project-reference-render.png",
+    "url": "Repository images/top.png",
+    "note": "Legacy project 3D render used only for visual identification of Jetson, fuse boxes and converter; old wiring is NOT the Rev B wiring"
+  }
+]
