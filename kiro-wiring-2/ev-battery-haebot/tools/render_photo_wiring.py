@@ -4,6 +4,8 @@ Use the same ReportLab runtime/fonts as render_block_diagrams.py.
 """
 from pathlib import Path
 import base64
+import argparse
+import json
 from PIL import Image
 from reportlab.lib.utils import ImageReader
 from reportlab.lib.colors import HexColor
@@ -13,6 +15,23 @@ from pypdf import PdfReader,PdfWriter
 import render_block_diagrams as b
 
 ROOT=Path(__file__).resolve().parents[1]; A=ROOT/'photo-wiring'/'assets'
+parser=argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--lang',choices=['en','ko'],default='en')
+args=parser.parse_args()
+KO=args.lang=='ko'
+SUFFIX='_KO' if KO else ''
+translations=json.loads((ROOT/'photo-wiring'/'labels.ko.json').read_text(encoding='utf-8')) if KO else {}
+untranslated=set()
+original_text=b.Drawing.text
+original_init=b.Drawing.__init__
+def localized_text(self,x,y,s,*a,**kw):
+    if KO and s not in translations:
+        untranslated.add(s)
+    return original_text(self,x,y,translations.get(s,s),*a,**kw)
+def localized_init(self,stem,korean=False):
+    original_init(self,stem+SUFFIX,KO)
+b.Drawing.text=localized_text
+b.Drawing.__init__=localized_init
 b.W,b.H=2400,1600
 RED='#cb2537'; ORANGE='#d57800'; BLACK='#20272d'; GREEN='#168454'; BLUE='#2676bd'; PURPLE='#8552b3'
 pdfmetrics.registerFont(TTFont('Diagram','C:/Windows/Fonts/malgun.ttf'))
@@ -239,9 +258,10 @@ footer(d);finish(d)
 
 writer=PdfWriter()
 for i in range(1,4):
-    for page in PdfReader(ROOT/'exports'/f'HAEBOT_EV_PHOTO_WIRING_0{i}.pdf').pages:writer.add_page(page)
-writer.add_metadata({'/Title':'HAEBOT / KIRO - Photo Wiring Guide (Rev B supplement)','/Author':'HAEBOT / KIRO project'})
-with (ROOT/'exports'/'HAEBOT_EV_PHOTO_WIRING_GUIDE.pdf').open('wb') as f:writer.write(f)
+    for page in PdfReader(ROOT/'exports'/f'HAEBOT_EV_PHOTO_WIRING_0{i}{SUFFIX}.pdf').pages:writer.add_page(page)
+writer.add_metadata({'/Title':('HAEBOT / KIRO - 사진 배선 안내서 (Rev B 보충판)' if KO else 'HAEBOT / KIRO - Photo Wiring Guide (Rev B supplement)'),'/Author':'HAEBOT / KIRO project'})
+with (ROOT/'exports'/f'HAEBOT_EV_PHOTO_WIRING_GUIDE{SUFFIX}.pdf').open('wb') as f:writer.write(f)
 for i in range(1,4):
-    (ROOT/'exports'/f'HAEBOT_EV_PHOTO_WIRING_0{i}.pdf').unlink()
-print('Created 3-page photo guide and embedded-photo SVG sources; temporary page PDFs removed.')
+    (ROOT/'exports'/f'HAEBOT_EV_PHOTO_WIRING_0{i}{SUFFIX}.pdf').unlink()
+print('Created',args.lang,'3-page photo guide and embedded-photo SVG sources; temporary page PDFs removed.')
+if KO:print('Labels kept as-is:',json.dumps(sorted(untranslated),ensure_ascii=False))

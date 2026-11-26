@@ -1,5 +1,7 @@
 # HAEBOT V2-B: 12 V 45 Ah EV battery power system
 
+[English](README.md) | [한국어](README.ko.md)
+
 **Rev B - 2026-11-26. PROPOSED wiring; not hardware-validated.** This revision follows the user's choice:
 both new arms use 12 V servos, one mechanically latching NC E-stop controls the DC contactor, and one
 Matek I2C-INA-BM measures battery discharge. There is no START/RESET button, auxiliary holding loop or safety controller.
@@ -7,7 +9,9 @@ Matek I2C-INA-BM measures battery discharge. There is no START/RESET button, aux
 | File | Purpose |
 |---|---|
 | [Photo wiring guide](exports/HAEBOT_EV_PHOTO_WIRING_GUIDE.pdf) | Three sheets with component photographs, wire colours, E-stop and connector close-ups |
+| [한국어 사진 배선 안내서](exports/HAEBOT_EV_PHOTO_WIRING_GUIDE_KO.pdf) | 동일한 사진과 배선으로 번역한 한국어 3쪽 안내서 |
 | [Photo guide notes / selected VOLTON battery](photo-wiring/README.md) | User-confirmed VOLTON 12 V 45 Ah lithium-ion selection and remaining electrical checks |
+| [한국어 사진 안내서 설명](photo-wiring/README.ko.md) | 부품 사진 구분, 배터리 선택, 미확인 사양 및 비상정지 동작 |
 | [KiCad project](kicad/HAEBOT_EV.kicad_pro) | Editable circuit source |
 | [Schematic PDF](exports/HAEBOT_EV_SCHEMATIC.pdf) | Export of the circuit |
 | [English block diagram](exports/HAEBOT_EV_BLOCK_DIAGRAM.pdf) | Printable power and control overview |
@@ -15,6 +19,7 @@ Matek I2C-INA-BM measures battery discharge. There is no START/RESET button, aux
 | [English SVG](block-diagrams/HAEBOT_EV_BLOCK_DIAGRAM.svg), [한국어 SVG](block-diagrams/HAEBOT_EV_BLOCK_DIAGRAM_KO.svg) | Editable vector diagrams |
 | [Parts list](bom/README.md) | Components and selection status |
 | [Wiring connections](docs/wiring_connections.md) | Power, control, USB and I2C wiring |
+| [한국어 배선 연결표](docs/wiring_connections.ko.md) | 같은 연결 ID를 사용한 전원·코일·USB·I2C 배선표 |
 | [Protection plan](docs/power_distribution_and_protection.md) | Fuses, voltage limits and monitoring |
 | [Power budget](docs/power_budget.md) | Preliminary load and runtime estimates |
 | [12 V arm notes](docs/arm_servo_12v_notes.md) | Confirmed voltage choice and remaining checks |
@@ -70,5 +75,10 @@ connection checks are in [verification](docs/verification_report.md); hardware o
 The block diagram generator is
 `tools/render_block_diagrams.py`; it emits both SVGs and PDFs from one geometry with English/Korean labels.
 Run it with Python + ReportLab; Windows Malgun Gothic fonts are used for embedded Korean text.
+
+Photo guide: `python tools/render_photo_wiring.py` for English, and
+`python tools/render_photo_wiring.py --lang ko` for Korean. Both use the same photograph positions and wire geometry;
+the Korean labels are maintained in `photo-wiring/labels.ko.json`. Actual markings printed on component photographs
+remain unchanged. Korean PDF/SVG sources and 3600 x 2400 PNG sheets carry the `_KO` suffix.
 
 Manufacturer reference: https://www.mateksys.com/?portfolio=i2c-ina-bm

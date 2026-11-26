@@ -1,2 +1,3 @@
 # Preserve the generated photo booklet as a binary artifact.
 exports/HAEBOT_EV_PHOTO_WIRING_GUIDE.pdf binary
+exports/HAEBOT_EV_PHOTO_WIRING_GUIDE_KO.pdf binary

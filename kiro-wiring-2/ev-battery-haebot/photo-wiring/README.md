@@ -1,5 +1,7 @@
 # HAEBOT photo wiring guide - Rev B supplement
 
+[English](README.md) | [한국어](README.ko.md)
+
 This is a pictorial companion to the saved Rev B schematic and wiring table. Connections are drawn as editable
 vector lines, with real reference photographs, so wire labels remain legible when zooming or printing.
 
@@ -7,6 +9,10 @@ vector lines, with real reference photographs, so wire labels remain legible whe
 - [Power harness image](../exports/HAEBOT_EV_PHOTO_WIRING_01.png)
 - [E-stop and contactor image](../exports/HAEBOT_EV_PHOTO_WIRING_02.png)
 - [Matek and adapter close-ups](../exports/HAEBOT_EV_PHOTO_WIRING_03.png)
+- [한국어 전체 PDF (3쪽)](../exports/HAEBOT_EV_PHOTO_WIRING_GUIDE_KO.pdf)
+- [한국어 1쪽: 전원 배선](../exports/HAEBOT_EV_PHOTO_WIRING_01_KO.png)
+- [한국어 2쪽: 비상정지와 접촉기](../exports/HAEBOT_EV_PHOTO_WIRING_02_KO.png)
+- [한국어 3쪽: Matek / 서보 어댑터](../exports/HAEBOT_EV_PHOTO_WIRING_03_KO.png)
 
 Sheet 1 follows the main discharge path, three fused motion branches, separate Jetson/buck feeds and one NC coil
 stop. **N** means a separate return wire to the battery-negative star bus; it does not mean a return through USB.
@@ -71,3 +77,8 @@ Regenerate with `python tools/render_photo_wiring.py` using Python + ReportLab +
 paths as the existing diagram tool. Sources with embedded images are in `../block-diagrams/HAEBOT_EV_PHOTO_WIRING_*.svg`.
 Render the final PDF to PNG previews with PyMuPDF. Existing KiCad files and their electrical exports are unchanged by
 this supplement.
+
+Korean edition: `python tools/render_photo_wiring.py --lang ko`. It shares all circuit geometry and source photos
+with the English edition; labels come from `labels.ko.json`. Device IDs, model names, electrical values and actual
+printing on the photographs are retained. All three Korean pages were rendered and visually inspected, including
+Korean glyphs and the immediate power-restoration wording. This translation does not change the electrical design.

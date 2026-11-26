@@ -1,5 +1,10 @@
 # Wiring connection table: EV battery design (Rev B, 2026-11-26)
 
+[English](wiring_connections.md) | [한국어](wiring_connections.ko.md)
+
+Photo guide: [English](../exports/HAEBOT_EV_PHOTO_WIRING_GUIDE.pdf) |
+[한국어](../exports/HAEBOT_EV_PHOTO_WIRING_GUIDE_KO.pdf). Both show the same Rev B wiring; translation adds no hardware.
+
 Matches `kicad/HAEBOT_EV.kicad_sch` and `exports/HAEBOT_EV_NETLIST.net`. Power wires (W), USB data links (U-) and I2C links (I-) are listed separately. Physical header pin mapping remains pending.
 
 | ID | From | To | Net / signal | Voltage | Current | Cable and connector | Status |

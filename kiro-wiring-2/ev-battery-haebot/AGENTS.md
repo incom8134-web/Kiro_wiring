@@ -88,6 +88,11 @@ python tools/render_block_diagrams.py
 The block diagram exists in English and Korean. Change both SVG files together. Regenerate both with `tools/render_block_diagrams.py` using Python + ReportLab and the Windows Malgun Gothic fonts (or explicit font paths via its arguments).
 The exported PDFs embed the font for Korean readability.
 
+The photo wiring supplement also exists in English and Korean. Build with `python tools/render_photo_wiring.py`
+and `python tools/render_photo_wiring.py --lang ko`. They share one layout and the same source photographs; Korean
+labels are in `photo-wiring/labels.ko.json`. Retain electrical values, references and literal markings on the photos.
+Use the `_KO` PDF/PNG/SVG outputs for the Korean edition. Translate related README/wiring-table notes together.
+
 Open each PDF after export and check that nothing is clipped or overlapping.
 
 ## Verification procedure
