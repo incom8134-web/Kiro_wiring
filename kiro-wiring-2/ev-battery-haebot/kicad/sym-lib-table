@@ -1,4 +1,5 @@
 (sym_lib_table
   (version 7)
   (lib (name "HAEBOT")(type "KiCad")(uri "${KIPRJMOD}/../../shared/HAEBOT.kicad_sym")(options "")(descr "HAEBOT functional blocks used by the V2 schematics"))
-)
+
+  (lib (name "HAEBOT_EV_Local") (type "KiCad") (uri "${KIPRJMOD}/HAEBOT_EV_Local.kicad_sym") (options "") (descr "")))

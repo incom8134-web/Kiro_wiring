@@ -1,48 +1,69 @@
 # HAEBOT V2-B: 12 V 45 Ah EV battery power system
 
-Battery version of the HAEBOT / KIRO robot that keeps the V1 layout (two fuse boxes and the 12 V to 5 V buck) and
-replaces the AC supply with one 12 V 45 Ah battery. Both arms move to 12 V servos.
+**Rev B - 2026-11-26. PROPOSED wiring; not hardware-validated.** This revision follows the user's choice:
+both new arms use 12 V servos, one mechanically latching NC E-stop controls the DC contactor, and one
+Matek I2C-INA-BM measures battery discharge. There is no START/RESET button, auxiliary holding loop or safety controller.
 
-**Status: Rev A, PROPOSED. The battery chemistry, BMS and charger are not identified yet.**
-
-| | |
+| File | Purpose |
 |---|---|
-| Schematic (KiCad) | [`kicad/HAEBOT_EV.kicad_pro`](kicad/HAEBOT_EV.kicad_pro) |
-| Schematic PDF | [`exports/HAEBOT_EV_SCHEMATIC.pdf`](exports/HAEBOT_EV_SCHEMATIC.pdf) |
-| Block diagram | [`exports/HAEBOT_EV_BLOCK_DIAGRAM.pdf`](exports/HAEBOT_EV_BLOCK_DIAGRAM.pdf), [Korean](exports/HAEBOT_EV_BLOCK_DIAGRAM_KO.pdf), source [`block-diagrams/`](block-diagrams) |
-| Bill of materials | [`bom/`](bom) |
-| Power budget and runtime | [`docs/power_budget.md`](docs/power_budget.md) |
-| Wiring connection table | [`docs/wiring_connections.md`](docs/wiring_connections.md) |
-| Distribution and protection | [`docs/power_distribution_and_protection.md`](docs/power_distribution_and_protection.md) |
-| 12 V arm servo notes | [`docs/arm_servo_12v_notes.md`](docs/arm_servo_12v_notes.md) |
-| Verification report | [`docs/verification_report.md`](docs/verification_report.md) |
-| Assembly instructions | [`docs/assembly_instructions.md`](docs/assembly_instructions.md) |
-| Agent instructions | [`AGENTS.md`](AGENTS.md) |
+| [KiCad project](kicad/HAEBOT_EV.kicad_pro) | Editable circuit source |
+| [Schematic PDF](exports/HAEBOT_EV_SCHEMATIC.pdf) | Export of the circuit |
+| [English block diagram](exports/HAEBOT_EV_BLOCK_DIAGRAM.pdf) | Printable power and control overview |
+| [한국어 블록도](exports/HAEBOT_EV_BLOCK_DIAGRAM_KO.pdf) | 한국어 전원 및 제어 구성도 |
+| [English SVG](block-diagrams/HAEBOT_EV_BLOCK_DIAGRAM.svg), [한국어 SVG](block-diagrams/HAEBOT_EV_BLOCK_DIAGRAM_KO.svg) | Editable vector diagrams |
+| [Parts list](bom/README.md) | Components and selection status |
+| [Wiring connections](docs/wiring_connections.md) | Power, control, USB and I2C wiring |
+| [Protection plan](docs/power_distribution_and_protection.md) | Fuses, voltage limits and monitoring |
+| [Power budget](docs/power_budget.md) | Preliminary load and runtime estimates |
+| [12 V arm notes](docs/arm_servo_12v_notes.md) | Confirmed voltage choice and remaining checks |
+| [Assembly](docs/assembly_instructions.md) | Installation and operation |
+| [Verification](docs/verification_report.md) | Actual checks and unresolved hardware inputs |
 
-## How it is powered
+## Power path
 
 ```text
-Battery -> main fuse 40 A -> disconnect -> battery bus
-  battery bus -> E-stop contactor -> 12.0 V regulator -> FUSE BOX 1 (12 V): wheels 15 A, arm 1 10 A, arm 2 10 A
-  battery bus -> fuse 5 A  -> Jetson (9-20 V jack)
-  battery bus -> fuse 10 A -> 12 V to 5 V buck -> FUSE BOX 2 (5 V): hub 1, hub 2, 5 V electronics
-  battery bus -> fuse 2 A  -> E-stop button and START -> contactor coil
+BT1 battery + -> F1 main fuse -> SW1 disconnect -> U6 Matek BAT+ -> ESC+ -> battery bus
+  bus -> K1 main contact -> U3 regulated 12.0 V -> FB1: F11 wheels, F12 arm 1, F13 arm 2
+  bus -> F3 5 A -> Jetson DC jack (stays powered after E-stop)
+  bus -> F4 10 A -> EA75-5V -> FB2: F21 hub 1, F22 hub 2, F23 monitor + auxiliary feed
+  bus -> F5 control fuse -> S1 latching NC E-stop -> K1 coil -> POWER_GND
+FB2 F23 / J5 AUX_5V -> U6 5V; U6 G -> POWER_GND
+U6 SDA / SCL -> Jetson I2C interface (header pins, bus, pull-ups and software TBD)
 ```
 
-Estimated runtime in typical use: about 3.7 h (lead-acid), 6.3 h (LiFePO4) or 5.4 h (3S Li-ion).
+All returns have their own wire to the battery-negative star bus. U6 high-current pads carry the main positive
+current; its small JST connector carries electronics power and I2C only. The charge inlet remains on the battery
+side of SW1, so this placement measures discharge, not charging with SW1 open.
 
-## Main points
+## One E-stop: how it holds and releases
 
-1. The servos accept at most 12.6 V. A lead-acid or LiFePO4 battery reaches 14.4 V or more, so the motion rail has a
-   12.0 V regulator. Only a 3S Li-ion pack makes it unnecessary.
-2. The proposed arm servo is the STS3215-C018 (12 V). It is the model already used on the wheels.
-3. The E-stop is hardware only. It cuts wheels and arms and leaves the Jetson running.
+S1 is a **positive-opening NC, push-to-lock / twist-to-release mushroom**. When released, it powers the K1 coil.
+Pressing it opens the coil circuit, and K1 disconnects the wheels and both arms. The mushroom stays down mechanically
+until twisted; no electrical holding contact is needed. The Jetson, hubs and monitor electronics remain powered.
 
-## Before building
+**Twisting S1 to release restores motor power immediately. SW1 on with S1 released also enables motor power.
+There is no restart interlock.** Motor commands must be cleared before restoring power. Power removal also removes arm
+holding torque; support the arms during testing. This is a single-contactor prototype power cut, not a validated
+functional-safety system; a welded K1 contact can defeat the cut-off.
 
-Send a photo of the battery label and the charger label. Main fuse, contactor, regulator and charging connection
-depend on them.
+## Hardware facts still needed
 
-## Editing
+- Battery chemistry, full voltage range, BMS limits and matching charger.
+- K1 is the user's photographed unit labelled **500A DC12V**. Manufacturer/model, continuous coil duty, actual coil
+  current, polarity, DC breaking capacity and suppression remain unverified. The label alone does not verify 500 A
+  continuous or breaking capability. F5 2 A and the former 6 W coil allowance are preliminary.
+- U3 is retained: new 12 V servos do not imply tolerance of a 14.6 V battery. Bypass only after voltage compatibility
+  is established. Exact new servo model, fit and current remain unverified; STS3215-C018 is the existing candidate.
+- Matek electronics use regulated 5 V (manufacturer input 4-9 V), never raw battery. The manufacturer lists INA228/INA238
+  variants; identify the fitted IC before selecting Jetson software. Default address is decimal 69 / hex 0x45.
+- Hub voltage/plug and whether hub 2 is fitted remain unresolved.
 
-Open `kicad/HAEBOT_EV.kicad_pro` in KiCad 7 or newer. Export commands are in `AGENTS.md`.
+## Regenerating outputs
+
+Rev B is saved in **KiCad 10** format; use KiCad 10 or newer. Final ERC: **0 errors, 0 warnings**. Saved-source
+connection checks are in [verification](docs/verification_report.md); hardware operation is still untested.
+The block diagram generator is
+`tools/render_block_diagrams.py`; it emits both SVGs and PDFs from one geometry with English/Korean labels.
+Run it with Python + ReportLab; Windows Malgun Gothic fonts are used for embedded Korean text.
+
+Manufacturer reference: https://www.mateksys.com/?portfolio=i2c-ina-bm

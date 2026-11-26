@@ -1,65 +1,102 @@
-# Verification report: EV battery design (Rev A, 2026-11-13)
+# Verification report: EV battery design (Rev B, 2026-11-26)
 
-**Overall status: PROPOSED. This design is not validated.** The battery itself is not identified.
+**Overall status: PROPOSED / hardware validation incomplete.** No powered hardware test was performed.
+User approval establishes design choices, not the actual electrical ratings.
 
-| Word | Meaning |
+## 1. Accepted changes
+
+- Both new arms are 12 V. Exact servo MPN, installation, current and mechanical fit are not yet verified.
+- K1 is the photographed contactor labelled 500A DC12V; exact manufacturer/MPN and specifications are unknown.
+- One positive-opening, mechanically latching NC mushroom S1 is in series with F5 and K1's coil.
+- SW2 START, K1 auxiliary contact/holding loop and a reset controller are omitted.
+- S1 stays locked open mechanically until twist release. Release immediately restores motion power; SW1 on with
+  S1 released also powers motion. There is no restart interlock or enforced separate motion-start action.
+- U6 Matek I2C-INA-BM senses the main positive discharge path after F1/SW1 and before all load branches.
+- U6 electronics use F23/J5 AUX_5V and POWER_GND. I2C is a functional connection to Jetson GPIO, with actual header
+  pins, bus, logic levels/pull-ups, fitted INA228/INA238 variant and software still unverified.
+- Existing main/branch protection, U3 conditional regulator, charger and USB arrangement are retained.
+
+## 2. Verification evidence
+
+| Check | Rev B evidence / result |
 |---|---|
-| **Verified** | Supported by a datasheet, a manual, or a measurement recorded in this repository |
-| **Calculated** | Derived from verified values with stated assumptions |
-| **Proposed** | Not bought, not built, not tested |
-| **Blocked** | Cannot be finalised until a hardware fact is supplied |
+| Scope | Changes restricted to `kiro-wiring-2/ev-battery-haebot/`; unrelated work is not staged |
+| Documentation | README, agent notes, BOM, protection, wiring, assembly, arm notes and budget updated together |
+| English/Korean diagrams | SVG and embedded-font PDF generated from one geometry; both PDF renders visually inspected |
+| KiCad schematic / netlist / ERC | Final results recorded below; historical passes are not current evidence |
+| Hardware operation | NOT TESTED; proposed behaviour only |
+| Jetson sensor integration | NOT IMPLEMENTED or tested; physical pin mapping remains pending |
+| Functional safety | NOT VALIDATED; one contactor cannot detect or tolerate its own welded main contacts |
 
+Historical Rev A evidence: KiCad 10 ERC on 2026-11-16 reported 0 errors / 49 library warnings before a local symbol
+table was added. This is history only and does not validate Rev B.
 
-## 1. Checks performed
+## 3. Hardware inputs still required
 
-| Check | Method | Result |
-|---|---|---|
-| KiCad file validity | `kicad-cli` 7.0.11 loads the schematic and plots it | Pass |
-| Net connectivity | KiCad netlist export compared with the intended connection table | Pass after one fix: tee connections on the battery bus were not joined in the first export and were corrected |
-| Unconnected pins | netlist review | Only intended ones: spare fuse slots, second adapter ports, last servo in each chain, hub 2 downstream ports |
-| KiCad ERC | KiCad 10.0, 2026-11-16 | **0 errors, 49 warnings, all `lib_symbol_issues`** (the HAEBOT library was not in the project table). `kicad/sym-lib-table` now points at `kiro-wiring-2/shared/HAEBOT.kicad_sym`. This environment cannot re-run ERC (kicad-cli 7.0.11 has no ERC command), so the warning count after the table was added is not re-counted |
-| PDF readability | exported PDF rendered and inspected | Pass |
-| Battery voltage range against each load | table in the protection notes | Servo rail needs a regulator unless the pack is 3S Li-ion |
-| Fuse and wire sizes | V1 values and calculation | Preliminary; see below |
-| E-stop behaviour | schematic review | Opens K1 with no software; no restart on release |
+| Item | Status / next evidence |
+|---|---|
+| Battery / BMS / charger | Blocked: labels, chemistry, voltage envelope and limits |
+| K1 continuous duty / DC breaking rating | Blocked: exact datasheet; 500 A label is insufficient |
+| K1 coil and S1 rating | Blocked: inrush/hold current, full voltage envelope, polarity; S1 DC inductive rating |
+| F5 / D1 | 2 A control fuse and former 1N4007 proposal are unverified; use actual coil requirements and approved suppression |
+| U3 | Unselected; retain regulation until voltage compatibility established; check 26.8 A assumed motion peak against >=20 A placeholder |
+| F1 / charge protection | Preliminary 40 A / 15 A; final interrupt/current ratings depend on battery and charger |
+| 12 V arms / connectors | Voltage choice confirmed; MPN/fit/current/power injection and F12/F13 ratings unverified |
+| U6 sensor | Manufacturer range/supply specified; installation, direction and readings untested |
+| U6 I2C | Header pins/bus, levels/pull-ups, actual IC variant and driver unresolved |
+| F23 / JST harness | Check harness rating and other auxiliary loads before retaining 2 A value |
+| USB hubs | Input voltages/plugs and second-hub presence unresolved |
 
-## 2. Results
+## 4. Bring-up checks (not yet performed)
 
-| Item | Status | Evidence or reason |
-|---|---|---|
-| Jetson on raw battery voltage | Verified by V1 records | DC jack 9-20 V; envelope 10.0-14.6 V |
-| EA75-5V on raw battery voltage | Verified by vendor range | 8-40 V input, 15 A output |
-| Wheel servo voltage and current | Verified | V1 measured, vendor |
-| Two-fuse-box layout, F3, F4, F11 values | Verified layout | same as V1 Rev F |
-| Battery current and runtime | Calculated | `power_budget.md` |
-| Voltage drop on main and branch runs | Calculated | protection notes section 5 |
-| 12 V arm servos (STS3215-C018) | Proposed | part exists; mechanical fit and current on this robot not checked |
-| F12, F13, arm current | Proposed | estimate |
-| U3 12 V regulator, K1, SW1, S1, START, bus bar | Proposed | no part selected |
-| Battery chemistry, voltage range, BMS limits | Blocked | battery label |
-| Main fuse rating and interrupt rating | Blocked | needs BMS limit and fault current |
-| Charger and charging connection | Blocked | charger label |
-| Low-voltage disconnect | Blocked | depends on chemistry |
-| Hub power (voltage, current, plug) | Blocked | hub label |
-| 5 V control electronics | Blocked | no 5 V accessory is identified in the records |
+1. Verify battery polarity, wire/fuse ratings, K1 suitability and coil suppression. Support arms and isolate motion
+   loads; leave FB1 empty. Lock S1 before closing SW1.
+2. Fit necessary main/control protection. Confirm S1 locked = coil off/contact open; let go = still off;
+   twist release = coil energises/contact closes immediately; press again = contact opens.
+3. Open a control-loop wire and confirm K1 drops out. Restore only with S1 pressed. There is no restart interlock:
+   loss/restoration of supply with S1 released re-enables motion power.
+4. Fit F4 and measure 5.0-5.2 V before attaching FB2 loads/U6. Confirm U6 small 5V pin never sees battery voltage.
+5. Fit F3 and boot Jetson with motor branches isolated. Resolve I2C pin/logic/driver questions before connecting data.
+6. Set U3 to 12.0 V. Fit F11 with wheels raised. Confirm all three adapter motor-supply inputs lose power with S1
+   pressed even with USB connected; rule out USB backfeed keeping motors energised.
+7. Fit F12/F13 after the new 12 V arms are installed/calibrated and supported. Test cut-off and gravity behaviour.
+   Release only with commands cleared: power returns without a separate button.
+8. Compare U6 readings to independent meters with K1 open/closed. Record battery/arm peaks; refine coil power,
+   protection, converter size and runtime estimates from measurements.
 
-## 3. Bring-up order
+## 5. Sources
 
-1. Check battery polarity at the connector with a meter. Fit only F1 and F5.
-2. Test the E-stop loop with fuse box 1 empty: latch, drop-out, no restart on release, drop-out with a wire pulled.
-3. Fit F4. Measure 5.0-5.2 V at fuse box 2 before any 5 V load is connected.
-4. Fit F3. Boot the Jetson.
-5. Set U3 to 12.0 V with fuse box 1 empty. Then fit F11 and test the wheels on blocks.
-6. Fit F12 and F13 only after the 12 V servos are installed and the arms are calibrated.
-7. Clamp-meter the battery lead during a full run and record the peak.
+- User choices/photographs in the 2026-11-26 conversation: new 12 V arms, one latching NC E-stop, photographed
+  500A DC12V contactor, Matek I2C-INA-BM. Photo establishes markings, not verified ratings.
+- Matek manufacturer: https://www.mateksys.com/?portfolio=i2c-ina-bm (checked 2026-11-26).
+- Similar four-terminal seller diagram (not exact K1 identity proof):
+  https://ai.esmplus.com/tw6767/homepageimage/ETC/contactor/HCS3104/d2.jpg
+- Positive-opening NC contacts: https://www.idec.com/en-apac/solutions/safety/guide/safety02
+- Restart distinction: https://www.pilz.com/en-US/support/faq/standards/articles/180045 . Rev B provides immediate
+  power restoration and must not be represented as a validated emergency-stop safety system.
+- V1 evidence: `../../docs/hardware_evidence.md`, `../../kiro-wiring/docs/power_system_design.md`,
+  `../../kiro-wiring/docs/parts_list.md`; servo candidate: https://www.waveshare.com/wiki/SO-ARM100/101 .
 
-## Sources
+## 6. Final Rev B KiCad check results
 
-- Anker SOLIX C300 DC user manual (A1726), specifications and USB power distribution table:
-  https://www.santansolar.com/wp-content/uploads/TEM_A1726_V1_EN_UM_Web_20240913.pdf
-- Anker SOLIX C300 DC product page: https://anker.com/products/a17260z1
-- Anker SOLIX C300X DC datasheet (car outlet 10.8-14 V, LiFePO4):
-  https://solarhandel24.de/cdn/shop/files/Datenblatt_Anker_Solix_C300X_DC_Powerstation.pdf
-- Waveshare SO-ARM100/101 wiki (12 V follower servos): https://www.waveshare.com/wiki/SO-ARM100/101
-- V1 records in this repository: `kiro-wiring/docs/power_system_design.md`, `kiro-wiring/docs/parts_list.md`
-- Earlier V2 draft: `kiro-wiring-2/archive/flat-v2-2026-11-12/docs/KIRO_V2_design_basis.md`
+Circuit-edit checks on the saved schematic using Konnect and KiCad 10.0.7:
+
+| Check | Result |
+|---|---|
+| Direct KiCad ERC | 0 errors, 0 warnings; report in `../exports/HAEBOT_EV_ERC.json` |
+| Component connection validation | Valid; 0 unconnected pins |
+| Wire endpoints / orphan items | 0 floating endpoints; 0 orphan items |
+| Shorted-net check | 0 shorts |
+| Symbol overlap check | 51 bounds resolved, 0 unresolved; 0 overlaps |
+| Exported topology assertions | U6 before every load branch; 5 V electronics supply; separate SDA/SCL; no SW2 or K1 auxiliary pins; all three motor branches after K1/U3 |
+
+Final title block is **Rev B / 2026-11-26**. PDF, netlist and PNG were regenerated from the final saved KiCad 10
+source. The schematic PDF itself was rendered and visually inspected; the A3 sheet is readable with no clipping.
+English and Korean diagram PDFs were also rendered and inspected, including the Korean glyphs.
+
+`python tools/check_rev_b_netlist.py` passes, including metadata, the monitor supply/signal paths and motor branches.
+Detailed final evidence and source SHA-256 are in `../exports/HAEBOT_EV_CONNECTIVITY_CHECKS.json`.
+The new local functional symbols are in `../kicad/HAEBOT_EV_Local.kicad_sym`; the shared library was not modified.
+KiCad GUI save upgraded the schematic/project format to KiCad 10; use KiCad 10 or newer for this revision.
+
+These circuit checks do not establish hardware operation, physical connector mapping or functional safety.

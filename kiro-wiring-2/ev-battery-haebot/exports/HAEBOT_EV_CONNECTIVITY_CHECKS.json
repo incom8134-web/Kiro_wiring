@@ -1,0 +1,57 @@
+{
+  "validate_wire_connections": {
+    "floating_count": 0,
+    "floating_endpoints": [],
+    "valid": true
+  },
+  "validate_component_connections": {
+    "unconnected_count": 0,
+    "unconnected_pins": [],
+    "valid": true
+  },
+  "find_shorted_nets": {
+    "short_count": 0,
+    "shorts": []
+  },
+  "find_orphan_items": {
+    "orphan_count": 0,
+    "orphans": [],
+    "tolerance": 0.05
+  },
+  "check_schematic_overlaps": {
+    "bounds_resolved": 51,
+    "bounds_unresolved": [],
+    "overlap_count": 0,
+    "overlaps": []
+  },
+  "generate_netlist": {
+    "exported": "C:\\Users\\user\\Desktop\\kiro_wiring\\kiro-wiring-2\\ev-battery-haebot\\exports\\HAEBOT_EV_NETLIST.net",
+    "format": "kicad"
+  },
+  "export_schematic_pdf": {
+    "all_sheets": true,
+    "black_and_white": false,
+    "exported": "C:\\Users\\user\\Desktop\\kiro_wiring\\kiro-wiring-2\\ev-battery-haebot\\exports\\HAEBOT_EV_SCHEMATIC.pdf"
+  },
+  "render_schematic_png": {
+    "height_px": 2263,
+    "monochrome": false,
+    "png_bytes": 673411,
+    "rendered": "C:\\Users\\user\\Desktop\\kiro_wiring\\kiro-wiring-2\\ev-battery-haebot\\exports\\HAEBOT_EV_SCHEMATIC.png",
+    "width_px": 3200
+  },
+  "run_erc": {
+    "coordinates": {
+      "kicad_version": "10.0.7",
+      "reason": "KiCad 10.0.7 carries the fix for the ERC JSON coordinate scaling defect (kicad#25582, fixed in 10.0.7), so its coordinates are passed through unchanged.",
+      "status": "verbatim"
+    },
+    "errors": 0,
+    "total": 0,
+    "violations": [],
+    "warnings": 0
+  },
+  "source_sha256": "9e540c19368149f900b323f2136f4474ea588c735ff9af5f435228a918f61547",
+  "date": "2026-11-26",
+  "source": "Final saved KiCad10 schematic; circuit edits through Konnect MCP, title metadata via KiCad GUI"
+}

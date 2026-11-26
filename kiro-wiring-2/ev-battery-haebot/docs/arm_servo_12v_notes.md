@@ -1,4 +1,6 @@
-# Moving the two arms to 12 V servos (Proposed)
+# Both new arms use 12 V servos (Rev B, 2026-11-26)
+
+**User-confirmed voltage choice: both new arms are 12 V.** Exact servo model, installation, mechanical fit and measured current remain unverified. The candidate below is not a confirmed purchase.
 
 ## What is fitted today (V1 records)
 
@@ -6,7 +8,7 @@
 - Leader arms: 6 x STS3215 each, torque off, mixed voltage limits.
 - These servos must never be connected to the 12 V rail.
 
-## Proposed replacement
+## Candidate model for the confirmed 12 V arm plan
 
 **Feetech STS3215-C018, 12 V, 30 kg.cm, gear ratio 1:345, TTL serial bus.** It is the servo sold for the 12 V
 SO-ARM101 follower, and it is the same model already driving the HAEBOT wheels.
@@ -20,7 +22,7 @@ SO-ARM101 follower, and it is the same model already driving the HAEBOT wheels.
 | Supply voltage | 12.0 V, never above 12.6 V. Needs the regulated rail (U3) for lead-acid and LiFePO4 | Verified limit |
 | Software | Servo IDs 1-6 must be written to each new servo; redo LeRobot calibration for both arms | Required |
 | Control settings | Check `Max_Voltage_Limit`, torque limit and P/I/D. More torque at 12 V: start with the gripper limited as today | Required |
-| Leader arms | A leader is moved by hand with torque off and uses different gear ratios. It does not need 12 V servos | Decide which two arms the brief means |
+| Arm roles | Both project arms will use new 12 V servos per the user. A hand-moved leader may still need different gear ratios and torque-off settings | Voltage confirmed; exact models and roles/settings to verify |
 | Current | Stall 2.7 A per servo. One arm is one six-servo chain on one Molex contact (about 3 A rating) | Measure before fixing F12 / F13 |
 
 Mixing rule: once an arm adapter is on fuse box 1 (12 V), every servo on that bus must be the 12 V type.

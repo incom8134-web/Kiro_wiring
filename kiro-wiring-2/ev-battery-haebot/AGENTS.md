@@ -6,7 +6,7 @@ This folder is self-contained. Do not rely on the Anker folder to understand it.
 ## Purpose
 
 Successor of the V1 AC/SMPS system. The SMPS is replaced by one **12 V 45 Ah battery** with battery-grade protection.
-Status: **Rev A, PROPOSED.** The battery chemistry, its BMS and the charger are not identified.
+Status: **Rev B, PROPOSED.** The battery chemistry, its BMS and the charger are not identified.
 
 ## Read first
 
@@ -21,7 +21,7 @@ You must review that evidence before changing any electrical connection.
 
 - Design for the full battery voltage range, not for 12.0 V. Until the chemistry is known the envelope is 10.0-14.6 V.
 - Servo rail: 12.0 V regulated, never above 12.6 V. U3 may be removed only for a 3S Li-ion pack.
-- Both arms use 12 V servos (STS3215-C018, proposed). The existing 7.4 V servos (limit 8.0 V) must never be connected
+- Both new arms use 12 V servos (user confirmed 2026-11-26); STS3215-C018 remains a candidate, not a confirmed MPN. The existing 7.4 V servos (limit 8.0 V) must never be connected
   to fuse box 1.
 - Jetson: 9-20 V DC jack, on its own fused branch from the battery bus. Never on the 5 V rail.
 
@@ -59,13 +59,17 @@ Every return is its own wire to the star point at the battery negative. No retur
 ## Emergency stop and disconnect
 
 - SW1 isolates the battery. K1 removes power from wheels and both arms.
-- The E-stop is a self-holding hardware loop. Never route it through software or the Jetson.
-- The Jetson, hubs and the 5 V rail stay on after an E-stop. No automatic restart.
+- S1 is a positive-opening, mechanically latching NC mushroom. Wire F5 -> S1 -> K1 coil; return to POWER_GND.
+- No START/RESET button, auxiliary holding contact or safety controller is included. Never route the cut through software or the Jetson.
+- Jetson, hubs and U6 monitor stay on after an E-stop. **Twist release restores motor power immediately; no restart interlock.** SW1 on with S1 released also enables motion.
+- K1 is the photographed 500A DC12V unit; exact coil/duty/breaking rating and suppression are unverified. F5 2 A is preliminary.
+- U6 Matek I2C-INA-BM high-current BAT+ -> ESC+ path is between SW1 and the branch split. Its 5V/G come from F23/J5 and POWER_GND. SDA/SCL interface to Jetson remains TBD; no invented physical header pins.
+- This single-contactor prototype power cut is not a validated safety circuit. A welded contact defeats it; arms can fall when torque is lost.
 
 ## KiCad editing
 
 - Source of truth: `kicad/HAEBOT_EV.kicad_pro` and `kicad/HAEBOT_EV.kicad_sch`. Edit in KiCad (Konnect MCP or GUI).
-  KiCad 7 format; KiCad 8 or newer converts on save.
+  Rev B was saved in KiCad 10.0.7; use KiCad 10 or newer. New functional symbols live in the local library.
 - Do not invent pins or part numbers. Off-the-shelf products stay functional blocks.
 - Keep the status words on the drawing in step with `docs/verification_report.md`.
 - Bump the revision and date for any electrical change.
@@ -78,12 +82,11 @@ Every return is its own wire to the star point at the battery negative. No retur
 ```bash
 kicad-cli sch export pdf --no-background-color kicad/HAEBOT_EV.kicad_sch -o exports/HAEBOT_EV_SCHEMATIC.pdf
 kicad-cli sch export netlist kicad/HAEBOT_EV.kicad_sch -o exports/HAEBOT_EV_NETLIST.net
-rsvg-convert -f pdf -o exports/HAEBOT_EV_BLOCK_DIAGRAM.pdf block-diagrams/HAEBOT_EV_BLOCK_DIAGRAM.svg
-rsvg-convert -f pdf -o exports/HAEBOT_EV_BLOCK_DIAGRAM_KO.pdf block-diagrams/HAEBOT_EV_BLOCK_DIAGRAM_KO.svg
+python tools/render_block_diagrams.py
 ```
 
-The block diagram exists in English and Korean. Change both SVG files together. The Korean file needs the
-Noto Sans CJK KR font installed.
+The block diagram exists in English and Korean. Change both SVG files together. Regenerate both with `tools/render_block_diagrams.py` using Python + ReportLab and the Windows Malgun Gothic fonts (or explicit font paths via its arguments).
+The exported PDFs embed the font for Korean readability.
 
 Open each PDF after export and check that nothing is clipped or overlapping.
 
@@ -99,8 +102,11 @@ Open each PDF after export and check that nothing is clipped or overlapping.
 - [ ] Charger label and charging connector.
 - [ ] Final F1 value and type; SW1, K1 and U3 part numbers.
 - [ ] Low-voltage disconnect behaviour.
-- [ ] Which two arms get 12 V servos; trial fit of one STS3215-C018 in an arm joint; measured arm current.
+- [x] Both new arms use 12 V servos (user choice).
+- [ ] Exact new servo MPNs, trial fit, calibration and measured arm current.
+- [ ] U6 actual INA228/INA238 variant, Jetson header/bus, I2C levels/pull-ups and reading software.
+- [ ] K1 continuous duty, full coil supply envelope, current, polarity, suppression and DC breaking rating.
 - [ ] Hub 1 input voltage and plug; whether hub 2 exists.
-- [ ] What the "5 V control electronics" are.
+- [ ] Any remaining 5 V auxiliary loads; U6 is now the identified F23 monitor load.
 - [ ] Optional: `ESTOP_OK` input to the Jetson and the warning beacon from the archived draft.
-- [ ] Re-run KiCad 10 ERC. On 2026-11-16 it was 0 errors and 49 library warnings; `sym-lib-table` was added after that run.
+- [x] Rev B final KiCad 10.0.7 ERC: 0 errors / 0 warnings. Saved-source hash and connection checks are in `exports/HAEBOT_EV_CONNECTIVITY_CHECKS.json`.
