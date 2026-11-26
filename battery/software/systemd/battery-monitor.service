@@ -1,10 +1,15 @@
 [Unit]
-Description=Jetson Nano battery charge and discharge monitor
+Description=Jetson Orin Nano battery charge and discharge monitor
 
 [Service]
 Type=simple
-# Stock JetPack 4.6 on the Nano is Python 3.6. Run this service from a
-# virtualenv built with Python 3.9 or newer. See battery/software/README.md.
+# Python 3.9 or newer. JetPack 6 on the Orin Nano Developer Kit is Ubuntu
+# 22.04 and includes Python 3.10. JetPack 5 is Python 3.8, so that image
+# needs a 3.9+ virtualenv. See battery/software/README.md.
+# UART is optional and unused. The shipped profile sets uart_enabled=false.
+# The HAEBOT web app reads /var/lib/battery-monitor/state.json.
+# dialout is unused while UART stays off. It is listed so a later
+# uart_enabled=true does not also need a unit change.
 WorkingDirectory=/opt/battery-monitor
 ExecStart=/opt/battery-monitor/.venv/bin/python -m battery_monitor --config /etc/battery-monitor/battery_profile.json --state /var/lib/battery-monitor/state.json --history /var/lib/battery-monitor/history.sqlite
 Restart=on-failure

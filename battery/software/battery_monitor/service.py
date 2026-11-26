@@ -1,12 +1,13 @@
-"""Monitor loop: read the INA228, integrate, store, and print UART.
+"""Monitor loop: read the INA228, integrate, and store state.json.
 
 The first tick after start does not integrate across the time the process
 was not running. A tick whose dt is longer than ``max_integrate_dt_s`` is
 treated the same way: the current sample is shown, and the gap is not
 invented as ampere-hours.
 
-Each tick rewrites the state file. The web app already running on the
-Jetson reads that file. This process does not serve HTTP.
+Each tick rewrites the state file. The HAEBOT web app reads that file.
+This process does not serve HTTP. UART output is optional and stays off
+unless the profile sets ``uart_enabled``.
 """
 
 from __future__ import annotations
@@ -188,8 +189,13 @@ class Monitor:
             self.history = None
 
 
+def uart_is_enabled(profile: dict) -> bool:
+    """UART is optional and unused unless the profile turns it on."""
+    return bool(profile.get("uart_enabled", False))
+
+
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Jetson Nano battery charge/discharge monitor")
+    parser = argparse.ArgumentParser(description="Jetson Orin Nano battery charge/discharge monitor")
     parser.add_argument("--config", default=None, help="battery profile JSON")
     parser.add_argument("--simulate", action="store_true", help="use the simulated sensor")
     parser.add_argument("--allow-example", action="store_true", help="permit an example_only profile")
@@ -259,11 +265,11 @@ def main(argv: list[str] | None = None) -> int:
             return 2
 
     uart = None
-    if profile.get("uart_enabled", True):
+    if uart_is_enabled(profile):
         from .uart_out import open_uart
 
         uart = open_uart(
-            str(profile.get("uart_device", "/dev/ttyTHS1")),
+            str(profile.get("uart_device", "/dev/ttyTHS0")),
             int(profile.get("uart_baud", 115200)),
             required=False,
         )
